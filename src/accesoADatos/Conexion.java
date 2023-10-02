@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package accesoADatos;
 
 
@@ -15,12 +12,12 @@ public class Conexion {
     
     // Atributos estaticos constantes
     private static final String URL = "jdbc:mariadb://localhost/"; // url de conex a la bd
-    private static final String DB = "universidadulp"; // nombre de la bd
+    private static final String DB = ""; // nombre de la bd
     private static final String USER = "root"; // usuario de la bd
     private static final String PASS = ""; // contraseña de la bd
     private static Connection connection; // tipo connection q usan las clases Data para poder enviar sentencias sql a la bd
     
-    // Constructor privado
+    // Constructor privado vacio
     private Conexion(){}
     
     // metodo estatico q devuelve un objeto de tipo Connection
