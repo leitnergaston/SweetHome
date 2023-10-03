@@ -4,6 +4,8 @@
  */
 package entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author estudiante
@@ -11,33 +13,34 @@ package entidades;
 public class Propietarios {
     
     private int idPropietario;
-    private String apellido;
     private int dni;
+    private String apellido;
     private String nombre;
     private String domicilio;
-    private int contacto;
-    private Contrato idInmueble;
+    private int telefono;
+    private String mail;
+   ArrayList<Propiedades> propiedad = new ArrayList<>();
 
     public Propietarios() {
     }
 
-    public Propietarios(int idPropietario, String apellido, int dni, String nombre, String domicilio, int contacto, Contrato idInmueble) {
+    public Propietarios(int idPropietario, int dni, String apellido, String nombre, String domicilio, int telefono, String mail) {
         this.idPropietario = idPropietario;
-        this.apellido = apellido;
         this.dni = dni;
+        this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
-        this.contacto = contacto;
-        this.idInmueble = idInmueble;
+        this.telefono = telefono;
+        this.mail = mail;
     }
 
-    public Propietarios(String apellido, int dni, String nombre, String domicilio, int contacto, Contrato idInmueble) {
-        this.apellido = apellido;
+    public Propietarios(int dni, String apellido, String nombre, String domicilio, int telefono, String mail) {
         this.dni = dni;
+        this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
-        this.contacto = contacto;
-        this.idInmueble = idInmueble;
+        this.telefono = telefono;
+        this.mail = mail;
     }
 
     public int getIdPropietario() {
@@ -48,20 +51,20 @@ public class Propietarios {
         this.idPropietario = idPropietario;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public int getDni() {
         return dni;
     }
 
     public void setDni(int dni) {
         this.dni = dni;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getNombre() {
@@ -80,26 +83,35 @@ public class Propietarios {
         this.domicilio = domicilio;
     }
 
-    public int getContacto() {
-        return contacto;
+    public int getTelefono() {
+        return telefono;
     }
 
-    public void setContacto(int contacto) {
-        this.contacto = contacto;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
 
-    public Contrato getIdInmueble() {
-        return idInmueble;
+    public String getMail() {
+        return mail;
     }
 
-    public void setIdInmueble(Contrato idInmueble) {
-        this.idInmueble = idInmueble;
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public ArrayList<Propiedades> getPropiedad() {
+        return propiedad;
+    }
+
+    public void setPropiedad(ArrayList<Propiedades> propiedad) {
+        this.propiedad = propiedad;
     }
 
     @Override
     public String toString() {
-        return   "apellido=" + apellido + ", dni=" + dni + ", nombre=" + nombre + ", domicilio=" + domicilio ;
+        return "Propietarios{" + "dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + '}';
     }
 
+    
       
 }

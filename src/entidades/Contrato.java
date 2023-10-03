@@ -4,37 +4,54 @@ package entidades;
 import java.time.LocalDate;
 
 public class Contrato {
+    
     private int id_contrato;
-    Inquilino Inquilino;
+    private Propiedades Propiedades;
+    private Inquilino Inquilino;
     private LocalDate fecha_realizacion;
     private LocalDate fecha_inicio;
     private LocalDate fecha_final;
-    private char marca;
-    Propiedades Propiedades;
-    private String vendedor;
+    private double precioAlquiler;
+    private boolean vigente;
+    private boolean renovación;
+    
+    
+   
 
     public Contrato() {
     }
 
-    public Contrato(Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, char marca, Propiedades Propiedades, String vendedor) {
+    public Contrato(int id_contrato, Propiedades Propiedades, Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, double precioAlquiler, boolean vigente, boolean renovación) {
+        this.id_contrato = id_contrato;
+        this.Propiedades = Propiedades;
         this.Inquilino = Inquilino;
         this.fecha_realizacion = fecha_realizacion;
         this.fecha_inicio = fecha_inicio;
         this.fecha_final = fecha_final;
-        this.marca = marca;
-        this.Propiedades = Propiedades;
-        this.vendedor = vendedor;
+        this.precioAlquiler = precioAlquiler;
+        this.vigente = vigente;
+        this.renovación = renovación;
     }
 
-    public Contrato(int id_contrato, Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, char marca, Propiedades Propiedades, String vendedor) {
-        this.id_contrato = id_contrato;
+    public Contrato(Propiedades Propiedades, Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, double precioAlquiler, boolean vigente, boolean renovación) {
+        this.Propiedades = Propiedades;
         this.Inquilino = Inquilino;
         this.fecha_realizacion = fecha_realizacion;
         this.fecha_inicio = fecha_inicio;
         this.fecha_final = fecha_final;
-        this.marca = marca;
+        this.precioAlquiler = precioAlquiler;
+        this.vigente = vigente;
+        this.renovación = renovación;
+    }
+
+    public Contrato(Propiedades Propiedades, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, double precioAlquiler, boolean vigente, boolean renovación) {
         this.Propiedades = Propiedades;
-        this.vendedor = vendedor;
+        this.fecha_realizacion = fecha_realizacion;
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_final = fecha_final;
+        this.precioAlquiler = precioAlquiler;
+        this.vigente = vigente;
+        this.renovación = renovación;
     }
 
     public int getId_contrato() {
@@ -43,6 +60,14 @@ public class Contrato {
 
     public void setId_contrato(int id_contrato) {
         this.id_contrato = id_contrato;
+    }
+
+    public Propiedades getPropiedades() {
+        return Propiedades;
+    }
+
+    public void setPropiedades(Propiedades Propiedades) {
+        this.Propiedades = Propiedades;
     }
 
     public Inquilino getInquilino() {
@@ -77,51 +102,36 @@ public class Contrato {
         this.fecha_final = fecha_final;
     }
 
-    public char getMarca() {
-        return marca;
+    public double getPrecioAlquiler() {
+        return precioAlquiler;
     }
 
-    public void setMarca(char marca) {
-        this.marca = marca;
+    public void setPrecioAlquiler(double precioAlquiler) {
+        this.precioAlquiler = precioAlquiler;
     }
 
-    public Propiedades getPropiedades() {
-        return Propiedades;
+    public boolean isVigente() {
+        return vigente;
     }
 
-    public void setPropiedades(Propiedades Propiedades) {
-        this.Propiedades = Propiedades;
+    public void setVigente(boolean vigente) {
+        this.vigente = vigente;
     }
 
-    public String getVendedor() {
-        return vendedor;
+    public boolean isRenovación() {
+        return renovación;
     }
 
-    public void setVendedor(String vendedor) {
-        this.vendedor = vendedor;
+    public void setRenovación(boolean renovación) {
+        this.renovación = renovación;
     }
-    
-    private void buscarContrato(){
-        
-    }
-    
-    private void cancelacion(){
-        
-    }
-    
-    private void crearContrato(){
-        
-    }
-    
-    private void renovacionContrato(){
-        
-    }
-    
 
     @Override
     public String toString() {
-        return "ContratoDeAlquiler{" + "id_contrato=" + id_contrato + ", Inquilino=" + Inquilino + ", fecha_realizacion=" + fecha_realizacion + ", fecha_inicio=" + fecha_inicio + ", fecha_final=" + fecha_final + ", marca=" + marca + ", Propiedades=" + Propiedades + ", vendedor=" + vendedor + '}';
+        return "Contrato{" + "Propiedades=" + Propiedades + ", fecha_inicio=" + fecha_inicio + ", precioAlquiler=" + precioAlquiler + ", vigente=" + vigente + '}';
     }
     
+    
+   
     
 }

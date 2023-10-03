@@ -5,38 +5,37 @@ import java.util.ArrayList;
 public class Propiedades {
     
     private int idInmueble;
-    private Propietarios id_Propietario;
-    private Inquilino id_Inquilino;
-    private String nombre;
-    private String apellido;
-    private int DNI;
-    private String domicilio;
-    private int telefono;
-//     ArrayList<Propiedades> pro = new ArrayList<>();
+    private Propietarios propietario;
+    private Inquilino inquilino;
+    private String direccion;
+    private String tipo;
+    private double superficie;
+    private double precio;
+    private String zona;
+    private boolean disponible;
 
     public Propiedades() {
     }
 
-    public Propiedades(int idInmueble, Propietarios id_Propietario, Inquilino id_Inquilino, String nombre, String apellido, int DNI, String domicilio, int telefono) {
+    public Propiedades(int idInmueble, Propietarios propietario, Inquilino inquilino, String direccion, String tipo, double superficie, double precio, String zona, boolean disponible) {
         this.idInmueble = idInmueble;
-        this.id_Propietario = id_Propietario;
-        this.id_Inquilino = id_Inquilino;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.DNI = DNI;
-        this.domicilio = domicilio;
-        this.telefono = telefono;
+        this.propietario = propietario;
+        this.inquilino = inquilino;
+        this.direccion = direccion;
+        this.tipo = tipo;
+        this.superficie = superficie;
+        this.precio = precio;
+        this.zona = zona;
+        this.disponible = disponible;
     }
-    
-    
-    public Propiedades(Propietarios id_Propietario, Inquilino id_Inquilino, String nombre, String apellido, int DNI, String domicilio, int telefono) {
-        this.id_Propietario = id_Propietario;
-        this.id_Inquilino = id_Inquilino;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.DNI = DNI;
-        this.domicilio = domicilio;
-        this.telefono = telefono;
+
+    public Propiedades(String direccion, String tipo, double superficie, double precio, String zona, boolean disponible) {
+        this.direccion = direccion;
+        this.tipo = tipo;
+        this.superficie = superficie;
+        this.precio = precio;
+        this.zona = zona;
+        this.disponible = disponible;
     }
 
     public int getIdInmueble() {
@@ -47,67 +46,75 @@ public class Propiedades {
         this.idInmueble = idInmueble;
     }
 
-    public Propietarios getId_Propietario() {
-        return id_Propietario;
+    public Propietarios getPropietario() {
+        return propietario;
     }
 
-    public void setId_Propietario(Propietarios id_Propietario) {
-        this.id_Propietario = id_Propietario;
+    public void setPropietario(Propietarios propietario) {
+        this.propietario = propietario;
     }
 
-    public Inquilino getId_Inquilino() {
-        return id_Inquilino;
+    public Inquilino getInquilino() {
+        return inquilino;
     }
 
-    public void setId_Inquilino(Inquilino id_Inquilino) {
-        this.id_Inquilino = id_Inquilino;
+    public void setInquilino(Inquilino inquilino) {
+        this.inquilino = inquilino;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public int getDNI() {
-        return DNI;
+    public double getSuperficie() {
+        return superficie;
     }
 
-    public void setDNI(int DNI) {
-        this.DNI = DNI;
+    public void setSuperficie(double superficie) {
+        this.superficie = superficie;
     }
 
-    public String getDomicilio() {
-        return domicilio;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setDomicilio(String domicilio) {
-        this.domicilio = domicilio;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public String getZona() {
+        return zona;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public void setZona(String zona) {
+        this.zona = zona;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 
     @Override
     public String toString() {
-        return "Propiedades{" + "nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI + '}';
+        return "Propiedades{" + "direccion=" + direccion + ", tipo=" + tipo + ", disponible=" + disponible + '}';
     }
-
     
-  
+    
+   
 }

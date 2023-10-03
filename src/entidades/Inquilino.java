@@ -5,39 +5,46 @@ import java.util.ArrayList;
 
 
 public class Inquilino {
+    
     private int id_Inquilino;
     private String nombre;
     private String apellido;
-    private int DNI;
-    private char caracter;
+    private long cuit;
+    private String lugarDeTrabajo;
+    private int dniGarante;
+    private String nombreGarante;
     ArrayList<Propiedades> pro = new ArrayList<>();
-    private char tipo; 
+    private boolean estado; 
 
     public Inquilino() {
-    }
+        }
 
-    public Inquilino(int id_Inquilino, String nombre, String apellido, int DNI, char caracter, char tipo) {
+    public Inquilino(int id_Inquilino, String nombre, String apellido, long cuit, String lugarDeTrabajo, int dniGarante, String nombreGarante, boolean estado) {
         this.id_Inquilino = id_Inquilino;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.DNI = DNI;
-        this.caracter = caracter;
-        this.tipo = tipo;
+        this.cuit = cuit;
+        this.lugarDeTrabajo = lugarDeTrabajo;
+        this.dniGarante = dniGarante;
+        this.nombreGarante = nombreGarante;
+        this.estado = estado;
     }
 
-    public Inquilino(String nombre, String apellido, int DNI, char caracter, char tipo) {
+    public Inquilino(String nombre, String apellido, long cuit, String lugarDeTrabajo, int dniGarante, String nombreGarante, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.DNI = DNI;
-        this.caracter = caracter;
-        this.tipo = tipo;
+        this.cuit = cuit;
+        this.lugarDeTrabajo = lugarDeTrabajo;
+        this.dniGarante = dniGarante;
+        this.nombreGarante = nombreGarante;
+        this.estado = estado;
     }
 
-    public int getId_Inquiolino() {
+    public int getId_Inquilino() {
         return id_Inquilino;
     }
 
-    public void setId_Inquiolino(int id_Inquilino) {
+    public void setId_Inquilino(int id_Inquilino) {
         this.id_Inquilino = id_Inquilino;
     }
 
@@ -57,20 +64,36 @@ public class Inquilino {
         this.apellido = apellido;
     }
 
-    public int getDNI() {
-        return DNI;
+    public long getCuit() {
+        return cuit;
     }
 
-    public void setDNI(int DNI) {
-        this.DNI = DNI;
+    public void setCuit(long cuit) {
+        this.cuit = cuit;
     }
 
-    public char getCaracter() {
-        return caracter;
+    public String getLugarDeTrabajo() {
+        return lugarDeTrabajo;
     }
 
-    public void setCaracter(char caracter) {
-        this.caracter = caracter;
+    public void setLugarDeTrabajo(String lugarDeTrabajo) {
+        this.lugarDeTrabajo = lugarDeTrabajo;
+    }
+
+    public int getDniGarante() {
+        return dniGarante;
+    }
+
+    public void setDniGarante(int dniGarante) {
+        this.dniGarante = dniGarante;
+    }
+
+    public String getNombreGarante() {
+        return nombreGarante;
+    }
+
+    public void setNombreGarante(String nombreGarante) {
+        this.nombreGarante = nombreGarante;
     }
 
     public ArrayList<Propiedades> getPro() {
@@ -81,39 +104,20 @@ public class Inquilino {
         this.pro = pro;
     }
 
-    public char getTipo() {
-        return tipo;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setTipo(char tipo) {
-        this.tipo = tipo;
-    }
-    
-    public void agregarInquilino(){
-        
-    }
-    
-    public void eliminarInquilino(){
-        
-    }
-    
-    public void buscarInquilino(){
-        
-    }
-    
-    public void modificarDatos(){
-        
-    }
-    
-    public boolean multarInquilino(){
-        
-        return false;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "Inquilino{" + "id_Inquiolino=" + id_Inquilino + ", nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI + ", caracter=" + caracter + ", pro=" + pro + ", tipo=" + tipo + '}';
+        return "Inquilino{" + "nombre=" + nombre + ", apellido=" + apellido + ", cuit=" + cuit + '}';
     }
-}
+    
+    
+    }
 
-
+    
