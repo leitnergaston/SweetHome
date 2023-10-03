@@ -16,12 +16,12 @@ public class propietarios {
     private String nombre;
     private String domicilio;
     private int contacto;
-    private inmuebles idInmueble;
+    private Contrato idInmueble;
 
     public propietarios() {
     }
 
-    public propietarios(int idPropietario, String apellido, int dni, String nombre, String domicilio, int contacto, inmuebles idInmueble) {
+    public propietarios(int idPropietario, String apellido, int dni, String nombre, String domicilio, int contacto, Contrato idInmueble) {
         this.idPropietario = idPropietario;
         this.apellido = apellido;
         this.dni = dni;
@@ -31,7 +31,7 @@ public class propietarios {
         this.idInmueble = idInmueble;
     }
 
-    public propietarios(String apellido, int dni, String nombre, String domicilio, int contacto, inmuebles idInmueble) {
+    public propietarios(String apellido, int dni, String nombre, String domicilio, int contacto, Contrato idInmueble) {
         this.apellido = apellido;
         this.dni = dni;
         this.nombre = nombre;
@@ -88,11 +88,11 @@ public class propietarios {
         this.contacto = contacto;
     }
 
-    public inmuebles getIdInmueble() {
+    public Contrato getIdInmueble() {
         return idInmueble;
     }
 
-    public void setIdInmueble(inmuebles idInmueble) {
+    public void setIdInmueble(Contrato idInmueble) {
         this.idInmueble = idInmueble;
     }
 
