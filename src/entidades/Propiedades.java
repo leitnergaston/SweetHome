@@ -3,8 +3,10 @@ package entidades;
 import java.util.ArrayList;
 
 public class Propiedades {
-
-    private int id_Propietario;
+    
+    private int idInmueble;
+    private Propietarios id_Propietario;
+    private Inquilino id_Inquilino;
     private String nombre;
     private String apellido;
     private int DNI;
@@ -15,8 +17,21 @@ public class Propiedades {
     public Propiedades() {
     }
 
-    public Propiedades(int id_Propietario, String nombre, String apellido, int DNI, String domicilio, int telefono) {
+    public Propiedades(int idInmueble, Propietarios id_Propietario, Inquilino id_Inquilino, String nombre, String apellido, int DNI, String domicilio, int telefono) {
+        this.idInmueble = idInmueble;
         this.id_Propietario = id_Propietario;
+        this.id_Inquilino = id_Inquilino;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.DNI = DNI;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+    }
+    
+    
+    public Propiedades(Propietarios id_Propietario, Inquilino id_Inquilino, String nombre, String apellido, int DNI, String domicilio, int telefono) {
+        this.id_Propietario = id_Propietario;
+        this.id_Inquilino = id_Inquilino;
         this.nombre = nombre;
         this.apellido = apellido;
         this.DNI = DNI;
@@ -24,20 +39,28 @@ public class Propiedades {
         this.telefono = telefono;
     }
 
-    public Propiedades(String nombre, String apellido, int DNI, String domicilio, int telefono) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.DNI = DNI;
-        this.domicilio = domicilio;
-        this.telefono = telefono;
+    public int getIdInmueble() {
+        return idInmueble;
     }
 
-    public int getId_Propietario() {
+    public void setIdInmueble(int idInmueble) {
+        this.idInmueble = idInmueble;
+    }
+
+    public Propietarios getId_Propietario() {
         return id_Propietario;
     }
 
-    public void setId_Propietario(int id_Propietario) {
+    public void setId_Propietario(Propietarios id_Propietario) {
         this.id_Propietario = id_Propietario;
+    }
+
+    public Inquilino getId_Inquilino() {
+        return id_Inquilino;
+    }
+
+    public void setId_Inquilino(Inquilino id_Inquilino) {
+        this.id_Inquilino = id_Inquilino;
     }
 
     public String getNombre() {
@@ -80,21 +103,11 @@ public class Propiedades {
         this.telefono = telefono;
     }
 
-    public void agregarPropietario() {
-
-    }
-
-    public void buscarPropietario() {
-
-    }
-
-    public void modificarPropietarios() {
-
-    }
-
     @Override
     public String toString() {
-        return "Propiedades{" + "id_Propietario=" + id_Propietario + ", nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI + ", domicilio=" + domicilio + ", telefono=" + telefono + '}';
+        return "Propiedades{" + "nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI + '}';
     }
 
+    
+  
 }
