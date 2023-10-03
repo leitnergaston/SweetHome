@@ -10,4 +10,96 @@ package entidades;
  */
 public class propietarios {
     
+    private int idPropietario;
+    private String apellido;
+    private int dni;
+    private String nombre;
+    private String domicilio;
+    private int contacto;
+    private inmuebles idInmueble;
+
+    public propietarios() {
+    }
+
+    public propietarios(int idPropietario, String apellido, int dni, String nombre, String domicilio, int contacto, inmuebles idInmueble) {
+        this.idPropietario = idPropietario;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.contacto = contacto;
+        this.idInmueble = idInmueble;
+    }
+
+    public propietarios(String apellido, int dni, String nombre, String domicilio, int contacto, inmuebles idInmueble) {
+        this.apellido = apellido;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.contacto = contacto;
+        this.idInmueble = idInmueble;
+    }
+
+    public int getIdPropietario() {
+        return idPropietario;
+    }
+
+    public void setIdPropietario(int idPropietario) {
+        this.idPropietario = idPropietario;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public int getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(int contacto) {
+        this.contacto = contacto;
+    }
+
+    public inmuebles getIdInmueble() {
+        return idInmueble;
+    }
+
+    public void setIdInmueble(inmuebles idInmueble) {
+        this.idInmueble = idInmueble;
+    }
+
+    @Override
+    public String toString() {
+        return   "apellido=" + apellido + ", dni=" + dni + ", nombre=" + nombre + ", domicilio=" + domicilio ;
+    }
+
+      
 }
