@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class Inquilino {
-    private int id_Inquiolino;
+    private int id_Inquilino;
     private String nombre;
     private String apellido;
     private int DNI;
@@ -16,8 +16,8 @@ public class Inquilino {
     public Inquilino() {
     }
 
-    public Inquilino(int id_Inquiolino, String nombre, String apellido, int DNI, char caracter, char tipo) {
-        this.id_Inquiolino = id_Inquiolino;
+    public Inquilino(int id_Inquilino, String nombre, String apellido, int DNI, char caracter, char tipo) {
+        this.id_Inquilino = id_Inquilino;
         this.nombre = nombre;
         this.apellido = apellido;
         this.DNI = DNI;
@@ -34,11 +34,11 @@ public class Inquilino {
     }
 
     public int getId_Inquiolino() {
-        return id_Inquiolino;
+        return id_Inquilino;
     }
 
-    public void setId_Inquiolino(int id_Inquiolino) {
-        this.id_Inquiolino = id_Inquiolino;
+    public void setId_Inquiolino(int id_Inquilino) {
+        this.id_Inquilino = id_Inquilino;
     }
 
     public String getNombre() {
@@ -112,7 +112,7 @@ public class Inquilino {
 
     @Override
     public String toString() {
-        return "Inquilino{" + "id_Inquiolino=" + id_Inquiolino + ", nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI + ", caracter=" + caracter + ", pro=" + pro + ", tipo=" + tipo + '}';
+        return "Inquilino{" + "id_Inquiolino=" + id_Inquilino + ", nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI + ", caracter=" + caracter + ", pro=" + pro + ", tipo=" + tipo + '}';
     }
 }
 

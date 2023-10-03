@@ -8,7 +8,7 @@ package entidades;
  *
  * @author estudiante
  */
-public class propietarios {
+public class Propietarios {
     
     private int idPropietario;
     private String apellido;
@@ -18,10 +18,10 @@ public class propietarios {
     private int contacto;
     private Contrato idInmueble;
 
-    public propietarios() {
+    public Propietarios() {
     }
 
-    public propietarios(int idPropietario, String apellido, int dni, String nombre, String domicilio, int contacto, Contrato idInmueble) {
+    public Propietarios(int idPropietario, String apellido, int dni, String nombre, String domicilio, int contacto, Contrato idInmueble) {
         this.idPropietario = idPropietario;
         this.apellido = apellido;
         this.dni = dni;
@@ -31,7 +31,7 @@ public class propietarios {
         this.idInmueble = idInmueble;
     }
 
-    public propietarios(String apellido, int dni, String nombre, String domicilio, int contacto, Contrato idInmueble) {
+    public Propietarios(String apellido, int dni, String nombre, String domicilio, int contacto, Contrato idInmueble) {
         this.apellido = apellido;
         this.dni = dni;
         this.nombre = nombre;
