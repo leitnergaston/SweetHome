@@ -5,7 +5,7 @@ import entidades.*;
 import java.time.LocalDate;
 
 
-public class ContratoDeAlquiler {
+public class ContratoData {
     private int id_contrato;
     Inquilino Inquilino;
     private LocalDate fecha_realizacion;
@@ -15,10 +15,10 @@ public class ContratoDeAlquiler {
     Propiedades Propiedades;
     private String vendedor;
 
-    public ContratoDeAlquiler() {
+    public ContratoData() {
     }
 
-    public ContratoDeAlquiler(Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, char marca, Propiedades Propiedades, String vendedor) {
+    public ContratoData(Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, char marca, Propiedades Propiedades, String vendedor) {
         this.Inquilino = Inquilino;
         this.fecha_realizacion = fecha_realizacion;
         this.fecha_inicio = fecha_inicio;
@@ -28,7 +28,7 @@ public class ContratoDeAlquiler {
         this.vendedor = vendedor;
     }
 
-    public ContratoDeAlquiler(int id_contrato, Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, char marca, Propiedades Propiedades, String vendedor) {
+    public ContratoData(int id_contrato, Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, char marca, Propiedades Propiedades, String vendedor) {
         this.id_contrato = id_contrato;
         this.Inquilino = Inquilino;
         this.fecha_realizacion = fecha_realizacion;

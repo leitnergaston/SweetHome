@@ -12,7 +12,7 @@ public class Conexion {
     
     // Atributos estaticos constantes
     private static final String URL = "jdbc:mariadb://localhost/"; // url de conex a la bd
-    private static final String DB = ""; // nombre de la bd
+    private static final String DB = "inmobiliaria_32"; // nombre de la bd
     private static final String USER = "root"; // usuario de la bd
     private static final String PASS = ""; // contraseña de la bd
     private static Connection connection; // tipo connection q usan las clases Data para poder enviar sentencias sql a la bd
@@ -33,7 +33,7 @@ public class Conexion {
                 
                 // Conexion a la base de datos
                 connection = DriverManager.getConnection(URL+DB, USER, PASS);
-                //JOptionPane.showMessageDialog(null, "Conectado a la base de datos correctamente.", "CONEXION EXITOSA", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Conectado a la base de datos correctamente.", "CONEXION EXITOSA", JOptionPane.INFORMATION_MESSAGE);
                 
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error al cargar el driver.", "ERROR",  JOptionPane.ERROR_MESSAGE);
@@ -45,11 +45,5 @@ public class Conexion {
         return connection;
     } 
 
-    PreparedStatement prepareStatement(String sql) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    PreparedStatement prepareStatement(String sql, int RETURN_GENERATED_KEYS) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }
