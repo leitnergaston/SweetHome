@@ -1,18 +1,4 @@
 
 *.xml
 *.properties
-build/classes/.netbeans_automatic_build
-build/classes/.netbeans_update_resources
-build/classes/accesoADatos/alquilelData.class
-build/classes/accesoADatos/Conexion.class
-build/classes/accesoADatos/ContratoDeAlquiler.class
-build/classes/accesoADatos/PropietarioData.class
-build/classes/entidades/inmuebles.class
-build/classes/entidades/Inquilino.class
-build/classes/entidades/propietarios.class
-build/classes/inmobiliaria32/Inmobiliaria32.class
-build/classes/vista/MenuPrincipal$1.class
-build/classes/vista/MenuPrincipal.class
-build/classes/vista/MenuPrincipal.form
-nbproject/private/private.properties
-nbproject/private/private.properties
+/build/
