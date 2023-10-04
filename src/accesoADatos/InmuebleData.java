@@ -16,7 +16,7 @@ public class InmuebleData {
         con = Conexion.getConnection();
     }
     
-    //====== CREAR IMUEBLE ======//
+    //====== CREAR INMUEBLE ======//
     public void crearInmueble(Inmueble inmueble){
         String sql = "INSERT INTO inmueble (idInmueble, idPropietario, idInquilino, direccion, tipo, superficie, precio, zona, disponible) "
                 + "VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)";

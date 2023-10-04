@@ -15,7 +15,6 @@ public class InquilinoData {
     // Constructor 
     public InquilinoData() {
         con = Conexion.getConnection();
-        inmuebleData = new InmuebleData();
     }
 
     // ====== METODO AGREGAR INQUILINO ======//
