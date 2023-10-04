@@ -18,9 +18,9 @@ public class Contrato {
     public Contrato() {
     }
 
-    public Contrato(int idContrato, Inmueble Propiedades, Inquilino Inquilino, LocalDate fechaInicio, LocalDate fechaFinal, double precioAlquiler, boolean vigente, boolean renovación) {
+    public Contrato(int idContrato, Inmueble inmueble, Inquilino Inquilino, LocalDate fechaInicio, LocalDate fechaFinal, double precioAlquiler, boolean vigente, boolean renovación) {
         this.idContrato = idContrato;
-        this.inmueble = Propiedades;
+        this.inmueble = inmueble;
         this.inquilino = Inquilino;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
@@ -29,8 +29,8 @@ public class Contrato {
         this.renovación = renovación;
     }
 
-    public Contrato(Inmueble Propiedades, Inquilino Inquilino, LocalDate fechaInicio, LocalDate fechaFinal, double precioAlquiler, boolean vigente, boolean renovación) {
-        this.inmueble = Propiedades;
+    public Contrato(Inmueble inmueble, Inquilino Inquilino, LocalDate fechaInicio, LocalDate fechaFinal, double precioAlquiler, boolean vigente, boolean renovación) {
+        this.inmueble = inmueble;
         this.inquilino = Inquilino;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
