@@ -15,10 +15,11 @@ public class Inmobiliaria32 {
         System.out.println("El main");
         
         Connection con = Conexion.getConnection();
-        Inquilino inq = new Inquilino("pepe", "juan", 741056, "toledo", 468004, 
+        
+        Inquilino inq1 = new Inquilino("pepe", "juan", 741056, "toledo", 468004, 
                 "marco", true);
         InquilinoData inqData = new InquilinoData();
-        inqData.agregarInquilino(inq);
+        inqData.agregarInquilino(inq1);
         
     }
     

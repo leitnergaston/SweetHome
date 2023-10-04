@@ -14,8 +14,8 @@ public class InquilinoData {
 
     // Constructor 
     public InquilinoData() {
-        inmuebleData = new InmuebleData();
         con = Conexion.getConnection();
+        inmuebleData = new InmuebleData();
     }
 
     // ====== METODO AGREGAR INQUILINO ======//
@@ -76,7 +76,7 @@ public class InquilinoData {
     //====== METODO MODIFICAR INQUILINO ======//
     public void modificarinquilino(Inquilino inquilino) {
         String sql = "UPDATE inquilino SET apellido = ?, nombre = ?, lugarDeTrabajo = ?, dniGarante=?"
-                + "nombreGarante=?, estado=?; WHERE dni = ?";
+                + "nombreGarante=?, estado=? WHERE dni = ?";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -178,7 +178,7 @@ public class InquilinoData {
                 // en cada iteracion se crea un objeto Alumno y asignamos sus propiedades obtenidos del rs usando metodos get
                 Inquilino inquilino = new Inquilino();
                 inquilino.setIdInquilino(rs.getInt("idInquilino"));
-                inquilino.setCuit(rs.getInt("dni"));
+                inquilino.setCuit(rs.getInt("cuit"));
                 inquilino.setApellido(rs.getString("apellido"));
                 inquilino.setNombre(rs.getString("nombre"));
                 inquilino.setLugarDeTrabajo(rs.getString("lugarDeTrabajo"));
