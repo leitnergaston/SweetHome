@@ -17,14 +17,14 @@ public class Propietario {
     private String apellido;
     private String nombre;
     private String domicilio;
-    private int telefono;
+    private String telefono;
     private String mail;
-   ArrayList<Inmueble> propiedad = new ArrayList<>();
+    private ArrayList<Inmueble> inmuebles;
 
     public Propietario() {
     }
 
-    public Propietario(int idPropietario, int dni, String apellido, String nombre, String domicilio, int telefono, String mail) {
+    public Propietario(int idPropietario, int dni, String apellido, String nombre, String domicilio, String telefono, String mail) {
         this.idPropietario = idPropietario;
         this.dni = dni;
         this.apellido = apellido;
@@ -32,15 +32,17 @@ public class Propietario {
         this.domicilio = domicilio;
         this.telefono = telefono;
         this.mail = mail;
+        inmuebles = new ArrayList<>();
     }
 
-    public Propietario(int dni, String apellido, String nombre, String domicilio, int telefono, String mail) {
+    public Propietario(int dni, String apellido, String nombre, String domicilio, String telefono, String mail) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.telefono = telefono;
         this.mail = mail;
+        inmuebles = new ArrayList<>();
     }
 
     public int getIdPropietario() {
@@ -83,11 +85,11 @@ public class Propietario {
         this.domicilio = domicilio;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -99,12 +101,16 @@ public class Propietario {
         this.mail = mail;
     }
 
-    public ArrayList<Inmueble> getPropiedad() {
-        return propiedad;
+    public ArrayList<Inmueble> getInmuebles() {
+        return inmuebles;
     }
 
-    public void setPropiedad(ArrayList<Inmueble> propiedad) {
-        this.propiedad = propiedad;
+    public void setInmuebles(ArrayList<Inmueble> inmuebles) {
+        this.inmuebles = inmuebles;
+    }
+    
+    public void agregarInmueble(Inmueble inmueble){
+        inmuebles.add(inmueble);
     }
 
     @Override
