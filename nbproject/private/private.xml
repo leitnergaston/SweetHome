@@ -3,25 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/escritorio/carpetas/curso/Tareas%20desarrollo/Clase4/Inmobiliaria32/src/entidades/Inquilino.java</file>
-            <file>file:/C:/escritorio/carpetas/curso/Tareas%20desarrollo/Clase4/Inmobiliaria32/src/inmobiliaria32/Inmobiliaria32.java</file>
-            <file>file:/C:/escritorio/carpetas/curso/Tareas%20desarrollo/Clase4/Inmobiliaria32/src/accesoADatos/PropietarioData.java</file>
-            <file>file:/C:/escritorio/carpetas/curso/Tareas%20desarrollo/Clase4/Inmobiliaria32/src/accesoADatos/Conexion.java</file>
-            <file>file:/C:/escritorio/carpetas/curso/Tareas%20desarrollo/Clase4/Inmobiliaria32/src/accesoADatos/ContratoDeAlquiler.java</file>
-            <file>file:/C:/escritorio/carpetas/curso/Tareas%20desarrollo/Clase4/Inmobiliaria32/src/entidades/propietarios.java</file>
-            <file>file:/C:/escritorio/carpetas/curso/Tareas%20desarrollo/Clase4/Inmobiliaria32/src/accesoADatos/alquilelData.java</file>
-            <file>file:/C:/escritorio/carpetas/curso/Tareas%20desarrollo/Clase4/Inmobiliaria32/src/entidades/inmuebles.java</file>
+            <file>file:/C:/escritorio/carpetas/curso/Final%20del%20todo/Inmobiliaria32/src/accesoADatos/InquilinoData.java</file>
+            <file>file:/C:/escritorio/carpetas/curso/Final%20del%20todo/Inmobiliaria32/src/inmobiliaria32/Inmobiliaria32.java</file>
+            <file>file:/C:/escritorio/carpetas/curso/Final%20del%20todo/Inmobiliaria32/src/accesoADatos/InmuebleData.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/ale77/OneDrive/Documentos/NetBeansProjects/Proyecto%20Final/Inmobiliaria32/src/vista/MenuPrincipal.java</file>
-            <file>file:/C:/Users/ale77/OneDrive/Documentos/NetBeansProjects/Proyecto%20Final/Inmobiliaria32/src/accesoADatos/alquilelData.java</file>
-            <file>file:/C:/Users/ale77/OneDrive/Documentos/NetBeansProjects/Proyecto%20Final/Inmobiliaria32/src/entidades/inmuebles.java</file>
-            <file>file:/C:/Users/ale77/OneDrive/Documentos/NetBeansProjects/Proyecto%20Final/Inmobiliaria32/src/entidades/propietarios.java</file>
-            <file>file:/C:/Users/ale77/OneDrive/Documentos/NetBeansProjects/Proyecto%20Final/Inmobiliaria32/src/inmobiliaria32/Inmobiliaria32.java</file>
-            <file>file:/C:/Users/ale77/OneDrive/Documentos/NetBeansProjects/Proyecto%20Final/Inmobiliaria32/src/accesoADatos/Conexion.java</file>
-            <file>file:/C:/Users/ale77/OneDrive/Documentos/NetBeansProjects/Proyecto%20Final/Inmobiliaria32/src/accesoADatos/ContratoDeAlquiler.java</file>
-            <file>file:/C:/Users/ale77/OneDrive/Documentos/NetBeansProjects/Proyecto%20Final/Inmobiliaria32/src/entidades/Inquilino.java</file>
-            <file>file:/C:/Users/ale77/OneDrive/Documentos/NetBeansProjects/Proyecto%20Final/Inmobiliaria32/src/accesoADatos/PropietarioData.java</file>
+            <file>file:/C:/escritorio/carpetas/curso/Final%20del%20todo/Inmobiliaria32/src/accesoADatos/InquilinoData.java</file>
+            <file>file:/C:/escritorio/carpetas/curso/Final%20del%20todo/Inmobiliaria32/src/inmobiliaria32/Inmobiliaria32.java</file>
+            <file>file:/C:/escritorio/carpetas/curso/Final%20del%20todo/Inmobiliaria32/src/accesoADatos/InmuebleData.java</file>
         </group>
     </open-files>
 </project-private>
