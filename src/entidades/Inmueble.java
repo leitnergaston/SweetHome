@@ -2,10 +2,10 @@ package entidades;
 
 import java.util.ArrayList;
 
-public class Propiedades {
+public class Inmueble {
     
     private int idInmueble;
-    private Propietarios propietario;
+    private Propietario propietario;
     private Inquilino inquilino;
     private String direccion;
     private String tipo;
@@ -14,10 +14,10 @@ public class Propiedades {
     private String zona;
     private boolean disponible;
 
-    public Propiedades() {
+    public Inmueble() {
     }
 
-    public Propiedades(int idInmueble, Propietarios propietario, Inquilino inquilino, String direccion, String tipo, double superficie, double precio, String zona, boolean disponible) {
+    public Inmueble(int idInmueble, Propietario propietario, Inquilino inquilino, String direccion, String tipo, double superficie, double precio, String zona, boolean disponible) {
         this.idInmueble = idInmueble;
         this.propietario = propietario;
         this.inquilino = inquilino;
@@ -29,7 +29,7 @@ public class Propiedades {
         this.disponible = disponible;
     }
 
-    public Propiedades(String direccion, String tipo, double superficie, double precio, String zona, boolean disponible) {
+    public Inmueble(String direccion, String tipo, double superficie, double precio, String zona, boolean disponible) {
         this.direccion = direccion;
         this.tipo = tipo;
         this.superficie = superficie;
@@ -46,11 +46,11 @@ public class Propiedades {
         this.idInmueble = idInmueble;
     }
 
-    public Propietarios getPropietario() {
+    public Propietario getPropietario() {
         return propietario;
     }
 
-    public void setPropietario(Propietarios propietario) {
+    public void setPropietario(Propietario propietario) {
         this.propietario = propietario;
     }
 

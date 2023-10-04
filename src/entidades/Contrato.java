@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class Contrato {
     
     private int id_contrato;
-    private Propiedades Propiedades;
+    private Inmueble Propiedades;
     private Inquilino Inquilino;
     private LocalDate fecha_realizacion;
     private LocalDate fecha_inicio;
@@ -21,7 +21,7 @@ public class Contrato {
     public Contrato() {
     }
 
-    public Contrato(int id_contrato, Propiedades Propiedades, Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, double precioAlquiler, boolean vigente, boolean renovación) {
+    public Contrato(int id_contrato, Inmueble Propiedades, Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, double precioAlquiler, boolean vigente, boolean renovación) {
         this.id_contrato = id_contrato;
         this.Propiedades = Propiedades;
         this.Inquilino = Inquilino;
@@ -33,7 +33,7 @@ public class Contrato {
         this.renovación = renovación;
     }
 
-    public Contrato(Propiedades Propiedades, Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, double precioAlquiler, boolean vigente, boolean renovación) {
+    public Contrato(Inmueble Propiedades, Inquilino Inquilino, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, double precioAlquiler, boolean vigente, boolean renovación) {
         this.Propiedades = Propiedades;
         this.Inquilino = Inquilino;
         this.fecha_realizacion = fecha_realizacion;
@@ -44,7 +44,7 @@ public class Contrato {
         this.renovación = renovación;
     }
 
-    public Contrato(Propiedades Propiedades, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, double precioAlquiler, boolean vigente, boolean renovación) {
+    public Contrato(Inmueble Propiedades, LocalDate fecha_realizacion, LocalDate fecha_inicio, LocalDate fecha_final, double precioAlquiler, boolean vigente, boolean renovación) {
         this.Propiedades = Propiedades;
         this.fecha_realizacion = fecha_realizacion;
         this.fecha_inicio = fecha_inicio;
@@ -62,11 +62,11 @@ public class Contrato {
         this.id_contrato = id_contrato;
     }
 
-    public Propiedades getPropiedades() {
+    public Inmueble getPropiedades() {
         return Propiedades;
     }
 
-    public void setPropiedades(Propiedades Propiedades) {
+    public void setPropiedades(Inmueble Propiedades) {
         this.Propiedades = Propiedades;
     }
 

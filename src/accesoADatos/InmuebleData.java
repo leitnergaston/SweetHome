@@ -8,6 +8,6 @@ package accesoADatos;
  *
  * @author estudiante
  */
-public class PropiedadData {
+public class InmuebleData {
     
 }

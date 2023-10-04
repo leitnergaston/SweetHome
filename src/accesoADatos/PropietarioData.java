@@ -4,7 +4,7 @@
  */
 package accesoADatos;
 
-import entidades.Propietarios;
+import entidades.Propietario;
 import java.sql.Connection;
 
 /**
@@ -23,12 +23,12 @@ public class PropietarioData {
         con = Conexion.getConnection();
     }
 
-    public void agregarPropietario(Propietarios propietario){
+    public void agregarPropietario(Propietario propietario){
         /*String sql = "INSERT INTO `propietarios`(`idPropietario`, `dni`, `apellido`, `nombre`, `domicilio`, `contacto`, `idInmueble`) "
         + "VALUES (null,?,?,?,?,?,?)";*/
     }
-    public Propietarios buscarPropietario(int dni){
-        Propietarios dueño = null;
+    public Propietario buscarPropietario(int dni){
+        Propietario dueño = null;
         return dueño;
     }
     

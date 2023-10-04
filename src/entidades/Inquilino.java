@@ -13,7 +13,7 @@ public class Inquilino {
     private String lugarDeTrabajo;
     private int dniGarante;
     private String nombreGarante;
-    ArrayList<Propiedades> pro = new ArrayList<>();
+    ArrayList<Inmueble> pro = new ArrayList<>();
     private boolean estado; 
 
     public Inquilino() {
@@ -96,11 +96,11 @@ public class Inquilino {
         this.nombreGarante = nombreGarante;
     }
 
-    public ArrayList<Propiedades> getPro() {
+    public ArrayList<Inmueble> getPro() {
         return pro;
     }
 
-    public void setPro(ArrayList<Propiedades> pro) {
+    public void setPro(ArrayList<Inmueble> pro) {
         this.pro = pro;
     }
 
