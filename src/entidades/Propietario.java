@@ -20,11 +20,12 @@ public class Propietario {
     private String telefono;
     private String mail;
     private ArrayList<Inmueble> inmuebles;
-
+    private boolean estado;
+    
     public Propietario() {
     }
 
-    public Propietario(int idPropietario, int dni, String apellido, String nombre, String domicilio, String telefono, String mail) {
+    public Propietario(int idPropietario, int dni, String apellido, String nombre, String domicilio, String telefono, String mail, boolean estado) {
         this.idPropietario = idPropietario;
         this.dni = dni;
         this.apellido = apellido;
@@ -33,9 +34,10 @@ public class Propietario {
         this.telefono = telefono;
         this.mail = mail;
         inmuebles = new ArrayList<>();
+        this.estado = estado;
     }
 
-    public Propietario(int dni, String apellido, String nombre, String domicilio, String telefono, String mail) {
+    public Propietario(int dni, String apellido, String nombre, String domicilio, String telefono, String mail, boolean estado) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -43,6 +45,7 @@ public class Propietario {
         this.telefono = telefono;
         this.mail = mail;
         inmuebles = new ArrayList<>();
+        this.estado = estado;
     }
 
     public int getIdPropietario() {
@@ -108,6 +111,15 @@ public class Propietario {
     public void setInmuebles(ArrayList<Inmueble> inmuebles) {
         this.inmuebles = inmuebles;
     }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+    
     
     public void agregarInmueble(Inmueble inmueble){
         inmuebles.add(inmueble);
