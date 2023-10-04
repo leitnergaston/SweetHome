@@ -6,21 +6,21 @@ import java.util.ArrayList;
 
 public class Inquilino {
     
-    private int id_Inquilino;
-    private String nombre;
-    private String apellido;
+    private int idInquilino;
     private long cuit;
+    private String apellido;
+    private String nombre;
     private String lugarDeTrabajo;
     private int dniGarante;
     private String nombreGarante;
-    ArrayList<Inmueble> pro = new ArrayList<>();
+    ArrayList<Inmueble> inmuebles = new ArrayList<>();
     private boolean estado; 
 
     public Inquilino() {
         }
 
-    public Inquilino(int id_Inquilino, String nombre, String apellido, long cuit, String lugarDeTrabajo, int dniGarante, String nombreGarante, boolean estado) {
-        this.id_Inquilino = id_Inquilino;
+    public Inquilino(int idInquilino, String nombre, String apellido, long cuit, String lugarDeTrabajo, int dniGarante, String nombreGarante, boolean estado) {
+        this.idInquilino = idInquilino;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cuit = cuit;
@@ -40,12 +40,12 @@ public class Inquilino {
         this.estado = estado;
     }
 
-    public int getId_Inquilino() {
-        return id_Inquilino;
+    public int getIdInquilino() {
+        return idInquilino;
     }
 
     public void setId_Inquilino(int id_Inquilino) {
-        this.id_Inquilino = id_Inquilino;
+        this.idInquilino = id_Inquilino;
     }
 
     public String getNombre() {
@@ -97,11 +97,11 @@ public class Inquilino {
     }
 
     public ArrayList<Inmueble> getPro() {
-        return pro;
+        return inmuebles;
     }
 
     public void setPro(ArrayList<Inmueble> pro) {
-        this.pro = pro;
+        this.inmuebles = pro;
     }
 
     public boolean isEstado() {
