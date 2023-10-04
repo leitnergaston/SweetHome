@@ -29,7 +29,9 @@ public class Inmueble {
         this.disponible = disponible;
     }
 
-    public Inmueble(String direccion, String tipo, double superficie, double precio, String zona, boolean disponible) {
+    public Inmueble(Propietario propietario, Inquilino inquilino, String direccion, String tipo, double superficie, double precio, String zona, boolean disponible) {
+        this.propietario = propietario;
+        this.inquilino = inquilino;
         this.direccion = direccion;
         this.tipo = tipo;
         this.superficie = superficie;
@@ -37,6 +39,8 @@ public class Inmueble {
         this.zona = zona;
         this.disponible = disponible;
     }
+
+    
 
     public int getIdInmueble() {
         return idInmueble;
