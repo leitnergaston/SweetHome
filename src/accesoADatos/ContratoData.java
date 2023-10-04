@@ -16,7 +16,7 @@ public class ContratoData {
         con = Conexion.getConnection();
     }
     
-    //MÉTODO CREAR CONTRATO
+    //==========MÉTODO CREAR CONTRATO==========//
     public void crearContrato(Contrato contrato){
         try {
             String sql = "INSERT INTO contratodealquiler "
@@ -44,6 +44,65 @@ public class ContratoData {
             ps.close();
             
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse con la tabla contratodealquiler: "+ex.getMessage());
+        }
+    }
+    
+    //==========MÉTODO MODIFICAR CONTRATO==========//
+    public void modificarContrato(Contrato contrato){
+        try {
+            String sql = "UPDATE contratodealquiler "
+                    + "SET idInmueble=?, idInquilino=?, fechaInicio=?, fechaFinalizacion=?, "
+                    + "precioAlquiler=?, vigente=?, renovado=? "
+                    + "WHERE idContrato=?";
+
+            PreparedStatement ps;
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, contrato.getInmueble().getIdInmueble());
+            ps.setInt(2, contrato.getInquilino().getIdInquilino());
+            ps.setDate(3, Date.valueOf(contrato.getFechaInicio()));
+            ps.setDate(4, Date.valueOf(contrato.getFechaFinal()));
+            ps.setDouble(5, contrato.getPrecioAlquiler());
+            ps.setBoolean(6, contrato.isVigente());
+            ps.setBoolean(7, contrato.isRenovación());
+            ps.setInt(8, contrato.getIdContrato());
+
+            int exito = ps.executeUpdate();
+            
+            if(exito==1){
+                JOptionPane.showMessageDialog(null, "Contrato modificado exitosamente");
+            }else{
+                JOptionPane.showMessageDialog(null, "El contrato que intenta modificar no se encuentra en la base de datos");
+            }
+            
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse con la tabla contratodealquiler: "+ex.getMessage());
+        }
+    }
+    
+    //==========MÉTODO ELIMINAR CONTRATO==========//
+    public void eliminarContrato(int id){
+        try{
+            String sql = "UPDATE contratoDeAlquiler "
+                    + "SET vigente=0 "
+                    + "WHERE idContrato = ? AND vigente=1";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            int exito = ps.executeUpdate();
+            
+            if(exito==1){
+                JOptionPane.showMessageDialog(null, "Contrato eliminado exitosamente");
+            }else{
+                JOptionPane.showMessageDialog(null, "El contrato que intenta eliminar no está vigente "
+                        + "o no se encuentra en la base de datos");
+            }
+            
+            ps.close();
+            
+        }catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse con la tabla contratodealquiler: "+ex.getMessage());
         }
     }
