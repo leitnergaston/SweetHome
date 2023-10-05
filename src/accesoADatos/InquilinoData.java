@@ -98,7 +98,7 @@ public class InquilinoData {
     }
 
     //====== METODO BUSCAR INQUILINO(id) ======//
-    public Inquilino buscarinquilinoID(int id) {
+    public Inquilino buscarInquilinoPorId(int id) {
         Inquilino inquilino = null; // declarar un alumno para almacenar info si se encuentra en la bd
         String sql = "SELECT cuit, apellido, nombre, lugarDeTrabajo, dniGarante, nombreGarante, FROM inquilino"
                 + " WHERE idInquilino = ? AND estado = 1"; // consulta sql
