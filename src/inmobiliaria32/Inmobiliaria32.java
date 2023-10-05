@@ -45,6 +45,19 @@ public class Inmobiliaria32 {
                 "marco", true);
         InquilinoData inqData = new InquilinoData();
         inqData.agregarInquilino(inq1);*/
+        
+        //PRUEBA INQUILINO
+        
+//        Inquilino inquilino = new Inquilino(1,"pepe", "alberto", 1234, "toledo", 8874, "marco", true);
+//        Inquilino inquilino2 = new Inquilino(1,"pepe", "alberto", 1234, "toledo", 8874, "marco", true);
+//        InquilinoData inquilinoData = new InquilinoData();
+//        //AGREGAR INQUILINO(FUNCIONA)
+////        inquilinoData.agregarInquilino(inquilino);
+//        //ELIMINAR INQUILINO(funciona)
+////        inquilinoData.eliminarInquilino((int) inquilino.getCuit());
+//       //MODIFICAR INQUILINO(FUNCIONA)
+//       inquilinoData.modificarinquilino(inquilino);
+
 
         
     }
