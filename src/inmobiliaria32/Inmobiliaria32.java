@@ -47,6 +47,29 @@ public class Inmobiliaria32 {
         inqData.agregarInquilino(inq1);*/
 
         
+        //PRUEBA PROPIETARIODATA
+        
+        //-------crearPropietario-----------
+        
+        Propietario propietario = new Propietario(2, 1111, "Perez", "Juana", "Peron 123", "11321456", "juan@mail.com", true);
+        PropietarioData propietarioData = new PropietarioData();
+        //propietarioData.crearPropietario(propietario); FUNCIONA
+        //propietarioData.modificarPropietario(propietario); FUNCIONA
+        //propietarioData.eliminarPropietario(1); FUNCIONA
+        Propietario pro = propietarioData.buscarPropietarioPorId(1);
+        System.out.println("Id: "+pro.getIdPropietario());
+        System.out.println("DNI: "+pro.getDni());
+        System.out.println("Apellido: "+pro.getIdPropietario());
+        System.out.println("Nombre: "+pro.getIdPropietario());
+        System.out.println("Domicilio: "+pro.getIdPropietario());
+        System.out.println("Teléfono: "+pro.getIdPropietario());
+        System.out.println("eMail: "+pro.getIdPropietario());
+        System.out.println("Estado: "+pro.getIdPropietario());
+        for(Inmueble inmueble: pro.getInmuebles()){
+            System.out.println(inmueble);
+        }
+        
+        
     }
     
 }
