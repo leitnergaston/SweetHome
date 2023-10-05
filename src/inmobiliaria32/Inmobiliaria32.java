@@ -72,15 +72,17 @@ public class Inmobiliaria32 {
         Propietario pro = propietarioData.buscarPropietarioPorId(1);
         System.out.println("Id: "+pro.getIdPropietario());
         System.out.println("DNI: "+pro.getDni());
-        System.out.println("Apellido: "+pro.getIdPropietario());
-        System.out.println("Nombre: "+pro.getIdPropietario());
-        System.out.println("Domicilio: "+pro.getIdPropietario());
-        System.out.println("Teléfono: "+pro.getIdPropietario());
-        System.out.println("eMail: "+pro.getIdPropietario());
-        System.out.println("Estado: "+pro.getIdPropietario());
-        for(Inmueble inmueble: pro.getInmuebles()){
+        System.out.println("Apellido: "+pro.getApellido());
+        System.out.println("Nombre: "+pro.getNombre());
+        System.out.println("Domicilio: "+pro.getDomicilio());
+        System.out.println("Teléfono: "+pro.getTelefono());
+        System.out.println("eMail: "+pro.getMail());
+        System.out.println("Estado: "+pro.isEstado());
+        /*for(Inmueble inmueble: pro.getInmuebles()){
             System.out.println(inmueble);
-        }
+        }*/
+        
+        
         
         
     }

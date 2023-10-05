@@ -145,7 +145,7 @@ public class PropietarioData {
             prop.setTelefono(rs.getString("telefono"));
             prop.setMail(rs.getString("eMail"));
             prop.setEstado(rs.getBoolean("estado"));
-            prop.setInmuebles(inmuebleData.listarInmueblesPorPropietario(id));
+            //prop.setInmuebles(inmuebleData.listarInmueblesPorPropietario(id));
         }else {
                 JOptionPane.showMessageDialog(null, "No existe el propietario");
             }
