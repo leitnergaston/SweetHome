@@ -51,9 +51,9 @@ public class InmuebleData {
     //====== MODIFICAR INMUEBLE ======//
     public void modificarInmueble(Inmueble inmueble) {
         String sql = "UPDATE inmueble SET direccion = ?, tipo = ?, superficie = ?, precio = ?, zona = ?, disponible = ? WHERE idInmueble = ?";
-        PreparedStatement ps = null;
+
         try {
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setString(1, inmueble.getDireccion());
             ps.setString(2, inmueble.getTipo());
@@ -103,10 +103,8 @@ public class InmuebleData {
 
         String sql = "SELECT idPropietario, idInquilino, direccion, tipo, superficie, precio, zona, disponible FROM inmueble WHERE idInmueble = ?";
 
-        PreparedStatement ps = null;
-
         try {
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
@@ -130,9 +128,9 @@ public class InmuebleData {
     }
 
     //====== LISTAR INMUEBLES DISPONIBLES ======//
-    public List<Inmueble> listarInmueblesDisponibles() {
+    public ArrayList<Inmueble> listarInmueblesDisponibles() {
 
-        List<Inmueble> inmuebles = new ArrayList<>();
+        ArrayList<Inmueble> inmuebles = new ArrayList<>();
 
         try {
             String sql = "SELECT * FROM inmueble WHERE disponible = 1";
@@ -160,9 +158,9 @@ public class InmuebleData {
     }
 
     //====== LISTAR INMUEBLES POR PROPIETARIO ======//
-    public List<Inmueble> listarInmueblesPorPropietario(int id) {
+    public ArrayList<Inmueble> listarInmueblesPorPropietario(int id) {
 
-        List<Inmueble> inmuebles = new ArrayList<>();
+        ArrayList<Inmueble> inmuebles = new ArrayList<>();
 
         try {
             String sql = "SELECT * FROM inmueble WHERE idPropietario = ?";
@@ -191,9 +189,9 @@ public class InmuebleData {
     }
 
     //====== LISTAR TODOS LOS INMUEBLES ======//
-    public List<Inmueble> listarInmuebles() {
+    public ArrayList<Inmueble> listarInmuebles() {
 
-        List<Inmueble> inmuebles = new ArrayList<>();
+        ArrayList<Inmueble> inmuebles = new ArrayList<>();
         try {
             String sql = "SELECT * FROM inmueble WHERE 1";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -207,6 +205,7 @@ public class InmuebleData {
                 inmueble.setDireccion(rs.getString("direccion"));
                 inmueble.setTipo(rs.getString("tipo"));
                 inmueble.setSuperficie(rs.getDouble("superficie"));
+                inmueble.setPrecio(rs.getDouble("precio"));
                 inmueble.setZona(rs.getString("zona"));
                 inmueble.setDisponible(rs.getBoolean("disponible"));
                 inmuebles.add(inmueble);
@@ -217,6 +216,27 @@ public class InmuebleData {
         }
         return inmuebles;
     }
-    
+
     //====== LISTAR INMUEBLES POR PARAMETROS ======//
+    public ArrayList<Inmueble> listarInmueblesPorParametros(int idInmueble, int idPropietario, int idInquilino, String direccion, String tipo, double superficie, double precio, String zona) {
+
+        ArrayList<Inmueble> inmuebles = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM inmueble WHERE idInmueble = ?, idPropietario = ?, idInquilino = ?, direccion = ?, tipo = ?, superficie = ?, precio = ?, zona = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, idInmueble);
+            ps.setInt(2, idPropietario);
+            ps.setInt(3, idInquilino);
+            ps.setString(4, direccion);
+            ps.setString(5, tipo);
+            ps.setDouble(6, superficie);
+            ps.setDouble(7, precio);
+            ps.setString(8, zona);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al accedel a la tabla inmueble " + ex.getMessage());
+        }
+        return inmuebles;
+    }
 }
