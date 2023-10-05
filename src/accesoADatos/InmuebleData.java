@@ -160,20 +160,46 @@ public class InmuebleData {
     }
 
     //====== LISTAR INMUEBLES POR PROPIETARIO ======//
-    public Inmueble buscarInmueblePorPropietario(int id){
-        
-    }
-    
-    //====== LISTAR TODOS LOS INMUEBLES ======//
-    public List<Inmueble> listarInmuebles(){
-        
+    public List<Inmueble> listarInmueblesPorPropietario(int id) {
+
         List<Inmueble> inmuebles = new ArrayList<>();
-        try{
+
+        try {
+            String sql = "SELECT * FROM inmueble WHERE idPropietario = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Inmueble inmueble = new Inmueble();
+                inmueble.setIdInmueble(rs.getInt("idInmueble"));
+                inmueble.setPropietario(propietarioData.buscarPropietarioPorId(rs.getInt("idPropietario")));
+                inmueble.setInquilino(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
+                inmueble.setDireccion(rs.getString("direccion"));
+                inmueble.setTipo(rs.getString("tipo"));
+                inmueble.setSuperficie(rs.getDouble("superficie"));
+                inmueble.setPrecio(rs.getDouble("precio"));
+                inmueble.setZona(rs.getString("zona"));
+                inmueble.setDisponible(rs.getBoolean("disponible"));
+                inmuebles.add(inmueble);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble " + ex.getMessage());
+        }
+        return inmuebles;
+    }
+
+    //====== LISTAR TODOS LOS INMUEBLES ======//
+    public List<Inmueble> listarInmuebles() {
+
+        List<Inmueble> inmuebles = new ArrayList<>();
+        try {
             String sql = "SELECT * FROM inmueble WHERE 1";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
-            while (rs.next()){
+
+            while (rs.next()) {
                 Inmueble inmueble = new Inmueble();
                 inmueble.setIdInmueble(rs.getInt("idInmueble"));
                 inmueble.setPropietario(propietarioData.buscarPropietarioPorId((rs.getInt("idPropietario"))));
@@ -186,10 +212,11 @@ public class InmuebleData {
                 inmuebles.add(inmueble);
             }
             ps.close();
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble " + ex.getMessage());
         }
         return inmuebles;
     }
+    
     //====== LISTAR INMUEBLES POR PARAMETROS ======//
 }
