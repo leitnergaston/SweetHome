@@ -45,7 +45,45 @@ public class Inmobiliaria32 {
                 "marco", true);
         InquilinoData inqData = new InquilinoData();
         inqData.agregarInquilino(inq1);*/
+        
+        //PRUEBA INQUILINO
+        
+//        Inquilino inquilino = new Inquilino(1,"pepe", "alberto", 1234, "toledo", 8874, "marco", true);
+//        Inquilino inquilino2 = new Inquilino(1,"pepe", "alberto", 1234, "toledo", 8874, "marco", true);
+//        InquilinoData inquilinoData = new InquilinoData();
+//        //AGREGAR INQUILINO(FUNCIONA)
+////        inquilinoData.agregarInquilino(inquilino);
+//        //ELIMINAR INQUILINO(funciona)
+////        inquilinoData.eliminarInquilino((int) inquilino.getCuit());
+//       //MODIFICAR INQUILINO(FUNCIONA)
+//       inquilinoData.modificarinquilino(inquilino);
 
+
+        
+        //PRUEBA PROPIETARIODATA
+        
+        //-------crearPropietario-----------
+        
+        Propietario propietario = new Propietario(2, 1111, "Perez", "Juana", "Peron 123", "11321456", "juan@mail.com", true);
+        PropietarioData propietarioData = new PropietarioData();
+        //propietarioData.crearPropietario(propietario); FUNCIONA
+        //propietarioData.modificarPropietario(propietario); FUNCIONA
+        //propietarioData.eliminarPropietario(1); FUNCIONA
+        Propietario pro = propietarioData.buscarPropietarioPorId(1);
+        System.out.println("Id: "+pro.getIdPropietario());
+        System.out.println("DNI: "+pro.getDni());
+        System.out.println("Apellido: "+pro.getApellido());
+        System.out.println("Nombre: "+pro.getNombre());
+        System.out.println("Domicilio: "+pro.getDomicilio());
+        System.out.println("Teléfono: "+pro.getTelefono());
+        System.out.println("eMail: "+pro.getMail());
+        System.out.println("Estado: "+pro.isEstado());
+        /*for(Inmueble inmueble: pro.getInmuebles()){
+            System.out.println(inmueble);
+        }*/
+        
+        
+        
         
     }
     

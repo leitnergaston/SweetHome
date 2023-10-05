@@ -74,17 +74,19 @@ public class InquilinoData {
 
     //====== METODO MODIFICAR INQUILINO ======//
     public void modificarinquilino(Inquilino inquilino) {
-        String sql = "UPDATE inquilino SET apellido = ?, nombre = ?, lugarDeTrabajo = ?, dniGarante=?"
-                + "nombreGarante=?, estado=? WHERE dni = ?";
+        String sql = "UPDATE `inquilino` SET `cuit`= ? ,`apellido`=?,`nombre`=?,"
+                + "`lugarDeTrabajo`=?,`dniGarante`=?,`nombreGarante`=?,`estado`=? WHERE idInquilino = ? ";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1, inquilino.getApellido());
-            ps.setString(2, inquilino.getNombre());
-            ps.setString(3, inquilino.getLugarDeTrabajo());
-            ps.setInt(4, inquilino.getDniGarante());
-            ps.setString(5, inquilino.getNombreGarante());
-            ps.setBoolean(6, inquilino.isEstado());
+            ps.setLong(1, inquilino.getCuit());
+            ps.setString(2, inquilino.getApellido());
+            ps.setString(3, inquilino.getNombre());
+            ps.setString(4, inquilino.getLugarDeTrabajo());
+            ps.setInt(5, inquilino.getDniGarante());
+            ps.setString(6, inquilino.getNombreGarante());
+            ps.setBoolean(7, inquilino.isEstado());
+            ps.setInt(8, inquilino.getIdInquilino());
 
             int exito = ps.executeUpdate();
             if (exito == 1) {
@@ -92,13 +94,14 @@ public class InquilinoData {
             } else {
                 JOptionPane.showMessageDialog(null, "El inquilino no existe");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inquilino " + ex.getMessage());
         }
     }
 
     //====== METODO BUSCAR INQUILINO(id) ======//
-    public Inquilino buscarinquilinoID(int id) {
+    public Inquilino buscarInquilinoPorId(int id) {
         Inquilino inquilino = null; // declarar un alumno para almacenar info si se encuentra en la bd
         String sql = "SELECT cuit, apellido, nombre, lugarDeTrabajo, dniGarante, nombreGarante, FROM inquilino"
                 + " WHERE idInquilino = ? AND estado = 1"; // consulta sql
