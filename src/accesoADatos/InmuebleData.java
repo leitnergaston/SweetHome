@@ -51,9 +51,9 @@ public class InmuebleData {
     //====== MODIFICAR INMUEBLE ======//
     public void modificarInmueble(Inmueble inmueble) {
         String sql = "UPDATE inmueble SET direccion = ?, tipo = ?, superficie = ?, precio = ?, zona = ?, disponible = ? WHERE idInmueble = ?";
-        PreparedStatement ps = null;
+
         try {
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setString(1, inmueble.getDireccion());
             ps.setString(2, inmueble.getTipo());
@@ -103,10 +103,9 @@ public class InmuebleData {
 
         String sql = "SELECT idPropietario, idInquilino, direccion, tipo, superficie, precio, zona, disponible FROM inmueble WHERE idInmueble = ?";
 
-        PreparedStatement ps = null;
 
         try {
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
