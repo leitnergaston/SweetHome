@@ -10,6 +10,7 @@ import entidades.Inmueble;
 import entidades.Inquilino;
 import entidades.Propietario;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 
 public class Main2 {
@@ -30,7 +31,22 @@ public class Main2 {
         //inqData.agregarInquilino(inquilino);
         //inmData.crearInmueble(inmueble2);
         
-        inmData.listarInmueblesPorParametros("casa", 300, 10000,  "norte");
+        /*
+        
+        ArrayList<Inmueble> listaInm =  inmData.listarInmueblesPorParametros("depto", 300, 10000, 100000,  "centro");
+        
+        for(Inmueble inmuebleFor : listaInm){
+            System.out.println(inmuebleFor);
+        }
+        
+*/
+        
+        Inmueble inmueble3 = inmData.buscarInmueble(5);
+        
+        System.out.println(inmueble3);
+        
+        
+        
         
         
         

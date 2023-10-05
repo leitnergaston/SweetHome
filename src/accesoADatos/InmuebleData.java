@@ -34,7 +34,7 @@ public class InmuebleData {
             } else {
                 ps.setInt(2, inmueble.getInquilino().getIdInquilino());
             }
-            
+
             ps.setString(3, inmueble.getDireccion());
             ps.setString(4, inmueble.getTipo());
             ps.setDouble(5, inmueble.getSuperficie());
@@ -228,25 +228,34 @@ public class InmuebleData {
     }
 
     //====== LISTAR INMUEBLES POR PARAMETROS ======//
-    public ArrayList<Inmueble> listarInmueblesPorParametros(String tipo, double superficie, double precioMin, String zona) {
+    public ArrayList<Inmueble> listarInmueblesPorParametros(String tipo, double superficieMinima, double precioMinimo, double precioMaximo, String zona) {
 
         ArrayList<Inmueble> inmuebles = new ArrayList<>();
 
         try {
             String sql = "SELECT * FROM inmueble WHERE tipo LIKE ? AND superficie > ? AND precio BETWEEN ? AND ? AND zona LIKE ?";
             PreparedStatement ps = con.prepareStatement(sql);
+
+            // Asignar los valores de los parametros
+            ps.setString(1, tipo);
+            ps.setDouble(2, superficieMinima);
+            ps.setDouble(3, precioMinimo);
+            ps.setDouble(4, precioMaximo);
+            ps.setString(5, zona);
+
             ResultSet rs = ps.executeQuery();
 
+            // Listar los inmuebles con los parametros elegidos
             while (rs.next()) {
                 Inmueble inmueble = new Inmueble();
-                rs.getInt("idInmueble");
-                rs.getInt("idPropietario");
-                rs.getInt("idInquilino");
-                rs.getString("direccion");
-                rs.getString("tipo");
-                rs.getDouble("superficie");
-                rs.getDouble("precio");
-                rs.getBoolean("disponible");
+                inmueble.setIdInmueble(rs.getInt("idInmueble"));
+                inmueble.setPropietario(propietarioData.buscarPropietarioPorId(rs.getInt("idPropietario")));
+                inmueble.setInquilino(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
+                inmueble.setDireccion(rs.getString("direccion"));
+                inmueble.setTipo(rs.getString("tipo"));
+                inmueble.setSuperficie(rs.getDouble("superficie"));
+                inmueble.setPrecio(rs.getDouble("precio"));
+                inmueble.setDisponible(rs.getBoolean("disponible"));
                 inmuebles.add(inmueble);
             }
             ps.close();
