@@ -5,6 +5,7 @@ import accesoADatos.*;
 import entidades.*;
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public class Inmobiliaria32 {
@@ -69,8 +70,9 @@ public class Inmobiliaria32 {
         //propietarioData.crearPropietario(propietario); FUNCIONA
         //propietarioData.modificarPropietario(propietario); FUNCIONA
         //propietarioData.eliminarPropietario(1); FUNCIONA
-        Propietario pro = propietarioData.buscarPropietarioPorId(1);
-        System.out.println("Id: "+pro.getIdPropietario());
+        //Propietario pro = propietarioData.buscarPropietarioPorId(1);FUNCIONA
+        //Propietario pro = propietarioData.buscarPropietarioPorDni(33701225);//FUNCIONA
+        /*System.out.println("Id: "+pro.getIdPropietario());
         System.out.println("DNI: "+pro.getDni());
         System.out.println("Apellido: "+pro.getApellido());
         System.out.println("Nombre: "+pro.getNombre());
@@ -81,8 +83,17 @@ public class Inmobiliaria32 {
         /*for(Inmueble inmueble: pro.getInmuebles()){
             System.out.println(inmueble);
         }*/
-        
-        
+        /*ArrayList<Propietario> pro = new ArrayList<>(); 
+        propietarioData.listarPropietarios();
+        System.out.println("Id: "+pro.add(propietario));
+        System.out.println("DNI: "+pro.getDni());
+        System.out.println("Apellido: "+pro.getApellido());
+        System.out.println("Nombre: "+pro.getNombre());
+        System.out.println("Domicilio: "+pro.getDomicilio());
+        System.out.println("Teléfono: "+pro.getTelefono());
+        System.out.println("eMail: "+pro.getMail());
+        System.out.println("Estado: "+pro.isEstado());
+       */
         
         
     }
