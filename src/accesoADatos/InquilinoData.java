@@ -101,28 +101,29 @@ public class InquilinoData {
     }
 
     //====== METODO BUSCAR INQUILINO(id) ======//
-    public Inquilino buscarInquilinoPorId(int id) {
+    public Inquilino buscarInquilinoPorId(int idInquilino) {
         Inquilino inquilino = null; // declarar un alumno para almacenar info si se encuentra en la bd
-        String sql = "SELECT cuit, apellido, nombre, lugarDeTrabajo, dniGarante, nombreGarante, FROM inquilino"
-                + " WHERE idInquilino = ? AND estado = 1"; // consulta sql
+        String sql = "SELECT cuit, apellido, nombre, lugarDeTrabajo, dniGarante, nombreGarante, estado FROM inquilino"
+                + " WHERE idInquilino = ?"; // consulta sql
         PreparedStatement ps = null; // declarar un ps para preparar la consulta sql
         try {
             ps = con.prepareStatement(sql); // objeto ps a partir de la consulta sql 
-            ps.setInt(1, id); // establecer el primer parametro ? de la consulta con el valor id
+            ps.setInt(1, idInquilino); // establecer el primer parametro ? de la consulta con el valor id
             ResultSet rs = ps.executeQuery(); // ejecutamos la consulta y se almacenan los resultados en el objeto rs
 
             // si hay al menos una fila de resultado en el rs
             if (rs.next()) {
                 // creamos un inquilino y asignamos los valores obtenidos de la consulta sql a las propìedades del objeto alumno usando metodos set
                 inquilino = new Inquilino();
-                inquilino.setIdInquilino(id);
+                inquilino.setIdInquilino(idInquilino);
                 inquilino.setCuit(rs.getInt("cuit"));
                 inquilino.setApellido(rs.getString("apellido"));
                 inquilino.setNombre(rs.getString("nombre"));
                 inquilino.setLugarDeTrabajo(rs.getString("lugarDeTrabajo"));
                 inquilino.setDniGarante(rs.getInt("dniGarante"));
                 inquilino.setNombreGarante(rs.getString("nombreGarante"));
-                inquilino.setEstado(true);
+                inquilino.setEstado(rs.getBoolean("estado"));
+                JOptionPane.showMessageDialog(null, "inquilino encontrado");
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el inquilino");
             }
@@ -136,8 +137,8 @@ public class InquilinoData {
     //====== METODO BUSCAR INQUILINO(cuit) ======//
     public Inquilino buscarinquilinoCUIT(long cuit) {
         Inquilino inquilino = null; // declarar un alumno para almacenar info si se encuentra en la bd
-        String sql = "SELECT idInquilino, apellido, nombre, lugarDeTrabajo, dniGarante, nombreGarante, FROM inquilino"
-                + " WHERE cuit = ? AND estado = 1"; // consulta sql
+        String sql = "SELECT idInquilino, apellido, nombre, lugarDeTrabajo, dniGarante,"
+                   + " nombreGarante, estado FROM inquilino  WHERE cuit = ? "; // consulta sql
         PreparedStatement ps = null; // declarar un ps para preparar la consulta sql
         try {
             ps = con.prepareStatement(sql); // objeto ps a partir de la consulta sql 
@@ -149,13 +150,13 @@ public class InquilinoData {
                 // creamos un inquilino y asignamos los valores obtenidos de la consulta sql a las propìedades del objeto alumno usando metodos set
                 inquilino = new Inquilino();
                 inquilino.setIdInquilino(rs.getInt("idInquilino"));
-                inquilino.setCuit(rs.getInt("cuit"));
                 inquilino.setApellido(rs.getString("apellido"));
                 inquilino.setNombre(rs.getString("nombre"));
                 inquilino.setLugarDeTrabajo(rs.getString("lugarDeTrabajo"));
                 inquilino.setDniGarante(rs.getInt("dniGarante"));
                 inquilino.setNombreGarante(rs.getString("nombreGarante"));
-                inquilino.setEstado(true);
+                inquilino.setEstado(rs.getBoolean("estado"));
+                JOptionPane.showMessageDialog(null, "inquilino encontrado");
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el inquilino");
             }
