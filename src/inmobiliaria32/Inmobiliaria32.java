@@ -5,6 +5,8 @@ import entidades.*;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import vista.MenuPrincipal;
+
 public class Inmobiliaria32 {
 
     public static void main(String[] args) {
@@ -12,6 +14,9 @@ public class Inmobiliaria32 {
         System.out.println("El main");
 
         Connection con = Conexion.getConnection();
+
+        MenuPrincipal vista = new MenuPrincipal();
+        vista.setVisible(true);
 
         //PRUEBA CONTRATODATA 
         /*
@@ -46,30 +51,23 @@ public class Inmobiliaria32 {
 //      Inquilino inquilino3 = new Inquilino(3, "nelson", "hector", 1555, "toledo", 8850, "marco3", true);
 //      Inquilino inquilino4 = new Inquilino(4, "matias", "gaston", 147458465164L, "toledo", 8810, "marco4", true);
 //      InquilinoData inqData = new InquilinoData();
-        
 //        AGREGAR INQUILINO(FUNCIONA)
 //        inqData.agregarInquilino(inquilino1);
 //        inqData.agregarInquilino(inquilino2);
 //        inqData.agregarInquilino(inquilino3);
 //        inqData.agregarInquilino(inquilino4);
-
 //        ELIMINAR INQUILINO(funciona)
 //        inqData.eliminarInquilino((int) inquilino.getCuit());
-
 //        MODIFICAR INQUILINO(FUNCIONA)
 //        inqData.modificarinquilino(inquilino);
-
 //        BUSCAR INQUILLINO ID (FUNCIONA)
 //        inqData.buscarInquilinoPorId(1);
-
 //        BUSCAR INQUILINDO CIUT (FUNCIONA)
 //        inqData.buscarinquilinoCUIT(1237);
-
 //        LISTAR INQUILINOS (FUNCIONA)
 //        for (Inquilino inquilino5 : inqData.listarinquilinos()){
 //            System.out.println(inquilino5);
 //        }
-
         //PRUEBA PROPIETARIODATA
         //-------crearPropietario-----------
         Propietario propietario = new Propietario(2, 1111, "Perez", "Juana", "Peron 123", "11321456", "juan@mail.com", true);
