@@ -132,7 +132,7 @@ public class InmuebleData {
                 inmueble.setInquilino(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
                 inmueble.setDireccion(rs.getString("direccion"));
                 inmueble.setTipo(rs.getString("tipo"));
-                inmueble.setSuperficie(rs.getDouble("superficie"));;
+                inmueble.setSuperficie(rs.getDouble("superficie"));
                 inmueble.setPrecio(rs.getDouble("precio"));
                 inmueble.setZona(rs.getString("zona"));
                 inmueble.setDisponible(rs.getBoolean("disponible"));

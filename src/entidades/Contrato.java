@@ -12,13 +12,13 @@ public class Contrato {
     private LocalDate fechaFinal;
     private double precioAlquiler;
     private boolean vigente;
-    private boolean renovación;
+    private boolean renovacion;
     
     
     public Contrato() {
     }
 
-    public Contrato(int idContrato, Inmueble inmueble, Inquilino Inquilino, LocalDate fechaInicio, LocalDate fechaFinal, double precioAlquiler, boolean vigente, boolean renovación) {
+    public Contrato(int idContrato, Inmueble inmueble, Inquilino Inquilino, LocalDate fechaInicio, LocalDate fechaFinal, double precioAlquiler, boolean vigente, boolean renovacion) {
         this.idContrato = idContrato;
         this.inmueble = inmueble;
         this.inquilino = Inquilino;
@@ -26,17 +26,17 @@ public class Contrato {
         this.fechaFinal = fechaFinal;
         this.precioAlquiler = precioAlquiler;
         this.vigente = vigente;
-        this.renovación = renovación;
+        this.renovacion = renovacion;
     }
 
-    public Contrato(Inmueble inmueble, Inquilino Inquilino, LocalDate fechaInicio, LocalDate fechaFinal, double precioAlquiler, boolean vigente, boolean renovación) {
+    public Contrato(Inmueble inmueble, Inquilino Inquilino, LocalDate fechaInicio, LocalDate fechaFinal, double precioAlquiler, boolean vigente, boolean renovacion) {
         this.inmueble = inmueble;
         this.inquilino = Inquilino;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
         this.precioAlquiler = precioAlquiler;
         this.vigente = vigente;
-        this.renovación = renovación;
+        this.renovacion = renovacion;
     }
 
     public int getIdContrato() {
@@ -95,19 +95,20 @@ public class Contrato {
         this.vigente = vigente;
     }
 
-    public boolean isRenovación() {
-        return renovación;
+    public boolean isRenovacion() {
+        return renovacion;
     }
 
-    public void setRenovación(boolean renovación) {
-        this.renovación = renovación;
+    public void setRenovacion(boolean renovacion) {
+        this.renovacion = renovacion;
     }
 
     @Override
     public String toString() {
-        return "Contrato{" + "Propiedades=" + inmueble + ", fecha_inicio=" + fechaInicio + ", precioAlquiler=" + precioAlquiler + ", vigente=" + vigente + '}';
+        return "Contrato{" + "idContrato=" + idContrato + ", inmueble=" + inmueble + ", inquilino=" + inquilino + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", precioAlquiler=" + precioAlquiler + ", vigente=" + vigente + ", renovacion=" + renovacion + '}';
     }
-    
+
+   
     
    
     
