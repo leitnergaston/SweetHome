@@ -122,7 +122,7 @@ public class InquilinoData {
                 inquilino.setLugarDeTrabajo(rs.getString("lugarDeTrabajo"));
                 inquilino.setDniGarante(rs.getInt("dniGarante"));
                 inquilino.setNombreGarante(rs.getString("nombreGarante"));
-                inquilino.setEstado(true);
+                inquilino.setEstado(rs.getBoolean("estado"));
                 JOptionPane.showMessageDialog(null, "inquilino encontrado");
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el inquilino");
@@ -155,7 +155,7 @@ public class InquilinoData {
                 inquilino.setLugarDeTrabajo(rs.getString("lugarDeTrabajo"));
                 inquilino.setDniGarante(rs.getInt("dniGarante"));
                 inquilino.setNombreGarante(rs.getString("nombreGarante"));
-                inquilino.setEstado(true);
+                inquilino.setEstado(rs.getBoolean("estado"));
                 JOptionPane.showMessageDialog(null, "inquilino encontrado");
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el inquilino");

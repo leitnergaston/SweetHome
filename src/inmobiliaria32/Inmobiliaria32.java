@@ -5,7 +5,6 @@ import entidades.*;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 public class Inmobiliaria32 {
 
     public static void main(String[] args) {
@@ -42,14 +41,14 @@ public class Inmobiliaria32 {
         InquilinoData inqData = new InquilinoData();
         inqData.agregarInquilino(inq1);*/
         //PRUEBA INQUILINO
-        Inquilino inquilino = new Inquilino(1, "pepe", "alberto", 1234, "toledo", 8874, "marco", true);
-        Inquilino inquilino2 = new Inquilino(2, "lucas", "agustin", 1674, "toledo", 8800, "marco2", true);
-        Inquilino inquilino3 = new Inquilino(3, "nelson", "hector", 1555, "toledo", 8850, "marco3", true);
-        Inquilino inquilino4 = new Inquilino(4, "matias", "gaston", 147458465164L, "toledo", 8810, "marco4", true);
-        InquilinoData inqData = new InquilinoData();
+//      Inquilino inquilino1 = new Inquilino(1, "pepe", "alberto", 1234, "toledo", 8874, "marco", true);
+//      Inquilino inquilino2 = new Inquilino(2, "lucas", "agustin", 1674, "toledo", 8800, "marco2", true);
+//      Inquilino inquilino3 = new Inquilino(3, "nelson", "hector", 1555, "toledo", 8850, "marco3", true);
+//      Inquilino inquilino4 = new Inquilino(4, "matias", "gaston", 147458465164L, "toledo", 8810, "marco4", true);
+//      InquilinoData inqData = new InquilinoData();
         
 //        AGREGAR INQUILINO(FUNCIONA)
-//        inqData.agregarInquilino(inquilino);
+//        inqData.agregarInquilino(inquilino1);
 //        inqData.agregarInquilino(inquilino2);
 //        inqData.agregarInquilino(inquilino3);
 //        inqData.agregarInquilino(inquilino4);
