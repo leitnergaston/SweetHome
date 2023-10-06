@@ -70,9 +70,9 @@ public class Inmobiliaria32 {
         //propietarioData.crearPropietario(propietario); FUNCIONA
         //propietarioData.modificarPropietario(propietario); FUNCIONA
         //propietarioData.eliminarPropietario(1); FUNCIONA
-        //Propietario pro = propietarioData.buscarPropietarioPorId(1);FUNCIONA
+        //Propietario pro = propietarioData.buscarPropietarioPorId(1);//FUNCIONA
         //Propietario pro = propietarioData.buscarPropietarioPorDni(33701225);//FUNCIONA
-        /*System.out.println("Id: "+pro.getIdPropietario());
+       /* System.out.println("Id: "+pro.getIdPropietario());
         System.out.println("DNI: "+pro.getDni());
         System.out.println("Apellido: "+pro.getApellido());
         System.out.println("Nombre: "+pro.getNombre());

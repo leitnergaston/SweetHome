@@ -24,14 +24,14 @@ public class PropietarioData {
     
 // Atributo tipo connection para poder usar sentencias sql
     private Connection con = null;
-    private InmuebleData inmueble;
+    private InmuebleData inmuebleData;
             
     public PropietarioData() {
         
         // Inicializar la variable `con` de la clase Conexion
         //accedemos al metodo getConnection q se encarga de cargar drivers y establecer conexion a la bd
         con = Conexion.getConnection();
-        inmueble = new InmuebleData();
+       
     }
     
     //***** Método que crea el propietario****//
@@ -126,6 +126,7 @@ public class PropietarioData {
     //****Método para buscar por Id un propietario****//
     public Propietario buscarPropietarioPorId(int id){
         
+        inmuebleData = new InmuebleData();
         Propietario prop = null;
         try {
         String sql = "SELECT idPropietario, dni, apellido, nombre, domicilio, telefono, eMail, estado "
@@ -146,6 +147,7 @@ public class PropietarioData {
             prop.setTelefono(rs.getString("telefono"));
             prop.setMail(rs.getString("eMail"));
             prop.setEstado(rs.getBoolean("estado"));
+            //prop.setInmuebles(inmuebleData.listarInmueblesPorPropietario(id));
         }else {
                 JOptionPane.showMessageDialog(null, "No existe el propietario");
             }
@@ -159,6 +161,7 @@ public class PropietarioData {
     //****Método para buscar por Dni un propietario****//
      public Propietario buscarPropietarioPorDni(int dni){
         
+        inmuebleData = new InmuebleData();
         Propietario prop = null;
         
         try {
@@ -180,6 +183,7 @@ public class PropietarioData {
             prop.setTelefono(rs.getString("telefono"));
             prop.setMail(rs.getString("eMail"));
             prop.setEstado(rs.getBoolean("estado"));
+            prop.setInmuebles(inmuebleData.listarInmueblesPorPropietario(dni));
         }else {
                 JOptionPane.showMessageDialog(null, "No existe el propietario");
             }
@@ -191,8 +195,9 @@ public class PropietarioData {
     }
      
     //****Método para listar todos los propietario****// 
-    public ArrayList<Propietario> listarPropietarios() { // metodo q devuelve una lista de objetos Alumno
-
+    public ArrayList<Propietario> listarPropietarios() { 
+        
+        inmuebleData = new InmuebleData();
         ArrayList<Propietario> prop = new ArrayList<>(); 
         
         try {
@@ -214,6 +219,7 @@ public class PropietarioData {
                 propietario.setTelefono(rs.getString("telefono"));
                 propietario.setMail(rs.getString("eMail"));
                 propietario.setEstado(rs.getBoolean("estado"));
+              //propietario.setInmuebles(inmuebleData.listarInmueblesPorPropietario(rs.getInt("idPropietario")));
                 prop.add(propietario);
             }
             ps.close();
