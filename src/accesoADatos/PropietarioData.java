@@ -130,10 +130,10 @@ public class PropietarioData {
         try {
         String sql = "SELECT idPropietario, dni, apellido, nombre, domicilio, telefono, eMail, estado "
                 + "FROM propietario "
-                + "WHERE idPropietario = ? AND estado = 1";
+                + "WHERE idPropietario = ? ";
             
         PreparedStatement ps = con.prepareStatement(sql); 
-        ps.setInt(1, id); // establecer el primer parametro ? de la consulta con el valor id
+        ps.setInt(1, id); 
         ResultSet rs = ps.executeQuery(); 
         
         if(rs.next()){
@@ -141,11 +141,11 @@ public class PropietarioData {
             prop.setIdPropietario(id);
             prop.setDni(rs.getInt("dni"));
             prop.setApellido(rs.getString("apellido"));
-            prop.setApellido(rs.getString("nombre"));
-            prop.setApellido(rs.getString("domicilio"));
-            prop.setApellido(rs.getString("telefono"));
-            prop.setApellido(rs.getString("eMail"));
-            prop.setEstado(true);
+            prop.setNombre(rs.getString("nombre"));
+            prop.setDomicilio(rs.getString("domicilio"));
+            prop.setTelefono(rs.getString("telefono"));
+            prop.setMail(rs.getString("eMail"));
+            prop.setEstado(rs.getBoolean("estado"));
         }else {
                 JOptionPane.showMessageDialog(null, "No existe el propietario");
             }
@@ -164,10 +164,10 @@ public class PropietarioData {
         try {
         String sql = "SELECT idPropietario, dni, apellido, nombre, domicilio, telefono, eMail, estado "
                 + "FROM propietario "
-                + "WHERE dni = ? AND estado = 1";
+                + "WHERE dni = ? ";
             
         PreparedStatement ps = con.prepareStatement(sql); 
-        ps.setInt(1, dni); // establecer el primer parametro ? de la consulta con el valor id
+        ps.setInt(1, dni); 
         ResultSet rs = ps.executeQuery(); 
         
         if(rs.next()){
@@ -175,11 +175,11 @@ public class PropietarioData {
             prop.setIdPropietario(rs.getInt("idPropietario"));
             prop.setDni(rs.getInt("dni"));
             prop.setApellido(rs.getString("apellido"));
-            prop.setApellido(rs.getString("nombre"));
-            prop.setApellido(rs.getString("domicilio"));
-            prop.setApellido(rs.getString("telefono"));
-            prop.setApellido(rs.getString("eMail"));
-            prop.setEstado(true);
+            prop.setNombre(rs.getString("nombre"));
+            prop.setDomicilio(rs.getString("domicilio"));
+            prop.setTelefono(rs.getString("telefono"));
+            prop.setMail(rs.getString("eMail"));
+            prop.setEstado(rs.getBoolean("estado"));
         }else {
                 JOptionPane.showMessageDialog(null, "No existe el propietario");
             }
