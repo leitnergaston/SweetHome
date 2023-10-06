@@ -35,12 +35,24 @@ public class Inmobiliaria32 {
         ContratoData contratoData = new ContratoData();
         contratoData.eliminarContrato(3);
         
-        --------buscarContratoPorID(FUNCIONA)------------*/
+        --------buscarContratoPorID(FUNCIONA)------------
         ContratoData contratoData = new ContratoData();
-        Contrato contrato = contratoData.buscarContratoPorId(2);
-        //System.out.println(contrato);
+        Contrato contrato = contratoData.buscarContratoPorId(3);
+        System.out.println(contrato);
         
+        --------buscarContratosPorInmueble(FUNCIONA)------------
+        ContratoData contratoData = new ContratoData();
+        ArrayList<Contrato> contratos = contratoData.listarContratosPorInmueble(2);
+        for(Contrato contrato : contratos){
+            System.out.println(contrato);
+        }
         
+        //--------buscarContratosVigentes(FUNCIONA)------------
+        ContratoData contratoData = new ContratoData();
+        ArrayList<Contrato> contratos = contratoData.listarContratosVigentes();
+        for(Contrato contrato : contratos){
+            System.out.println(contrato);
+        }*/
         
         //PRUEBA INQUILINODATA
         /*Inquilino inq1 = new Inquilino("pepe", "juan", 741056, "toledo", 468004, 
@@ -114,6 +126,7 @@ public class Inmobiliaria32 {
             System.out.println("");
         } */
 
-    }
+    
 
+    }
 }
