@@ -18,7 +18,8 @@ public class InmuebleData {
 
     //====== CREAR INMUEBLE ======//
     public void crearInmueble(Inmueble inmueble) {
-        String sql = "INSERT INTO inmueble (idInmueble, idPropietario, idInquilino, direccion, tipo, superficie, precio, zona, disponible) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO inmueble (idInmueble, idPropietario, idInquilino, direccion, tipo, superficie, precio, zona, disponible) "
+                + "VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
 
@@ -60,7 +61,8 @@ public class InmuebleData {
 
     //====== MODIFICAR INMUEBLE ======//
     public void modificarInmueble(Inmueble inmueble) {
-        String sql = "UPDATE inmueble SET direccion = ?, tipo = ?, superficie = ?, precio = ?, zona = ?, disponible = ? WHERE idInmueble = ?";
+        String sql = "UPDATE inmueble SET direccion = ?, tipo = ?, superficie = ?, precio = ?, zona = ?, disponible = ? "
+                + "WHERE idInmueble = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -109,9 +111,14 @@ public class InmuebleData {
 
     //====== BUSCAR INMUEBLE POR ID======//
     public Inmueble buscarInmueble(int id) {
+        
+        propietarioData = new PropietarioData();
+        inquilinoData= new InquilinoData();
+        
         Inmueble inmueble = null;
 
-        String sql = "SELECT idPropietario, idInquilino, direccion, tipo, superficie, precio, zona, disponible FROM inmueble WHERE idInmueble = ?";
+        String sql = "SELECT idPropietario, idInquilino, direccion, tipo, superficie, precio, zona, disponible "
+                + "FROM inmueble WHERE idInmueble = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -125,7 +132,7 @@ public class InmuebleData {
                 inmueble.setInquilino(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
                 inmueble.setDireccion(rs.getString("direccion"));
                 inmueble.setTipo(rs.getString("tipo"));
-                inmueble.setSuperficie(rs.getDouble("superficie"));;
+                inmueble.setSuperficie(rs.getDouble("superficie"));
                 inmueble.setPrecio(rs.getDouble("precio"));
                 inmueble.setZona(rs.getString("zona"));
                 inmueble.setDisponible(rs.getBoolean("disponible"));
@@ -139,7 +146,10 @@ public class InmuebleData {
 
     //====== LISTAR INMUEBLES DISPONIBLES ======//
     public ArrayList<Inmueble> listarInmueblesDisponibles() {
-
+        
+        propietarioData = new PropietarioData();
+        inquilinoData= new InquilinoData();
+        
         ArrayList<Inmueble> inmuebles = new ArrayList<>();
 
         try {
@@ -170,6 +180,9 @@ public class InmuebleData {
     //====== LISTAR INMUEBLES POR PROPIETARIO ======//
     public ArrayList<Inmueble> listarInmueblesPorPropietario(int id) {
 
+        propietarioData = new PropietarioData();
+        inquilinoData= new InquilinoData();
+        
         ArrayList<Inmueble> inmuebles = new ArrayList<>();
 
         try {
@@ -201,6 +214,9 @@ public class InmuebleData {
     //====== LISTAR TODOS LOS INMUEBLES ======//
     public ArrayList<Inmueble> listarInmuebles() {
 
+        propietarioData = new PropietarioData();
+        inquilinoData= new InquilinoData();
+        
         ArrayList<Inmueble> inmuebles = new ArrayList<>();
         try {
             String sql = "SELECT * FROM inmueble WHERE 1";
@@ -230,10 +246,14 @@ public class InmuebleData {
     //====== LISTAR INMUEBLES POR PARAMETROS ======//
     public ArrayList<Inmueble> listarInmueblesPorParametros(String tipo, double superficieMinima, double precioMinimo, double precioMaximo, String zona) {
 
+        propietarioData = new PropietarioData();
+        inquilinoData= new InquilinoData();
+        
         ArrayList<Inmueble> inmuebles = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM inmueble WHERE tipo LIKE ? AND superficie > ? AND precio BETWEEN ? AND ? AND zona LIKE ?";
+            String sql = "SELECT * FROM inmueble "
+                    + "WHERE tipo LIKE ? AND superficie > ? AND precio BETWEEN ? AND ? AND zona LIKE ?";
             PreparedStatement ps = con.prepareStatement(sql);
 
             // Asignar los valores de los parametros
