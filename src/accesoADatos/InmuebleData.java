@@ -18,6 +18,9 @@ public class InmuebleData {
 
     //====== CREAR INMUEBLE ======//
     public void crearInmueble(Inmueble inmueble) {
+        propietarioData = new PropietarioData();
+        inquilinoData = new InquilinoData();
+        
         String sql = "INSERT INTO inmueble (idInmueble, idPropietario, idInquilino, direccion, tipo, superficie, precio, zona, disponible) "
                 + "VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -61,6 +64,8 @@ public class InmuebleData {
 
     //====== MODIFICAR INMUEBLE ======//
     public void modificarInmueble(Inmueble inmueble) {
+        propietarioData = new PropietarioData();
+        inquilinoData = new InquilinoData();
         String sql = "UPDATE inmueble SET direccion = ?, tipo = ?, superficie = ?, precio = ?, zona = ?, disponible = ? "
                 + "WHERE idInmueble = ?";
 
@@ -89,6 +94,8 @@ public class InmuebleData {
 
     //====== ELIMINAR INMUEBLE ======//
     public void eliminarInmueble(int id) {
+        propietarioData = new PropietarioData();
+        inquilinoData = new InquilinoData();
         try {
             String sql = "UPDATE inmueble SET disponible = 0 WHERE id = ? AND disponible = 1";
 
@@ -253,7 +260,7 @@ public class InmuebleData {
 
         try {
             String sql = "SELECT * FROM inmueble "
-                    + "WHERE tipo LIKE ? AND superficie > ? AND precio BETWEEN ? AND ? AND zona LIKE ?";
+                    + "WHERE tipo LIKE ? AND superficie >= ? AND precio BETWEEN ? AND ? AND zona LIKE ?";
             PreparedStatement ps = con.prepareStatement(sql);
 
             // Asignar los valores de los parametros
