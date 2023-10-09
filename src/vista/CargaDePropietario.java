@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package vista;
 
 /**
@@ -9,12 +6,13 @@ package vista;
  * @author Gaston Leitner
  */
 public class CargaDePropietario extends javax.swing.JInternalFrame {
-
+    private MenuPrincipal menuPrincipal;
     /**
      * Creates new form CargaDePropietario
      */
-    public CargaDePropietario() {
+    public CargaDePropietario(MenuPrincipal menuPrincipal) {
         initComponents();
+        this.menuPrincipal = menuPrincipal;
     }
 
     /**
@@ -45,8 +43,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         campoId = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         botonBuscar = new javax.swing.JButton();
-
-        setClosable(true);
+        botonSalir = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Carga de Datos");
@@ -76,6 +73,14 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         jLabel8.setText("Dni");
 
         botonBuscar.setText("Buscar");
+
+        botonSalir.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,6 +126,10 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonModificar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,11 +173,18 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
                     .addComponent(botonModificar)
                     .addComponent(botonGuardar)
                     .addComponent(BotonEliminar))
-                .addGap(33, 33, 33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonSalir)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        dispose();
+        menuPrincipal.mostrarItemsEscritorio();
+    }//GEN-LAST:event_botonSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -176,6 +192,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
     private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonModificar;
+    private javax.swing.JButton botonSalir;
     private javax.swing.JTextField campoApellido;
     private javax.swing.JTextField campoDomicilio;
     private javax.swing.JTextField campoId;
