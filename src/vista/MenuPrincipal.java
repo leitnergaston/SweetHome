@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 public class MenuPrincipal extends javax.swing.JFrame {
     private final List<JButton> buttons = new ArrayList();
@@ -207,9 +206,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botonCargarPropietarioActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -298,6 +295,5 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
     
    
-
 
 }
