@@ -11,60 +11,82 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
     </Container>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="menuDatos">
+        <Menu class="javax.swing.JMenu" name="menuPropietario">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Menu de datos"/>
+            <Property name="text" type="java.lang.String" value="Propietario"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemDatosPropietario">
+            <MenuItem class="javax.swing.JMenuItem" name="itemCargarPropietario">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Propietario"/>
+                <Property name="text" type="java.lang.String" value="Cargar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemDatosPropietarioActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemCargarPropietarioActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemDatosInquilino">
+            <MenuItem class="javax.swing.JMenuItem" name="itemVerPropietarios">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inquilino"/>
+                <Property name="text" type="java.lang.String" value="Ver propietarios"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemDatosInquilinoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemVerPropietariosActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemDatosInmueble">
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuInmueble">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Inmueble"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itemCargarInmueble">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inmueble"/>
+                <Property name="text" type="java.lang.String" value="Cargar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemCargarInmuebleActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemVerDisponibles">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ver disponibles"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemVerDisponiblesActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemVerTodos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ver todos"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorFiltros">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar por filtros"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuBusqueda">
+        <Menu class="javax.swing.JMenu" name="menuInquilino">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Menu de Busqueda"/>
+            <Property name="text" type="java.lang.String" value="Inquilino"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemBusquedaInquilino">
+            <MenuItem class="javax.swing.JMenuItem" name="itemCargarInquilino">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inquilino"/>
+                <Property name="text" type="java.lang.String" value="Cargar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBusquedaInquilinoActionPerformed"/>
-              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemBusquedaPropietario">
+            <MenuItem class="javax.swing.JMenuItem" name="itemVerInquilinos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Propietario"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBusquedaPropietarioActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemBusquedaInmueble">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Inmueble"/>
+                <Property name="text" type="java.lang.String" value="Ver inquilinos"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -74,31 +96,14 @@
             <Property name="text" type="java.lang.String" value="Contrato"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemContrato">
+            <MenuItem class="javax.swing.JMenuItem" name="itemCargarContrato">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Contrato"/>
+                <Property name="text" type="java.lang.String" value="Cargar"/>
               </Properties>
             </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="menuListados">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Listados"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="listadoInmuebles">
+            <MenuItem class="javax.swing.JMenuItem" name="itemVerContratos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inmuebles"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="listadoPropietarios">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Propietarios"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="listadoInquilinos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Inquilinos"/>
+                <Property name="text" type="java.lang.String" value="Ver contratos"/>
               </Properties>
             </MenuItem>
           </SubComponents>
