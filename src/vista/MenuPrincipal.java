@@ -63,11 +63,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuPropietario.add(itemCargarPropietario);
 
         itemVerPropietarios.setText("Ver propietarios");
-        itemVerPropietarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemVerPropietariosActionPerformed(evt);
-            }
-        });
         menuPropietario.add(itemVerPropietarios);
 
         jMenuBar1.add(menuPropietario);
@@ -75,19 +70,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuInmueble.setText("Inmueble");
 
         itemCargarInmueble.setText("Cargar");
-        itemCargarInmueble.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemCargarInmuebleActionPerformed(evt);
-            }
-        });
         menuInmueble.add(itemCargarInmueble);
 
         itemVerDisponibles.setText("Ver disponibles");
-        itemVerDisponibles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemVerDisponiblesActionPerformed(evt);
-            }
-        });
         menuInmueble.add(itemVerDisponibles);
 
         itemVerTodos.setText("Ver todos");
@@ -142,14 +127,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itemCargarInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCargarInmuebleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemCargarInmuebleActionPerformed
-
-    private void itemVerDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemVerDisponiblesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemVerDisponiblesActionPerformed
-
     private void itemCargarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCargarPropietarioActionPerformed
         Escritorio.removeAll();
         
@@ -170,27 +147,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemCargarPropietarioActionPerformed
 
     private void menuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSalirMouseClicked
+        
         System.exit(0);
     }//GEN-LAST:event_menuSalirMouseClicked
-
-    private void itemVerPropietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemVerPropietariosActionPerformed
-        Escritorio.removeAll();
-        
-        //Actualizamos la vista
-        Escritorio.repaint();
-        
-        // Creamos un objeto del internalFrame
-        CargaDeInquilino cargaInquilino = new CargaDeInquilino();
-        
-        // Lo hacemos visible
-        cargaInquilino.setVisible(true);
-        
-        // Lo agregamos al escritorio
-        Escritorio.add(cargaInquilino);
-        
-        // Lo traemos al frente
-        Escritorio.moveToFront(cargaInquilino);
-    }//GEN-LAST:event_itemVerPropietariosActionPerformed
 
     /**
      * @param args the command line arguments

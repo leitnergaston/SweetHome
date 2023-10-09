@@ -35,9 +35,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver propietarios"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemVerPropietariosActionPerformed"/>
-              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -50,17 +47,11 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cargar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemCargarInmuebleActionPerformed"/>
-              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemVerDisponibles">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver disponibles"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemVerDisponiblesActionPerformed"/>
-              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemVerTodos">
               <Properties>
