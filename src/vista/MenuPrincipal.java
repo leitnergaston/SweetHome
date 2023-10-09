@@ -1,16 +1,14 @@
-
 package vista;
 
+import javax.swing.JOptionPane;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
-   
     public MenuPrincipal() {
         initComponents();
         setLocationRelativeTo(null); // Coloca la ventana en el centro
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -129,25 +127,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void itemCargarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCargarPropietarioActionPerformed
         Escritorio.removeAll();
-        
+
         //Actualizamos la vista
         Escritorio.repaint();
-        
+
         // Creamos un objeto del internalFrame
         CargaDePropietario cargaPropietario = new CargaDePropietario();
-        
+
         // Lo hacemos visible
         cargaPropietario.setVisible(true);
-        
+
         // Lo agregamos al escritorio
         Escritorio.add(cargaPropietario);
-        
+
         // Lo traemos al frente
         Escritorio.moveToFront(cargaPropietario);
     }//GEN-LAST:event_itemCargarPropietarioActionPerformed
 
     private void menuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSalirMouseClicked
-        
         System.exit(0);
     }//GEN-LAST:event_menuSalirMouseClicked
 
