@@ -5,10 +5,8 @@
  */
 package vista;
 
-/**
- *
- * @author ale77
- */
+import entidades.*;
+
 public class CargaDeInmueble extends javax.swing.JInternalFrame {
 
     /**
