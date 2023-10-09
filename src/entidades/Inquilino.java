@@ -13,7 +13,6 @@ public class Inquilino {
     private String lugarDeTrabajo;
     private int dniGarante;
     private String nombreGarante;
-    private ArrayList<Inmueble> inmuebles;
     private boolean estado; 
 
     public Inquilino() {
@@ -28,7 +27,6 @@ public class Inquilino {
         this.dniGarante = dniGarante;
         this.nombreGarante = nombreGarante;
         this.estado = estado;
-        inmuebles = new ArrayList<>();
     }
 
     public Inquilino(String nombre, String apellido, long cuit, String lugarDeTrabajo, int dniGarante, String nombreGarante, boolean estado) {
@@ -39,7 +37,6 @@ public class Inquilino {
         this.dniGarante = dniGarante;
         this.nombreGarante = nombreGarante;
         this.estado = estado;
-        inmuebles = new ArrayList<>();
     }
 
     public int getIdInquilino() {
@@ -98,14 +95,6 @@ public class Inquilino {
         this.nombreGarante = nombreGarante;
     }
 
-    public ArrayList<Inmueble> getPro() {
-        return inmuebles;
-    }
-
-    public void setInmuebles(ArrayList<Inmueble> inmuebles) {
-        this.inmuebles = inmuebles;
-    }
-
     public boolean isEstado() {
         return estado;
     }
@@ -114,10 +103,6 @@ public class Inquilino {
         this.estado = estado;
     }
     
-    public void agregarInmueble(Inmueble inmueble){
-        inmuebles.add(inmueble);
-    }
-
     @Override
     public String toString() {
         return "Inquilino{" + "nombre=" + nombre + ", apellido=" + apellido + ", cuit=" + cuit + '}';

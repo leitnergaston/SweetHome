@@ -19,7 +19,6 @@ public class Propietario {
     private String domicilio;
     private String telefono;
     private String mail;
-    private ArrayList<Inmueble> inmuebles;
     private boolean estado;
     
     public Propietario() {
@@ -33,7 +32,6 @@ public class Propietario {
         this.domicilio = domicilio;
         this.telefono = telefono;
         this.mail = mail;
-        inmuebles = new ArrayList<>();
         this.estado = estado;
     }
 
@@ -44,7 +42,6 @@ public class Propietario {
         this.domicilio = domicilio;
         this.telefono = telefono;
         this.mail = mail;
-        inmuebles = new ArrayList<>();
         this.estado = estado;
     }
 
@@ -104,14 +101,6 @@ public class Propietario {
         this.mail = mail;
     }
 
-    public ArrayList<Inmueble> getInmuebles() {
-        return inmuebles;
-    }
-
-    public void setInmuebles(ArrayList<Inmueble> inmuebles) {
-        this.inmuebles = inmuebles;
-    }
-
     public boolean isEstado() {
         return estado;
     }
@@ -120,10 +109,6 @@ public class Propietario {
         this.estado = estado;
     }
     
-    
-    public void agregarInmueble(Inmueble inmueble){
-        inmuebles.add(inmueble);
-    }
 
     @Override
     public String toString() {
