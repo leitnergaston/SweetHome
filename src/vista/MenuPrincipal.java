@@ -1,15 +1,20 @@
+
 package vista;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+=======
+>>>>>>> a26a556dd2c1741cdd355a0300ad58dc8a048011
 
 public class MenuPrincipal extends javax.swing.JFrame {
     private final List<JButton> buttons = new ArrayList();
     private final List<JLabel> labels = new ArrayList();
 
+   
     public MenuPrincipal() {
         initComponents();
         cargarBotones();
@@ -17,12 +22,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null); // Coloca la ventana en el centro
     }
 
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         Escritorio = new javax.swing.JDesktopPane();
         label1 = new javax.swing.JLabel();
         botonCargarPropietario = new javax.swing.JButton();
@@ -32,25 +37,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonVerInmuebles = new javax.swing.JButton();
         botonVerTodos = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menuPropietario = new javax.swing.JMenu();
-        itemCargarPropietario = new javax.swing.JMenuItem();
-        itemVerPropietarios = new javax.swing.JMenuItem();
-        menuInmueble = new javax.swing.JMenu();
-        itemCargarInmueble = new javax.swing.JMenuItem();
-        itemVerDisponibles = new javax.swing.JMenuItem();
-        itemVerTodos = new javax.swing.JMenuItem();
-        itemBuscarPorFiltros = new javax.swing.JMenuItem();
-        menuInquilino = new javax.swing.JMenu();
-        itemCargarInquilino = new javax.swing.JMenuItem();
-        itemVerInquilinos = new javax.swing.JMenuItem();
+        menuDatos = new javax.swing.JMenu();
+        itemDatosPropietario = new javax.swing.JMenuItem();
+        itemDatosInquilino = new javax.swing.JMenuItem();
+        itemDatosInmueble = new javax.swing.JMenuItem();
+        menuBusqueda = new javax.swing.JMenu();
+        itemBusquedaInquilino = new javax.swing.JMenuItem();
+        itemBusquedaPropietario = new javax.swing.JMenuItem();
+        itemBusquedaInmueble = new javax.swing.JMenuItem();
         menuContrato = new javax.swing.JMenu();
-        itemCargarContrato = new javax.swing.JMenuItem();
-        itemVerContratos = new javax.swing.JMenuItem();
+        itemContrato = new javax.swing.JMenuItem();
+        menuListados = new javax.swing.JMenu();
+        listadoInmuebles = new javax.swing.JMenuItem();
+        listadoPropietarios = new javax.swing.JMenuItem();
+        listadoInquilinos = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
-
-        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,51 +125,76 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap(355, Short.MAX_VALUE))
         );
 
-        menuPropietario.setText("Propietario");
+        menuDatos.setText("Menu de datos");
 
+<<<<<<< HEAD
         itemCargarPropietario.setText("Cargar");
         menuPropietario.add(itemCargarPropietario);
+=======
+        itemDatosPropietario.setText("Propietario");
+        itemDatosPropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemDatosPropietarioActionPerformed(evt);
+            }
+        });
+        menuDatos.add(itemDatosPropietario);
+>>>>>>> a26a556dd2c1741cdd355a0300ad58dc8a048011
 
-        itemVerPropietarios.setText("Ver propietarios");
-        menuPropietario.add(itemVerPropietarios);
+        itemDatosInquilino.setText("Inquilino");
+        itemDatosInquilino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemDatosInquilinoActionPerformed(evt);
+            }
+        });
+        menuDatos.add(itemDatosInquilino);
 
-        jMenuBar1.add(menuPropietario);
+        itemDatosInmueble.setText("Inmueble");
+        menuDatos.add(itemDatosInmueble);
 
-        menuInmueble.setText("Inmueble");
+        jMenuBar1.add(menuDatos);
 
-        itemCargarInmueble.setText("Cargar");
-        menuInmueble.add(itemCargarInmueble);
+        menuBusqueda.setText("Menu de Busqueda");
 
-        itemVerDisponibles.setText("Ver disponibles");
-        menuInmueble.add(itemVerDisponibles);
+        itemBusquedaInquilino.setText("Inquilino");
+        itemBusquedaInquilino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBusquedaInquilinoActionPerformed(evt);
+            }
+        });
+        menuBusqueda.add(itemBusquedaInquilino);
 
-        itemVerTodos.setText("Ver todos");
-        menuInmueble.add(itemVerTodos);
+        itemBusquedaPropietario.setText("Propietario");
+        itemBusquedaPropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBusquedaPropietarioActionPerformed(evt);
+            }
+        });
+        menuBusqueda.add(itemBusquedaPropietario);
 
-        itemBuscarPorFiltros.setText("Buscar por filtros");
-        menuInmueble.add(itemBuscarPorFiltros);
+        itemBusquedaInmueble.setText("Inmueble");
+        menuBusqueda.add(itemBusquedaInmueble);
 
-        jMenuBar1.add(menuInmueble);
-
-        menuInquilino.setText("Inquilino");
-
-        itemCargarInquilino.setText("Cargar");
-        menuInquilino.add(itemCargarInquilino);
-
-        itemVerInquilinos.setText("Ver inquilinos");
-        menuInquilino.add(itemVerInquilinos);
-
-        jMenuBar1.add(menuInquilino);
+        jMenuBar1.add(menuBusqueda);
 
         menuContrato.setText("Contrato");
 
-        itemCargarContrato.setText("Cargar");
-        menuContrato.add(itemCargarContrato);
-
-        itemVerContratos.setText("Ver contratos");
-        menuContrato.add(itemVerContratos);
+        itemContrato.setText("Contrato");
+        menuContrato.add(itemContrato);
 
         jMenuBar1.add(menuContrato);
+
+        menuListados.setText("Listados");
+
+        listadoInmuebles.setText("Inmuebles");
+        menuListados.add(listadoInmuebles);
+
+        listadoPropietarios.setText("Propietarios");
+        menuListados.add(listadoPropietarios);
+
+        listadoInquilinos.setText("Inquilinos");
+        menuListados.add(listadoInquilinos);
+
+        jMenuBar1.add(menuListados);
 
         menuSalir.setText("Salir");
         menuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -192,10 +220,41 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
+=======
+    private void itemBusquedaInquilinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBusquedaInquilinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemBusquedaInquilinoActionPerformed
+
+    private void itemBusquedaPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBusquedaPropietarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemBusquedaPropietarioActionPerformed
+
+    private void itemDatosPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDatosPropietarioActionPerformed
+        Escritorio.removeAll();
+        
+        //Actualizamos la vista
+        Escritorio.repaint();
+        
+        // Creamos un objeto del internalFrame
+        CargaDePropietario cargaPropietario = new CargaDePropietario();
+        
+        // Lo hacemos visible
+        cargaPropietario.setVisible(true);
+        
+        // Lo agregamos al escritorio
+        Escritorio.add(cargaPropietario);
+        
+        // Lo traemos al frente
+        Escritorio.moveToFront(cargaPropietario);
+    }//GEN-LAST:event_itemDatosPropietarioActionPerformed
+
+>>>>>>> a26a556dd2c1741cdd355a0300ad58dc8a048011
     private void menuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSalirMouseClicked
         System.exit(0);
     }//GEN-LAST:event_menuSalirMouseClicked
 
+<<<<<<< HEAD
     private void botonCargarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarPropietarioActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
@@ -206,6 +265,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_botonCargarPropietarioActionPerformed
+=======
+    private void itemDatosInquilinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDatosInquilinoActionPerformed
+        Escritorio.removeAll();
+        
+        //Actualizamos la vista
+        Escritorio.repaint();
+        
+        // Creamos un objeto del internalFrame
+        CargaDeInquilino cargaInquilino = new CargaDeInquilino();
+        
+        // Lo hacemos visible
+        cargaInquilino.setVisible(true);
+        
+        // Lo agregamos al escritorio
+        Escritorio.add(cargaInquilino);
+        
+        // Lo traemos al frente
+        Escritorio.moveToFront(cargaInquilino);
+    }//GEN-LAST:event_itemDatosInquilinoActionPerformed
+>>>>>>> a26a556dd2c1741cdd355a0300ad58dc8a048011
 
     /**
      * @param args the command line arguments
@@ -244,6 +323,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
+<<<<<<< HEAD
     private javax.swing.JButton botonCargarInmueble;
     private javax.swing.JButton botonCargarPropietario;
     private javax.swing.JButton botonVerInmuebles;
@@ -264,10 +344,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
+=======
+    private javax.swing.JMenuItem itemBusquedaInmueble;
+    private javax.swing.JMenuItem itemBusquedaInquilino;
+    private javax.swing.JMenuItem itemBusquedaPropietario;
+    private javax.swing.JMenuItem itemContrato;
+    private javax.swing.JMenuItem itemDatosInmueble;
+    private javax.swing.JMenuItem itemDatosInquilino;
+    private javax.swing.JMenuItem itemDatosPropietario;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem listadoInmuebles;
+    private javax.swing.JMenuItem listadoInquilinos;
+    private javax.swing.JMenuItem listadoPropietarios;
+    private javax.swing.JMenu menuBusqueda;
+>>>>>>> a26a556dd2c1741cdd355a0300ad58dc8a048011
     private javax.swing.JMenu menuContrato;
-    private javax.swing.JMenu menuInmueble;
-    private javax.swing.JMenu menuInquilino;
-    private javax.swing.JMenu menuPropietario;
+    private javax.swing.JMenu menuDatos;
+    private javax.swing.JMenu menuListados;
     private javax.swing.JMenu menuSalir;
     // End of variables declaration//GEN-END:variables
     
