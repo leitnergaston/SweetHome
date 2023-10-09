@@ -103,7 +103,7 @@ public class PropietarioData {
     //****Método para eliminar un propietario****//
     public void eliminarPropietario(int id){
         try {
-            String sql = "UPDATE propietario SET estado = 0 WHERE idPropietario = ?";
+            String sql = "UPDATE propietario SET estado = 0 WHERE idPropietario = ? AND estado = 1";
 
             PreparedStatement ps = null;
             ps = con.prepareStatement(sql);

@@ -93,7 +93,7 @@ public class Inmobiliaria32 {
         PropietarioData propietarioData = new PropietarioData();
         //propietarioData.crearPropietario(propietario); //FUNCIONA
         //propietarioData.modificarPropietario(propietario); //FUNCIONA
-        propietarioData.eliminarPropietario(3); //FUNCIONA
+        //propietarioData.eliminarPropietario(3); //FUNCIONA
         //Propietario pro = propietarioData.buscarPropietarioPorId(1);//FUNCIONA
         //Propietario pro = propietarioData.buscarPropietarioPorDni(33701225);//FUNCIONA
         /*System.out.println("Id: "+pro.getIdPropietario());
