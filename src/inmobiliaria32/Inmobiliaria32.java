@@ -89,8 +89,8 @@ public class Inmobiliaria32 {
 //        }
         //PRUEBA PROPIETARIODATA
         //-------crearPropietario-----------
-        Propietario propietario = new Propietario(3, 2323, "asdasd", "Juana", "Peron 123", "11321456", "juan@mail.com", true);
-        PropietarioData propietarioData = new PropietarioData();
+        //Propietario propietario = new Propietario(3, 2323, "asdasd", "Juana", "Peron 123", "11321456", "juan@mail.com", true);
+        //PropietarioData propietarioData = new PropietarioData();
         //propietarioData.crearPropietario(propietario); //FUNCIONA
         //propietarioData.modificarPropietario(propietario); //FUNCIONA
         //propietarioData.eliminarPropietario(3); //FUNCIONA
