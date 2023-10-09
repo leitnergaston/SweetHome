@@ -114,7 +114,7 @@ public class PropietarioData {
             if (exitoso == 1) {
                 JOptionPane.showMessageDialog(null, "Eliminado Exitosamente.");
             } else {
-                JOptionPane.showMessageDialog(null, "El propietario no existe.");
+                JOptionPane.showMessageDialog(null, "El propietario no existe o ya fue dado de baja.");
             }
 
             ps.close();
