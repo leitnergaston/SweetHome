@@ -89,11 +89,11 @@ public class Inmobiliaria32 {
 //        }
         //PRUEBA PROPIETARIODATA
         //-------crearPropietario-----------
-        //Propietario propietario = new Propietario(2, 1111, "Perez", "Juana", "Peron 123", "11321456", "juan@mail.com", true);
-        //PropietarioData propietarioData = new PropietarioData();
-        //propietarioData.crearPropietario(propietario); FUNCIONA
-        //propietarioData.modificarPropietario(propietario); FUNCIONA
-        //propietarioData.eliminarPropietario(1); FUNCIONA
+        Propietario propietario = new Propietario(3, 2323, "asdasd", "Juana", "Peron 123", "11321456", "juan@mail.com", true);
+        PropietarioData propietarioData = new PropietarioData();
+        //propietarioData.crearPropietario(propietario); //FUNCIONA
+        //propietarioData.modificarPropietario(propietario); //FUNCIONA
+        propietarioData.eliminarPropietario(3); //FUNCIONA
         //Propietario pro = propietarioData.buscarPropietarioPorId(1);//FUNCIONA
         //Propietario pro = propietarioData.buscarPropietarioPorDni(33701225);//FUNCIONA
         /*System.out.println("Id: "+pro.getIdPropietario());

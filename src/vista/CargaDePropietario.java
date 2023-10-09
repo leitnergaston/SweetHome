@@ -163,7 +163,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
                     .addComponent(botonModificar)
                     .addComponent(botonGuardar)
                     .addComponent(BotonEliminar))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();

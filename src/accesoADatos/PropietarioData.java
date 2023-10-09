@@ -71,9 +71,9 @@ public class PropietarioData {
     public void modificarPropietario(Propietario propietario){
         
         try {
-        String sql = "UPDATE propietario SET idPropietario= null dni=?,apellido= ?,nombre= ?,domicilio= ?,"
-                + "telefono= ?,eMail= ? "
-                + "WHERE estado = ?";
+        String sql = "UPDATE propietario SET dni=?,apellido= ?,nombre= ?,domicilio= ?,"
+                + "telefono= ?,eMail= ?, estado = ? "
+                + "WHERE idPropietario = ?";
 
             PreparedStatement ps = null;
             ps = con.prepareStatement(sql);
@@ -84,6 +84,7 @@ public class PropietarioData {
             ps.setString(5, propietario.getTelefono());
             ps.setString(6, propietario.getMail());
             ps.setBoolean(7, propietario.isEstado());
+            ps.setInt(8, propietario.getIdPropietario());
 
             int modifico = ps.executeUpdate();
             if (modifico == 1) {
@@ -147,7 +148,6 @@ public class PropietarioData {
             prop.setTelefono(rs.getString("telefono"));
             prop.setMail(rs.getString("eMail"));
             prop.setEstado(rs.getBoolean("estado"));
-            //prop.setInmuebles(inmuebleData.listarInmueblesPorPropietario(id));
         }else {
                 JOptionPane.showMessageDialog(null, "No existe el propietario");
             }
@@ -183,7 +183,6 @@ public class PropietarioData {
             prop.setTelefono(rs.getString("telefono"));
             prop.setMail(rs.getString("eMail"));
             prop.setEstado(rs.getBoolean("estado"));
-            //prop.setInmuebles(inmuebleData.listarInmueblesPorPropietario(dni));
         }else {
                 JOptionPane.showMessageDialog(null, "No existe el propietario");
             }
@@ -219,7 +218,6 @@ public class PropietarioData {
                 propietario.setTelefono(rs.getString("telefono"));
                 propietario.setMail(rs.getString("eMail"));
                 propietario.setEstado(rs.getBoolean("estado"));
-              //propietario.setInmuebles(inmuebleData.listarInmueblesPorPropietario(rs.getInt("idPropietario")));
                 prop.add(propietario);
             }
             ps.close();
