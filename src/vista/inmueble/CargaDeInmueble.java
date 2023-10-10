@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.contrato;
+package vista.inmueble;
 
 /**
  *
  * @author ale77
  */
-public class VerContratos extends javax.swing.JInternalFrame {
+public class CargaDeInmueble extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form VerContratos
+     * Creates new form CargaDeInmueble
      */
-    public VerContratos() {
+    public CargaDeInmueble() {
         initComponents();
     }
 
