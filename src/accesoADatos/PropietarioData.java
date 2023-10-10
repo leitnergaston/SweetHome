@@ -24,7 +24,7 @@ public class PropietarioData {
     
 // Atributo tipo connection para poder usar sentencias sql
     private Connection con = null;
-    private InmuebleData inmuebleData;
+    
             
     public PropietarioData() {
         
@@ -72,8 +72,8 @@ public class PropietarioData {
         
         try {
         String sql = "UPDATE propietario SET idPropietario= null dni=?,apellido= ?,nombre= ?,domicilio= ?,"
-                + "telefono= ?,eMail= ? "
-                + "WHERE estado = ?";
+                + "telefono= ?,eMail= ?, estado=? "
+                + "WHERE idPropietario = ?";
 
             PreparedStatement ps = null;
             ps = con.prepareStatement(sql);
@@ -84,6 +84,7 @@ public class PropietarioData {
             ps.setString(5, propietario.getTelefono());
             ps.setString(6, propietario.getMail());
             ps.setBoolean(7, propietario.isEstado());
+            ps.setInt(8, propietario.getIdPropietario());
 
             int modifico = ps.executeUpdate();
             if (modifico == 1) {
@@ -102,7 +103,7 @@ public class PropietarioData {
     //****Método para eliminar un propietario****//
     public void eliminarPropietario(int id){
         try {
-            String sql = "UPDATE propietario SET estado = 0 WHERE idPropietario = ?";
+            String sql = "UPDATE propietario SET estado = 0 WHERE idPropietario = ? AND estado = 1 ";
 
             PreparedStatement ps = null;
             ps = con.prepareStatement(sql);
@@ -113,7 +114,7 @@ public class PropietarioData {
             if (exitoso == 1) {
                 JOptionPane.showMessageDialog(null, "Eliminado Exitosamente.");
             } else {
-                JOptionPane.showMessageDialog(null, "El propietario no existe.");
+                JOptionPane.showMessageDialog(null, "El propietario no existe o ya fue dado de baja.");
             }
 
             ps.close();
@@ -126,10 +127,10 @@ public class PropietarioData {
     //****Método para buscar por Id un propietario****//
     public Propietario buscarPropietarioPorId(int id){
         
-        inmuebleData = new InmuebleData();
+        
         Propietario prop = null;
         try {
-        String sql = "SELECT idPropietario, dni, apellido, nombre, domicilio, telefono, eMail, estado "
+        String sql = "SELECT dni, apellido, nombre, domicilio, telefono, eMail, estado "
                 + "FROM propietario "
                 + "WHERE idPropietario = ? ";
             
@@ -147,7 +148,7 @@ public class PropietarioData {
             prop.setTelefono(rs.getString("telefono"));
             prop.setMail(rs.getString("eMail"));
             prop.setEstado(rs.getBoolean("estado"));
-            //prop.setInmuebles(inmuebleData.listarInmueblesPorPropietario(id));
+            
         }else {
                 JOptionPane.showMessageDialog(null, "No existe el propietario");
             }
@@ -161,11 +162,11 @@ public class PropietarioData {
     //****Método para buscar por Dni un propietario****//
      public Propietario buscarPropietarioPorDni(int dni){
         
-        inmuebleData = new InmuebleData();
+        
         Propietario prop = null;
         
         try {
-        String sql = "SELECT idPropietario, dni, apellido, nombre, domicilio, telefono, eMail, estado "
+        String sql = "SELECT idPropietario, apellido, nombre, domicilio, telefono, eMail, estado "
                 + "FROM propietario "
                 + "WHERE dni = ? ";
             
@@ -176,14 +177,14 @@ public class PropietarioData {
         if(rs.next()){
             prop = new Propietario();
             prop.setIdPropietario(rs.getInt("idPropietario"));
-            prop.setDni(rs.getInt("dni"));
+            prop.setDni(dni);
             prop.setApellido(rs.getString("apellido"));
             prop.setNombre(rs.getString("nombre"));
             prop.setDomicilio(rs.getString("domicilio"));
             prop.setTelefono(rs.getString("telefono"));
             prop.setMail(rs.getString("eMail"));
             prop.setEstado(rs.getBoolean("estado"));
-            //prop.setInmuebles(inmuebleData.listarInmueblesPorPropietario(dni));
+            
         }else {
                 JOptionPane.showMessageDialog(null, "No existe el propietario");
             }
@@ -197,7 +198,7 @@ public class PropietarioData {
     //****Método para listar todos los propietario****// 
     public ArrayList<Propietario> listarPropietarios() { 
         
-        inmuebleData = new InmuebleData();
+        
         ArrayList<Propietario> prop = new ArrayList<>(); 
         
         try {
@@ -219,7 +220,6 @@ public class PropietarioData {
                 propietario.setTelefono(rs.getString("telefono"));
                 propietario.setMail(rs.getString("eMail"));
                 propietario.setEstado(rs.getBoolean("estado"));
-              //propietario.setInmuebles(inmuebleData.listarInmueblesPorPropietario(rs.getInt("idPropietario")));
                 prop.add(propietario);
             }
             ps.close();
