@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista;
+package vista.contrato;
 
 import entidades.Inmueble;
 import entidades.Inquilino;
@@ -93,10 +93,6 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                 jCheckVigenteActionPerformed(evt);
             }
         });
-
-        jComboInmueble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboInquilino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
