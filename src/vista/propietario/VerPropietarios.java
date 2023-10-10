@@ -42,6 +42,9 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         botonBuscarApellido = new javax.swing.JButton();
         botonBuscarNombre = new javax.swing.JButton();
         botonBuscarDni = new javax.swing.JButton();
+        radioBTodos = new javax.swing.JRadioButton();
+        radioBActivos = new javax.swing.JRadioButton();
+        radioBInactivos = new javax.swing.JRadioButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 255));
@@ -89,6 +92,17 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
 
         botonBuscarDni.setText("Buscar");
 
+        radioBTodos.setText("Todos");
+        radioBTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBTodosActionPerformed(evt);
+            }
+        });
+
+        radioBActivos.setText("Activos");
+
+        radioBInactivos.setText("Inactivos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,7 +143,15 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
                             .addComponent(botonBuscarDni)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(175, 175, 175)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(radioBTodos)
+                                .addGap(18, 18, 18)
+                                .addComponent(radioBActivos)
+                                .addGap(18, 18, 18)
+                                .addComponent(radioBInactivos))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -137,9 +159,13 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(radioBTodos)
+                    .addComponent(radioBActivos)
+                    .addComponent(radioBInactivos))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,22 +173,20 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonBuscarNombre)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel4)
+                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonBuscarDni)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(campoDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel5)
+                    .addComponent(campoDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonVerDetalles)
                     .addComponent(botonSalir))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,6 +199,10 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
     private void botonBuscarApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarApellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonBuscarApellidoActionPerformed
+
+    private void radioBTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBTodosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioBTodosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -192,6 +220,9 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton radioBActivos;
+    private javax.swing.JRadioButton radioBInactivos;
+    private javax.swing.JRadioButton radioBTodos;
     private javax.swing.JTable tablaPropietarios;
     // End of variables declaration//GEN-END:variables
 }
