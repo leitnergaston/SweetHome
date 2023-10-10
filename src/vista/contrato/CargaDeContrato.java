@@ -7,18 +7,20 @@ package vista.contrato;
 
 import entidades.Inmueble;
 import entidades.Inquilino;
+import vista.MenuPrincipal;
 
 /**
  *
  * @author Usuario
  */
 public class CargaDeContrato extends javax.swing.JInternalFrame {
-
+    private MenuPrincipal menuPrincipal;
     /**
      * Creates new form CargaDeContrato
      */
-    public CargaDeContrato() {
+    public CargaDeContrato(MenuPrincipal menuPrincipal) {
         initComponents();
+        this.menuPrincipal = menuPrincipal;
     }
 
     /**
