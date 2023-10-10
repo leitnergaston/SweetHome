@@ -1,5 +1,7 @@
 
-package vista;
+package vista.propietario;
+
+import vista.MenuPrincipal;
 
 /**
  *
