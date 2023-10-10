@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JMenu" name="jMenu1">
       <Properties>
@@ -11,60 +11,70 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
     </Container>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="menuDatos">
+        <Menu class="javax.swing.JMenu" name="menuPropietario">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Menu de datos"/>
+            <Property name="text" type="java.lang.String" value="Propietario"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemDatosPropietario">
+            <MenuItem class="javax.swing.JMenuItem" name="itemCargarPropietario">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Propietario"/>
+                <Property name="text" type="java.lang.String" value="Cargar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemDatosPropietarioActionPerformed"/>
-              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemDatosInquilino">
+            <MenuItem class="javax.swing.JMenuItem" name="itemVerPropietarios">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inquilino"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemDatosInquilinoActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemDatosInmueble">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Inmueble"/>
+                <Property name="text" type="java.lang.String" value="Ver propietarios"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuBusqueda">
+        <Menu class="javax.swing.JMenu" name="menuInmueble">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Menu de Busqueda"/>
+            <Property name="text" type="java.lang.String" value="Inmueble"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemBusquedaInquilino">
+            <MenuItem class="javax.swing.JMenuItem" name="itemCargarInmueble">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inquilino"/>
+                <Property name="text" type="java.lang.String" value="Cargar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBusquedaInquilinoActionPerformed"/>
-              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemBusquedaPropietario">
+            <MenuItem class="javax.swing.JMenuItem" name="itemVerDisponibles">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Propietario"/>
+                <Property name="text" type="java.lang.String" value="Ver disponibles"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBusquedaPropietarioActionPerformed"/>
-              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemBusquedaInmueble">
+            <MenuItem class="javax.swing.JMenuItem" name="itemVerTodos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inmueble"/>
+                <Property name="text" type="java.lang.String" value="Ver todos"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorFiltros">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar por filtros"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuInquilino">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Inquilino"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itemCargarInquilino">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cargar"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemVerInquilinos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ver inquilinos"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -74,31 +84,14 @@
             <Property name="text" type="java.lang.String" value="Contrato"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemContrato">
+            <MenuItem class="javax.swing.JMenuItem" name="itemCargarContrato">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Contrato"/>
+                <Property name="text" type="java.lang.String" value="Cargar"/>
               </Properties>
             </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="menuListados">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Listados"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="listadoInmuebles">
+            <MenuItem class="javax.swing.JMenuItem" name="itemVerContratos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inmuebles"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="listadoPropietarios">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Propietarios"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="listadoInquilinos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Inquilinos"/>
+                <Property name="text" type="java.lang.String" value="Ver contratos"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -152,15 +145,97 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="760" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="72" pref="72" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="label1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="label2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="botonCargarPropietario" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonCargarInmueble" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="botonVerPropietarios" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="botonVerInmuebles" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="botonVerTodos" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="282" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="603" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="label1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonCargarPropietario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonVerPropietarios" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="label2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonCargarInmueble" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonVerInmuebles" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonVerTodos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="355" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="label1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Propietario"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonCargarPropietario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cargar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCargarPropietarioActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonVerPropietarios">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ver propietarios"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="label2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Inmueble"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonCargarInmueble">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cargar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonVerInmuebles">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ver Inmuebles"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonVerTodos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ver todos"/>
+          </Properties>
+        </Component>
+      </SubComponents>
     </Container>
   </SubComponents>
 </Form>
