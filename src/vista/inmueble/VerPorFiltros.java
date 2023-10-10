@@ -52,8 +52,6 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         botonVerDetalle = new javax.swing.JButton();
         botonBuscar = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 102, 102));
-
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
