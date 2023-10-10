@@ -7,8 +7,6 @@ package vista.inquilino;
 
 import accesoADatos.*;
 import entidades.*;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import javax.swing.JOptionPane;
 
 public class CargaDeInquilino extends javax.swing.JInternalFrame {
@@ -77,6 +75,18 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
 
         campoId.setEditable(false);
 
+        campoCuit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoCuitKeyTyped(evt);
+            }
+        });
+
+        campoDniGarante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoDniGaranteKeyTyped(evt);
+            }
+        });
+
         campoNombreGarante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoNombreGaranteActionPerformed(evt);
@@ -91,6 +101,11 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
         });
 
         BotonEliminar.setText("Eliminar");
+        BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarActionPerformed(evt);
+            }
+        });
 
         botonbuscar1.setText("Buscar");
         botonbuscar1.addActionListener(new java.awt.event.ActionListener() {
@@ -223,25 +238,17 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
         return datos.matches("[a-zA-Z]*");
     }
 
-    private void campoDocumentoKeyTyped(java.awt.event.KeyEvent evt) {
-        int key = evt.getKeyChar();//obtiene el caracter de la tecla presionada y devuelve el valor del caracter
-        boolean numero = key >= 48 && key <= 57;//se compara con el codigo ASCII para saber si es un numero
-        if (!numero) { // si no se presiona un numero
-            evt.consume();//"destruye" o evita mostrar la letra ingresada
-        }
-    }
-
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         try {
             int cuit = Integer.parseInt(campoCuit.getText());
             int id = Integer.parseInt(campoId.getText());
             int dnigarante = Integer.parseInt(campoDniGarante.getText());
-            
+
             String apellido = campoApellido.getText();
             String nombre = campoNombre.getText();
             String lugartrabajo = campoLugarDeTrabajo.getText();
             String nombregarante = campoNombreGarante.getText();
-            
+
             int limitador = 0;
 
             if (CargaDeInquilino.Validar(nombre)) {
@@ -258,16 +265,16 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
                 campoApellido.setText("");
                 limitador++;
             }
-            if (CargaDeInquilino.Validar(lugartrabajo)){
+            if (CargaDeInquilino.Validar(lugartrabajo)) {
                 lugartrabajo = campoLugarDeTrabajo.getText();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Solo letras en el campo Lugar De Trabajo");
                 campoLugarDeTrabajo.setText("");
                 limitador++;
             }
-            if (CargaDeInquilino.Validar(nombregarante)){
+            if (CargaDeInquilino.Validar(nombregarante)) {
                 lugartrabajo = campoLugarDeTrabajo.getText();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Solo letras en el campo Nombre de Garate");
                 campoNombreGarante.setText("");
                 limitador++;
@@ -334,6 +341,43 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_botonbuscar1ActionPerformed
+
+    private void campoCuitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCuitKeyTyped
+        int key = evt.getKeyChar();
+        int aviso = 0;
+        boolean numero = key >= 48 && key <= 57;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 5){
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoCuitKeyTyped
+
+    private void campoDniGaranteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDniGaranteKeyTyped
+        int key = evt.getKeyChar();
+        int aviso = 0;
+        boolean numero = key >= 48 && key <= 57;
+        if (!numero) {
+            evt.consume();
+            if (aviso == 5){
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoDniGaranteKeyTyped
+
+    private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
+        try {
+            int CUIT = Integer.parseInt(campoCuit.getText());
+            InquilinoData inqData = new InquilinoData();
+            inqData.eliminarInquilino(CUIT);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Para eliminar un alumno debe ingresar el CUIT");
+        }
+    }//GEN-LAST:event_BotonEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminar;
