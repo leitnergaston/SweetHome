@@ -50,6 +50,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         jSeparator3 = new javax.swing.JSeparator();
         botonSalir = new javax.swing.JButton();
         botonVerDetalle = new javax.swing.JButton();
+        botonBuscar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 102, 102));
 
@@ -108,6 +109,8 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         });
 
         botonVerDetalle.setText("Ver detalle");
+
+        botonBuscar.setText("Buscar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,13 +174,19 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
                 .addGap(265, 265, 265)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonBuscar)
+                .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(91, Short.MAX_VALUE)
+                        .addContainerGap(50, Short.MAX_VALUE)
+                        .addComponent(botonBuscar)
+                        .addGap(18, 18, 18)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
@@ -230,6 +239,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonSalir;
     private javax.swing.JButton botonVerDetalle;
     private javax.swing.JTextField campoPrecioMaximo;

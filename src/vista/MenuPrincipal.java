@@ -160,7 +160,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(label2)
                     .addComponent(label3)
                     .addComponent(label4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(54, 54, 54)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(EscritorioLayout.createSequentialGroup()
                         .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -183,7 +183,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(botonCargarContrato)
                         .addGap(18, 18, 18)
                         .addComponent(botonVerContratos)))
-                .addGap(27, 27, 27))
+                .addContainerGap(155, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonSalir)
@@ -217,7 +217,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(botonCargarContrato)
                         .addComponent(botonVerContratos)))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
