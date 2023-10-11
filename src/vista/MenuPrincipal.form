@@ -66,8 +66,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="botonCargarPropietario" min="-2" max="-2" attributes="0"/>
-                              <Component id="botonCargarInmueble" min="-2" max="-2" attributes="0"/>
+                              <Component id="botonDatosPropietario" min="-2" max="-2" attributes="0"/>
+                              <Component id="botonDatosInmueble" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -82,17 +82,17 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="botonCargarInquilino" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonDatosInquilino" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="botonVerInquilinos" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="botonCargarContrato" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonDatosContrato" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="botonVerContratos" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="155" max="32767" attributes="0"/>
+                  <EmptySpace pref="160" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
@@ -109,13 +109,13 @@
                   <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="label1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonCargarPropietario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonDatosPropietario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botonVerPropietarios" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="label2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonCargarInmueble" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonDatosInmueble" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botonVerInmuebles" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botonVerTodos" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botonVerPorFiltros" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -123,14 +123,14 @@
                   <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="label3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonCargarInquilino" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonDatosInquilino" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botonVerInquilinos" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="label4" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="botonCargarContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonDatosContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="botonVerContratos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -151,7 +151,7 @@
             <Property name="text" type="java.lang.String" value="Propietario"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="botonCargarPropietario">
+        <Component class="javax.swing.JButton" name="botonDatosPropietario">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -162,10 +162,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cargar"/>
+            <Property name="text" type="java.lang.String" value="Datos"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCargarPropietarioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDatosPropietarioActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonVerPropietarios">
@@ -193,7 +193,7 @@
             <Property name="text" type="java.lang.String" value="Inmueble"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="botonCargarInmueble">
+        <Component class="javax.swing.JButton" name="botonDatosInmueble">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -204,7 +204,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cargar"/>
+            <Property name="text" type="java.lang.String" value="Datos"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="botonVerInmuebles">
@@ -246,7 +246,7 @@
             <Property name="text" type="java.lang.String" value="Inquilino"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="botonCargarInquilino">
+        <Component class="javax.swing.JButton" name="botonDatosInquilino">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -257,7 +257,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cargar"/>
+            <Property name="text" type="java.lang.String" value="Datos"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="botonVerInquilinos">
@@ -302,7 +302,7 @@
             <Property name="text" type="java.lang.String" value="Contratos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="botonCargarContrato">
+        <Component class="javax.swing.JButton" name="botonDatosContrato">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -313,7 +313,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cargar"/>
+            <Property name="text" type="java.lang.String" value="Datos"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="botonVerContratos">
