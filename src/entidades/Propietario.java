@@ -4,8 +4,6 @@
  */
 package entidades;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author estudiante
@@ -112,7 +110,7 @@ public class Propietario {
 
     @Override
     public String toString() {
-        return "Propietarios{" + "dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + '}';
+        return "Dni: "+ dni + ", " + apellido + ", " + nombre;
     }
 
     

@@ -228,6 +228,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Ver Inmuebles"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonVerInmueblesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonVerTodos">
           <Properties>

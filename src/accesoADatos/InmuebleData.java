@@ -143,6 +143,8 @@ public class InmuebleData {
                 inmueble.setPrecio(rs.getDouble("precio"));
                 inmueble.setZona(rs.getString("zona"));
                 inmueble.setDisponible(rs.getBoolean("disponible"));
+                
+                JOptionPane.showMessageDialog(null,"Inmueble encontrado");
             }
             ps.close();
         } catch (SQLException ex) {

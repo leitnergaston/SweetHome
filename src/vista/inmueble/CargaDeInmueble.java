@@ -5,7 +5,10 @@
  */
 package vista.inmueble;
 
+import accesoADatos.*;
 import entidades.*;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import vista.MenuPrincipal;
 
 /**
@@ -14,12 +17,16 @@ import vista.MenuPrincipal;
  */
 public class CargaDeInmueble extends javax.swing.JInternalFrame {
 private MenuPrincipal menuPrincipal;
-    /**
-     * Creates new form CargaDeInmueble
-     */
+private InmuebleData inmuebleData = new InmuebleData();
+private PropietarioData propietarioData = new PropietarioData();
+private int aviso = 0;
+    
     public CargaDeInmueble(MenuPrincipal menuPrincipal) {
         initComponents();
         this.menuPrincipal = menuPrincipal;
+        cargarComboPropietario();
+        cargarComboTipo();
+        cargarComboZona();
     }
 
     /**
@@ -33,7 +40,7 @@ private MenuPrincipal menuPrincipal;
 
         checkDisponible = new javax.swing.JCheckBox();
         botonBuscar = new javax.swing.JButton();
-        BotonEliminar = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         botonGuardar = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
@@ -57,8 +64,13 @@ private MenuPrincipal menuPrincipal;
         checkDisponible.setText("Disponible");
 
         botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
 
-        BotonEliminar.setText("Eliminar");
+        botonEliminar.setText("Eliminar");
 
         botonSalir.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         botonSalir.setText("Salir");
@@ -83,9 +95,27 @@ private MenuPrincipal menuPrincipal;
 
         jLabel4.setText("Dirección");
 
+        campoSuperficie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoSuperficieKeyTyped(evt);
+            }
+        });
+
         jLabel5.setText("Tipo");
 
+        campoPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoPrecioKeyTyped(evt);
+            }
+        });
+
         jLabel6.setText("Superficie");
+
+        campoId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoIdKeyTyped(evt);
+            }
+        });
 
         jLabel7.setText("Precio");
 
@@ -117,27 +147,30 @@ private MenuPrincipal menuPrincipal;
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel9))))
                         .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(checkDisponible)
-                            .addComponent(campoDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoSuperficie)
                             .addComponent(campoPrecio)
-                            .addComponent(campoId)
-                            .addComponent(comboPropietario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(comboTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboZona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(18, 18, 18)
+                            .addComponent(comboZona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboPropietario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(campoDireccion)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(checkDisponible)
+                                    .addComponent(campoId, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(36, 36, 36)
                 .addComponent(botonBuscar)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
             .addGroup(layout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addComponent(botonGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotonEliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(34, 34, 34)
+                .addComponent(botonEliminar)
+                .addGap(31, 31, 31)
                 .addComponent(botonModificar)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,7 +221,7 @@ private MenuPrincipal menuPrincipal;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonModificar)
                     .addComponent(botonGuardar)
-                    .addComponent(BotonEliminar))
+                    .addComponent(botonEliminar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonSalir)
                 .addContainerGap())
@@ -199,13 +232,112 @@ private MenuPrincipal menuPrincipal;
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         dispose();
-        
+        menuPrincipal.mostrarItemsEscritorio();
     }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        try{
+            
+            int id = Integer.parseInt(campoId.getText());
+            Inmueble inmueble = inmuebleData.buscarInmueble(id);
+            if(inmueble==null){
+                JOptionPane.showMessageDialog(this, "No existe ningún inmueble con esa Id");
+                vaciarCampos();
+            }else{
+                int cantidadPropietarios = comboPropietario.getItemCount();
+                for(int i=1; i<cantidadPropietarios; i++){
+                    Propietario proCombo = comboPropietario.getItemAt(i);
+                    if(proCombo.getIdPropietario()==inmueble.getPropietario().getIdPropietario()){
+                        comboPropietario.setSelectedIndex(i);
+                    }
+                }
+                campoDireccion.setText(inmueble.getDireccion());
+                int cantidadTipos = comboTipo.getItemCount();
+                for(int i=1; i<cantidadTipos; i++){
+                    
+                    if(inmueble.getTipo().equalsIgnoreCase(comboTipo.getItemAt(i))){
+                        comboTipo.setSelectedIndex(i);
+                    }
+                }
+                campoSuperficie.setText(inmueble.getSuperficie()+"");
+                campoPrecio.setText(inmueble.getPrecio()+"");
+                int cantidadZonas = comboZona.getItemCount();
+                for(int i=1; i<cantidadZonas; i++){
+                    if(inmueble.getZona().equalsIgnoreCase(comboZona.getItemAt(i))){
+                        comboZona.setSelectedIndex(i);
+                    }
+                }
+                if(inmueble.isDisponible()){
+                    checkDisponible.setSelected(true);
+                }else{
+                    checkDisponible.setSelected(false);
+                }
+                
+            }
+        }catch(NumberFormatException ex){
+            if(campoId.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Para buscar debe llenar el campo de Id");  
+            }
+        }    
+    }//GEN-LAST:event_botonBuscarActionPerformed
+
+    private void campoIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIdKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57 || key == 8;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 5) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoIdKeyTyped
+
+    private void campoPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioKeyTyped
+        
+        int key = evt.getKeyChar();
+        boolean numero;
+        if(campoPrecio.getText().contains(".")){
+            numero = key >= 48 && key <= 57 || key == 8; 
+        }
+        else{
+            numero = key >= 48 && key <= 57 || key == 46 || key == 8;
+        }
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 5) {
+                JOptionPane.showMessageDialog(this, "En este campo solo puede ingresar números enteros o números decimales");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoPrecioKeyTyped
+
+    private void campoSuperficieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSuperficieKeyTyped
+        
+        int key = evt.getKeyChar();
+        boolean numero;
+        if(campoPrecio.getText().contains(".")){
+            numero = key >= 48 && key <= 57 || key == 8; 
+        }
+        else{
+            numero = key >= 48 && key <= 57 || key == 46 || key == 8;
+        }
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 5) {
+                JOptionPane.showMessageDialog(this, "En este campo solo puede ingresar números enteros o números decimales");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoSuperficieKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton botonBuscar;
+    private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonModificar;
     private javax.swing.JButton botonSalir;
@@ -227,4 +359,45 @@ private MenuPrincipal menuPrincipal;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarComboPropietario(){
+        
+        ArrayList<Propietario> propietarios = propietarioData.listarPropietarios();
+        
+        comboPropietario.addItem(null);
+        for(Propietario propietario: propietarios){
+            comboPropietario.addItem(propietario);
+            
+        }    
+    }
+    
+    private void cargarComboTipo(){
+        
+        comboTipo.addItem(null);
+        comboTipo.addItem("Local");
+        comboTipo.addItem("Depósito");
+        comboTipo.addItem("Oficina");
+        comboTipo.addItem("Casa");
+        comboTipo.addItem("Departamento");
+    }
+    
+    private void cargarComboZona(){
+        comboZona.addItem(null);
+        comboZona.addItem("Centro");
+        comboZona.addItem("Norte");
+        comboZona.addItem("Oeste");
+        comboZona.addItem("Este");
+        comboZona.addItem("Sur");
+    }
+
+    private void vaciarCampos(){
+        campoId.setText("");
+        comboPropietario.setSelectedIndex(0);
+        campoDireccion.setText("");
+        comboTipo.setSelectedIndex(0);
+        campoSuperficie.setText("");
+        campoPrecio.setText("");
+        comboZona.setSelectedIndex(0);
+        checkDisponible.setEnabled(false);
+    }
 }
