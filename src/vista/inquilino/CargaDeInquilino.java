@@ -8,13 +8,18 @@ package vista.inquilino;
 import accesoADatos.*;
 import entidades.*;
 import javax.swing.JOptionPane;
+import vista.MenuPrincipal;
 
 public class CargaDeInquilino extends javax.swing.JInternalFrame {
 
-    public CargaDeInquilino() {
+    private MenuPrincipal menuPrincipal;
+    private int aviso=0;
+    
+    public CargaDeInquilino(MenuPrincipal menuPrincipal) {
         initComponents();
+        this.menuPrincipal = menuPrincipal;
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -41,8 +46,8 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
         botonModificar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         campoNombre = new javax.swing.JTextField();
-
-        setClosable(true);
+        jButton1 = new javax.swing.JButton();
+        botonNuevo = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
         jLabel1.setText("Cargar datos");
@@ -115,6 +120,7 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
         });
 
         botonModificar.setText("Modificar");
+        botonModificar.setEnabled(false);
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonModificarActionPerformed(evt);
@@ -123,6 +129,21 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setText("ID");
+
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        botonNuevo.setText("Nuevo");
+        botonNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,23 +163,27 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(campoNombreGarante, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(campoDniGarante, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(botonGuardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BotonEliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botonModificar))
                             .addComponent(jLabel6)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(campoCuit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(botonbuscar1)))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(botonNuevo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(botonGuardar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(BotonEliminar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(botonModificar)
+                                    .addGap(37, 37, 37))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(33, 33, 33)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(campoCuit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(botonbuscar1))))))
                         .addGap(0, 32, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -219,12 +244,15 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(campoDniGarante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonModificar)
                     .addComponent(BotonEliminar)
-                    .addComponent(botonGuardar))
-                .addGap(32, 32, 32))
+                    .addComponent(botonGuardar)
+                    .addComponent(botonNuevo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -233,24 +261,23 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
     private void campoNombreGaranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreGaranteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNombreGaranteActionPerformed
-
+    
     public static boolean Validar(String datos) {
         return datos.matches("[a-zA-Z]*");
     }
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         try {
-            int cuit = Integer.parseInt(campoCuit.getText());
-            int id = Integer.parseInt(campoId.getText());
+            long cuit = Long.parseLong(campoCuit.getText());
             int dnigarante = Integer.parseInt(campoDniGarante.getText());
-
+            
             String apellido = campoApellido.getText();
             String nombre = campoNombre.getText();
             String lugartrabajo = campoLugarDeTrabajo.getText();
             String nombregarante = campoNombreGarante.getText();
-
+            
             int limitador = 0;
-
+            
             if (CargaDeInquilino.Validar(nombre)) {
                 nombre = campoNombre.getText();
             } else { // caso contrario
@@ -289,21 +316,23 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
             InquilinoData inqData = new InquilinoData();
             if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
                 inqData.agregarInquilino(inq);
+            }else{
+                JOptionPane.showMessageDialog(this, "verifique los datos ingresados");
             }
         } catch (NumberFormatException e) {
             if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
-                    || campoCuit.getText().isEmpty() || campoNombreGarante.getText().isEmpty()
-                    || campoNombreGarante.getText().isEmpty()) {
+                || campoCuit.getText().isEmpty() || campoNombreGarante.getText().isEmpty()
+                || campoLugarDeTrabajo.getText().isEmpty() || campoDniGarante.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No debe dejar espacios vacios");
             } else {
-                JOptionPane.showMessageDialog(this, "El Cuit y/O DNI del garante debe contener solo numeros");
+                JOptionPane.showMessageDialog(this, "El campo Cuit y/O DNI debe contener solo numeros");
             }
         }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         InquilinoData inqData = new InquilinoData();
-        int cuit = Integer.parseInt(campoCuit.getText());
+        long cuit = Long.parseLong(campoCuit.getText());
         int id = Integer.parseInt(campoId.getText());
         String apellido = campoApellido.getText();
         String nombre = campoNombre.getText();
@@ -339,17 +368,21 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
                 campoNombreGarante.setText(inq.getNombreGarante());
                 campoDniGarante.setText(Integer.toString(inq.getDniGarante()));
             }
-        }
+       }
+       if(campoId.getText().isEmpty()){
+           botonModificar.setEnabled(false);
+       }else{
+          botonModificar.setEnabled(true);
+       }
     }//GEN-LAST:event_botonbuscar1ActionPerformed
 
     private void campoCuitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCuitKeyTyped
         int key = evt.getKeyChar();
-        int aviso = 0;
         boolean numero = key >= 48 && key <= 57;
         if (!numero) {
             evt.consume();
             aviso++;
-            if (aviso == 5){
+            if (aviso == 5) {
                 JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
                 aviso = 0;
             }
@@ -358,11 +391,11 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
 
     private void campoDniGaranteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDniGaranteKeyTyped
         int key = evt.getKeyChar();
-        int aviso = 0;
         boolean numero = key >= 48 && key <= 57;
         if (!numero) {
             evt.consume();
-            if (aviso == 5){
+            aviso++;
+            if (aviso == 5) {
                 JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
                 aviso = 0;
             }
@@ -371,18 +404,46 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         try {
-            int CUIT = Integer.parseInt(campoCuit.getText());
+            long cuit = Long.parseLong(campoCuit.getText());
             InquilinoData inqData = new InquilinoData();
-            inqData.eliminarInquilino(CUIT);
+            inqData.eliminarInquilino(cuit);
+            checkEstado.setSelected(false);
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Para eliminar un alumno debe ingresar el CUIT");
+            JOptionPane.showMessageDialog(this, "Para eliminar un inquilino debe primero buscar uno");
         }
+        if(campoId.getText().isEmpty()){
+           botonModificar.setEnabled(false);
+       }else{
+          botonModificar.setEnabled(true);
+       }
     }//GEN-LAST:event_BotonEliminarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+        menuPrincipal.mostrarItemsEscritorio();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
+        campoApellido.setText("");
+        campoCuit.setText("");
+        campoDniGarante.setText("");
+        campoId.setText("");
+        campoLugarDeTrabajo.setText("");
+        campoNombre.setText("");
+        campoNombreGarante.setText("");
+        checkEstado.setSelected(false);
+        if(campoId.getText().isEmpty()){
+           botonModificar.setEnabled(false);
+       }else{
+          botonModificar.setEnabled(true);
+       }
+    }//GEN-LAST:event_botonNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonModificar;
+    private javax.swing.JButton botonNuevo;
     private javax.swing.JButton botonbuscar1;
     private javax.swing.JTextField campoApellido;
     private javax.swing.JTextField campoCuit;
@@ -392,6 +453,7 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
     private javax.swing.JTextField campoNombre;
     private javax.swing.JTextField campoNombreGarante;
     private javax.swing.JCheckBox checkEstado;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

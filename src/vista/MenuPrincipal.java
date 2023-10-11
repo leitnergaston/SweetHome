@@ -1,13 +1,16 @@
 package vista;
 
-import vista.propietario.CargaDePropietario;
+import vista.propietario.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import vista.inmueble.VerPorFiltros;
+import vista.contrato.*;
+import vista.inmueble.*;
+import vista.inquilino.*;
 
 public class MenuPrincipal extends javax.swing.JFrame {
+
     private final List<JButton> buttons = new ArrayList();
     private final List<JLabel> labels = new ArrayList();
 
@@ -26,18 +29,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         Escritorio = new javax.swing.JDesktopPane();
         label1 = new javax.swing.JLabel();
-        botonDatosPropietario = new javax.swing.JButton();
+        botonCargarPropietario = new javax.swing.JButton();
         botonVerPropietarios = new javax.swing.JButton();
         label2 = new javax.swing.JLabel();
-        botonDatosInmueble = new javax.swing.JButton();
+        botonCargarInmueble = new javax.swing.JButton();
         botonVerInmuebles = new javax.swing.JButton();
         botonVerTodos = new javax.swing.JButton();
         label3 = new javax.swing.JLabel();
-        botonDatosInquilino = new javax.swing.JButton();
+        botonCargarInquilino = new javax.swing.JButton();
         botonVerInquilinos = new javax.swing.JButton();
         botonVerPorFiltros = new javax.swing.JButton();
         label4 = new javax.swing.JLabel();
-        botonDatosContrato = new javax.swing.JButton();
+        botonCargarContrato = new javax.swing.JButton();
         botonVerContratos = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
 
@@ -51,13 +54,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         label1.setForeground(new java.awt.Color(0, 0, 0));
         label1.setText("Propietario");
 
-        botonDatosPropietario.setBackground(new java.awt.Color(255, 255, 255));
-        botonDatosPropietario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        botonDatosPropietario.setForeground(new java.awt.Color(0, 0, 0));
-        botonDatosPropietario.setText("Datos");
-        botonDatosPropietario.addActionListener(new java.awt.event.ActionListener() {
+        botonCargarPropietario.setBackground(new java.awt.Color(255, 255, 255));
+        botonCargarPropietario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonCargarPropietario.setForeground(new java.awt.Color(0, 0, 0));
+        botonCargarPropietario.setText("Cargar");
+        botonCargarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonDatosPropietarioActionPerformed(evt);
+                botonCargarPropietarioActionPerformed(evt);
             }
         });
 
@@ -70,10 +73,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         label2.setForeground(new java.awt.Color(0, 0, 0));
         label2.setText("Inmueble");
 
-        botonDatosInmueble.setBackground(new java.awt.Color(255, 255, 255));
-        botonDatosInmueble.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        botonDatosInmueble.setForeground(new java.awt.Color(0, 0, 0));
-        botonDatosInmueble.setText("Datos");
+        botonCargarInmueble.setBackground(new java.awt.Color(255, 255, 255));
+        botonCargarInmueble.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonCargarInmueble.setForeground(new java.awt.Color(0, 0, 0));
+        botonCargarInmueble.setText("Cargar");
+        botonCargarInmueble.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCargarInmuebleActionPerformed(evt);
+            }
+        });
 
         botonVerInmuebles.setBackground(new java.awt.Color(255, 255, 255));
         botonVerInmuebles.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -89,10 +97,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         label3.setForeground(new java.awt.Color(0, 0, 0));
         label3.setText("Inquilino");
 
-        botonDatosInquilino.setBackground(new java.awt.Color(255, 255, 255));
-        botonDatosInquilino.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        botonDatosInquilino.setForeground(new java.awt.Color(0, 0, 0));
-        botonDatosInquilino.setText("Datos");
+        botonCargarInquilino.setBackground(new java.awt.Color(255, 255, 255));
+        botonCargarInquilino.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonCargarInquilino.setForeground(new java.awt.Color(0, 0, 0));
+        botonCargarInquilino.setText("Cargar");
+        botonCargarInquilino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCargarInquilinoActionPerformed(evt);
+            }
+        });
 
         botonVerInquilinos.setBackground(new java.awt.Color(255, 255, 255));
         botonVerInquilinos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -113,10 +126,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         label4.setForeground(new java.awt.Color(0, 0, 0));
         label4.setText("Contratos");
 
-        botonDatosContrato.setBackground(new java.awt.Color(255, 255, 255));
-        botonDatosContrato.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        botonDatosContrato.setForeground(new java.awt.Color(0, 0, 0));
-        botonDatosContrato.setText("Datos");
+        botonCargarContrato.setBackground(new java.awt.Color(255, 255, 255));
+        botonCargarContrato.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonCargarContrato.setForeground(new java.awt.Color(0, 0, 0));
+        botonCargarContrato.setText("Cargar");
+        botonCargarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCargarContratoActionPerformed(evt);
+            }
+        });
 
         botonVerContratos.setBackground(new java.awt.Color(255, 255, 255));
         botonVerContratos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -134,18 +152,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         Escritorio.setLayer(label1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        Escritorio.setLayer(botonDatosPropietario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(botonCargarPropietario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(botonVerPropietarios, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(label2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        Escritorio.setLayer(botonDatosInmueble, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(botonCargarInmueble, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(botonVerInmuebles, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(botonVerTodos, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(label3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        Escritorio.setLayer(botonDatosInquilino, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(botonCargarInquilino, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(botonVerInquilinos, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(botonVerPorFiltros, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(label4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        Escritorio.setLayer(botonDatosContrato, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(botonCargarContrato, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(botonVerContratos, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(botonSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -163,31 +181,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(EscritorioLayout.createSequentialGroup()
-                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(botonDatosPropietario)
-                            .addComponent(botonDatosInmueble))
-                        .addGap(18, 18, 18)
-                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonVerPropietarios)
-                            .addGroup(EscritorioLayout.createSequentialGroup()
-                                .addComponent(botonVerInmuebles)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botonVerTodos)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonVerPorFiltros))))
-                    .addGroup(EscritorioLayout.createSequentialGroup()
-                        .addComponent(botonDatosInquilino)
+                        .addComponent(botonCargarInquilino)
                         .addGap(18, 18, 18)
                         .addComponent(botonVerInquilinos))
                     .addGroup(EscritorioLayout.createSequentialGroup()
-                        .addComponent(botonDatosContrato)
+                        .addComponent(botonCargarContrato)
                         .addGap(18, 18, 18)
-                        .addComponent(botonVerContratos)))
-                .addContainerGap(160, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonSalir)
-                .addContainerGap())
+                        .addComponent(botonVerContratos))
+                    .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(botonSalir)
+                        .addGroup(EscritorioLayout.createSequentialGroup()
+                            .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(botonCargarPropietario)
+                                .addComponent(botonCargarInmueble))
+                            .addGap(18, 18, 18)
+                            .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(botonVerPropietarios)
+                                .addGroup(EscritorioLayout.createSequentialGroup()
+                                    .addComponent(botonVerInmuebles)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(botonVerTodos)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(botonVerPorFiltros))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,53 +213,57 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(83, 83, 83)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label1)
-                    .addComponent(botonDatosPropietario)
+                    .addComponent(botonCargarPropietario)
                     .addComponent(botonVerPropietarios))
                 .addGap(71, 71, 71)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label2)
-                    .addComponent(botonDatosInmueble)
+                    .addComponent(botonCargarInmueble)
                     .addComponent(botonVerInmuebles)
                     .addComponent(botonVerTodos)
                     .addComponent(botonVerPorFiltros))
-                .addGap(76, 76, 76)
+                .addGap(70, 70, 70)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label3)
-                    .addComponent(botonDatosInquilino)
+                    .addComponent(botonCargarInquilino)
                     .addComponent(botonVerInquilinos))
                 .addGap(75, 75, 75)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(label4)
                     .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botonDatosContrato)
+                        .addComponent(botonCargarContrato)
                         .addComponent(botonVerContratos)))
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Escritorio)
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Escritorio)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonDatosPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDatosPropietarioActionPerformed
+    private void botonCargarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarPropietarioActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
         CargaDePropietario cargaPropietario = new CargaDePropietario(this);
         cargaPropietario.setVisible(true);
         Escritorio.add(cargaPropietario);
         Escritorio.moveToFront(cargaPropietario);
-        
-        
-    }//GEN-LAST:event_botonDatosPropietarioActionPerformed
+
+    }//GEN-LAST:event_botonCargarPropietarioActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         System.exit(0);
@@ -258,7 +278,33 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Escritorio.moveToFront(verPorFiltros);
     }//GEN-LAST:event_botonVerPorFiltrosActionPerformed
 
-    
+    private void botonCargarInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarInmuebleActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        CargaDeInmueble CargaDeInmueble = new CargaDeInmueble(this);
+        CargaDeInmueble.setVisible(true);
+        Escritorio.add(CargaDeInmueble);
+        Escritorio.moveToFront(CargaDeInmueble);
+    }//GEN-LAST:event_botonCargarInmuebleActionPerformed
+
+    private void botonCargarInquilinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarInquilinoActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        CargaDeInquilino CargaDeInquilino = new CargaDeInquilino(this);
+        CargaDeInquilino.setVisible(true);
+        Escritorio.add(CargaDeInquilino);
+        Escritorio.moveToFront(CargaDeInquilino);
+    }//GEN-LAST:event_botonCargarInquilinoActionPerformed
+
+    private void botonCargarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarContratoActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        CargaDeContrato CargaDeContrato = new CargaDeContrato(this);
+        CargaDeContrato.setVisible(true);
+        Escritorio.add(CargaDeContrato);
+        Escritorio.moveToFront(CargaDeContrato);
+    }//GEN-LAST:event_botonCargarContratoActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -293,10 +339,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
-    private javax.swing.JButton botonDatosContrato;
-    private javax.swing.JButton botonDatosInmueble;
-    private javax.swing.JButton botonDatosInquilino;
-    private javax.swing.JButton botonDatosPropietario;
+    private javax.swing.JButton botonCargarContrato;
+    private javax.swing.JButton botonCargarInmueble;
+    private javax.swing.JButton botonCargarInquilino;
+    private javax.swing.JButton botonCargarPropietario;
     private javax.swing.JButton botonSalir;
     private javax.swing.JButton botonVerContratos;
     private javax.swing.JButton botonVerInmuebles;
@@ -311,41 +357,38 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
     // End of variables declaration//GEN-END:variables
-    
-    public void mostrarItemsEscritorio(){
+
+    public void mostrarItemsEscritorio() {
         Escritorio.repaint();
-        
-        for (JButton button : buttons){
+
+        for (JButton button : buttons) {
             Escritorio.add(button);
         }
-        
-        for (JLabel label : labels){
+
+        for (JLabel label : labels) {
             Escritorio.add(label);
         }
     }
-    
-    
-    public void cargarBotones(){
-        buttons.add(botonDatosPropietario);
+
+    public void cargarBotones() {
+        buttons.add(botonCargarPropietario);
         buttons.add(botonVerPropietarios);
-        buttons.add(botonDatosInmueble);
+        buttons.add(botonCargarInmueble);
         buttons.add(botonVerInmuebles);
         buttons.add(botonVerTodos);
         buttons.add(botonVerPorFiltros);
-        buttons.add(botonDatosInquilino);
+        buttons.add(botonCargarInquilino);
         buttons.add(botonVerInquilinos);
-        buttons.add(botonDatosContrato);
+        buttons.add(botonCargarContrato);
         buttons.add(botonVerContratos);
         buttons.add(botonSalir);
     }
-    
-    public void cargarLabels(){
+
+    public void cargarLabels() {
         labels.add(label1);
         labels.add(label2);
         labels.add(label3);
         labels.add(label4);
     }
-    
-   
 
 }

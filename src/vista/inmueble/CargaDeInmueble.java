@@ -6,18 +6,20 @@
 package vista.inmueble;
 
 import entidades.*;
+import vista.MenuPrincipal;
 
 /**
  *
  * @author ale77
  */
 public class CargaDeInmueble extends javax.swing.JInternalFrame {
-
+private MenuPrincipal menuPrincipal;
     /**
      * Creates new form CargaDeInmueble
      */
-    public CargaDeInmueble() {
+    public CargaDeInmueble(MenuPrincipal menuPrincipal) {
         initComponents();
+        this.menuPrincipal = menuPrincipal;
     }
 
     /**

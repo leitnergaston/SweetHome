@@ -54,11 +54,11 @@ public class InquilinoData {
     }
 
     //====== METODO ELIMINAR INQUILINO ======//
-    public void eliminarInquilino(int cuit) {
+    public void eliminarInquilino(long cuit) {
         try {
             String sql = "UPDATE inquilino SET estado = 0 WHERE cuit = ? AND estado = 1";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, cuit);
+            ps.setLong(1, cuit);
             int fila = ps.executeUpdate();
 
             if (fila == 1) {
@@ -124,9 +124,9 @@ public class InquilinoData {
                 inquilino.setNombreGarante(rs.getString("nombreGarante"));
                 inquilino.setEstado(rs.getBoolean("estado"));
                 JOptionPane.showMessageDialog(null, "inquilino encontrado");
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe el inquilino");
             }
+//            } else {
+//                JOptionPane.showMessageDialog(null, "No existe el inquilino");
             ps.close(); // cerramos el objeto ps
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inquilino " + ex.getMessage());
@@ -138,7 +138,7 @@ public class InquilinoData {
     public Inquilino buscarinquilinoCUIT(long cuit) {
         Inquilino inquilino = null; // declarar un alumno para almacenar info si se encuentra en la bd
         String sql = "SELECT idInquilino, apellido, nombre, lugarDeTrabajo, dniGarante,"
-                   + " nombreGarante, estado FROM inquilino  WHERE cuit = ? "; // consulta sql
+                + " nombreGarante, estado FROM inquilino  WHERE cuit = ? "; // consulta sql
         PreparedStatement ps = null; // declarar un ps para preparar la consulta sql
         try {
             ps = con.prepareStatement(sql); // objeto ps a partir de la consulta sql 
@@ -157,9 +157,10 @@ public class InquilinoData {
                 inquilino.setNombreGarante(rs.getString("nombreGarante"));
                 inquilino.setEstado(rs.getBoolean("estado"));
                 JOptionPane.showMessageDialog(null, "inquilino encontrado");
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe el inquilino");
             }
+//            } else {
+//                JOptionPane.showMessageDialog(null, "No existe el inquilino");
+
             ps.close(); // cerramos el objeto ps
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inquilino " + ex.getMessage());
