@@ -111,6 +111,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonVerInquilinos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonVerInquilinos.setForeground(new java.awt.Color(0, 0, 0));
         botonVerInquilinos.setText("Ver inquilinos");
+        botonVerInquilinos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerInquilinosActionPerformed(evt);
+            }
+        });
 
         botonVerPorFiltros.setBackground(new java.awt.Color(255, 255, 255));
         botonVerPorFiltros.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -304,6 +309,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Escritorio.add(CargaDeContrato);
         Escritorio.moveToFront(CargaDeContrato);
     }//GEN-LAST:event_botonCargarContratoActionPerformed
+
+    private void botonVerInquilinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerInquilinosActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        VerInquilinos VerInquilinos = new VerInquilinos(this);
+        VerInquilinos.setVisible(true);
+        Escritorio.add(VerInquilinos);
+        Escritorio.moveToFront(VerInquilinos);
+    }//GEN-LAST:event_botonVerInquilinosActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
