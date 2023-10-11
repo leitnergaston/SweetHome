@@ -40,6 +40,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         botonSalir = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         campoDni = new javax.swing.JTextField();
+        botonNuevo = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Carga de Datos");
@@ -61,6 +62,11 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         checkEstado.setText("Estado");
 
         BotonEliminar.setText("Eliminar");
+        BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarActionPerformed(evt);
+            }
+        });
 
         botonGuardar.setText("Guardar");
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +76,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         });
 
         botonModificar.setText("Modificar");
+        botonModificar.setEnabled(false);
 
         campoId.setEditable(false);
 
@@ -86,6 +93,19 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         });
 
         jLabel9.setText("ID");
+
+        campoDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoDniKeyTyped(evt);
+            }
+        });
+
+        botonNuevo.setText("Nuevo");
+        botonNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,18 +149,21 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)))
                 .addComponent(botonBuscar)
                 .addGap(0, 27, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(botonGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotonEliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonModificar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(botonNuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BotonEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonModificar)
+                        .addGap(60, 60, 60))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,12 +211,13 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
                     .addComponent(campoMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(checkEstado)
-                .addGap(39, 39, 39)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonModificar)
                     .addComponent(botonGuardar)
-                    .addComponent(BotonEliminar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(BotonEliminar)
+                    .addComponent(botonNuevo))
+                .addGap(13, 13, 13)
                 .addComponent(botonSalir)
                 .addContainerGap())
         );
@@ -213,67 +237,96 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
     //====== BOTON GUARDAR ======//
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         try {
-            String nombre = campoNombre.getText(); // guardar y obtener el nombre del textField
-            String apellido = campoApellido.getText(); // guardar y obtener el apellido del textField
+            
+            int dni = Integer.parseInt(campoDni.getText());
+            String nombre = campoNombre.getText();
+            String apellido = campoApellido.getText();
             String domicilio = campoDomicilio.getText();
             String telefono = campoTelefono.getText();
             String mail = campoMail.getText();
-            int limitador = 0; // variable para verificar si se puede agregar un alumno
-            if (CargaDePropietario.Validar(nombre)) { // verificamos si el campo contiene solo letras
-                nombre = campoNombre.getText(); // si es valido obtenemos y guardamos el nombre del textField
+            
+            int limitador = 0;
+            
+            if (CargaDePropietario.Validar(nombre)) {
+                nombre = campoNombre.getText();
             } else { // caso contrario
-                JOptionPane.showMessageDialog(this, "Solo letras en el campo nombre"); // msje de alerta
-                campoNombre.setText(""); // limpiamos el campo
-                limitador++; // aumentamos el limitador
+                JOptionPane.showMessageDialog(this, "Solo letras en el campo nombre");
+                campoNombre.setText("");
+                limitador++;
             }
-
-            // verificamos lo mismo para el apellido
             if (CargaDePropietario.Validar(apellido)) {
-                apellido = campoApellido.getText(); // Obtenemos y guardamos el epellido del textField
+                apellido = campoApellido.getText(); //
             } else {
                 JOptionPane.showMessageDialog(this, "Solo letras en el campo apellido");
                 campoApellido.setText("");
                 limitador++;
             }
-
-            int dni = Integer.parseInt(campoDni.getText()); // Obtenemos y guardamos el documento y Parsearlo a entero
+            
             boolean estado;
             if (checkEstado.isSelected()) {//is selected detecta si el check esta marcado o no
                 estado = true;
             } else {
                 estado = false;
             }
-            Propietario propietario = new Propietario(dni, apellido, nombre, domicilio, telefono, mail, estado);
-            PropietarioData propietarioData = new PropietarioData();
+            
+            Propietario prop = new Propietario(dni, apellido, nombre, domicilio, telefono, mail, estado);
+            PropietarioData propData = new PropietarioData();
+            
             if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
-                if (propietarioData.buscarPropietarioPorDni(dni) == null) { // si es null es porq no existe alumno con ese dni
-                    propietarioData.crearPropietario(propietario); // Llamamos al metodo guardarAlumno y pasamos el alumno nuevo creado anteriormente
-                    limpiarCampos();
-                }
+                propData.crearPropietario(prop);
+                limpiarCampos();
+            }else{
+                JOptionPane.showMessageDialog(this, "verifique los datos ingresados");
             }
         } catch (NumberFormatException e) {
-            if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty() || campoDomicilio.getText().isEmpty() || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()){
+            if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
+                || campoDni.getText().isEmpty() || campoDomicilio.getText().isEmpty()
+                || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No debe dejar espacios vacios");
             } else {
-                JOptionPane.showMessageDialog(this, "El documento debe contener solo numeros");
+                JOptionPane.showMessageDialog(this, "El campo DNI debe contener solo numeros");
             }
         }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
-    private void campoDniKeyTyped(java.awt.event.KeyEvent evt) {
-        int key = evt.getKeyChar();//obtiene el caracter de la tecla presionada y devuelve el valor del caracter
-        boolean numero = key >= 48 && key <= 57;//se compara con el codigo ASCII para saber si es un numero
-        if (!numero) { // si no se presiona un numero
-            evt.consume();//"destruye" o evita mostrar la letra ingresada
+    private void campoDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDniKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        if (!numero) {
+            evt.consume();
         }
+    }//GEN-LAST:event_campoDniKeyTyped
 
-    }
+    private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_botonNuevoActionPerformed
+
+    //====== BOTON ELIMINAR ======//
+    private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
+        try {
+            int dni = Integer.parseInt(campoDni.getText());
+            PropietarioData propData = new PropietarioData();
+            propData.eliminarPropietario(dni);
+            checkEstado.setSelected(false);
+        }catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ingresar un dni");
+        }
+        if (campoId.getText().isEmpty()) {
+            botonModificar.setEnabled(false);
+        } else {
+            botonModificar.setEnabled(true);
+        }
+    }//GEN-LAST:event_BotonEliminarActionPerformed
+
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonModificar;
+    private javax.swing.JButton botonNuevo;
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextField campoApellido;
     private javax.swing.JTextField campoDni;
