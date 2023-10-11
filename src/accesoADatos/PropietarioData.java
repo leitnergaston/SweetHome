@@ -57,12 +57,11 @@ public class PropietarioData {
 
             if (rs.next()) {
                 propietario.setIdPropietario(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Propietario agregado");
+                JOptionPane.showMessageDialog(null, "Propietario agregado con exito");
             }
             ps.close();
 
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "Error al crear el propietario: " + ex.getMessage());
         }
     }
@@ -149,9 +148,9 @@ public class PropietarioData {
             prop.setMail(rs.getString("eMail"));
             prop.setEstado(rs.getBoolean("estado"));
             
-        }else {
-                JOptionPane.showMessageDialog(null, "No existe el propietario");
-            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe el priopietario");
+        }
             ps.close(); 
         }catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario" + ex.getMessage());
@@ -185,9 +184,7 @@ public class PropietarioData {
             prop.setMail(rs.getString("eMail"));
             prop.setEstado(rs.getBoolean("estado"));
             
-        }else {
-                JOptionPane.showMessageDialog(null, "No existe el propietario");
-            }
+        }
             ps.close(); 
         }catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario" + ex.getMessage());
