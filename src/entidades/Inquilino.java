@@ -105,7 +105,7 @@ public class Inquilino {
     
     @Override
     public String toString() {
-        return "Inquilino{" + "nombre=" + nombre + ", apellido=" + apellido + ", cuit=" + cuit + '}';
+        return   nombre + " " + apellido + " " + cuit ;
     }
     
     
