@@ -68,8 +68,18 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         jLFechaIni.setText("Fecha de Inicio");
 
         jBotonCrear.setText("Crear");
+        jBotonCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBotonCrearActionPerformed(evt);
+            }
+        });
 
         jBotonModificar.setText("Modificar");
+        jBotonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBotonModificarActionPerformed(evt);
+            }
+        });
 
         jBotonEliminar.setText("Eliminar");
         jBotonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +89,11 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         });
 
         jBotonBuscar.setText("Buscar");
+        jBotonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBotonBuscarActionPerformed(evt);
+            }
+        });
 
         jLPrecio.setText("Precio Alquiler");
 
@@ -155,9 +170,8 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                                 .addGap(68, 68, 68)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLContrato, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTFidContrato, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                        .addComponent(jComboInmueble, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(jTFidContrato, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                    .addComponent(jComboInmueble, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -206,18 +220,34 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public static boolean Validar(String datos) {
+        return datos.matches("[a-zA-Z]*");
+    }
+    
     private void jBotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonEliminarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jBotonEliminarActionPerformed
 
     private void jBotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonSalirActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        menuPrincipal.mostrarItemsEscritorio();
     }//GEN-LAST:event_jBotonSalirActionPerformed
 
     private void jCheckVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckVigenteActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jCheckVigenteActionPerformed
+
+    private void jBotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBotonModificarActionPerformed
+
+    private void jBotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBotonBuscarActionPerformed
+
+    private void jBotonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonCrearActionPerformed
+                    
+    }//GEN-LAST:event_jBotonCrearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

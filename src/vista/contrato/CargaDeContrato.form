@@ -87,10 +87,8 @@
                               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLContrato" pref="170" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTFidContrato" pref="170" max="32767" attributes="0"/>
-                                      <Component id="jComboInmueble" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jTFidContrato" pref="170" max="32767" attributes="0"/>
+                                  <Component id="jComboInmueble" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -194,11 +192,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotonCrearActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBotonModificar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotonModificarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBotonEliminar">
       <Properties>
@@ -214,6 +218,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotonBuscarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTFPrecioAlquiler">
     </Component>

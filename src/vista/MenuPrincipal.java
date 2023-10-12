@@ -150,6 +150,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonVerContratos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonVerContratos.setForeground(new java.awt.Color(0, 0, 0));
         botonVerContratos.setText("Ver contratos");
+        botonVerContratos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerContratosActionPerformed(evt);
+            }
+        });
 
         botonSalir.setBackground(new java.awt.Color(234, 65, 65));
         botonSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -314,8 +319,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Escritorio.add(CargaDeContrato);
         Escritorio.moveToFront(CargaDeContrato);
     }//GEN-LAST:event_botonCargarContratoActionPerformed
-
-
+    
     private void botonVerInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerInmueblesActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
@@ -333,6 +337,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Escritorio.add(VerInquilinos);
         Escritorio.moveToFront(VerInquilinos);
     }//GEN-LAST:event_botonVerInquilinosActionPerformed
+
+    private void botonVerContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerContratosActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        VerContratos contrato = new VerContratos(this);
+        contrato.setVisible(true);
+        Escritorio.add(contrato);
+        Escritorio.moveToFront(contrato);
+    }//GEN-LAST:event_botonVerContratosActionPerformed
 
 
     public static void main(String args[]) {
