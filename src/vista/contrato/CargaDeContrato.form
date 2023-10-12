@@ -24,14 +24,14 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jBotonBuscar" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoBotonBuscar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jBotonCrear" min="-2" max="-2" attributes="0"/>
+                                      <Component id="campoBotonCrear" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -40,25 +40,25 @@
                                               <Component id="jLPrecio" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jCheckVigente" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTFPrecioAlquiler" min="-2" pref="170" max="-2" attributes="0"/>
+                                                  <Component id="campoCheckVigente" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="campoPrecioAlquiler" min="-2" pref="170" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jBotonModificar" min="-2" max="-2" attributes="0"/>
+                                              <Component id="campoBotonModificar" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jBotonSalir" min="-2" max="-2" attributes="0"/>
+                              <Component id="campoBotonSalir" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLFechaFin" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jDateFechaFin" pref="170" max="32767" attributes="0"/>
+                                  <Component id="campoDateFechaFin" pref="170" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -67,16 +67,16 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jDateFechaInicio" pref="171" max="32767" attributes="0"/>
-                                      <Component id="jComboInquilino" max="32767" attributes="0"/>
+                                      <Component id="campoDateFechaInicio" pref="171" max="32767" attributes="0"/>
+                                      <Component id="ComboInquilino" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jBotonEliminar" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckRenovado" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoBotonEliminar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoCheckRenovado" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -87,8 +87,8 @@
                               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLContrato" pref="170" max="32767" attributes="0"/>
-                                  <Component id="jTFidContrato" pref="170" max="32767" attributes="0"/>
-                                  <Component id="jComboInmueble" max="32767" attributes="0"/>
+                                  <Component id="campoIdContrato" pref="170" max="32767" attributes="0"/>
+                                  <Component id="ComboInmueble" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -106,46 +106,46 @@
               <Component id="jLContrato" min="-2" pref="28" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTFidContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoIdContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLIdContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBotonBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoBotonBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLInmueble" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboInmueble" min="-2" max="-2" attributes="0"/>
+                  <Component id="ComboInmueble" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLInquilino" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboInquilino" min="-2" max="-2" attributes="0"/>
+                  <Component id="ComboInquilino" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jDateFechaInicio" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoDateFechaInicio" min="-2" max="-2" attributes="0"/>
                   <Component id="jLFechaIni" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLFechaFin" min="-2" max="-2" attributes="0"/>
-                  <Component id="jDateFechaFin" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoDateFechaFin" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTFPrecioAlquiler" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoPrecioAlquiler" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jCheckRenovado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckVigente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoCheckRenovado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoCheckVigente" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jBotonEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBotonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBotonCrear" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBotonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoBotonEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoBotonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoBotonCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoBotonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -188,48 +188,48 @@
         <Property name="text" type="java.lang.String" value="Fecha de Inicio"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jBotonCrear">
+    <Component class="javax.swing.JButton" name="campoBotonCrear">
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotonCrearActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoBotonCrearActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jBotonModificar">
+    <Component class="javax.swing.JButton" name="campoBotonModificar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotonModificarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoBotonModificarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jBotonEliminar">
+    <Component class="javax.swing.JButton" name="campoBotonEliminar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotonEliminarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoBotonEliminarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFidContrato">
+    <Component class="javax.swing.JTextField" name="campoIdContrato">
     </Component>
-    <Component class="javax.swing.JButton" name="jBotonBuscar">
+    <Component class="javax.swing.JButton" name="campoBotonBuscar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotonBuscarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoBotonBuscarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFPrecioAlquiler">
+    <Component class="javax.swing.JTextField" name="campoPrecioAlquiler">
     </Component>
     <Component class="javax.swing.JLabel" name="jLPrecio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Precio Alquiler"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckRenovado">
+    <Component class="javax.swing.JCheckBox" name="campoCheckRenovado">
       <Properties>
         <Property name="text" type="java.lang.String" value="Renovado"/>
       </Properties>
@@ -239,27 +239,27 @@
         <Property name="text" type="java.lang.String" value="Fecha de Finalizaci&#xf3;n"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jBotonSalir">
+    <Component class="javax.swing.JButton" name="campoBotonSalir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBotonSalirActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoBotonSalirActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckVigente">
+    <Component class="javax.swing.JCheckBox" name="campoCheckVigente">
       <Properties>
         <Property name="text" type="java.lang.String" value="Vigente"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckVigenteActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCheckVigenteActionPerformed"/>
       </Events>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateFechaFin">
+    <Component class="com.toedter.calendar.JDateChooser" name="campoDateFechaFin">
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateFechaInicio">
+    <Component class="com.toedter.calendar.JDateChooser" name="campoDateFechaInicio">
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboInmueble">
+    <Component class="javax.swing.JComboBox" name="ComboInmueble">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
@@ -269,7 +269,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Inmueble&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboInquilino">
+    <Component class="javax.swing.JComboBox" name="ComboInquilino">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>

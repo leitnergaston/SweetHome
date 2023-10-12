@@ -5,8 +5,14 @@
  */
 package vista.contrato;
 
+import accesoADatos.ContratoData;
+import accesoADatos.InmuebleData;
+import accesoADatos.InquilinoData;
+import entidades.Contrato;
 import entidades.Inmueble;
 import entidades.Inquilino;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import vista.MenuPrincipal;
 
 /**
@@ -15,12 +21,19 @@ import vista.MenuPrincipal;
  */
 public class CargaDeContrato extends javax.swing.JInternalFrame {
     private MenuPrincipal menuPrincipal;
+    private ContratoData contratoData = new ContratoData();
+    private InmuebleData inmuebleData = new InmuebleData();
+    private InquilinoData inquilinoData = new InquilinoData();
     /**
      * Creates new form CargaDeContrato
      */
     public CargaDeContrato(MenuPrincipal menuPrincipal) {
         initComponents();
         this.menuPrincipal = menuPrincipal;
+        cargarComboInquilino();
+        cargarComboInmueble();
+        vaciarCampos();
+        
     }
 
     /**
@@ -37,21 +50,21 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         jLInmueble = new javax.swing.JLabel();
         jLInquilino = new javax.swing.JLabel();
         jLFechaIni = new javax.swing.JLabel();
-        jBotonCrear = new javax.swing.JButton();
-        jBotonModificar = new javax.swing.JButton();
-        jBotonEliminar = new javax.swing.JButton();
-        jTFidContrato = new javax.swing.JTextField();
-        jBotonBuscar = new javax.swing.JButton();
-        jTFPrecioAlquiler = new javax.swing.JTextField();
+        campoBotonCrear = new javax.swing.JButton();
+        campoBotonModificar = new javax.swing.JButton();
+        campoBotonEliminar = new javax.swing.JButton();
+        campoIdContrato = new javax.swing.JTextField();
+        campoBotonBuscar = new javax.swing.JButton();
+        campoPrecioAlquiler = new javax.swing.JTextField();
         jLPrecio = new javax.swing.JLabel();
-        jCheckRenovado = new javax.swing.JCheckBox();
+        campoCheckRenovado = new javax.swing.JCheckBox();
         jLFechaFin = new javax.swing.JLabel();
-        jBotonSalir = new javax.swing.JButton();
-        jCheckVigente = new javax.swing.JCheckBox();
-        jDateFechaFin = new com.toedter.calendar.JDateChooser();
-        jDateFechaInicio = new com.toedter.calendar.JDateChooser();
-        jComboInmueble = new javax.swing.JComboBox<>();
-        jComboInquilino = new javax.swing.JComboBox<>();
+        campoBotonSalir = new javax.swing.JButton();
+        campoCheckVigente = new javax.swing.JCheckBox();
+        campoDateFechaFin = new com.toedter.calendar.JDateChooser();
+        campoDateFechaInicio = new com.toedter.calendar.JDateChooser();
+        ComboInmueble = new javax.swing.JComboBox<>();
+        ComboInquilino = new javax.swing.JComboBox<>();
 
         jLContrato.setBackground(new java.awt.Color(255, 204, 204));
         jLContrato.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -67,51 +80,51 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
 
         jLFechaIni.setText("Fecha de Inicio");
 
-        jBotonCrear.setText("Crear");
-        jBotonCrear.addActionListener(new java.awt.event.ActionListener() {
+        campoBotonCrear.setText("Crear");
+        campoBotonCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBotonCrearActionPerformed(evt);
+                campoBotonCrearActionPerformed(evt);
             }
         });
 
-        jBotonModificar.setText("Modificar");
-        jBotonModificar.addActionListener(new java.awt.event.ActionListener() {
+        campoBotonModificar.setText("Modificar");
+        campoBotonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBotonModificarActionPerformed(evt);
+                campoBotonModificarActionPerformed(evt);
             }
         });
 
-        jBotonEliminar.setText("Eliminar");
-        jBotonEliminar.addActionListener(new java.awt.event.ActionListener() {
+        campoBotonEliminar.setText("Eliminar");
+        campoBotonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBotonEliminarActionPerformed(evt);
+                campoBotonEliminarActionPerformed(evt);
             }
         });
 
-        jBotonBuscar.setText("Buscar");
-        jBotonBuscar.addActionListener(new java.awt.event.ActionListener() {
+        campoBotonBuscar.setText("Buscar");
+        campoBotonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBotonBuscarActionPerformed(evt);
+                campoBotonBuscarActionPerformed(evt);
             }
         });
 
         jLPrecio.setText("Precio Alquiler");
 
-        jCheckRenovado.setText("Renovado");
+        campoCheckRenovado.setText("Renovado");
 
         jLFechaFin.setText("Fecha de Finalización");
 
-        jBotonSalir.setText("Salir");
-        jBotonSalir.addActionListener(new java.awt.event.ActionListener() {
+        campoBotonSalir.setText("Salir");
+        campoBotonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBotonSalirActionPerformed(evt);
+                campoBotonSalirActionPerformed(evt);
             }
         });
 
-        jCheckVigente.setText("Vigente");
-        jCheckVigente.addActionListener(new java.awt.event.ActionListener() {
+        campoCheckVigente.setText("Vigente");
+        campoCheckVigente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckVigenteActionPerformed(evt);
+                campoCheckVigenteActionPerformed(evt);
             }
         });
 
@@ -124,13 +137,13 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBotonBuscar))
+                        .addComponent(campoBotonBuscar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jBotonCrear)
+                                        .addComponent(campoBotonCrear)
                                         .addGap(272, 272, 272))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -138,31 +151,31 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                                                 .addComponent(jLPrecio)
                                                 .addGap(49, 49, 49)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jCheckVigente)
-                                                    .addComponent(jTFPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(campoCheckVigente)
+                                                    .addComponent(campoPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jBotonModificar)
+                                                .addComponent(campoBotonModificar)
                                                 .addGap(99, 99, 99)))
                                         .addGap(53, 53, 53)))
-                                .addComponent(jBotonSalir))
+                                .addComponent(campoBotonSalir))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLFechaFin)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jDateFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                                    .addComponent(campoDateFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLInquilino)
                                         .addComponent(jLFechaIni))
                                     .addGap(47, 47, 47)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jDateFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                                        .addComponent(jComboInquilino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(campoDateFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                        .addComponent(ComboInquilino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(233, 233, 233)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jBotonEliminar)
-                                    .addComponent(jCheckRenovado)))
+                                    .addComponent(campoBotonEliminar)
+                                    .addComponent(campoCheckRenovado)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLInmueble)
@@ -170,8 +183,8 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                                 .addGap(68, 68, 68)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLContrato, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                    .addComponent(jTFidContrato, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                    .addComponent(jComboInmueble, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(campoIdContrato, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                    .addComponent(ComboInmueble, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -182,39 +195,39 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                 .addComponent(jLContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFidContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoIdContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLIdContrato)
-                    .addComponent(jBotonBuscar))
+                    .addComponent(campoBotonBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLInmueble)
-                    .addComponent(jComboInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLInquilino)
-                    .addComponent(jComboInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLFechaIni))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLFechaFin)
-                    .addComponent(jDateFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoDateFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLPrecio)
-                    .addComponent(jTFPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckRenovado)
-                    .addComponent(jCheckVigente))
+                    .addComponent(campoCheckRenovado)
+                    .addComponent(campoCheckVigente))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBotonEliminar)
-                    .addComponent(jBotonModificar)
-                    .addComponent(jBotonCrear)
-                    .addComponent(jBotonSalir))
+                    .addComponent(campoBotonEliminar)
+                    .addComponent(campoBotonModificar)
+                    .addComponent(campoBotonCrear)
+                    .addComponent(campoBotonSalir))
                 .addContainerGap())
         );
 
@@ -224,44 +237,54 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         return datos.matches("[a-zA-Z]*");
     }
     
-    private void jBotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonEliminarActionPerformed
+    private void campoBotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonEliminarActionPerformed
         
-    }//GEN-LAST:event_jBotonEliminarActionPerformed
+    }//GEN-LAST:event_campoBotonEliminarActionPerformed
 
-    private void jBotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonSalirActionPerformed
+    private void campoBotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonSalirActionPerformed
         dispose();
         menuPrincipal.mostrarItemsEscritorio();
-    }//GEN-LAST:event_jBotonSalirActionPerformed
+    }//GEN-LAST:event_campoBotonSalirActionPerformed
 
-    private void jCheckVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckVigenteActionPerformed
+    private void campoCheckVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCheckVigenteActionPerformed
        
-    }//GEN-LAST:event_jCheckVigenteActionPerformed
+    }//GEN-LAST:event_campoCheckVigenteActionPerformed
 
-    private void jBotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonModificarActionPerformed
+    private void campoBotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jBotonModificarActionPerformed
+    }//GEN-LAST:event_campoBotonModificarActionPerformed
 
-    private void jBotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBotonBuscarActionPerformed
+    private void campoBotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonBuscarActionPerformed
+         int id = Integer.parseInt(campoIdContrato.getText());
+            Contrato contratos = contratoData.buscarContratoPorId(id);
+            if(contratos==null){
+                JOptionPane.showMessageDialog(this, "No existe ningún contrato con esa Id");
+            vaciarCampos();
+            }else{
+               
+                }
+            
+    }//GEN-LAST:event_campoBotonBuscarActionPerformed
 
-    private void jBotonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonCrearActionPerformed
+    private void campoBotonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonCrearActionPerformed
                     
-    }//GEN-LAST:event_jBotonCrearActionPerformed
+    }//GEN-LAST:event_campoBotonCrearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBotonBuscar;
-    private javax.swing.JButton jBotonCrear;
-    private javax.swing.JButton jBotonEliminar;
-    private javax.swing.JButton jBotonModificar;
-    private javax.swing.JButton jBotonSalir;
-    private javax.swing.JCheckBox jCheckRenovado;
-    private javax.swing.JCheckBox jCheckVigente;
-    private javax.swing.JComboBox<Inmueble> jComboInmueble;
-    private javax.swing.JComboBox<Inquilino> jComboInquilino;
-    private com.toedter.calendar.JDateChooser jDateFechaFin;
-    private com.toedter.calendar.JDateChooser jDateFechaInicio;
+    private javax.swing.JComboBox<Inmueble> ComboInmueble;
+    private javax.swing.JComboBox<Inquilino> ComboInquilino;
+    private javax.swing.JButton campoBotonBuscar;
+    private javax.swing.JButton campoBotonCrear;
+    private javax.swing.JButton campoBotonEliminar;
+    private javax.swing.JButton campoBotonModificar;
+    private javax.swing.JButton campoBotonSalir;
+    private javax.swing.JCheckBox campoCheckRenovado;
+    private javax.swing.JCheckBox campoCheckVigente;
+    private com.toedter.calendar.JDateChooser campoDateFechaFin;
+    private com.toedter.calendar.JDateChooser campoDateFechaInicio;
+    private javax.swing.JTextField campoIdContrato;
+    private javax.swing.JTextField campoPrecioAlquiler;
     private javax.swing.JLabel jLContrato;
     private javax.swing.JLabel jLFechaFin;
     private javax.swing.JLabel jLFechaIni;
@@ -269,7 +292,38 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLInmueble;
     private javax.swing.JLabel jLInquilino;
     private javax.swing.JLabel jLPrecio;
-    private javax.swing.JTextField jTFPrecioAlquiler;
-    private javax.swing.JTextField jTFidContrato;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarComboInquilino(){
+        
+        ArrayList<Inquilino> inquilinos = inquilinoData.listarinquilinos();
+        
+        ComboInquilino.addItem(null);
+        
+        for(Inquilino inquilino: inquilinos){
+            ComboInquilino.addItem(inquilino);
+            }    
+    }
+
+    private void cargarComboInmueble(){
+        
+        ArrayList<Inmueble> inmuebles = inmuebleData.listarInmuebles();
+        
+        ComboInmueble.addItem(null);
+        
+        for(Inmueble inmueble: inmuebles){
+            ComboInmueble.addItem(inmueble);
+            }    
+    }
+    
+    private void vaciarCampos(){
+        campoIdContrato.setText("");
+        ComboInmueble.setSelectedIndex(0);
+        ComboInquilino.setSelectedIndex(0);
+        campoDateFechaFin.setDateFormatString("");
+        campoDateFechaInicio.setDateFormatString("");
+        campoCheckRenovado.setSelected(false);
+        campoCheckVigente.setSelected(false);
+    }
+
 }
