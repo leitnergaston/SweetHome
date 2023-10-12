@@ -222,20 +222,47 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonBuscarApellidoActionPerformed
 
     private void radioBTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBTodosActionPerformed
-
+        if (radioBActivos.isEnabled()) {
+           
+        }
     }//GEN-LAST:event_radioBTodosActionPerformed
 
     private void botonBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarNombreActionPerformed
         if (campoNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese el nombre a buscar");
+        } else {
+            String nombre = campoNombre.getText() + "%";
+            InquilinoData inqdata = new InquilinoData();
+            Inquilino inq = new Inquilino();
+            inq = inqdata.buscarInquilinoPorNombre(nombre);
+            if (inq == null) {
+                JOptionPane.showMessageDialog(this, "No hay inquilino/s con este nombre");
+            } else {
+                eliminarFilas();
+                cargarfilas(inq);
+            }
+
         }
     }//GEN-LAST:event_botonBuscarNombreActionPerformed
 
     private void botonBuscarCuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCuitActionPerformed
         if (campoCuit.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese el nombre a buscar");
+        } else {
+            long cuit = Long.parseLong(campoCuit.getText());
+            InquilinoData inqdata = new InquilinoData();
+            Inquilino inq = new Inquilino();
+            inq = inqdata.buscarInquilinoPorcuil(cuit);
+            if (inq == null) {
+                JOptionPane.showMessageDialog(this, "No hay inquilino/s con este cuit");
+            } else {
+                eliminarFilas();
+                cargarfilas(inq);
+            }
+
         }
     }//GEN-LAST:event_botonBuscarCuitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscarApellido;
@@ -271,11 +298,11 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
         modelo.addRow(new Object[]{inquilino.getIdInquilino(), inquilino.getCuit(),
             inquilino.getNombre(), inquilino.getApellido()});
     }
-    
-    private void eliminarFilas(){
-        int filas = tablaInquilinos.getRowCount()-1;
-        if(filas > -1){
-            for(;filas>=0;filas--){
+
+    private void eliminarFilas() {
+        int filas = tablaInquilinos.getRowCount() - 1;
+        if (filas > -1) {
+            for (; filas >= 0; filas--) {
                 modelo.removeRow(filas);
             }
         }
