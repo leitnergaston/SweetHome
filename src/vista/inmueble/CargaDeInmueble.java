@@ -420,8 +420,7 @@ private int aviso = 0;
             }else{
                 
                 int id = Integer.parseInt(campoId.getText());
-                Propietario propietario = (Propietario)comboPropietario.getSelectedItem();
-                System.out.println(propietario.getIdPropietario());
+                Propietario propietario = (Propietario)comboPropietario.getSelectedItem();              
                 String direccion = campoDireccion.getText();
                 String tipo = (String)comboTipo.getSelectedItem();
                 double superficie = Double.parseDouble(campoSuperficie.getText());
