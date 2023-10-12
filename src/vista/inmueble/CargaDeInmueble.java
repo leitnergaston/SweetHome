@@ -60,6 +60,7 @@ private int aviso = 0;
         comboTipo = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         comboZona = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         checkDisponible.setText("Disponible");
 
@@ -71,6 +72,11 @@ private int aviso = 0;
         });
 
         botonEliminar.setText("Eliminar");
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
 
         botonSalir.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         botonSalir.setText("Salir");
@@ -81,8 +87,18 @@ private int aviso = 0;
         });
 
         botonGuardar.setText("Guardar");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
 
         botonModificar.setText("Modificar");
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Carga de Datos");
@@ -123,58 +139,68 @@ private int aviso = 0;
 
         jLabel9.setText("Zona");
 
+        jButton1.setText("Nuevo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel8))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel9))))
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoSuperficie)
-                            .addComponent(campoPrecio)
-                            .addComponent(comboTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboZona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboPropietario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoDireccion)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(checkDisponible)
-                                    .addComponent(campoId, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(36, 36, 36)
-                .addComponent(botonBuscar)
-                .addGap(37, 37, 37))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
+                .addGap(58, 58, 58)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
                 .addComponent(botonGuardar)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(botonEliminar)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(botonModificar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(jLabel8))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jLabel2))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(58, 58, 58)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel9))))
+                                .addGap(55, 55, 55)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campoSuperficie)
+                                    .addComponent(campoPrecio)
+                                    .addComponent(comboTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboZona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboPropietario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(campoDireccion)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(checkDisponible)
+                                            .addComponent(campoId, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addGap(36, 36, 36)
+                        .addComponent(botonBuscar)))
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +247,8 @@ private int aviso = 0;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonModificar)
                     .addComponent(botonGuardar)
-                    .addComponent(botonEliminar))
+                    .addComponent(botonEliminar)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonSalir)
                 .addContainerGap())
@@ -282,6 +309,7 @@ private int aviso = 0;
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void campoIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIdKeyTyped
+        
         int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57 || key == 8;
         if (!numero) {
@@ -292,6 +320,7 @@ private int aviso = 0;
                 aviso = 0;
             }
         }
+        
     }//GEN-LAST:event_campoIdKeyTyped
 
     private void campoPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioKeyTyped
@@ -318,7 +347,7 @@ private int aviso = 0;
         
         int key = evt.getKeyChar();
         boolean numero;
-        if(campoPrecio.getText().contains(".")){
+        if(campoSuperficie.getText().contains(".")){
             numero = key >= 48 && key <= 57 || key == 8; 
         }
         else{
@@ -333,6 +362,86 @@ private int aviso = 0;
             }
         }
     }//GEN-LAST:event_campoSuperficieKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        vaciarCampos();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        try{
+              
+            if(comboPropietario.getSelectedIndex()<1 || comboTipo.getSelectedIndex()<1 || comboZona.getSelectedIndex()<1){
+                JOptionPane.showMessageDialog(this, "No deje los campos de propietario, tipo o zona vacios.");
+            }else if(campoDireccion.getText().isEmpty() || campoSuperficie.getText().isEmpty() || campoPrecio.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "No deje los campos de direccion, superficie o precio vacíos.");
+            }else{
+                
+                Propietario propietario = (Propietario)comboPropietario.getSelectedItem();
+                String direccion = campoDireccion.getText();
+                String tipo = (String)comboTipo.getSelectedItem();
+                double superficie = Double.parseDouble(campoSuperficie.getText());
+                double precio = Double.parseDouble(campoPrecio.getText());
+                String zona = (String)comboZona.getSelectedItem();
+                boolean disponible = false;
+                if(checkDisponible.isSelected()){
+                    disponible = true;
+                }
+                
+                Inmueble inmueble = new Inmueble(propietario, direccion, tipo, superficie, precio, zona, disponible);
+                
+                inmuebleData.crearInmueble(inmueble);
+                
+                campoId.setText(inmueble.getIdInmueble()+"");
+            }
+            
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Para poder guardar un inmueble debe llenar todos los campos menos el de Id");
+        }
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        if(campoId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Para eliminar debe seleccionar la Id correspondiente");
+        }else{
+            int id = Integer.parseInt(campoId.getText());
+            inmuebleData.eliminarInmueble(id);
+            checkDisponible.setSelected(false);
+        }
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        try{
+            if(campoId.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Para modificar un inmueble primero tiene que buscar un inmueble por el Id"); 
+            }else if(comboPropietario.getSelectedIndex()<1 || comboTipo.getSelectedIndex()<1 || comboZona.getSelectedIndex()<1){
+                JOptionPane.showMessageDialog(this, "No deje los campos de propietario, tipo o zona vacios.");
+            }else if(campoDireccion.getText().isEmpty() || campoSuperficie.getText().isEmpty() || campoPrecio.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "No deje los campos de id, direccion, superficie o precio vacíos.");
+            }else{
+                
+                int id = Integer.parseInt(campoId.getText());
+                Propietario propietario = (Propietario)comboPropietario.getSelectedItem();
+                System.out.println(propietario.getIdPropietario());
+                String direccion = campoDireccion.getText();
+                String tipo = (String)comboTipo.getSelectedItem();
+                double superficie = Double.parseDouble(campoSuperficie.getText());
+                double precio = Double.parseDouble(campoPrecio.getText());
+                String zona = (String)comboZona.getSelectedItem();
+                boolean disponible = false;
+                if(checkDisponible.isSelected()){
+                    disponible = true;
+                }
+                
+                Inmueble inmueble = new Inmueble(id, propietario, direccion, tipo, superficie, precio, zona, disponible);
+                
+                inmuebleData.modificarInmueble(inmueble);
+                   
+            }
+            
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Para poder modificar un inmueble debe llenar todos los campos");
+        }
+    }//GEN-LAST:event_botonModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -349,6 +458,7 @@ private int aviso = 0;
     private javax.swing.JComboBox<Propietario> comboPropietario;
     private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JComboBox<String> comboZona;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -398,6 +508,6 @@ private int aviso = 0;
         campoSuperficie.setText("");
         campoPrecio.setText("");
         comboZona.setSelectedIndex(0);
-        checkDisponible.setEnabled(false);
+        checkDisponible.setSelected(false);
     }
 }

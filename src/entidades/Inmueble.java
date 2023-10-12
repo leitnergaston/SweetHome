@@ -40,6 +40,27 @@ public class Inmueble {
         this.disponible = disponible;
     }
 
+    public Inmueble(Propietario propietario, String direccion, String tipo, double superficie, double precio, String zona, boolean disponible) {
+        this.propietario = propietario;
+        this.direccion = direccion;
+        this.tipo = tipo;
+        this.superficie = superficie;
+        this.precio = precio;
+        this.zona = zona;
+        this.disponible = disponible;
+    }
+
+    public Inmueble(int idInmueble, Propietario propietario, String direccion, String tipo, double superficie, double precio, String zona, boolean disponible) {
+        this.idInmueble = idInmueble;
+        this.propietario = propietario;
+        this.direccion = direccion;
+        this.tipo = tipo;
+        this.superficie = superficie;
+        this.precio = precio;
+        this.zona = zona;
+        this.disponible = disponible;
+    }
+
     
 
     public int getIdInmueble() {
