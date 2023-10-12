@@ -62,7 +62,7 @@ public class PropietarioData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al crear el propietario: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al crear el propietario / o propietario duplicado: " + ex.getMessage());
         }
     }
    
@@ -70,12 +70,11 @@ public class PropietarioData {
     public void modificarPropietario(Propietario propietario){
         
         try {
-        String sql = "UPDATE propietario SET idPropietario= null dni=?,apellido= ?,nombre= ?,domicilio= ?,"
+        String sql = "UPDATE propietario SET dni=?,apellido= ?,nombre= ?,domicilio= ?,"
                 + "telefono= ?,eMail= ?, estado=? "
                 + "WHERE idPropietario = ?";
 
-            PreparedStatement ps = null;
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, propietario.getDni());
             ps.setString(2, propietario.getApellido());
             ps.setString(3, propietario.getNombre());
@@ -95,7 +94,7 @@ public class PropietarioData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario: " + ex.getMessage());
         }
     }
     
@@ -104,8 +103,7 @@ public class PropietarioData {
         try {
             String sql = "UPDATE propietario SET estado = 0 WHERE idPropietario = ? AND estado = 1 ";
 
-            PreparedStatement ps = null;
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
 
             int exitoso = ps.executeUpdate();
@@ -119,7 +117,7 @@ public class PropietarioData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario: " + ex.getMessage());
         }
     }
     
@@ -148,12 +146,10 @@ public class PropietarioData {
             prop.setMail(rs.getString("eMail"));
             prop.setEstado(rs.getBoolean("estado"));
             
-        } else {
-            JOptionPane.showMessageDialog(null, "No existe el priopietario");
         }
             ps.close(); 
         }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario: " + ex.getMessage());
         }
         return prop;
     }
@@ -187,7 +183,7 @@ public class PropietarioData {
         }
             ps.close(); 
         }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario: " + ex.getMessage());
         }
         return prop;
     }
@@ -222,7 +218,7 @@ public class PropietarioData {
             ps.close();
             
         } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario" + ex.getMessage());
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario: " + ex.getMessage());
         }
         
         return prop;

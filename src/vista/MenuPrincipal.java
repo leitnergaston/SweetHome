@@ -57,7 +57,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonCargarPropietario.setBackground(new java.awt.Color(255, 255, 255));
         botonCargarPropietario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonCargarPropietario.setForeground(new java.awt.Color(0, 0, 0));
-        botonCargarPropietario.setText("Cargar");
+        botonCargarPropietario.setText("Datos");
         botonCargarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarPropietarioActionPerformed(evt);
@@ -76,7 +76,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonCargarInmueble.setBackground(new java.awt.Color(255, 255, 255));
         botonCargarInmueble.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonCargarInmueble.setForeground(new java.awt.Color(0, 0, 0));
-        botonCargarInmueble.setText("Cargar");
+        botonCargarInmueble.setText("Datos");
         botonCargarInmueble.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarInmuebleActionPerformed(evt);
@@ -105,7 +105,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonCargarInquilino.setBackground(new java.awt.Color(255, 255, 255));
         botonCargarInquilino.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonCargarInquilino.setForeground(new java.awt.Color(0, 0, 0));
-        botonCargarInquilino.setText("Cargar");
+        botonCargarInquilino.setText("Datos");
         botonCargarInquilino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarInquilinoActionPerformed(evt);
@@ -139,7 +139,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonCargarContrato.setBackground(new java.awt.Color(255, 255, 255));
         botonCargarContrato.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonCargarContrato.setForeground(new java.awt.Color(0, 0, 0));
-        botonCargarContrato.setText("Cargar");
+        botonCargarContrato.setText("Datos");
         botonCargarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarContratoActionPerformed(evt);
@@ -193,7 +193,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(label2)
                     .addComponent(label3)
                     .addComponent(label4))
-                .addGap(54, 54, 54)
+                .addGap(69, 69, 69)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(EscritorioLayout.createSequentialGroup()
                         .addComponent(botonCargarInquilino)
@@ -203,22 +203,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(botonCargarContrato)
                         .addGap(18, 18, 18)
                         .addComponent(botonVerContratos))
-                    .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(botonSalir)
-                        .addGroup(EscritorioLayout.createSequentialGroup()
-                            .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(botonCargarPropietario)
-                                .addComponent(botonCargarInmueble))
-                            .addGap(18, 18, 18)
-                            .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(botonVerPropietarios)
-                                .addGroup(EscritorioLayout.createSequentialGroup()
-                                    .addComponent(botonVerInmuebles)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(botonVerTodos)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(botonVerPorFiltros))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(botonCargarPropietario)
+                            .addComponent(botonCargarInmueble))
+                        .addGap(18, 18, 18)
+                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonVerPropietarios)
+                            .addGroup(EscritorioLayout.createSequentialGroup()
+                                .addComponent(botonVerInmuebles)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(botonVerTodos)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonVerPorFiltros)))))
+                .addContainerGap(136, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonSalir)
+                .addContainerGap())
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,23 +250,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(botonCargarContrato)
                         .addComponent(botonVerContratos)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Escritorio)
-                .addGap(34, 34, 34))
+            .addComponent(Escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Escritorio)
-                .addContainerGap())
+            .addComponent(Escritorio)
         );
 
         pack();

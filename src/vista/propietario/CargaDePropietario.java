@@ -77,12 +77,22 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
 
         botonModificar.setText("Modificar");
         botonModificar.setEnabled(false);
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
 
         campoId.setEditable(false);
 
         jLabel8.setText("Dni");
 
         botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
 
         botonSalir.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         botonSalir.setText("Salir");
@@ -237,55 +247,49 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
     //====== BOTON GUARDAR ======//
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         try {
-            
+
             int dni = Integer.parseInt(campoDni.getText());
             String nombre = campoNombre.getText();
             String apellido = campoApellido.getText();
             String domicilio = campoDomicilio.getText();
             String telefono = campoTelefono.getText();
             String mail = campoMail.getText();
+            boolean estado = checkEstado.isSelected();
             
             int limitador = 0;
-            
+
             if (CargaDePropietario.Validar(nombre)) {
                 nombre = campoNombre.getText();
-            } else { // caso contrario
+            } else {
                 JOptionPane.showMessageDialog(this, "Solo letras en el campo nombre");
-                campoNombre.setText("");
                 limitador++;
             }
+
             if (CargaDePropietario.Validar(apellido)) {
                 apellido = campoApellido.getText(); //
             } else {
                 JOptionPane.showMessageDialog(this, "Solo letras en el campo apellido");
-                campoApellido.setText("");
                 limitador++;
             }
+
             
-            boolean estado;
-            if (checkEstado.isSelected()) {//is selected detecta si el check esta marcado o no
-                estado = true;
-            } else {
-                estado = false;
-            }
-            
-            Propietario prop = new Propietario(dni, apellido, nombre, domicilio, telefono, mail, estado);
-            PropietarioData propData = new PropietarioData();
-            
-            if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
-                propData.crearPropietario(prop);
-                limpiarCampos();
-            }else{
-                JOptionPane.showMessageDialog(this, "verifique los datos ingresados");
-            }
-        } catch (NumberFormatException e) {
+
             if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
-                || campoDni.getText().isEmpty() || campoDomicilio.getText().isEmpty()
-                || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No debe dejar espacios vacios");
+                    || campoDni.getText().isEmpty() || campoDomicilio.getText().isEmpty()
+                    || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No debe dejar espacios vacíos en los campos.");
+
             } else {
-                JOptionPane.showMessageDialog(this, "El campo DNI debe contener solo numeros");
+                Propietario prop = new Propietario(dni, apellido, nombre, domicilio, telefono, mail, estado);
+                PropietarioData propData = new PropietarioData();
+
+                if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
+                    propData.crearPropietario(prop);
+                    limpiarCampos();
+                }
             }
+
+        } catch (NumberFormatException e) {
         }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
@@ -306,20 +310,60 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         try {
             int dni = Integer.parseInt(campoDni.getText());
             PropietarioData propData = new PropietarioData();
-            propData.eliminarPropietario(dni);
+            propData.eliminarPropietario(Integer.parseInt(campoId.getText()));
             checkEstado.setSelected(false);
-        }catch (NumberFormatException ex) {
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Ingresar un dni");
+        }
+        
+    }//GEN-LAST:event_BotonEliminarActionPerformed
+
+    //====== BOTON BUSCAR ======//
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        Propietario prop = new Propietario();
+        PropietarioData propData = new PropietarioData();
+        
+        if (campoDni.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Se requiere dni para buscar");
+        } else {
+            int dni = Integer.parseInt(campoDni.getText());
+            prop = propData.buscarPropietarioPorDni(dni);
+            if (prop == null) {
+                JOptionPane.showMessageDialog(this, "El propietario no existe para buscarlo");
+            } else {
+                campoId.setText(Integer.toString(prop.getIdPropietario()));
+                campoNombre.setText(prop.getNombre());
+                campoApellido.setText(prop.getApellido());
+                campoDomicilio.setText(prop.getDomicilio());
+                campoTelefono.setText(prop.getTelefono());
+                campoMail.setText(prop.getMail());
+                checkEstado.setSelected(prop.isEstado());
+            }
         }
         if (campoId.getText().isEmpty()) {
             botonModificar.setEnabled(false);
         } else {
             botonModificar.setEnabled(true);
         }
-    }//GEN-LAST:event_BotonEliminarActionPerformed
+        
+    }//GEN-LAST:event_botonBuscarActionPerformed
 
-    
-    
+    //====== BOTON MODIFICAR ======//
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        PropietarioData propData = new PropietarioData();
+        int dni = Integer.parseInt(campoDni.getText());
+        int id = Integer.parseInt(campoId.getText());
+        String nombre = campoNombre.getText();
+        String apellido = campoApellido.getText();
+        String domicilio = campoDomicilio.getText();
+        String telefono = campoTelefono.getText();
+        String mail = campoMail.getText();
+        boolean estado = checkEstado.isSelected();
+        
+        Propietario prop = new Propietario(id, dni, apellido, nombre, domicilio, telefono, mail, estado);
+        propData.modificarPropietario(prop);
+    }//GEN-LAST:event_botonModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminar;
