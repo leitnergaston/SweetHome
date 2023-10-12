@@ -1,5 +1,8 @@
 package vista.inquilino;
 
+import accesoADatos.InquilinoData;
+import entidades.Inquilino;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vista.MenuPrincipal;
 
@@ -76,8 +79,18 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
         jLabel3.setText("Apellido");
 
         botonBuscarNombre.setText("Buscar");
+        botonBuscarNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarNombreActionPerformed(evt);
+            }
+        });
 
         botonBuscarCuit.setText("Buscar");
+        botonBuscarCuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarCuitActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Nombre");
 
@@ -191,12 +204,38 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonBuscarApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarApellidoActionPerformed
+        if (campoApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el apellido a buscar");
+        } else {
+            String apellido = campoApellido.getText() + "%";
+            InquilinoData inqdata = new InquilinoData();
+            Inquilino inq = new Inquilino();
+            inq = inqdata.buscarInquilinoPorApellido(apellido);
+            if (inq == null) {
+                JOptionPane.showMessageDialog(this, "No hay inquilino/s con este apellido");
+            } else {
+                eliminarFilas();
+                cargarfilas(inq);
+            }
 
+        }
     }//GEN-LAST:event_botonBuscarApellidoActionPerformed
 
     private void radioBTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBTodosActionPerformed
 
     }//GEN-LAST:event_radioBTodosActionPerformed
+
+    private void botonBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarNombreActionPerformed
+        if (campoNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el nombre a buscar");
+        }
+    }//GEN-LAST:event_botonBuscarNombreActionPerformed
+
+    private void botonBuscarCuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCuitActionPerformed
+        if (campoCuit.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el nombre a buscar");
+        }
+    }//GEN-LAST:event_botonBuscarCuitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscarApellido;
@@ -226,6 +265,20 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         tablaInquilinos.setModel(modelo); // Asigno el modelo a la tabla
+    }
+
+    private void cargarfilas(Inquilino inquilino) {
+        modelo.addRow(new Object[]{inquilino.getIdInquilino(), inquilino.getCuit(),
+            inquilino.getNombre(), inquilino.getApellido()});
+    }
+    
+    private void eliminarFilas(){
+        int filas = tablaInquilinos.getRowCount()-1;
+        if(filas > -1){
+            for(;filas>=0;filas--){
+                modelo.removeRow(filas);
+            }
+        }
     }
 
 }

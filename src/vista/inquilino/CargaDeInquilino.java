@@ -378,7 +378,7 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
 
     private void campoCuitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCuitKeyTyped
         int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57;
+        boolean numero = key >= 48 && key <= 57 || key==8;
         if (!numero) {
             evt.consume();
             aviso++;
@@ -391,7 +391,7 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
 
     private void campoDniGaranteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDniGaranteKeyTyped
         int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57;
+        boolean numero = key >= 48 && key <= 57 || key==8;
         if (!numero) {
             evt.consume();
             aviso++;
