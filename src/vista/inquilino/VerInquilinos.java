@@ -4,7 +4,7 @@ import accesoADatos.InquilinoData;
 import entidades.Inquilino;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import vista.MenuPrincipal;
+import vista.menuPrincipal.MenuPrincipal;
 
 public class VerInquilinos extends javax.swing.JInternalFrame {
 

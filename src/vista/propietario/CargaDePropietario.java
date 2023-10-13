@@ -3,7 +3,7 @@ package vista.propietario;
 import accesoADatos.PropietarioData;
 import entidades.Propietario;
 import javax.swing.JOptionPane;
-import vista.MenuPrincipal;
+import vista.menuPrincipal.MenuPrincipal;
 
 public class CargaDePropietario extends javax.swing.JInternalFrame {
 

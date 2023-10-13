@@ -5,7 +5,7 @@ import entidades.*;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import vista.MenuPrincipal;
+import vista.menuPrincipal.MenuPrincipal;
 
 public class Inmobiliaria32 {
 

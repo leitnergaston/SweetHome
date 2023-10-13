@@ -7,12 +7,17 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import vista.MenuPrincipal;
+import vista.menuPrincipal.MenuPrincipal;
 
 public class VerPorFiltros extends javax.swing.JInternalFrame {
 
     private final MenuPrincipal menuPrincipal;
-    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modelo = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
     DefaultComboBoxModel<String> modelTipo = new DefaultComboBoxModel<>();
     DefaultComboBoxModel<String> modelZona = new DefaultComboBoxModel<>();
 
@@ -75,6 +80,18 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
             }
         });
 
+        campoPrecioMinimo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoPrecioMinimoKeyTyped(evt);
+            }
+        });
+
+        campoPrecioMaximo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoPrecioMaximoKeyTyped(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Zona");
 
@@ -91,6 +108,12 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel8.setText("$");
+
+        campoSuperficie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoSuperficieKeyTyped(evt);
+            }
+        });
 
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -281,36 +304,34 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
 
     //====== BOTON BUSCAR ======//
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+
         boolean alMenosUnFiltro = false;
+        
+        if (!campoSuperficie.getText().isEmpty()&& !campoPrecioMinimo.getText().isBlank() && !campoPrecioMaximo.getText().isBlank() && !comboTipo.getSelectedItem().equals("") && !comboZona.getSelectedItem().equals("")) {
+            alMenosUnFiltro = true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Faltan filtros por llenar");
+        }
+        
+        if (alMenosUnFiltro) {
+            String tipo = (String) comboTipo.getSelectedItem();
+            double superficieMinima = Double.parseDouble(campoSuperficie.getText());
+            double precioMin = Double.parseDouble(campoPrecioMinimo.getText());
+            double precioMax = Double.parseDouble(campoPrecioMaximo.getText());
+            String zona = (String) comboZona.getSelectedItem();
 
+            InmuebleData inmData = new InmuebleData();
+            Inmueble inm = new Inmueble();
+            ArrayList<Inmueble> inmuebles = inmData.listarInmueblesPorParametros(tipo, superficieMinima, precioMin, precioMax, zona);
+
+            eliminarFilas();
+
+            for (Inmueble inmueble : inmuebles) {
+                cargarFilas(inmueble);
+            }
+        }
         
 
-            if (comboTipo.getSelectedItem().toString().equals("Seleccione un tipo") || !comboZona.getSelectedItem().toString().equals("Seleccione una zona") || !campoSuperficie.getText().isEmpty() || !campoPrecioMinimo.getText().isEmpty() || !campoPrecioMaximo.getText().isEmpty()) {
-                alMenosUnFiltro = true;
-            }
-
-            if (alMenosUnFiltro) {
-
-                String tipo = (String) comboTipo.getSelectedItem();
-                double superficieMinima = Double.parseDouble(campoSuperficie.getText());
-                double precioMin = Double.parseDouble(campoPrecioMinimo.getText());
-                double precioMax = Double.parseDouble(campoPrecioMaximo.getText());
-                String zona = (String) comboZona.getSelectedItem();
-
-                InmuebleData inmData = new InmuebleData();
-                Inmueble inm = new Inmueble();
-                ArrayList<Inmueble> inmuebles = inmData.listarInmueblesPorParametros(tipo, superficieMinima, precioMin, precioMax, zona);
-
-                eliminarFilas();
-
-                for (Inmueble inmueble : inmuebles) {
-                    cargarFilas(inmueble);
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Ningun filtro se ha ingresado");
-            }
-        
 
     }//GEN-LAST:event_botonBuscarActionPerformed
 
@@ -322,6 +343,31 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         campoPrecioMinimo.setText("");
         campoPrecioMaximo.setText("");
     }//GEN-LAST:event_botonLimpiarFiltrosActionPerformed
+
+    private void campoSuperficieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSuperficieKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        if (!numero) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_campoSuperficieKeyTyped
+
+    private void campoPrecioMinimoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioMinimoKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        if (!numero) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_campoPrecioMinimoKeyTyped
+
+    private void campoPrecioMaximoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioMaximoKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        if (!numero) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_campoPrecioMaximoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -375,7 +421,6 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
     }
 
     private void cargarComboTipo() {
-        comboTipo.addItem(null);
 
         ArrayList<String> tipos = new ArrayList<>();
         tipos.add("");
@@ -392,10 +437,9 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         comboTipo.setModel(modelTipo);
 
     }
-    
+
     private void cargarComboZona() {
-        comboZona.addItem(null);
-        
+
         ArrayList<String> zonas = new ArrayList<>();
         zonas.add("");
         zonas.add("Norte");
@@ -403,11 +447,11 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         zonas.add("Sur");
         zonas.add("Este");
         zonas.add("Oeste");
-        
+
         for (String zona : zonas) {
             modelZona.addElement(zona);
         }
-        
+
         comboZona.setModel(modelZona);
     }
 

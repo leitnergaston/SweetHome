@@ -8,7 +8,7 @@ package vista.inquilino;
 import accesoADatos.*;
 import entidades.*;
 import javax.swing.JOptionPane;
-import vista.MenuPrincipal;
+import vista.menuPrincipal.MenuPrincipal;
 
 public class CargaDeInquilino extends javax.swing.JInternalFrame {
 

@@ -6,7 +6,7 @@
 package vista.contrato;
 
 import entidades.Inmueble;
-import vista.MenuPrincipal;
+import vista.menuPrincipal.MenuPrincipal;
 
 /**
  *

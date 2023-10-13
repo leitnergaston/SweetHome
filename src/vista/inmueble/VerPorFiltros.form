@@ -218,8 +218,14 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campoPrecioMinimo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoPrecioMinimoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campoPrecioMaximo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoPrecioMaximoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboTipo">
           <Properties>
@@ -290,6 +296,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="campoSuperficie">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoSuperficieKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator3">
           <Properties>

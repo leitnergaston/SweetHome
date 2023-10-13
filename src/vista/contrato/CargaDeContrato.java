@@ -13,7 +13,7 @@ import entidades.Inmueble;
 import entidades.Inquilino;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import vista.MenuPrincipal;
+import vista.menuPrincipal.MenuPrincipal;
 
 /**
  *

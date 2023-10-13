@@ -1,4 +1,4 @@
-package vista;
+package vista.menuPrincipal;
 
 import vista.propietario.*;
 import java.util.ArrayList;
