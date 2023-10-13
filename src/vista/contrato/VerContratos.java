@@ -13,7 +13,7 @@ import vista.menuPrincipal.MenuPrincipal;
  * @author ale77
  */
 public class VerContratos extends javax.swing.JInternalFrame {
-    private MenuPrincipal menuPrincipal;
+    private final MenuPrincipal menuPrincipal;
     /**
      * Creates new form VerContratos
      */
@@ -61,6 +61,11 @@ public class VerContratos extends javax.swing.JInternalFrame {
         jButton3.setText("Ver Detalle");
 
         jButton4.setText("Salir");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jTablaContratos1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -159,6 +164,12 @@ public class VerContratos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        dispose();
+        menuPrincipal.mostrarItemsEscritorio();
+    
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

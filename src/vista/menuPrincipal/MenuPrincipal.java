@@ -9,7 +9,7 @@ import vista.contrato.*;
 import vista.inmueble.*;
 import vista.inquilino.*;
 
-public class MenuPrincipal extends javax.swing.JFrame {
+public final class MenuPrincipal extends javax.swing.JFrame {
 
     private final List<JButton> buttons = new ArrayList();
     private final List<JLabel> labels = new ArrayList();
@@ -68,6 +68,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonVerPropietarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonVerPropietarios.setForeground(new java.awt.Color(0, 0, 0));
         botonVerPropietarios.setText("Ver propietarios");
+        botonVerPropietarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerPropietariosActionPerformed(evt);
+            }
+        });
 
         label2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         label2.setForeground(new java.awt.Color(0, 0, 0));
@@ -320,10 +325,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void botonVerInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerInmueblesActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
-        CargaDeInmueble cargaDeInmueble = new CargaDeInmueble(this);
-        cargaDeInmueble.setVisible(true);
-        Escritorio.add(cargaDeInmueble);
-        Escritorio.moveToFront(cargaDeInmueble);
+        VerInmuebles verInmuebles = new VerInmuebles(this);
+        verInmuebles.setVisible(true);
+        Escritorio.add(verInmuebles);
+        Escritorio.moveToFront(verInmuebles);
     }//GEN-LAST:event_botonVerInmueblesActionPerformed
 
     private void botonVerInquilinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerInquilinosActionPerformed
@@ -343,6 +348,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Escritorio.add(contrato);
         Escritorio.moveToFront(contrato);
     }//GEN-LAST:event_botonVerContratosActionPerformed
+
+    private void botonVerPropietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerPropietariosActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        VerPropietarios verPropietarios = new VerPropietarios(this);
+        verPropietarios.setVisible(true);
+        Escritorio.add(verPropietarios);
+        Escritorio.moveToFront(verPropietarios);
+    }//GEN-LAST:event_botonVerPropietariosActionPerformed
 
 
     public static void main(String args[]) {

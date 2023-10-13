@@ -5,17 +5,19 @@
  */
 package vista.inmueble;
 
+import vista.menuPrincipal.MenuPrincipal;
+
 /**
  *
  * @author ale77
  */
 public class VerInmuebles extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form VerTodosLosInmuebles
-     */
-    public VerInmuebles() {
+    private final MenuPrincipal menuPrincipal;
+    
+    public VerInmuebles(MenuPrincipal menuPrincipal) {
         initComponents();
+        this.menuPrincipal = menuPrincipal;
+        
     }
 
     /**
@@ -209,7 +211,8 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_radioBTodosActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        menuPrincipal.mostrarItemsEscritorio();
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonBuscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarIdActionPerformed

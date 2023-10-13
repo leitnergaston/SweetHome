@@ -264,6 +264,7 @@ public class InmuebleData {
         try {
             String sql = "SELECT * FROM inmueble "
                     + "WHERE tipo LIKE ? AND superficie >= ? AND precio BETWEEN ? AND ? AND zona LIKE ?";
+            
             PreparedStatement ps = con.prepareStatement(sql);
 
             // Asignar los valores de los parametros
@@ -283,6 +284,7 @@ public class InmuebleData {
                 inmueble.setInquilino(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
                 inmueble.setDireccion(rs.getString("direccion"));
                 inmueble.setTipo(rs.getString("tipo"));
+                inmueble.setZona(rs.getString("zona"));
                 inmueble.setSuperficie(rs.getDouble("superficie"));
                 inmueble.setPrecio(rs.getDouble("precio"));
                 inmueble.setDisponible(rs.getBoolean("disponible"));

@@ -4,7 +4,6 @@ import accesoADatos.InmuebleData;
 import entidades.Inmueble;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vista.menuPrincipal.MenuPrincipal;
@@ -15,9 +14,10 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel() {
         @Override
         public boolean isCellEditable(int row, int column) {
-            return false;
+            return true;
         }
     };
+
     DefaultComboBoxModel<String> modelTipo = new DefaultComboBoxModel<>();
     DefaultComboBoxModel<String> modelZona = new DefaultComboBoxModel<>();
 
@@ -231,6 +231,11 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tablaInmuebles);
 
         botonVerDetalle.setText("Ver detalle");
+        botonVerDetalle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerDetalleActionPerformed(evt);
+            }
+        });
 
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -306,13 +311,13 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
 
         boolean alMenosUnFiltro = false;
-        
-        if (!campoSuperficie.getText().isEmpty()&& !campoPrecioMinimo.getText().isBlank() && !campoPrecioMaximo.getText().isBlank() && !comboTipo.getSelectedItem().equals("") && !comboZona.getSelectedItem().equals("")) {
+
+        if (!campoSuperficie.getText().isEmpty() && !campoPrecioMinimo.getText().isBlank() && !campoPrecioMaximo.getText().isBlank() && !comboTipo.getSelectedItem().equals("") && !comboZona.getSelectedItem().equals("")) {
             alMenosUnFiltro = true;
         } else {
             JOptionPane.showMessageDialog(this, "Faltan filtros por llenar");
         }
-        
+
         if (alMenosUnFiltro) {
             String tipo = (String) comboTipo.getSelectedItem();
             double superficieMinima = Double.parseDouble(campoSuperficie.getText());
@@ -330,7 +335,6 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
                 cargarFilas(inmueble);
             }
         }
-        
 
 
     }//GEN-LAST:event_botonBuscarActionPerformed
@@ -350,7 +354,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         if (!numero) {
             evt.consume();
         }
-        
+
     }//GEN-LAST:event_campoSuperficieKeyTyped
 
     private void campoPrecioMinimoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioMinimoKeyTyped
@@ -368,6 +372,23 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_campoPrecioMaximoKeyTyped
+
+    private void botonVerDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDetalleActionPerformed
+
+        try {
+            
+            int filaSeleccionada = tablaInmuebles.getSelectedRow();
+            if (filaSeleccionada != -1) {
+                // Obtén el inmueble seleccionado
+
+                // Muestra una ventana emergente con detalles adicionales
+            }
+
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
+        }
+
+    }//GEN-LAST:event_botonVerDetalleActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -453,6 +474,16 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         }
 
         comboZona.setModel(modelZona);
+    }
+
+    private void mostrarDetalles(Inmueble inmueble) {
+        String detalles = "ID: " + inmueble.getIdInmueble() + "\n"
+                + "Tipo: " + inmueble.getTipo() + "\n"
+                + "Zona: " + inmueble.getZona() + "\n"
+                + "Superficie: " + inmueble.getSuperficie() + "\n"
+                + "Precio: " + inmueble.getPrecio();
+
+        JOptionPane.showMessageDialog(this, detalles, "Detalles del inmueble", JOptionPane.INFORMATION_MESSAGE);
     }
 
 }

@@ -1,21 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista.propietario;
 
-/**
- *
- * @author ale77
- */
-public class VerPropietarios extends javax.swing.JInternalFrame {
+import vista.menuPrincipal.MenuPrincipal;
 
-    /**
-     * Creates new form VerPropietarios
-     */
-    public VerPropietarios() {
+
+public class VerPropietarios extends javax.swing.JInternalFrame {
+    private final MenuPrincipal menuPrincipal;
+    
+    public VerPropietarios(MenuPrincipal menuPrincipal) {
         initComponents();
+        this.menuPrincipal = menuPrincipal;
     }
 
     /**
@@ -193,7 +187,8 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        menuPrincipal.mostrarItemsEscritorio();
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonBuscarApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarApellidoActionPerformed
