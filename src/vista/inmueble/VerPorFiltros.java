@@ -2,9 +2,14 @@ package vista.inmueble;
 
 import accesoADatos.InmuebleData;
 import entidades.Inmueble;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import vista.menuPrincipal.MenuPrincipal;
 
@@ -14,7 +19,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel() {
         @Override
         public boolean isCellEditable(int row, int column) {
-            return true;
+            return false;
         }
     };
 
@@ -27,6 +32,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         cargarColumnas();
         cargarComboTipo();
         cargarComboZona();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -374,19 +380,27 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_campoPrecioMaximoKeyTyped
 
     private void botonVerDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDetalleActionPerformed
-
-        try {
             
-            int filaSeleccionada = tablaInmuebles.getSelectedRow();
-            if (filaSeleccionada != -1) {
-                // Obtén el inmueble seleccionado
+//        botonVerDetalle.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int filaSeleccionada = tablaInmuebles.getSelectedRow();
+//                if (filaSeleccionada != -1) {
+//                    Inmueble inmueble = (Inmueble) modelo.getValueAt(filaSeleccionada, 0);
+//                    String detalles = "ID: " + inmueble.toString()+ "\n"
+//                            + "Tipo: " + inmueble.toString()+ "\n"
+//                            + "Superficie: " + inmueble.toString()+ " m²\n"
+//                            + "Precio: $" + inmueble.toString()+ "\n"
+//                            + "Zona: " + inmueble.toString();
+//                    JOptionPane.showMessageDialog(null, detalles, "Detalles del inmueble", JOptionPane.INFORMATION_MESSAGE);
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "seleccione una fila");
+//                }
+//            }
+//
+//        });
+        
 
-                // Muestra una ventana emergente con detalles adicionales
-            }
-
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
-        }
 
     }//GEN-LAST:event_botonVerDetalleActionPerformed
 
