@@ -5,9 +5,10 @@
  */
 package vista.inmueble;
 
-import accesoADatos.InmuebleData;
+import accesoADatos.*;
 import entidades.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vista.menuPrincipal.MenuPrincipal;
 
@@ -18,6 +19,8 @@ import vista.menuPrincipal.MenuPrincipal;
 public class VerInmuebles extends javax.swing.JInternalFrame {
     private final MenuPrincipal menuPrincipal;
     private InmuebleData inmuebleData= new InmuebleData();
+    private PropietarioData propietarioData = new PropietarioData();
+    private int aviso = 0;
     private DefaultTableModel modelo = new DefaultTableModel(){
         public boolean isCellEditable(int f, int c){
             return false;
@@ -28,7 +31,7 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         initComponents();
         this.menuPrincipal = menuPrincipal;
         cargarTablaInicial();
-        
+        cargarComboPropietario();
     }
 
     /**
@@ -65,6 +68,17 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         jLabel3.setText("Id");
 
         botonBuscarDireccion.setText("Buscar por direccion");
+        botonBuscarDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarDireccionActionPerformed(evt);
+            }
+        });
+
+        campoId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoIdKeyTyped(evt);
+            }
+        });
 
         botonBuscarPropietario.setText("Buscar por propietario");
         botonBuscarPropietario.addActionListener(new java.awt.event.ActionListener() {
@@ -251,11 +265,38 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonBuscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarIdActionPerformed
-        // TODO add your handling code here:
+        
+        try{
+           int id = Integer.parseInt(campoId.getText());
+           Inmueble inmueble = inmuebleData.buscarInmueble(id);
+           
+           if(inmueble == null){
+               JOptionPane.showMessageDialog(this, "No existe ningún inmueble con esa Id");
+           }else{
+               eliminarFilas();
+               cargarFila(inmueble);
+           }
+           
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Ingrese el id del inmueble que desea buscar");
+        }
     }//GEN-LAST:event_botonBuscarIdActionPerformed
 
     private void botonBuscarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPropietarioActionPerformed
-        // TODO add your handling code here:
+        
+        if(comboPropietario.getSelectedIndex()<1){
+            JOptionPane.showMessageDialog(this, "Ingrese un propietario para buscar sus inmuebles");
+        }else{
+            Propietario propietario = (Propietario)comboPropietario.getSelectedItem();
+            ArrayList<Inmueble> inmuebles = inmuebleData.listarInmueblesPorPropietario(propietario.getIdPropietario());
+            
+            eliminarFilas();
+            for(Inmueble inmueble: inmuebles){
+                cargarFila(inmueble);
+            }
+            
+        }
+        
     }//GEN-LAST:event_botonBuscarPropietarioActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
@@ -277,6 +318,34 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
            }
         }
     }//GEN-LAST:event_botonBuscarActionPerformed
+
+    private void campoIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIdKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57 || key == 8;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 5) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoIdKeyTyped
+
+    private void botonBuscarDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarDireccionActionPerformed
+        
+        if(campoDireccion.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese una dirección para buscar inmuebles");
+        }else{
+            String direccion = campoDireccion.getText()+"%";
+            ArrayList<Inmueble> inmuebles = inmuebleData.buscarInmueblePorDireccion(direccion);
+            
+            eliminarFilas();
+            for(Inmueble inmueble : inmuebles){
+                cargarFila(inmueble);
+            }
+        }
+    }//GEN-LAST:event_botonBuscarDireccionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -335,5 +404,16 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
                 modelo.removeRow(filas);
             }
         }
+    }
+    
+    private void cargarComboPropietario(){
+        
+        ArrayList<Propietario> propietarios = propietarioData.listarPropietarios();
+        
+        comboPropietario.addItem(null);
+        for(Propietario propietario: propietarios){
+            comboPropietario.addItem(propietario);
+            
+        }    
     }
 }

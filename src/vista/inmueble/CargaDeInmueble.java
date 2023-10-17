@@ -271,6 +271,7 @@ private int aviso = 0;
                 JOptionPane.showMessageDialog(this, "No existe ningún inmueble con esa Id");
                 vaciarCampos();
             }else{
+                JOptionPane.showMessageDialog(null,"Inmueble encontrado");
                 int cantidadPropietarios = comboPropietario.getItemCount();
                 for(int i=1; i<cantidadPropietarios; i++){
                     Propietario proCombo = comboPropietario.getItemAt(i);

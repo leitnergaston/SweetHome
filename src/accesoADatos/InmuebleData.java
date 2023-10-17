@@ -145,7 +145,7 @@ public class InmuebleData {
                 inmueble.setZona(rs.getString("zona"));
                 inmueble.setDisponible(rs.getBoolean("disponible"));
                 
-                JOptionPane.showMessageDialog(null,"Inmueble encontrado");
+                //JOptionPane.showMessageDialog(null,"Inmueble encontrado");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -294,7 +294,47 @@ public class InmuebleData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al accedel a la tabla inmueble " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble " + ex.getMessage());
+        }
+        return inmuebles;
+    }
+    
+    public ArrayList<Inmueble> buscarInmueblePorDireccion(String direccion){
+    
+        propietarioData = new PropietarioData();
+        inquilinoData= new InquilinoData();
+        
+        ArrayList<Inmueble> inmuebles = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM inmueble "
+                    + "WHERE direccion LIKE ?"; 
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            // Asignar los valores de los parametros
+            ps.setString(1, direccion);
+
+            ResultSet rs = ps.executeQuery();
+
+            // Listar los inmuebles con los parametros elegidos
+            while (rs.next()) {
+                Inmueble inmueble = new Inmueble();
+                inmueble.setIdInmueble(rs.getInt("idInmueble"));
+                inmueble.setPropietario(propietarioData.buscarPropietarioPorId(rs.getInt("idPropietario")));
+                inmueble.setInquilino(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
+                inmueble.setDireccion(rs.getString("direccion"));
+                inmueble.setTipo(rs.getString("tipo"));
+                inmueble.setZona(rs.getString("zona"));
+                inmueble.setSuperficie(rs.getDouble("superficie"));
+                inmueble.setPrecio(rs.getDouble("precio"));
+                inmueble.setDisponible(rs.getBoolean("disponible"));
+                inmuebles.add(inmueble);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble " + ex.getMessage());
         }
         return inmuebles;
     }
