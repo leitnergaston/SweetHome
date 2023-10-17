@@ -83,6 +83,12 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
             }
         });
 
+        campoTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoTelefonoKeyTyped(evt);
+            }
+        });
+
         campoId.setEditable(false);
 
         jLabel8.setText("Dni");
@@ -363,6 +369,14 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         Propietario prop = new Propietario(id, dni, apellido, nombre, domicilio, telefono, mail, estado);
         propData.modificarPropietario(prop);
     }//GEN-LAST:event_botonModificarActionPerformed
+
+    private void campoTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTelefonoKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        if (!numero) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_campoTelefonoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -2,12 +2,17 @@ package vista.inmueble;
 
 import accesoADatos.InmuebleData;
 import entidades.Inmueble;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -32,7 +37,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         cargarColumnas();
         cargarComboTipo();
         cargarComboZona();
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -380,26 +385,50 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_campoPrecioMaximoKeyTyped
 
     private void botonVerDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDetalleActionPerformed
+        try {
+            String nombrePropietario, apellidoPropietario = "", nombreInquilino, apellidoInquilino = "", disponible;
             
-//        botonVerDetalle.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int filaSeleccionada = tablaInmuebles.getSelectedRow();
-//                if (filaSeleccionada != -1) {
-//                    Inmueble inmueble = (Inmueble) modelo.getValueAt(filaSeleccionada, 0);
-//                    String detalles = "ID: " + inmueble.toString()+ "\n"
-//                            + "Tipo: " + inmueble.toString()+ "\n"
-//                            + "Superficie: " + inmueble.toString()+ " m²\n"
-//                            + "Precio: $" + inmueble.toString()+ "\n"
-//                            + "Zona: " + inmueble.toString();
-//                    JOptionPane.showMessageDialog(null, detalles, "Detalles del inmueble", JOptionPane.INFORMATION_MESSAGE);
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "seleccione una fila");
-//                }
-//            }
-//
-//        });
-        
+            int filaSeleccionada = tablaInmuebles.getSelectedRow();
+
+            int idInmueble = (int) tablaInmuebles.getValueAt(filaSeleccionada, 0);
+            InmuebleData inmData = new InmuebleData();
+            Inmueble inmueble = inmData.buscarInmueble(idInmueble);
+
+            if (inmueble.getPropietario() != null) {
+                nombrePropietario = inmueble.getPropietario().getNombre();
+                apellidoPropietario = inmueble.getPropietario().getApellido();
+                
+            } else {
+                nombrePropietario = "Sin propietario";
+            }
+            
+            if(inmueble.getInquilino() != null) {
+                nombreInquilino = inmueble.getInquilino().getNombre();
+                apellidoInquilino = inmueble.getInquilino().getApellido();
+            } else {
+                nombreInquilino = "Sin Inquilino";
+            }
+            
+            if (inmueble.isDisponible()) {
+                disponible = "Si";
+            } else {
+                disponible = "No";
+            }
+            
+            String detalles = "ID: " + Integer.toString(inmueble.getIdInmueble())+ "\n"
+                    + "Tipo: " + inmueble.getTipo() + "\n"
+                    + "Superficie: " + inmueble.getSuperficie() + " m²\n"
+                    + "Precio: $" + inmueble.getPrecio() + "\n"
+                    + "Zona: " + inmueble.getZona() + "\n"
+                    + "Direccion: " + inmueble.getDireccion() + "\n"
+                    + "Propietario: " + nombrePropietario + " " + apellidoPropietario + "\n"
+                    + "Inquilino: " + nombreInquilino + " " + apellidoInquilino + "\n"
+                    + "Disponible: " + disponible;
+            JOptionPane.showMessageDialog(null, detalles, "Detalles del inmueble", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (NullPointerException ex) {
+
+        }
 
 
     }//GEN-LAST:event_botonVerDetalleActionPerformed
