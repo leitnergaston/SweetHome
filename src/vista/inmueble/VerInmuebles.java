@@ -5,6 +5,10 @@
  */
 package vista.inmueble;
 
+import accesoADatos.InmuebleData;
+import entidades.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import vista.menuPrincipal.MenuPrincipal;
 
 /**
@@ -13,10 +17,17 @@ import vista.menuPrincipal.MenuPrincipal;
  */
 public class VerInmuebles extends javax.swing.JInternalFrame {
     private final MenuPrincipal menuPrincipal;
+    private InmuebleData inmuebleData= new InmuebleData();
+    private DefaultTableModel modelo = new DefaultTableModel(){
+        public boolean isCellEditable(int f, int c){
+            return false;
+        }
+    };
     
     public VerInmuebles(MenuPrincipal menuPrincipal) {
         initComponents();
         this.menuPrincipal = menuPrincipal;
+        cargarTablaInicial();
         
     }
 
@@ -29,11 +40,12 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoFiltro = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         botonBuscarDireccion = new javax.swing.JButton();
         campoId = new javax.swing.JTextField();
-        botonBuscarZona = new javax.swing.JButton();
+        botonBuscarPropietario = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         campoDireccion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -47,20 +59,29 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         radioBDisponibles = new javax.swing.JRadioButton();
         botonBuscarId = new javax.swing.JButton();
-        comboZona = new javax.swing.JComboBox<>();
+        comboPropietario = new javax.swing.JComboBox<>();
+        botonBuscar = new javax.swing.JButton();
 
         jLabel3.setText("Id");
 
-        botonBuscarDireccion.setText("Buscar");
+        botonBuscarDireccion.setText("Buscar por direccion");
 
-        botonBuscarZona.setText("Buscar");
+        botonBuscarPropietario.setText("Buscar por propietario");
+        botonBuscarPropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarPropietarioActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Dirección");
 
-        jLabel5.setText("Zona");
+        jLabel5.setText("Propietario");
 
+        grupoFiltro.add(radioBNoDisponibles);
         radioBNoDisponibles.setText("No disponibles");
 
+        grupoFiltro.add(radioBTodos);
+        radioBTodos.setSelected(true);
         radioBTodos.setText("Todos");
         radioBTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +92,7 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         botonVerDetalles.setText("Ver detalles");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ver Inmuebles");
 
@@ -95,14 +116,23 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tablaInmuebles);
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Filtrar por . . .");
 
+        grupoFiltro.add(radioBDisponibles);
         radioBDisponibles.setText("Disponibles");
 
-        botonBuscarId.setText("Buscar");
+        botonBuscarId.setText("Buscar por Id");
         botonBuscarId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarIdActionPerformed(evt);
+            }
+        });
+
+        botonBuscar.setText("Buscar por disponibilidad");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
             }
         });
 
@@ -113,62 +143,67 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(botonVerDetalles)
-                        .addGap(126, 126, 126)
-                        .addComponent(botonSalir))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(radioBTodos)
-                        .addGap(18, 18, 18)
-                        .addComponent(radioBDisponibles)
-                        .addGap(18, 18, 18)
-                        .addComponent(radioBNoDisponibles))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(175, 175, 175)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(147, 147, 147)
+                        .addComponent(botonVerDetalles)
+                        .addGap(122, 122, 122)
+                        .addComponent(botonSalir)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(radioBDisponibles)
+                        .addGap(18, 18, 18)
+                        .addComponent(radioBNoDisponibles)
+                        .addGap(31, 31, 31)
+                        .addComponent(botonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                                .addComponent(campoId, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(44, 44, 44)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(campoDireccion)
-                                    .addComponent(comboZona, 0, 106, Short.MAX_VALUE))))
-                        .addGap(44, 44, 44)
+                                .addComponent(radioBTodos)
+                                .addGap(9, 9, 9)))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(campoDireccion)
+                            .addComponent(comboPropietario, 0, 172, Short.MAX_VALUE)
+                            .addComponent(campoId))
+                        .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonBuscarId)
-                            .addComponent(botonBuscarDireccion)
-                            .addComponent(botonBuscarZona))))
-                .addContainerGap(85, Short.MAX_VALUE))
+                            .addComponent(botonBuscarId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonBuscarPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonBuscarDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jLabel2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(96, 96, 96))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioBTodos)
                     .addComponent(radioBDisponibles)
                     .addComponent(radioBNoDisponibles)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                    .addComponent(botonBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(campoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,16 +215,16 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
                     .addComponent(campoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonBuscarZona)
+                    .addComponent(botonBuscarPropietario)
                     .addComponent(jLabel5)
-                    .addComponent(comboZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                    .addComponent(comboPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonVerDetalles)
                     .addComponent(botonSalir))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGap(67, 67, 67))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -219,16 +254,42 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonBuscarIdActionPerformed
 
+    private void botonBuscarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPropietarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonBuscarPropietarioActionPerformed
+
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        
+        ArrayList<Inmueble> inmuebles;
+                
+        if(radioBTodos.isSelected()){
+            inmuebles = inmuebleData.listarInmuebles();
+            eliminarFilas();
+            for(Inmueble inmueble : inmuebles){
+                cargarFila(inmueble);
+            }
+        }else{
+           boolean disponible = radioBDisponibles.isSelected();
+           inmuebles = inmuebleData.listarInmueblesDisponiblesONo(disponible);
+           eliminarFilas();
+           for(Inmueble inmueble : inmuebles){
+               cargarFila(inmueble);
+           }
+        }
+    }//GEN-LAST:event_botonBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonBuscarDireccion;
     private javax.swing.JButton botonBuscarId;
-    private javax.swing.JButton botonBuscarZona;
+    private javax.swing.JButton botonBuscarPropietario;
     private javax.swing.JButton botonSalir;
     private javax.swing.JButton botonVerDetalles;
     private javax.swing.JTextField campoDireccion;
     private javax.swing.JTextField campoId;
-    private javax.swing.JComboBox<String> comboZona;
+    private javax.swing.JComboBox<Propietario> comboPropietario;
+    private javax.swing.ButtonGroup grupoFiltro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -241,4 +302,38 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton radioBTodos;
     private javax.swing.JTable tablaInmuebles;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTablaInicial(){
+        modelo.addColumn("Id");
+        modelo.addColumn("Dirección");
+        modelo.addColumn("Propietario");
+        modelo.addColumn("Zona");
+        modelo.addColumn("Tipo");
+        
+        tablaInmuebles.setModel(modelo);
+        
+        ArrayList<Inmueble> inmuebles = inmuebleData.listarInmuebles();
+        
+        for(Inmueble inmueble : inmuebles){
+            cargarFila(inmueble);
+        }
+    }
+
+    private void cargarFila(Inmueble inmueble){
+        modelo.addRow(new Object[]{
+            inmueble.getIdInmueble(),
+            inmueble.getDireccion(),
+            inmueble.getPropietario().getApellido()+" "+inmueble.getPropietario().getNombre(),
+            inmueble.getZona(),
+            inmueble.getTipo()});
+    }
+    
+    private void eliminarFilas() {
+        int filas = tablaInmuebles.getRowCount() - 1;
+        if (filas > -1) {
+            for (; filas >= 0; filas--) {
+                modelo.removeRow(filas);
+            }
+        }
+    }
 }

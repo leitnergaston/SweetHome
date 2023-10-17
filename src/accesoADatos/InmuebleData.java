@@ -155,7 +155,7 @@ public class InmuebleData {
     }
 
     //====== LISTAR INMUEBLES DISPONIBLES ======//
-    public ArrayList<Inmueble> listarInmueblesDisponibles() {
+    public ArrayList<Inmueble> listarInmueblesDisponiblesONo(boolean disponible) {
         
         propietarioData = new PropietarioData();
         inquilinoData= new InquilinoData();
@@ -163,8 +163,9 @@ public class InmuebleData {
         ArrayList<Inmueble> inmuebles = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM inmueble WHERE disponible = 1";
+            String sql = "SELECT * FROM inmueble WHERE disponible = ?";
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setBoolean(1, disponible);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -229,7 +230,7 @@ public class InmuebleData {
         
         ArrayList<Inmueble> inmuebles = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM inmueble WHERE 1";
+            String sql = "SELECT * FROM inmueble";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
