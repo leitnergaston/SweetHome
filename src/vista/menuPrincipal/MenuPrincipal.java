@@ -30,11 +30,11 @@ public final class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/images/fondo1.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/fondo1.png"));
         Image image = icon.getImage();
         Escritorio = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g) {
-                g.drawImage(image, 0, 0, 900, 633, this);
+                g.drawImage(image, 640, 380, 260, 256, this);
             }
 
         };
@@ -58,6 +58,8 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Escritorio.setBackground(new java.awt.Color(71, 85, 119));
 
         label1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         label1.setForeground(new java.awt.Color(0, 0, 0));
