@@ -104,6 +104,11 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         });
 
         botonVerDetalles.setText("Ver detalles");
+        botonVerDetalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerDetallesActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -272,9 +277,13 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
            
            if(inmueble == null){
                JOptionPane.showMessageDialog(this, "No existe ningún inmueble con esa Id");
+               vaciarTodo();
            }else{
                eliminarFilas();
                cargarFila(inmueble);
+               radioBTodos.setSelected(true);
+               campoDireccion.setText("");
+               comboPropietario.setSelectedIndex(0);
            }
            
         }catch(NumberFormatException ex){
@@ -286,15 +295,23 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         
         if(comboPropietario.getSelectedIndex()<1){
             JOptionPane.showMessageDialog(this, "Ingrese un propietario para buscar sus inmuebles");
+            vaciarTodo();
         }else{
             Propietario propietario = (Propietario)comboPropietario.getSelectedItem();
             ArrayList<Inmueble> inmuebles = inmuebleData.listarInmueblesPorPropietario(propietario.getIdPropietario());
             
-            eliminarFilas();
-            for(Inmueble inmueble: inmuebles){
-                cargarFila(inmueble);
+            if(inmuebles.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Ese propietario no ha registrado ningún inmueble");  
+                vaciarTodo();
+            }else{
+                eliminarFilas();
+                for(Inmueble inmueble: inmuebles){
+                    cargarFila(inmueble);
+                    radioBTodos.setSelected(true);
+                    campoId.setText("");
+                    campoDireccion.setText("");
+                }
             }
-            
         }
         
     }//GEN-LAST:event_botonBuscarPropietarioActionPerformed
@@ -305,18 +322,34 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
                 
         if(radioBTodos.isSelected()){
             inmuebles = inmuebleData.listarInmuebles();
-            eliminarFilas();
-            for(Inmueble inmueble : inmuebles){
-                cargarFila(inmueble);
-            }
+            if(inmuebles.isEmpty()){
+                JOptionPane.showMessageDialog(this, "No se ha cargado ningún inmueble todavía");
+                vaciarTodo();
+            }else{    
+                eliminarFilas();
+                for(Inmueble inmueble : inmuebles){
+                    cargarFila(inmueble);
+                }
+            }    
         }else{
-           boolean disponible = radioBDisponibles.isSelected();
-           inmuebles = inmuebleData.listarInmueblesDisponiblesONo(disponible);
-           eliminarFilas();
-           for(Inmueble inmueble : inmuebles){
-               cargarFila(inmueble);
-           }
-        }
+            boolean disponible = radioBDisponibles.isSelected();
+            inmuebles = inmuebleData.listarInmueblesDisponiblesONo(disponible);
+            if(disponible==true && inmuebles.isEmpty()){
+                JOptionPane.showMessageDialog(this, "No existe ningún inmueble disponible en este momento");
+                vaciarTodo();
+            }else if(disponible==false && inmuebles.isEmpty()){
+                JOptionPane.showMessageDialog(this, "No existe ningún inmueble NO disponible en este momento");
+                vaciarTodo();
+            }else{
+                eliminarFilas();
+                for(Inmueble inmueble : inmuebles){
+                    cargarFila(inmueble);
+                }
+                campoId.setText("");
+                campoDireccion.setText("");
+                comboPropietario.setSelectedIndex(0);
+            }
+        }    
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void campoIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIdKeyTyped
@@ -336,16 +369,74 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         
         if(campoDireccion.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Ingrese una dirección para buscar inmuebles");
+            vaciarTodo();
         }else{
             String direccion = campoDireccion.getText()+"%";
             ArrayList<Inmueble> inmuebles = inmuebleData.buscarInmueblePorDireccion(direccion);
             
-            eliminarFilas();
-            for(Inmueble inmueble : inmuebles){
-                cargarFila(inmueble);
-            }
+            if(inmuebles.isEmpty()){
+                JOptionPane.showMessageDialog(this, "No existe ningún inmueble con esa dirección");
+                vaciarTodo();
+            }else{
+                eliminarFilas();
+                for(Inmueble inmueble : inmuebles){
+                    cargarFila(inmueble);
+                }
+                radioBTodos.setSelected(true);
+                campoId.setText("");
+                comboPropietario.setSelectedIndex(0);
+            }    
         }
     }//GEN-LAST:event_botonBuscarDireccionActionPerformed
+
+    private void botonVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDetallesActionPerformed
+        try {
+            String nombrePropietario, apellidoPropietario = "", nombreInquilino, apellidoInquilino = "", disponible;
+            
+            int filaSeleccionada = tablaInmuebles.getSelectedRow();
+
+            int idInmueble = (int) tablaInmuebles.getValueAt(filaSeleccionada, 0);
+            InmuebleData inmData = new InmuebleData();
+            Inmueble inmueble = inmData.buscarInmueble(idInmueble);
+
+            if (inmueble.getPropietario() != null) {
+                nombrePropietario = inmueble.getPropietario().getNombre();
+                apellidoPropietario = inmueble.getPropietario().getApellido();
+                
+            } else {
+                nombrePropietario = "Sin propietario";
+            }
+            
+            if(inmueble.getInquilino() != null) {
+                nombreInquilino = inmueble.getInquilino().getNombre();
+                apellidoInquilino = inmueble.getInquilino().getApellido();
+            } else {
+                nombreInquilino = "Sin Inquilino";
+            }
+            
+            if (inmueble.isDisponible()) {
+                disponible = "Si";
+            } else {
+                disponible = "No";
+            }
+            
+            String detalles = "ID: " + Integer.toString(inmueble.getIdInmueble())+ "\n"
+                    + "Tipo: " + inmueble.getTipo() + "\n"
+                    + "Superficie: " + inmueble.getSuperficie() + " m²\n"
+                    + "Precio: $" + inmueble.getPrecio() + "\n"
+                    + "Zona: " + inmueble.getZona() + "\n"
+                    + "Direccion: " + inmueble.getDireccion() + "\n"
+                    + "Propietario: " + nombrePropietario + " " + apellidoPropietario + "\n"
+                    + "Inquilino: " + nombreInquilino + " " + apellidoInquilino + "\n"
+                    + "Disponible: " + disponible;
+            JOptionPane.showMessageDialog(null, detalles, "Detalles del inmueble", JOptionPane.INFORMATION_MESSAGE);
+
+        //} catch (NullPointerException ex) {
+
+        }catch (ArrayIndexOutOfBoundsException ex){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un inmueble para poder ver sus detalles");
+        }
+    }//GEN-LAST:event_botonVerDetallesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -415,5 +506,13 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
             comboPropietario.addItem(propietario);
             
         }    
+    }
+    
+    private void vaciarTodo(){
+        radioBTodos.setSelected(true);
+        campoId.setText("");
+        campoDireccion.setText("");
+        comboPropietario.setSelectedIndex(0);
+        eliminarFilas();
     }
 }
