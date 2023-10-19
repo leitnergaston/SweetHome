@@ -104,6 +104,11 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         });
 
         botonVerDetalles.setText("Ver detalles");
+        botonVerDetalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerDetallesActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -346,6 +351,10 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_botonBuscarDireccionActionPerformed
+
+    private void botonVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDetallesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonVerDetallesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
