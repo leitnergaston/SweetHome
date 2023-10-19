@@ -196,11 +196,46 @@ public class PropietarioData {
         
         try {
         String sql = "SELECT idPropietario, dni, apellido, nombre, domicilio, telefono, eMail, estado "
-                + "FROM propietario "
-                + "WHERE estado = 1";
+                + "FROM propietario ";
         
          
             PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Propietario propietario = new Propietario();
+                propietario.setIdPropietario(rs.getInt("idPropietario"));
+                propietario.setDni(rs.getInt("dni"));
+                propietario.setApellido(rs.getString("apellido"));
+                propietario.setNombre(rs.getString("nombre"));
+                propietario.setDomicilio(rs.getString("domicilio"));
+                propietario.setTelefono(rs.getString("telefono"));
+                propietario.setMail(rs.getString("eMail"));
+                propietario.setEstado(rs.getBoolean("estado"));
+                prop.add(propietario);
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario: " + ex.getMessage());
+        }
+        
+        return prop;
+    }
+    
+    public ArrayList<Propietario> listarPropietariosActivosONo(boolean estado) { 
+        
+        
+        ArrayList<Propietario> prop = new ArrayList<>(); 
+        
+        try {
+        String sql = "SELECT idPropietario, dni, apellido, nombre, domicilio, telefono, eMail, estado "
+                + "FROM propietario "
+                + "WHERE estado = ?";
+        
+         
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setBoolean(1, estado);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){

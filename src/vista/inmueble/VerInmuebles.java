@@ -22,6 +22,7 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
     private PropietarioData propietarioData = new PropietarioData();
     private int aviso = 0;
     private DefaultTableModel modelo = new DefaultTableModel(){
+        @Override
         public boolean isCellEditable(int f, int c){
             return false;
         }
@@ -336,10 +337,16 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
             inmuebles = inmuebleData.listarInmueblesDisponiblesONo(disponible);
             if(disponible==true && inmuebles.isEmpty()){
                 JOptionPane.showMessageDialog(this, "No existe ningún inmueble disponible en este momento");
-                vaciarTodo();
+                campoId.setText("");
+                campoDireccion.setText("");
+                comboPropietario.setSelectedIndex(0);
+                eliminarFilas();
             }else if(disponible==false && inmuebles.isEmpty()){
                 JOptionPane.showMessageDialog(this, "No existe ningún inmueble NO disponible en este momento");
-                vaciarTodo();
+                campoId.setText("");
+                campoDireccion.setText("");
+                comboPropietario.setSelectedIndex(0);
+                eliminarFilas();
             }else{
                 eliminarFilas();
                 for(Inmueble inmueble : inmuebles){
@@ -501,7 +508,7 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
     
     private void cargarComboPropietario(){
         
-        ArrayList<Propietario> propietarios = propietarioData.listarPropietarios();
+        ArrayList<Propietario> propietarios = propietarioData.listarPropietariosActivosONo(true);
         
         comboPropietario.addItem(null);
         for(Propietario propietario: propietarios){
