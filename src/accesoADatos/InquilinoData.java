@@ -123,7 +123,6 @@ public class InquilinoData {
                 inquilino.setDniGarante(rs.getInt("dniGarante"));
                 inquilino.setNombreGarante(rs.getString("nombreGarante"));
                 inquilino.setEstado(rs.getBoolean("estado"));
-                JOptionPane.showMessageDialog(null, "inquilino encontrado");
             }
 //            } else {
 //                JOptionPane.showMessageDialog(null, "No existe el inquilino");
@@ -198,7 +197,9 @@ public class InquilinoData {
         return inquilinos; // devolvemos una lista de objetos Alumno
 
     }
-    public Inquilino buscarInquilinoPorApellido(String apellido) {
+
+    public ArrayList<Inquilino> buscarInquilinoPorApellido(String apellido) {
+        ArrayList<Inquilino> inq = new ArrayList<>();
         Inquilino inquilino = null; // declarar un alumno para almacenar info si se encuentra en la bd
         String sql = "SELECT apellido, cuit, nombre, idInquilino FROM inquilino"
                 + " WHERE apellido like ?"; // consulta sql
@@ -209,24 +210,24 @@ public class InquilinoData {
             ResultSet rs = ps.executeQuery(); // ejecutamos la consulta y se almacenan los resultados en el objeto rs
 
             // si hay al menos una fila de resultado en el rs
-            if (rs.next()) {
+            while (rs.next()) {
                 // creamos un inquilino y asignamos los valores obtenidos de la consulta sql a las propìedades del objeto alumno usando metodos set
                 inquilino = new Inquilino();
                 inquilino.setApellido(rs.getString("apellido"));
                 inquilino.setCuit(rs.getLong("cuit"));
                 inquilino.setNombre(rs.getString("nombre"));
                 inquilino.setIdInquilino(rs.getInt("idInquilino"));
+                inq.add(inquilino);
             }
-//            } else {
-//                JOptionPane.showMessageDialog(null, "No existe el inquilino");
             ps.close(); // cerramos el objeto ps
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inquilino " + ex.getMessage());
         }
-        return inquilino; // devuelve el objeto alumno con la info del alumno encontrado en la bs
+        return inq; // devuelve el objeto alumno con la info del alumno encontrado en la bs
     }
-    
-    public Inquilino buscarInquilinoPorNombre(String nombre) {
+
+    public ArrayList<Inquilino> buscarInquilinoPorNombre(String nombre) {
+        ArrayList<Inquilino> inq = new ArrayList<>();
         Inquilino inquilino = null; // declarar un alumno para almacenar info si se encuentra en la bd
         String sql = "SELECT apellido, cuit, nombre, idInquilino FROM inquilino"
                 + " WHERE nombre like ?"; // consulta sql
@@ -237,24 +238,24 @@ public class InquilinoData {
             ResultSet rs = ps.executeQuery(); // ejecutamos la consulta y se almacenan los resultados en el objeto rs
 
             // si hay al menos una fila de resultado en el rs
-            if (rs.next()) {
+            while (rs.next()) {
                 // creamos un inquilino y asignamos los valores obtenidos de la consulta sql a las propìedades del objeto alumno usando metodos set
                 inquilino = new Inquilino();
                 inquilino.setApellido(rs.getString("apellido"));
                 inquilino.setCuit(rs.getLong("cuit"));
                 inquilino.setNombre(rs.getString("nombre"));
                 inquilino.setIdInquilino(rs.getInt("idInquilino"));
+                inq.add(inquilino);
             }
-//            } else {
-//                JOptionPane.showMessageDialog(null, "No existe el inquilino");
             ps.close(); // cerramos el objeto ps
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inquilino " + ex.getMessage());
         }
-        return inquilino; // devuelve el objeto alumno con la info del alumno encontrado en la bs
+        return inq; // devuelve el objeto alumno con la info del alumno encontrado en la bs
     }
-    
-    public Inquilino buscarInquilinoPorcuil(long cuit) {
+
+    public ArrayList<Inquilino> buscarInquilinoPorcuil(long cuit) {
+        ArrayList<Inquilino> inq = new ArrayList<>();
         Inquilino inquilino = null; // declarar un alumno para almacenar info si se encuentra en la bd
         String sql = "SELECT apellido, cuit, nombre, idInquilino FROM inquilino"
                 + " WHERE cuit = ?"; // consulta sql
@@ -265,21 +266,92 @@ public class InquilinoData {
             ResultSet rs = ps.executeQuery(); // ejecutamos la consulta y se almacenan los resultados en el objeto rs
 
             // si hay al menos una fila de resultado en el rs
-            if (rs.next()) {
+            while (rs.next()) {
                 // creamos un inquilino y asignamos los valores obtenidos de la consulta sql a las propìedades del objeto alumno usando metodos set
                 inquilino = new Inquilino();
                 inquilino.setApellido(rs.getString("apellido"));
                 inquilino.setCuit(rs.getLong("cuit"));
                 inquilino.setNombre(rs.getString("nombre"));
                 inquilino.setIdInquilino(rs.getInt("idInquilino"));
+                inq.add(inquilino);
             }
-//            } else {
-//                JOptionPane.showMessageDialog(null, "No existe el inquilino");
             ps.close(); // cerramos el objeto ps
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inquilino " + ex.getMessage());
         }
-        return inquilino; // devuelve el objeto alumno con la info del alumno encontrado en la bs
+        return inq;
     }
     
+     public ArrayList<Inquilino> listarinquilinosT() {
+        ArrayList<Inquilino> inquilinos = new ArrayList<>(); // declarar la lista q contendrá objetos de tipo Alumno
+        try {
+            String sql = "SELECT `idInquilino`, `cuit`, `apellido`, `nombre` FROM `inquilino`"; // consulta sql
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) { // recorrer las filas de resultados en el rs
+
+                // en cada iteracion se crea un objeto Alumno y asignamos sus propiedades obtenidos del rs usando metodos get
+                Inquilino inquilino = new Inquilino();
+                inquilino.setIdInquilino(rs.getInt("idInquilino"));
+                inquilino.setCuit(rs.getLong("cuit"));
+                inquilino.setApellido(rs.getString("apellido"));
+                inquilino.setNombre(rs.getString("nombre"));
+                inquilinos.add(inquilino);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Inquilino " + ex.getMessage());
+        }
+        return inquilinos; // devolvemos una lista de objetos Alumno
+
+    }
+     public ArrayList<Inquilino> listarinquilinosA() {
+        ArrayList<Inquilino> inquilinos = new ArrayList<>(); // declarar la lista q contendrá objetos de tipo Alumno
+        try {
+            String sql = "SELECT `idInquilino`, `cuit`, `apellido`, `nombre` FROM `inquilino` WHERE estado=1"; // consulta sql
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) { // recorrer las filas de resultados en el rs
+
+                // en cada iteracion se crea un objeto Alumno y asignamos sus propiedades obtenidos del rs usando metodos get
+                Inquilino inquilino = new Inquilino();
+                inquilino.setIdInquilino(rs.getInt("idInquilino"));
+                inquilino.setCuit(rs.getLong("cuit"));
+                inquilino.setApellido(rs.getString("apellido"));
+                inquilino.setNombre(rs.getString("nombre"));
+                inquilinos.add(inquilino);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Inquilino " + ex.getMessage());
+        }
+        return inquilinos; // devolvemos una lista de objetos Alumno
+
+    }
+     public ArrayList<Inquilino> listarinquilinosI() {
+        ArrayList<Inquilino> inquilinos = new ArrayList<>(); // declarar la lista q contendrá objetos de tipo Alumno
+        try {
+            String sql = "SELECT `idInquilino`, `cuit`, `apellido`, `nombre` FROM `inquilino` WHERE estado=0"; // consulta sql
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) { // recorrer las filas de resultados en el rs
+
+                // en cada iteracion se crea un objeto Alumno y asignamos sus propiedades obtenidos del rs usando metodos get
+                Inquilino inquilino = new Inquilino();
+                inquilino.setIdInquilino(rs.getInt("idInquilino"));
+                inquilino.setCuit(rs.getLong("cuit"));
+                inquilino.setApellido(rs.getString("apellido"));
+                inquilino.setNombre(rs.getString("nombre"));
+                inquilinos.add(inquilino);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Inquilino " + ex.getMessage());
+        }
+        return inquilinos; // devolvemos una lista de objetos Alumno
+
+    }
 }

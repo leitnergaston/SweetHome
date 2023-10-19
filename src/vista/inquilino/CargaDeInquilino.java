@@ -382,7 +382,7 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
         if (!numero) {
             evt.consume();
             aviso++;
-            if (aviso == 5) {
+            if (aviso == 10) {
                 JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
                 aviso = 0;
             }
