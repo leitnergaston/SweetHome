@@ -71,6 +71,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         botonSalir = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setText("Ver Inmuebles por filtros");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -323,7 +324,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
 
         boolean alMenosUnFiltro = false;
 
-        if (!campoSuperficie.getText().isEmpty() && !campoPrecioMinimo.getText().isBlank() && !campoPrecioMaximo.getText().isBlank() && !comboTipo.getSelectedItem().equals("") && !comboZona.getSelectedItem().equals("")) {
+        if (!campoSuperficie.getText().isEmpty() && !campoPrecioMinimo.getText().isEmpty()&& !campoPrecioMaximo.getText().isEmpty()&& !comboTipo.getSelectedItem().equals("") && !comboZona.getSelectedItem().equals("")) {
             alMenosUnFiltro = true;
         } else {
             JOptionPane.showMessageDialog(this, "Faltan filtros por llenar");
@@ -428,6 +429,8 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
 
         } catch (NullPointerException ex) {
 
+        }catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un inmueble para ver sus detalles");
         }
 
 

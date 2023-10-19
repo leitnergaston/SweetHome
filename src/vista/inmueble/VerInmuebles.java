@@ -390,6 +390,7 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonBuscarDireccionActionPerformed
 
     private void botonVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDetallesActionPerformed
+
         try {
             String nombrePropietario, apellidoPropietario = "", nombreInquilino, apellidoInquilino = "", disponible;
             
@@ -436,6 +437,7 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         }catch (ArrayIndexOutOfBoundsException ex){
             JOptionPane.showMessageDialog(this, "Debe seleccionar un inmueble para poder ver sus detalles");
         }
+
     }//GEN-LAST:event_botonVerDetallesActionPerformed
 
 
