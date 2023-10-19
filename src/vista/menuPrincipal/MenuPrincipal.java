@@ -1,8 +1,11 @@
 package vista.menuPrincipal;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import vista.propietario.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import vista.contrato.*;
@@ -27,14 +30,20 @@ public final class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        Escritorio = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/fondo1.jpg"));
+        Image image = icon.getImage();
+        Escritorio = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g) {
+                g.drawImage(image, 0, 0, 900, 633, this);
+            }
+
+        };
         label1 = new javax.swing.JLabel();
         botonCargarPropietario = new javax.swing.JButton();
         botonVerPropietarios = new javax.swing.JButton();
         label2 = new javax.swing.JLabel();
         botonCargarInmueble = new javax.swing.JButton();
         botonVerInmuebles = new javax.swing.JButton();
-        botonVerTodos = new javax.swing.JButton();
         label3 = new javax.swing.JLabel();
         botonCargarInquilino = new javax.swing.JButton();
         botonVerInquilinos = new javax.swing.JButton();
@@ -97,11 +106,6 @@ public final class MenuPrincipal extends javax.swing.JFrame {
                 botonVerInmueblesActionPerformed(evt);
             }
         });
-
-        botonVerTodos.setBackground(new java.awt.Color(255, 255, 255));
-        botonVerTodos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        botonVerTodos.setForeground(new java.awt.Color(0, 0, 0));
-        botonVerTodos.setText("Ver todos");
 
         label3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         label3.setForeground(new java.awt.Color(0, 0, 0));
@@ -177,7 +181,6 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         Escritorio.setLayer(label2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(botonCargarInmueble, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(botonVerInmuebles, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        Escritorio.setLayer(botonVerTodos, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(label3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(botonCargarInquilino, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(botonVerInquilinos, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -217,11 +220,9 @@ public final class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(botonVerPropietarios)
                             .addGroup(EscritorioLayout.createSequentialGroup()
                                 .addComponent(botonVerInmuebles)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botonVerTodos)
                                 .addGap(18, 18, 18)
                                 .addComponent(botonVerPorFiltros)))))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(256, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonSalir)
@@ -242,7 +243,6 @@ public final class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(label2)
                     .addComponent(botonCargarInmueble)
                     .addComponent(botonVerInmuebles)
-                    .addComponent(botonVerTodos)
                     .addComponent(botonVerPorFiltros))
                 .addGap(70, 70, 70)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -403,7 +403,6 @@ public final class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botonVerInquilinos;
     private javax.swing.JButton botonVerPorFiltros;
     private javax.swing.JButton botonVerPropietarios;
-    private javax.swing.JButton botonVerTodos;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel label1;
@@ -429,7 +428,6 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         buttons.add(botonVerPropietarios);
         buttons.add(botonCargarInmueble);
         buttons.add(botonVerInmuebles);
-        buttons.add(botonVerTodos);
         buttons.add(botonVerPorFiltros);
         buttons.add(botonCargarInquilino);
         buttons.add(botonVerInquilinos);
