@@ -55,7 +55,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="campoBotonGuardar1" min="-2" max="-2" attributes="0"/>
+                              <Component id="campoBotonNuevo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="campoBotonGuardar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -144,7 +144,7 @@
                   <Component id="campoBotonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="campoBotonGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="campoBotonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="campoBotonGuardar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoBotonNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -238,6 +238,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Renovado"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCheckRenovadoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLFechaFin">
       <Properties>
@@ -284,12 +287,12 @@
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="campoDateFechaFin">
     </Component>
-    <Component class="javax.swing.JButton" name="campoBotonGuardar1">
+    <Component class="javax.swing.JButton" name="campoBotonNuevo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nuevo"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoBotonGuardar1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoBotonNuevoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

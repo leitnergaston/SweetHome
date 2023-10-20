@@ -69,7 +69,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         ComboInquilino = new javax.swing.JComboBox<>();
         campoDateFechaInicio = new com.toedter.calendar.JDateChooser();
         campoDateFechaFin = new com.toedter.calendar.JDateChooser();
-        campoBotonGuardar1 = new javax.swing.JButton();
+        campoBotonNuevo = new javax.swing.JButton();
 
         jLContrato.setBackground(new java.awt.Color(255, 204, 204));
         jLContrato.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -128,6 +128,11 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         jLPrecio.setText("Precio Alquiler");
 
         campoCheckRenovado.setText("Renovado");
+        campoCheckRenovado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoCheckRenovadoActionPerformed(evt);
+            }
+        });
 
         jLFechaFin.setText("Fecha de Finalización");
 
@@ -145,10 +150,10 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
             }
         });
 
-        campoBotonGuardar1.setText("Nuevo");
-        campoBotonGuardar1.addActionListener(new java.awt.event.ActionListener() {
+        campoBotonNuevo.setText("Nuevo");
+        campoBotonNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoBotonGuardar1ActionPerformed(evt);
+                campoBotonNuevoActionPerformed(evt);
             }
         });
 
@@ -184,7 +189,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(38, 38, 38)
-                                .addComponent(campoBotonGuardar1)
+                                .addComponent(campoBotonNuevo)
                                 .addGap(18, 18, 18)
                                 .addComponent(campoBotonGuardar)
                                 .addGap(18, 18, 18)
@@ -253,7 +258,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                     .addComponent(campoBotonModificar)
                     .addComponent(campoBotonGuardar)
                     .addComponent(campoBotonSalir)
-                    .addComponent(campoBotonGuardar1))
+                    .addComponent(campoBotonNuevo))
                 .addContainerGap())
         );
 
@@ -268,8 +273,9 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Para eliminar debe seleccionar un Id correspondiente");
         }else{
             int id = Integer.parseInt(campoIdContrato.getText());
-            
+            contratoData.eliminarContrato(id);
             campoCheckVigente.setSelected(false);
+            
         }
     }//GEN-LAST:event_campoBotonEliminarActionPerformed
 
@@ -291,7 +297,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "No dejar los campos Fecha Inicio, Fecha fin y precio vacíos.");
             }else{
                 
-                //int id = Integer.parseInt(campoIdContrato.getText()); 
+                int id = Integer.parseInt(campoIdContrato.getText()); 
                 Inmueble inmueble = (Inmueble) ComboInmueble.getSelectedItem();
                 Inquilino inquilino = (Inquilino) ComboInquilino.getSelectedItem();
                 LocalDate fecha1 = campoDateFechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -303,14 +309,17 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                 if(campoCheckVigente.isSelected()){
                     vigente = true;
                 }
+                if(campoCheckRenovado.isSelected()){
+                    renovacion = true;
+                }
                 
-                Contrato contrato = new Contrato(inmueble,inquilino,fecha1,fecha2,precio,vigente,renovacion);
+                Contrato contrato = new Contrato(id,inmueble,inquilino,fecha1,fecha2,precio,vigente,renovacion);
                 
                 contratoData.modificarContrato(contrato);
             }
             
         }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Para guardar un contrato debe completar todos los campos excepto Id");
+            JOptionPane.showMessageDialog(this, "Para modificar el contrato debe completar todos los campos excepto Id");
         }
     }//GEN-LAST:event_campoBotonModificarActionPerformed
 
@@ -384,6 +393,9 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                 if(campoCheckVigente.isSelected()){
                     vigente = true;
                 }
+                if(campoCheckRenovado.isSelected()){
+                    renovacion = true;
+                }
                 
                 Contrato contrato = new Contrato(inmueble,inquilino,fecha1,fecha2,precio,vigente,renovacion);
                 
@@ -429,9 +441,13 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_campoPrecioAlquilerKeyTyped
 
-    private void campoBotonGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonGuardar1ActionPerformed
+    private void campoBotonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonNuevoActionPerformed
         vaciarCampos();
-    }//GEN-LAST:event_campoBotonGuardar1ActionPerformed
+    }//GEN-LAST:event_campoBotonNuevoActionPerformed
+
+    private void campoCheckRenovadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCheckRenovadoActionPerformed
+        
+    }//GEN-LAST:event_campoCheckRenovadoActionPerformed
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -440,8 +456,8 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
     private javax.swing.JButton campoBotonBuscar;
     private javax.swing.JButton campoBotonEliminar;
     private javax.swing.JButton campoBotonGuardar;
-    private javax.swing.JButton campoBotonGuardar1;
     private javax.swing.JButton campoBotonModificar;
+    private javax.swing.JButton campoBotonNuevo;
     private javax.swing.JButton campoBotonSalir;
     private javax.swing.JCheckBox campoCheckRenovado;
     private javax.swing.JCheckBox campoCheckVigente;
