@@ -247,7 +247,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     public static boolean Validar(String datos) {
-        return datos.matches("[a-zA-Z]*");
+        return datos.matches("[a-zA-Z ]*");
     }
 
     //====== BOTON GUARDAR ======//

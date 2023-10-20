@@ -263,7 +263,7 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_campoNombreGaranteActionPerformed
     
     public static boolean Validar(String datos) {
-        return datos.matches("[a-zA-Z]*");
+        return datos.matches("[a-zA-Z ]*");
     }
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
