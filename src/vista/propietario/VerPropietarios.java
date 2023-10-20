@@ -11,6 +11,7 @@ import vista.menuPrincipal.MenuPrincipal;
 
 public class VerPropietarios extends javax.swing.JInternalFrame {
     private final MenuPrincipal menuPrincipal;
+    private int aviso = 0;
     private PropietarioData propietarioData = new PropietarioData();
     private DefaultTableModel modelo = new DefaultTableModel(){
         @Override
@@ -80,14 +81,31 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Nombre");
 
+        campoNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoNombreActionPerformed(evt);
+            }
+        });
+
         jLabel5.setText("Dni");
 
         botonVerDetalles.setText("Ver detalles");
+        botonVerDetalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerDetallesActionPerformed(evt);
+            }
+        });
 
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
+            }
+        });
+
+        campoDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoDniKeyTyped(evt);
             }
         });
 
@@ -99,8 +117,18 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         });
 
         botonBuscarNombre.setText("Buscar por nombre");
+        botonBuscarNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarNombreActionPerformed(evt);
+            }
+        });
 
         botonBuscarDni.setText("Buscar por dni");
+        botonBuscarDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarDniActionPerformed(evt);
+            }
+        });
 
         buttonGroupEstado.add(radioBTodos);
         radioBTodos.setSelected(true);
@@ -126,43 +154,31 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(botonVerDetalles)
                                 .addGap(97, 97, 97)
                                 .addComponent(botonSalir)
                                 .addGap(61, 61, 61))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addGap(72, 72, 72)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(campoApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                                            .addComponent(campoNombre)))
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(campoDni)
+                                            .addComponent(campoNombre)
+                                            .addComponent(campoApellido, javax.swing.GroupLayout.Alignment.TRAILING)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(radioBTodos)
-                                                .addGap(18, 18, 18))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(12, 12, 12)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(radioBActivos)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(radioBInactivos))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(32, 32, 32)
-                                                .addComponent(campoDni))))
+                                        .addComponent(radioBTodos)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(radioBActivos)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(radioBInactivos))
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(29, 29, 29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -173,7 +189,11 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,9 +220,9 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
                     .addComponent(botonBuscarNombre))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(botonBuscarDni)
                     .addComponent(campoDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBuscarDni))
+                    .addComponent(jLabel5))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -221,7 +241,30 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonBuscarApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarApellidoActionPerformed
-        // TODO add your handling code here:
+        ArrayList<Propietario> propietarios;
+        
+        if(campoApellido.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un apellido para poder buscar los propietarios");
+            eliminarFilas();
+        }else{
+            String apellido = campoApellido.getText()+"%";
+            propietarios = propietarioData.listarPropietariosPorApellido(apellido);
+            if(propietarios.isEmpty()){
+                JOptionPane.showMessageDialog(this, "No se ha encontrado ningún propietario");
+                radioBTodos.setSelected(true);
+                campoNombre.setText("");
+                campoDni.setText("");
+                eliminarFilas();
+            }else{
+                eliminarFilas();
+                for(Propietario propietario: propietarios){
+                    cargarFila(propietario);
+                }
+                radioBTodos.setSelected(true);
+                campoNombre.setText("");
+                campoDni.setText("");
+            }
+        }
     }//GEN-LAST:event_botonBuscarApellidoActionPerformed
 
     private void botonBuscarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarEstadoActionPerformed
@@ -238,6 +281,9 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
                 for(Propietario propietario : propietarios){
                     cargarFila(propietario);
                 }
+                campoApellido.setText("");
+                campoNombre.setText("");
+                campoDni.setText("");
             }
         }else{
             boolean estado = radioBActivos.isSelected();
@@ -268,6 +314,102 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         } 
     }//GEN-LAST:event_botonBuscarEstadoActionPerformed
 
+    private void botonBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarNombreActionPerformed
+        ArrayList<Propietario> propietarios;
+        
+        if(campoNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un nombre para poder buscar los propietarios");
+            eliminarFilas();
+        }else{
+            String nombre = campoNombre.getText()+"%";
+            propietarios = propietarioData.listarPropietariosPorNombre(nombre);
+            if(propietarios.isEmpty()){
+                JOptionPane.showMessageDialog(this, "No se ha encontrado ningún propietario");
+                radioBTodos.setSelected(true);
+                campoApellido.setText("");
+                campoDni.setText("");
+                eliminarFilas();
+            }else{
+                eliminarFilas();
+                for(Propietario propietario: propietarios){
+                    cargarFila(propietario);
+                }
+                radioBTodos.setSelected(true);
+                campoApellido.setText("");
+                campoDni.setText("");
+            }
+        }
+    }//GEN-LAST:event_botonBuscarNombreActionPerformed
+
+    private void campoDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDniKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57 || key == 8;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 5) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoDniKeyTyped
+
+    private void botonBuscarDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarDniActionPerformed
+        Propietario propietario;
+        
+        if(campoDni.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe ingresar el dni del propietario que desea buscar");
+            eliminarFilas();
+        }else{
+            int dni = Integer.parseInt(campoDni.getText());
+            propietario = propietarioData.buscarPropietarioPorDni(dni);
+            if(propietario == null){
+                JOptionPane.showMessageDialog(this, "No existe ningún propietario con ese dni");
+                eliminarFilas();
+                radioBTodos.setSelected(true);
+                campoApellido.setText("");
+                campoNombre.setText("");
+            }else{
+                eliminarFilas();
+                cargarFila(propietario);
+            }
+            
+        }
+    }//GEN-LAST:event_botonBuscarDniActionPerformed
+
+    private void botonVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDetallesActionPerformed
+        try{
+            String estado;
+            int filaSeleccionada = tablaPropietarios.getSelectedRow();
+            int idPropietario = (int)tablaPropietarios.getValueAt(filaSeleccionada, 0);
+            Propietario propietario = propietarioData.buscarPropietarioPorId(idPropietario);
+            
+            if(propietario.isEstado()){
+                estado = "Activo";
+            }else{
+                estado = "Inactivo";
+            }
+            
+            String detalles = "ID: "+propietario.getIdPropietario()+"\n"
+                    + "Dni: "+propietario.getDni()+"\n"
+                    + "Apellido: "+propietario.getApellido()+"\n"
+                    + "Nombre: "+propietario.getNombre()+"\n"
+                    + "Domicilio: "+propietario.getDomicilio()+"\n"
+                    + "Teléfono: "+propietario.getTelefono()+"\n"
+                    + "Mail: "+propietario.getMail()+"\n"
+                    + "Estado: "+estado;
+            
+            JOptionPane.showMessageDialog(null, detalles, "Detalles del propietario", JOptionPane.INFORMATION_MESSAGE);
+            
+        }catch(ArrayIndexOutOfBoundsException ex){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un propietario para poder ver sus detalles");
+        }
+    }//GEN-LAST:event_botonVerDetallesActionPerformed
+
+    private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNombreActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscarApellido;
@@ -295,8 +437,8 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
     private void cargarTablaInicial(){
         modelo.addColumn("Id");
         modelo.addColumn("Dni");
-        modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
+        modelo.addColumn("Nombre");
         
         tablaPropietarios.setModel(modelo);
         
@@ -310,8 +452,8 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         modelo.addRow(new Object[]{
             propietario.getIdPropietario(),
             propietario.getDni(),
-            propietario.getNombre(),
-            propietario.getApellido()});
+            propietario.getApellido(),
+            propietario.getNombre()});
         
     }
     

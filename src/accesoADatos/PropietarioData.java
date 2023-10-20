@@ -224,8 +224,7 @@ public class PropietarioData {
     }
     
     public ArrayList<Propietario> listarPropietariosActivosONo(boolean estado) { 
-        
-        
+         
         ArrayList<Propietario> prop = new ArrayList<>(); 
         
         try {
@@ -257,6 +256,76 @@ public class PropietarioData {
         }
         
         return prop;
+    }
+    
+    public ArrayList<Propietario> listarPropietariosPorApellido(String apellido){
+    
+        ArrayList<Propietario> prop = new ArrayList<>(); 
+        
+        try {
+        String sql = "SELECT idPropietario, dni, apellido, nombre, domicilio, telefono, eMail, estado "
+                + "FROM propietario "
+                + "WHERE apellido LIKE ?";
+        
+         
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, apellido);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Propietario propietario = new Propietario();
+                propietario.setIdPropietario(rs.getInt("idPropietario"));
+                propietario.setDni(rs.getInt("dni"));
+                propietario.setApellido(rs.getString("apellido"));
+                propietario.setNombre(rs.getString("nombre"));
+                propietario.setDomicilio(rs.getString("domicilio"));
+                propietario.setTelefono(rs.getString("telefono"));
+                propietario.setMail(rs.getString("eMail"));
+                propietario.setEstado(rs.getBoolean("estado"));
+                prop.add(propietario);
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario: " + ex.getMessage());
+        }
+        
+        return prop;
+    }
+    
+    public ArrayList<Propietario> listarPropietariosPorNombre(String nombre){
+        ArrayList<Propietario> prop = new ArrayList<>(); 
+        
+        try {
+        String sql = "SELECT idPropietario, dni, apellido, nombre, domicilio, telefono, eMail, estado "
+                + "FROM propietario "
+                + "WHERE nombre LIKE ?";
+        
+         
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Propietario propietario = new Propietario();
+                propietario.setIdPropietario(rs.getInt("idPropietario"));
+                propietario.setDni(rs.getInt("dni"));
+                propietario.setApellido(rs.getString("apellido"));
+                propietario.setNombre(rs.getString("nombre"));
+                propietario.setDomicilio(rs.getString("domicilio"));
+                propietario.setTelefono(rs.getString("telefono"));
+                propietario.setMail(rs.getString("eMail"));
+                propietario.setEstado(rs.getBoolean("estado"));
+                prop.add(propietario);
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propietario: " + ex.getMessage());
+        }
+        
+        return prop;
+    
     }
 }
 
