@@ -11,6 +11,7 @@ import accesoADatos.InquilinoData;
 import entidades.Contrato;
 import entidades.Inmueble;
 import entidades.Inquilino;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -314,7 +315,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_campoBotonModificarActionPerformed
 
     private void campoBotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonBuscarActionPerformed
-         
+      try{   
         Contrato contrato = new Contrato();
         
         
@@ -326,17 +327,38 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
             if (contrato == null) {
                 JOptionPane.showMessageDialog(this, "El contrato no existe");
             } else {
-                campoIdContrato.setText(Integer.toString(contrato.getIdContrato()));
-               /*Inmueble inmu = ComboInmueble.getItemAt(contrato.getInmueble());
-               Inquilino inqui = ComboInquilino.getItemAt(contrato.getInquilino());
-                campoPrecioAlquiler.getText(contrato.getPrecioAlquiler());
-                campoCheckVigente.setSelected(contrato.isVigente());*/
+                int idInqui = contrato.getInquilino().getIdInquilino();
+                int cantidadItem = ComboInquilino.getItemCount();
+                
+                    for (int i = 1; i < cantidadItem; i++) {
+                        Inquilino inqui = ComboInquilino.getItemAt(i);
+                      if(inqui.getIdInquilino()== idInqui){
+                          ComboInquilino.setSelectedIndex(i);
+                      }  
+                }
+                 int idInmu = contrato.getInmueble().getIdInmueble();
+                 int cantItem = ComboInmueble.getItemCount();
+                 
+                       for (int i = 1; i < cantItem; i++) {
+                        Inmueble inmu = ComboInmueble.getItemAt(i);
+                      if(inmu.getIdInmueble()== idInmu){
+                          ComboInmueble.setSelectedIndex(i);
+                      }  
+                }
+                campoDateFechaInicio.setDate(Date.valueOf(contrato.getFechaInicio()));
+                campoDateFechaFin.setDate(Date.valueOf(contrato.getFechaFinal()));
+                campoPrecioAlquiler.setText(contrato.getPrecioAlquiler()+"");
+                campoCheckVigente.setSelected(contrato.isVigente());
+                campoCheckRenovado.setSelected(contrato.isRenovacion());
             }
         }
         if (campoIdContrato.getText().isEmpty()) {
             campoBotonModificar.setEnabled(false);
         } else {
             campoBotonModificar.setEnabled(true);
+        }
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Para guardar un contrato debe completar todos los campos excepto Id");
         }
       
     }//GEN-LAST:event_campoBotonBuscarActionPerformed
