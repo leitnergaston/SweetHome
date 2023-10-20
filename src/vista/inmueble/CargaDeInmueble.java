@@ -150,16 +150,6 @@ private int aviso = 0;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(botonGuardar)
-                .addGap(18, 18, 18)
-                .addComponent(botonEliminar)
-                .addGap(18, 18, 18)
-                .addComponent(botonModificar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -201,6 +191,16 @@ private int aviso = 0;
                         .addGap(36, 36, 36)
                         .addComponent(botonBuscar)))
                 .addGap(37, 37, 37))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(botonGuardar)
+                .addGap(18, 18, 18)
+                .addComponent(botonEliminar)
+                .addGap(18, 18, 18)
+                .addComponent(botonModificar)
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
