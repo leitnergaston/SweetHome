@@ -70,6 +70,8 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         botonVerDetalle = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
 
+        setTitle("Ver inmuebles por filtros");
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setText("Ver Inmuebles por filtros");

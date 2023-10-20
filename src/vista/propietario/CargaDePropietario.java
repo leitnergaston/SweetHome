@@ -42,6 +42,8 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         campoDni = new javax.swing.JTextField();
         botonNuevo = new javax.swing.JButton();
 
+        setTitle("Datos Propietario");
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Carga de Datos");
 
