@@ -265,7 +265,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     public static boolean Validar(String datos) {
-        return datos.matches("[a-zA-Z]*");
+        return datos.matches("[a-zA-Z ]*");
     }
     
     private void campoBotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonEliminarActionPerformed
