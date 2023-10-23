@@ -116,7 +116,7 @@ public class InquilinoData {
                 // creamos un inquilino y asignamos los valores obtenidos de la consulta sql a las propìedades del objeto alumno usando metodos set
                 inquilino = new Inquilino();
                 inquilino.setIdInquilino(idInquilino);
-                inquilino.setCuit(rs.getInt("cuit"));
+                inquilino.setCuit(rs.getLong("cuit"));
                 inquilino.setApellido(rs.getString("apellido"));
                 inquilino.setNombre(rs.getString("nombre"));
                 inquilino.setLugarDeTrabajo(rs.getString("lugarDeTrabajo"));
@@ -155,7 +155,6 @@ public class InquilinoData {
                 inquilino.setDniGarante(rs.getInt("dniGarante"));
                 inquilino.setNombreGarante(rs.getString("nombreGarante"));
                 inquilino.setEstado(rs.getBoolean("estado"));
-                JOptionPane.showMessageDialog(null, "inquilino encontrado");
             }
 //            } else {
 //                JOptionPane.showMessageDialog(null, "No existe el inquilino");

@@ -9,8 +9,8 @@ import vista.menuPrincipal.MenuPrincipal;
 
 public class VerInquilinos extends javax.swing.JInternalFrame {
 
-    DefaultTableModel modelo = new DefaultTableModel(){
-        public boolean isCellEditable(int f, int c){
+    DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
             return false;
         }
     };
@@ -109,6 +109,12 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
             }
         });
 
+        campoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoApellidoKeyTyped(evt);
+            }
+        });
+
         botonBuscarCuit.setText("Buscar por CUIT/CUIL");
         botonBuscarCuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +123,12 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
         });
 
         jLabel4.setText("Nombre");
+
+        campoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoNombreKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("CUIT/CUIL");
 
@@ -258,7 +270,7 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
     private void botonBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarNombreActionPerformed
 
         if (campoNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el apellido a buscar");
+            JOptionPane.showMessageDialog(this, "Ingrese el Nombre a buscar");
         } else {
             if (VerInquilinos.Validar(campoNombre.getText())) {
                 String apellido = campoApellido.getText() + "%";
@@ -308,20 +320,35 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
         if (radioBTodos.isSelected()) {
             inquili = inqdata.listarinquilinosT();
             eliminarFilas();
-            for (Inquilino inqi : inquili) {
-                cargarfilas(inqi);
+            if (inquili.isEmpty()) {
+                JOptionPane.showConfirmDialog(this, "No hay inquilinos");
+                eliminarFilas();
+            } else {
+                for (Inquilino inqi : inquili) {
+                    cargarfilas(inqi);
+                }
             }
         } else if (radioBActivos.isSelected()) {
             inquili = inqdata.listarinquilinosA();
             eliminarFilas();
-            for (Inquilino inqi : inquili) {
-                cargarfilas(inqi);
+            if (inquili.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No hay inquilinos activos");
+                eliminarFilas();
+            } else {
+                for (Inquilino inqi : inquili) {
+                    cargarfilas(inqi);
+                }
             }
         } else if (radioBInactivos.isSelected()) {
             inquili = inqdata.listarinquilinosI();
             eliminarFilas();
-            for (Inquilino inqi : inquili) {
-                cargarfilas(inqi);
+            if (inquili.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No hya inquilinos inacivos");
+                eliminarFilas();
+            } else {
+                for (Inquilino inqi : inquili) {
+                    cargarfilas(inqi);
+                }
             }
         } else {
             JOptionPane.showMessageDialog(this, "Seleccion un filtro para bscar");
@@ -370,6 +397,32 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_campoCuitKeyTyped
+
+    private void campoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoApellidoKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoApellidoKeyTyped
+
+    private void campoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNombreKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
