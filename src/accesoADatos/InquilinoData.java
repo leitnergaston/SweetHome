@@ -281,7 +281,7 @@ public class InquilinoData {
         }
         return inq;
     }
-    
+    //Listar todos los inquilinos
      public ArrayList<Inquilino> listarinquilinosT() {
         ArrayList<Inquilino> inquilinos = new ArrayList<>(); // declarar la lista q contendrá objetos de tipo Alumno
         try {
@@ -306,6 +306,7 @@ public class InquilinoData {
         return inquilinos; // devolvemos una lista de objetos Alumno
 
     }
+     //Listar inquilinos activos
      public ArrayList<Inquilino> listarinquilinosA() {
         ArrayList<Inquilino> inquilinos = new ArrayList<>(); // declarar la lista q contendrá objetos de tipo Alumno
         try {
@@ -329,7 +330,8 @@ public class InquilinoData {
         }
         return inquilinos; // devolvemos una lista de objetos Alumno
 
-    }
+     }
+     //Listar inquilinos inactivos
      public ArrayList<Inquilino> listarinquilinosI() {
         ArrayList<Inquilino> inquilinos = new ArrayList<>(); // declarar la lista q contendrá objetos de tipo Alumno
         try {
