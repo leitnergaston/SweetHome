@@ -36,7 +36,7 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         Image image = icon.getImage();
         Escritorio = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g) {
-                g.drawImage(image, 0, 0, 1280, 720, this);
+                g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
             }
 
         };
