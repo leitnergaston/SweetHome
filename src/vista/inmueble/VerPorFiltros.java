@@ -2,19 +2,9 @@ package vista.inmueble;
 
 import accesoADatos.InmuebleData;
 import entidades.Inmueble;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import vista.menuPrincipal.MenuPrincipal;
 
@@ -356,7 +346,8 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
     //====== BOTON LIMPIAR FILTROS ======//
     private void botonLimpiarFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarFiltrosActionPerformed
 
-        comboZona.addItem(null);
+        comboZona.setSelectedIndex(0);
+        comboTipo.setSelectedIndex(0);
         campoSuperficie.setText("");
         campoPrecioMinimo.setText("");
         campoPrecioMaximo.setText("");
