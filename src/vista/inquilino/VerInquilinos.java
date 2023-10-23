@@ -228,7 +228,7 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     public static boolean Validar(String datos) {
-        return datos.matches("[a-zA-Z]*");
+        return datos.matches("[a-zA-Z ]*");
     }
 
     private void botonBuscarApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarApellidoActionPerformed
