@@ -21,6 +21,7 @@ import vista.menuPrincipal.MenuPrincipal;
 public class VerPorFiltros extends javax.swing.JInternalFrame {
 
     private final MenuPrincipal menuPrincipal;
+    int aviso = 0;
     DefaultTableModel modelo = new DefaultTableModel() {
         @Override
         public boolean isCellEditable(int row, int column) {
@@ -364,26 +365,41 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
 
     private void campoSuperficieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSuperficieKeyTyped
         int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57;
+        boolean numero = key >= 48 && key <= 57 || key==8;
         if (!numero) {
             evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
         }
 
     }//GEN-LAST:event_campoSuperficieKeyTyped
 
     private void campoPrecioMinimoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioMinimoKeyTyped
         int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57;
+        boolean numero = key >= 48 && key <= 57 || key==8;
         if (!numero) {
             evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
         }
     }//GEN-LAST:event_campoPrecioMinimoKeyTyped
 
     private void campoPrecioMaximoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioMaximoKeyTyped
         int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57;
+        boolean numero = key >= 48 && key <= 57 || key==8;
         if (!numero) {
             evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
         }
     }//GEN-LAST:event_campoPrecioMaximoKeyTyped
 

@@ -79,11 +79,17 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Apellido");
 
+        campoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoApellidoKeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("Nombre");
 
-        campoNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNombreActionPerformed(evt);
+        campoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoNombreKeyTyped(evt);
             }
         });
 
@@ -406,9 +412,31 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_botonVerDetallesActionPerformed
 
-    private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoNombreActionPerformed
+    private void campoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoApellidoKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57 || key==8;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoApellidoKeyTyped
+
+    private void campoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNombreKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57 || key==8;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

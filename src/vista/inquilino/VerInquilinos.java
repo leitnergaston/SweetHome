@@ -109,6 +109,12 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
             }
         });
 
+        campoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoApellidoKeyTyped(evt);
+            }
+        });
+
         botonBuscarCuit.setText("Buscar por CUIT/CUIL");
         botonBuscarCuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +123,12 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
         });
 
         jLabel4.setText("Nombre");
+
+        campoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoNombreKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("CUIT/CUIL");
 
@@ -370,6 +382,32 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_campoCuitKeyTyped
+
+    private void campoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoApellidoKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57 || key==8;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoApellidoKeyTyped
+
+    private void campoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNombreKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57 || key==8;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
