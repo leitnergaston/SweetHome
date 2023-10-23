@@ -278,7 +278,10 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
            
            if(inmueble == null){
                JOptionPane.showMessageDialog(this, "No existe ningún inmueble con esa Id");
-               vaciarTodo();
+               eliminarFilas();
+               radioBTodos.setSelected(true);
+               campoDireccion.setText("");
+               comboPropietario.setSelectedIndex(0);
            }else{
                eliminarFilas();
                cargarFila(inmueble);
@@ -303,7 +306,10 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
             
             if(inmuebles.isEmpty()){
                 JOptionPane.showMessageDialog(this, "Ese propietario no ha registrado ningún inmueble");  
-                vaciarTodo();
+                eliminarFilas();
+                radioBTodos.setSelected(true);
+                campoId.setText("");
+                campoDireccion.setText("");
             }else{
                 eliminarFilas();
                 for(Inmueble inmueble: inmuebles){
@@ -383,7 +389,10 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
             
             if(inmuebles.isEmpty()){
                 JOptionPane.showMessageDialog(this, "No existe ningún inmueble con esa dirección");
-                vaciarTodo();
+                eliminarFilas();
+                radioBTodos.setSelected(true);
+                campoId.setText("");
+                comboPropietario.setSelectedIndex(0);
             }else{
                 eliminarFilas();
                 for(Inmueble inmueble : inmuebles){
