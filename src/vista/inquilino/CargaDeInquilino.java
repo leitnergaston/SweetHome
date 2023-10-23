@@ -13,13 +13,13 @@ import vista.menuPrincipal.MenuPrincipal;
 public class CargaDeInquilino extends javax.swing.JInternalFrame {
 
     private MenuPrincipal menuPrincipal;
-    private int aviso=0;
-    
+    private int aviso = 0;
+
     public CargaDeInquilino(MenuPrincipal menuPrincipal) {
         initComponents();
         this.menuPrincipal = menuPrincipal;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -86,6 +86,12 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
             }
         });
 
+        campoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoApellidoKeyTyped(evt);
+            }
+        });
+
         campoDniGarante.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 campoDniGaranteKeyTyped(evt);
@@ -95,6 +101,11 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
         campoNombreGarante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoNombreGaranteActionPerformed(evt);
+            }
+        });
+        campoNombreGarante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoNombreGaranteKeyTyped(evt);
             }
         });
 
@@ -129,6 +140,12 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setText("ID");
+
+        campoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoNombreKeyTyped(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         jButton1.setText("Salir");
@@ -261,7 +278,7 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
     private void campoNombreGaranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreGaranteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNombreGaranteActionPerformed
-    
+
     public static boolean Validar(String datos) {
         return datos.matches("[a-zA-Z ]*");
     }
@@ -270,14 +287,14 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
         try {
             long cuit = Long.parseLong(campoCuit.getText());
             int dnigarante = Integer.parseInt(campoDniGarante.getText());
-            
+
             String apellido = campoApellido.getText();
             String nombre = campoNombre.getText();
             String lugartrabajo = campoLugarDeTrabajo.getText();
             String nombregarante = campoNombreGarante.getText();
-            
+
             int limitador = 0;
-            
+
             if (CargaDeInquilino.Validar(nombre)) {
                 nombre = campoNombre.getText();
             } else { // caso contrario
@@ -312,41 +329,49 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
             } else {
                 estado = false;
             }
+            if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
+                    || campoCuit.getText().isEmpty() || campoNombreGarante.getText().isEmpty()
+                    || campoLugarDeTrabajo.getText().isEmpty() || campoDniGarante.getText().isEmpty()) {
+                limitador++;
+            }
+
             Inquilino inq = new Inquilino(nombre, apellido, cuit, lugartrabajo, dnigarante, nombregarante, estado);
             InquilinoData inqData = new InquilinoData();
             if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
                 inqData.agregarInquilino(inq);
-            }else{
-                JOptionPane.showMessageDialog(this, "verifique los datos ingresados");
+            } else {
+                JOptionPane.showMessageDialog(this, " No deje espacios vacios"
+                        + "verifique los campos o datos ingresados");
             }
         } catch (NumberFormatException e) {
-            if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
-                || campoCuit.getText().isEmpty() || campoNombreGarante.getText().isEmpty()
-                || campoLugarDeTrabajo.getText().isEmpty() || campoDniGarante.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No debe dejar espacios vacios");
-            } else {
-                JOptionPane.showMessageDialog(this, "El campo Cuit y/O DNI debe contener solo numeros");
-            }
+            JOptionPane.showMessageDialog(this, "El campo Cuit y/O DNI debe contener solo numeros");
         }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        InquilinoData inqData = new InquilinoData();
-        long cuit = Long.parseLong(campoCuit.getText());
-        int id = Integer.parseInt(campoId.getText());
-        String apellido = campoApellido.getText();
-        String nombre = campoNombre.getText();
-        String lugartrabajo = campoLugarDeTrabajo.getText();
-        String nombregarante = campoNombreGarante.getText();
-        int dnigarante = Integer.parseInt(campoDniGarante.getText());
-        boolean estado;
-        if (checkEstado.isSelected()) {//is selected detecta si el check esta marcado o no
-            estado = true;
+        if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
+                || campoCuit.getText().isEmpty() || campoNombreGarante.getText().isEmpty()
+                || campoLugarDeTrabajo.getText().isEmpty() || campoDniGarante.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se permite modificar con espacios vacios");
         } else {
-            estado = false;
+            InquilinoData inqData = new InquilinoData();
+            long cuit = Long.parseLong(campoCuit.getText());
+            int id = Integer.parseInt(campoId.getText());
+            String apellido = campoApellido.getText();
+            String nombre = campoNombre.getText();
+            String lugartrabajo = campoLugarDeTrabajo.getText();
+            String nombregarante = campoNombreGarante.getText();
+            int dnigarante = Integer.parseInt(campoDniGarante.getText());
+            boolean estado;
+            if (checkEstado.isSelected()) {//is selected detecta si el check esta marcado o no
+                estado = true;
+            } else {
+                estado = false;
+            }
+            Inquilino inq = new Inquilino(id, nombre, apellido, cuit, lugartrabajo, dnigarante, nombregarante, estado);
+            inqData.modificarinquilino(inq);
         }
-        Inquilino inq = new Inquilino(id, nombre, apellido, cuit, lugartrabajo, dnigarante, nombregarante, estado);
-        inqData.modificarinquilino(inq);
+
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void botonbuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscar1ActionPerformed
@@ -368,17 +393,17 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
                 campoNombreGarante.setText(inq.getNombreGarante());
                 campoDniGarante.setText(Integer.toString(inq.getDniGarante()));
             }
-       }
-       if(campoId.getText().isEmpty()){
-           botonModificar.setEnabled(false);
-       }else{
-          botonModificar.setEnabled(true);
-       }
+        }
+        if (campoId.getText().isEmpty()) {
+            botonModificar.setEnabled(false);
+        } else {
+            botonModificar.setEnabled(true);
+        }
     }//GEN-LAST:event_botonbuscar1ActionPerformed
 
     private void campoCuitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCuitKeyTyped
         int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57 || key==8;
+        boolean numero = key >= 48 && key <= 57 || key == 8;
         if (!numero) {
             evt.consume();
             aviso++;
@@ -391,7 +416,7 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
 
     private void campoDniGaranteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDniGaranteKeyTyped
         int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57 || key==8;
+        boolean numero = key >= 48 && key <= 57 || key == 8;
         if (!numero) {
             evt.consume();
             aviso++;
@@ -411,11 +436,11 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Para eliminar un inquilino debe primero buscar uno");
         }
-        if(campoId.getText().isEmpty()){
-           botonModificar.setEnabled(false);
-       }else{
-          botonModificar.setEnabled(true);
-       }
+        if (campoId.getText().isEmpty()) {
+            botonModificar.setEnabled(false);
+        } else {
+            botonModificar.setEnabled(true);
+        }
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -432,12 +457,51 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
         campoNombre.setText("");
         campoNombreGarante.setText("");
         checkEstado.setSelected(false);
-        if(campoId.getText().isEmpty()){
-           botonModificar.setEnabled(false);
-       }else{
-          botonModificar.setEnabled(true);
-       }
+        if (campoId.getText().isEmpty()) {
+            botonModificar.setEnabled(false);
+        } else {
+            botonModificar.setEnabled(true);
+        }
     }//GEN-LAST:event_botonNuevoActionPerformed
+
+    private void campoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNombreKeyTyped
+         int key = evt.getKeyChar();
+        boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoNombreKeyTyped
+
+    private void campoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoApellidoKeyTyped
+         int key = evt.getKeyChar();
+        boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoApellidoKeyTyped
+
+    private void campoNombreGaranteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNombreGaranteKeyTyped
+         int key = evt.getKeyChar();
+        boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 10) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoNombreGaranteKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminar;

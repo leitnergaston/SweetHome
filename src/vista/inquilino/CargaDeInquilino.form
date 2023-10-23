@@ -244,6 +244,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="campoApellido">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoApellidoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="campoLugarDeTrabajo">
     </Component>
@@ -255,6 +258,7 @@
     <Component class="javax.swing.JTextField" name="campoNombreGarante">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNombreGaranteActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoNombreGaranteKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonGuardar">
@@ -299,6 +303,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="campoNombre">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoNombreKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>

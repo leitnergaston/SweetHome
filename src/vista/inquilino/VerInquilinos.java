@@ -384,26 +384,26 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_campoCuitKeyTyped
 
     private void campoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoApellidoKeyTyped
-        int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57 || key==8;
+         int key = evt.getKeyChar();
+        boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
         if (!numero) {
             evt.consume();
             aviso++;
             if (aviso == 10) {
-                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras en este campo");
                 aviso = 0;
             }
         }
     }//GEN-LAST:event_campoApellidoKeyTyped
 
     private void campoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNombreKeyTyped
-        int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57 || key==8;
+         int key = evt.getKeyChar();
+        boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
         if (!numero) {
             evt.consume();
             aviso++;
             if (aviso == 10) {
-                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras en este campo");
                 aviso = 0;
             }
         }
