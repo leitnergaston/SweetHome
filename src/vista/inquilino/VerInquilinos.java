@@ -244,6 +244,8 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
     }
 
     private void botonBuscarApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarApellidoActionPerformed
+        
+        eliminarFilas();
         if (campoApellido.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese el apellido a buscar");
         } else {
@@ -255,6 +257,8 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
                 if (inq.isEmpty()) {
                     JOptionPane.showMessageDialog(this, "No hay inquilino/s con este apellido");
                 } else {
+                    campoNombre.setText("");
+                    campoCuit.setText("");
                     eliminarFilas();
                     for (Inquilino inq1 : inq) {
                         cargarfilas(inq1);
@@ -269,18 +273,21 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
 
     private void botonBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarNombreActionPerformed
 
+        eliminarFilas();
         if (campoNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese el Nombre a buscar");
         } else {
             if (VerInquilinos.Validar(campoNombre.getText())) {
-                String apellido = campoApellido.getText() + "%";
+                String nombre = campoNombre.getText() + "%";
                 InquilinoData inqdata = new InquilinoData();
                 ArrayList<Inquilino> inq = new ArrayList<>();
-                inq = inqdata.buscarInquilinoPorApellido(apellido);
+                inq = inqdata.buscarInquilinoPorNombre(nombre);
                 if (inq.isEmpty()) {
-                    JOptionPane.showMessageDialog(this, "No hay inquilino/s con este apellido");
+                    JOptionPane.showMessageDialog(this, "No hay inquilino/s con este Nombre");
                 } else {
                     eliminarFilas();
+                    campoApellido.setText("");
+                    campoCuit.setText("");
                     for (Inquilino inq1 : inq) {
                         cargarfilas(inq1);
                     }
@@ -294,6 +301,7 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
 
     private void botonBuscarCuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCuitActionPerformed
 
+        eliminarFilas();
         if (campoCuit.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese el Cuit a buscar");
         } else {
@@ -304,6 +312,8 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
             if (inq.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No hay inquilino/s con este cuit");
             } else {
+                campoNombre.setText("");
+                campoApellido.setText("");
                 eliminarFilas();
                 for (Inquilino inq1 : inq) {
                     cargarfilas(inq1);
