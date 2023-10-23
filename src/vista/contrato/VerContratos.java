@@ -33,7 +33,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
          this.menuPrincipal = menuPrincipal;
          cargarTabla();
          cargarComboInmueble();
-         //cargarComboInquilino();
+         cargarComboInquilino();
     }
 
     
@@ -80,6 +80,11 @@ public class VerContratos extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 102, 102));
 
         botonVerDetalles.setText("Ver Detalle");
+        botonVerDetalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerDetallesActionPerformed(evt);
+            }
+        });
 
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -234,22 +239,18 @@ public class VerContratos extends javax.swing.JInternalFrame {
                     .addComponent(comboInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(botonBuscarInmueble1))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonBuscarInquilino))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(comboInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(botonBuscarInquilino))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonVerDetalles)
                     .addComponent(botonSalir))
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -282,34 +283,65 @@ public class VerContratos extends javax.swing.JInternalFrame {
         ArrayList<Contrato> contrato;
                 
         if(botonTodos.isSelected()){
-            contrato = contratoData.listarContratosVigentes();
-            if(contrato.isEmpty()){
-                JOptionPane.showMessageDialog(this, "No se ha cargado contrato todavía");
-                vaciarTodo();
+                contrato = contratoData.listarTodosLosContratos();
+                 eliminarFilas();
+                if(contrato.isEmpty()){
+                    JOptionPane.showMessageDialog(this, "No se ha cargado contrato todavía");
+                    eliminarFilas();
             }else{    
                 eliminarFilas();
                 for(Contrato contratos : contrato){
                     cargarfilas(contratos);
                 }
             }    
-        }else{
+        }else if(botonVigentes.isSelected()){
+                contrato = contratoData.listarContratosVigentes();
+                eliminarFilas();
+                if(contrato.isEmpty()){
+                    JOptionPane.showMessageDialog(this, "No se ha cargado contrato todavía");
+                    eliminarFilas();
+            }else{    
+                eliminarFilas();
+                for(Contrato contratos : contrato){
+                    cargarfilas(contratos);
+                }
+            }
+            }else if(botonNoVigentes.isSelected()){
+                contrato = contratoData.listarContratosNOvigentes();
+                eliminarFilas();
+                if(contrato.isEmpty()){
+                    JOptionPane.showMessageDialog(this, "No se ha cargado contrato todavía");
+                    eliminarFilas();
+            }else{    
+                eliminarFilas();
+                for(Contrato contratos : contrato){
+                    cargarfilas(contratos);
+                }  
+            }
+            }else {
+            JOptionPane.showMessageDialog(this, "Seleccion un filtro para bscar");
+        }
+        
+        /*{
+            
             boolean disponible = botonVigentes.isSelected();
             contrato = contratoData.listarContratosVigentes();
-            
+            boolean Nodisponible = botonNoVigentes.isSelected();
             if(disponible==true && contrato.isEmpty()){
                 JOptionPane.showMessageDialog(this, "No hay contrato");
                 campoID.setText("");
                 comboInquilino.setSelectedIndex(0);
                 comboInmueble.setSelectedIndex(0);
                 eliminarFilas();
+                
             }else if(disponible==false && contrato.isEmpty()){
                 JOptionPane.showMessageDialog(this, "No existe contrato NO vigente en este momento");
                 campoID.setText("");
                 comboInmueble.setSelectedIndex(0);
                 comboInquilino.setSelectedIndex(0);
                 eliminarFilas();
-            }else{
-                eliminarFilas();
+            
+              
                 for(Contrato contratos : contrato){
                     cargarfilas(contratos);
                 }
@@ -317,7 +349,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
                 comboInmueble.setSelectedIndex(0);
                 comboInquilino.setSelectedIndex(0);
             }
-        }   
+        } */  
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void botonBuscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarIdActionPerformed
@@ -350,21 +382,21 @@ public class VerContratos extends javax.swing.JInternalFrame {
         }else{
             Inquilino inquilino = (Inquilino) comboInquilino.getSelectedItem();
             
-            ArrayList<Inquilino> inquilinos = inquilinoData.listarinquilinosT();
+            ArrayList<Contrato> contratos = contratoData.listarContratosPorInquilino(inquilino.getIdInquilino());
             
-            if(inquilinos.isEmpty()){
-                JOptionPane.showMessageDialog(this, "Ese propietario no ha registrado ningún inmueble");  
+            if(contratos.isEmpty()){
+                JOptionPane.showMessageDialog(this, "No hay contrato para el inquilino seleccionado");  
                 vaciarTodo();
             }else{
                 eliminarFilas();
-                for(Inquilino inquilino: inquilinos){
-                    cargarFila(in);
-                    radioBTodos.setSelected(true);
-                    campoId.setText("");
-                    campoDireccion.setText("");
+               for(Contrato contrato: contratos){
+                    cargarfilas(contrato);
+                    botonTodos.setSelected(true);
+                    campoID.setText("");
+                    
                 }
             }
-        }*/
+        }
     }//GEN-LAST:event_botonBuscarInquilinoActionPerformed
 
     private void botonBuscarInmueble1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarInmueble1ActionPerformed
@@ -378,7 +410,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
             ArrayList<Contrato> contratos = contratoData.listarContratosPorInmueble(inmueble.getIdInmueble());
             
             if(contratos.isEmpty()){
-                JOptionPane.showMessageDialog(this, "No hay contrato para ese inmueble");  
+                JOptionPane.showMessageDialog(this, "No hay contrato para el inmueble seleccionado");  
                 vaciarTodo();
             }else{
                 eliminarFilas();
@@ -391,6 +423,47 @@ public class VerContratos extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_botonBuscarInmueble1ActionPerformed
+
+    private void botonVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDetallesActionPerformed
+         try {
+             String nombreInquilino, apellidoInquilino = "", disponible;
+
+             int filaSeleccionada = tablaContratos.getSelectedRow();
+
+             int idContrato = (int) tablaContratos.getValueAt(filaSeleccionada, 0);
+             ContratoData conData = new ContratoData();
+             Contrato contrato = conData.buscarContratoPorId(idContrato);
+
+             if (contrato.getInquilino() != null) {
+                 nombreInquilino = contrato.getInquilino().getNombre();
+                 apellidoInquilino = contrato.getInquilino().getApellido();
+             } else {
+                 nombreInquilino = "Sin Inquilino";
+             }
+
+             if (contrato.isVigente()) {
+                 disponible = "Si";
+             } else {
+                 disponible = "No";
+             }
+
+             String detalles = "ID: " + contrato.getIdContrato() + "\n"
+                     + "Inmueble: " + contrato.getInmueble() + "\n"
+                     + "Inquilino: " + contrato.getInquilino() + " m²\n"
+                     + "Fecha de Inicio: " + contrato.getFechaInicio() + "\n"
+                     + "Fecha de Finalización: " + contrato.getFechaFinal() + "\n"
+                     + "Precio de Alquiler: $" + contrato.getPrecioAlquiler() + "\n"
+                     + "Vigente: " + disponible + "\n";
+                    
+                    
+            JOptionPane.showMessageDialog(null, detalles, "Detalles del Contrato", JOptionPane.INFORMATION_MESSAGE);
+
+        //} catch (NullPointerException ex) {
+
+        }catch (ArrayIndexOutOfBoundsException ex){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un contrato para poder ver sus detalles");
+        }
+    }//GEN-LAST:event_botonVerDetallesActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -405,7 +478,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton botonVigentes;
     private javax.swing.JTextField campoID;
     private javax.swing.JComboBox<Inmueble> comboInmueble;
-    private javax.swing.JComboBox<Inmueble> comboInquilino;
+    private javax.swing.JComboBox<Inquilino> comboInquilino;
     private javax.swing.ButtonGroup grupoBotonesFiltros;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -451,7 +524,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
             
         }    
     }
-    /* 
+   
     private void cargarComboInquilino(){
         
         ArrayList<Inquilino> inquilinos = inquilinoData.listarinquilinosT();
@@ -461,7 +534,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
         for(Inquilino inquilino: inquilinos){
             comboInquilino.addItem(inquilino);
             }    
-    }*/
+    }
     
     private void vaciarTodo(){
         botonTodos.setSelected(true);
