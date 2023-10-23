@@ -293,7 +293,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
               
             if(ComboInmueble.getSelectedIndex()<1 || ComboInquilino.getSelectedIndex()<1 ){
                 JOptionPane.showMessageDialog(this, "No deje los campos vacíos");
-            }else if(campoDateFechaFin.getDate() == null || campoDateFechaFin.getDate()== null  || campoPrecioAlquiler.getText().isEmpty()){
+            }else if(campoDateFechaInicio.getDate() == null || campoDateFechaFin.getDate()== null  || campoPrecioAlquiler.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "No dejar los campos Fecha Inicio, Fecha fin y precio vacíos.");
             }else{
                 
@@ -377,7 +377,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
               
             if(ComboInmueble.getSelectedIndex()<1 || ComboInquilino.getSelectedIndex()<1 ){
                 JOptionPane.showMessageDialog(this, "No deje los campos vacíos");
-            }else if(campoDateFechaFin.getDate() == null || campoDateFechaFin.getDate()== null  || campoPrecioAlquiler.getText().isEmpty()){
+            }else if(campoDateFechaInicio.getDate() == null || campoDateFechaFin.getDate()== null  || campoPrecioAlquiler.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "No dejar los campos Fecha Inicio, Fecha fin y precio vacíos.");
             }else{
                 
