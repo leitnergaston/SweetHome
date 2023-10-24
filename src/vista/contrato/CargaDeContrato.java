@@ -171,9 +171,9 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                                     .addComponent(jLInquilino)
                                     .addComponent(jLFechaIni))
                                 .addGap(47, 47, 47)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(ComboInquilino, 0, 171, Short.MAX_VALUE)
-                                    .addComponent(campoDateFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ComboInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLInmueble)
@@ -334,7 +334,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
             int id = Integer.parseInt(campoIdContrato.getText());
             contrato = contratoData.buscarContratoPorId(id);
             if (contrato == null) {
-                JOptionPane.showMessageDialog(this, "El contrato no existe");
+                vaciarCampos();
             } else {
                 int idInqui = contrato.getInquilino().getIdInquilino();
                 int cantidadItem = ComboInquilino.getItemCount();
