@@ -297,7 +297,7 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
             int limitador = 0;
 
             if(!validarCuil(cuit)){
-                JOptionPane.showMessageDialog(this, "Ya existe un propietario con ese dni");
+                JOptionPane.showMessageDialog(this, "Ya existe un propietario con ese cuil");
             }else{
                 if (CargaDeInquilino.Validar(nombre)) {
                     nombre = campoNombre.getText();
