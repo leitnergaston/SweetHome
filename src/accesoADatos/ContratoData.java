@@ -212,4 +212,103 @@ public class ContratoData {
         return contratos;
     }
     
+    public ArrayList<Contrato> listarContratosNOvigentes(){
+        ArrayList<Contrato> contratos = new ArrayList<>();
+        Contrato contrato;
+        inquilinoData = new InquilinoData();
+        inmuebleData = new InmuebleData();
+        try {
+            String sql = "SELECT * FROM contratodealquiler WHERE vigente = 0";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            boolean bandera = false;
+            while (rs.next()) {
+                contrato = new Contrato();
+                contrato.setIdContrato(rs.getInt("idContrato"));
+                contrato.setInmueble(inmuebleData.buscarInmueble(rs.getInt("idInmueble")));
+                contrato.setInquilino(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
+                contrato.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                contrato.setFechaFinal(rs.getDate("fechaFinalizacion").toLocalDate());
+                contrato.setPrecioAlquiler(rs.getDouble("precioAlquiler"));
+                contrato.setVigente(rs.getBoolean("vigente"));
+                contrato.setRenovacion(rs.getBoolean("renovado"));
+                contratos.add(contrato);
+                bandera = true;
+            }
+            if(!bandera){
+                JOptionPane.showMessageDialog(null, "En este momento no hay ningún contrato vigente");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse con la tabla contratodealquiler: " + ex.getMessage());
+        }
+
+        return contratos;
+    }
+    
+    public ArrayList<Contrato> listarContratosPorInquilino(int idInquilino) {
+        ArrayList<Contrato> contratos = new ArrayList<>();
+        Contrato contrato;
+        inquilinoData = new InquilinoData();
+        inquilinoData = new InquilinoData();
+        try {
+            String sql = "SELECT * FROM contratodealquiler WHERE idInquilino = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idInquilino);
+            ResultSet rs = ps.executeQuery();
+            boolean bandera = false;
+            while (rs.next()) {
+                contrato = new Contrato();
+                contrato.setIdContrato(rs.getInt("idContrato"));
+                //contrato.setInmueble(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
+                contrato.setInquilino(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
+                contrato.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                contrato.setFechaFinal(rs.getDate("fechaFinalizacion").toLocalDate());
+                contrato.setPrecioAlquiler(rs.getDouble("precioAlquiler"));
+                contrato.setVigente(rs.getBoolean("vigente"));
+                contrato.setRenovacion(rs.getBoolean("renovado"));
+                contratos.add(contrato);
+                bandera = true;
+            }
+            if(!bandera){
+                JOptionPane.showMessageDialog(null, "No existe ningún contrato asociado con ese inmueble");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse con la tabla contratodealquiler: " + ex.getMessage());
+        }
+
+        return contratos;
+    }
+    
+    public ArrayList<Contrato> listarTodosLosContratos(){
+        ArrayList<Contrato> contratos = new ArrayList<>();
+        Contrato contrato;
+        inquilinoData = new InquilinoData();
+        inmuebleData = new InmuebleData();
+        try {
+            String sql = "SELECT * FROM contratodealquiler";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+           
+            while (rs.next()) {
+                contrato = new Contrato();
+                contrato.setIdContrato(rs.getInt("idContrato"));
+                contrato.setInmueble(inmuebleData.buscarInmueble(rs.getInt("idInmueble")));
+                contrato.setInquilino(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
+                contrato.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                contrato.setFechaFinal(rs.getDate("fechaFinalizacion").toLocalDate());
+                contrato.setPrecioAlquiler(rs.getDouble("precioAlquiler"));
+                contrato.setVigente(rs.getBoolean("vigente"));
+                contrato.setRenovacion(rs.getBoolean("renovado"));
+                contratos.add(contrato);
+               
+            }
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse con la tabla contratodealquiler: " + ex.getMessage());
+        }
+
+        return contratos;
+    }
 }
