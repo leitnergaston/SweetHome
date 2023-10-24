@@ -487,7 +487,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
 
     private void cargarComboInmueble(){
         
-        ArrayList<Inmueble> inmuebles = inmuebleData.listarInmuebles();
+        ArrayList<Inmueble> inmuebles = inmuebleData.listarInmueblesDisponiblesONo(true);
         
         ComboInmueble.addItem(null);
         

@@ -260,7 +260,7 @@ public class ContratoData {
             while (rs.next()) {
                 contrato = new Contrato();
                 contrato.setIdContrato(rs.getInt("idContrato"));
-                //contrato.setInmueble(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
+                contrato.setInmueble(inmuebleData.buscarInmueble(rs.getInt("idInmueble")));
                 contrato.setInquilino(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
                 contrato.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
                 contrato.setFechaFinal(rs.getDate("fechaFinalizacion").toLocalDate());
