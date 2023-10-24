@@ -12,11 +12,14 @@ public class Inmobiliaria32 {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("El main");
-
-        Connection con = Conexion.getConnection();
-
-        MenuPrincipal vista = new MenuPrincipal();
-        vista.setVisible(true);
+        
+        InmuebleData inmuebleData = new InmuebleData();
+        inmuebleData.agregarOEliminarInquilino(1, 1);
+        
+        //Connection con = Conexion.getConnection();
+        
+        /*MenuPrincipal vista = new MenuPrincipal();
+        vista.setVisible(true);*/
 
         //PRUEBA CONTRATODATA 
         /*

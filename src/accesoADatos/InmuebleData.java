@@ -4,6 +4,8 @@ import entidades.Inmueble;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class InmuebleData {
@@ -337,5 +339,38 @@ public class InmuebleData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inmueble " + ex.getMessage());
         }
         return inmuebles;
+    }
+    
+    public void agregarOEliminarInquilino(int idInquilino, int idInmueble){
+        String sql;
+        
+        try {
+            PreparedStatement ps;
+            if(idInquilino==0){
+                sql = "UPDATE inmueble set idInquilino = null, disponible = 0 WHERE idInmueble = ? AND disponible = 1";
+                ps = con.prepareStatement(sql);
+                ps.setInt(1, idInmueble);
+            }else{
+                sql = "UPDATE inmueble set idInquilino = ?, disponible = 0 WHERE idInmueble = ? AND disponible = 1";
+                ps = con.prepareStatement(sql);
+                ps.setInt(1, idInquilino);
+                ps.setInt(2, idInmueble);
+            }
+            
+            int exito = ps.executeUpdate();
+            
+            if(exito == 1 && idInquilino != 0){
+                JOptionPane.showMessageDialog(null, "Inquilino agregado exitosamente");
+            }else if(exito==1 && idInquilino == 0){
+                JOptionPane.showMessageDialog(null, "Inquilino eliminado exitosamente");
+            }else{
+                JOptionPane.showMessageDialog(null, "No se pudo agregar el inquilino");
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla inmuebles.");
+        }
+           
+        
     }
 }
