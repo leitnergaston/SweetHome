@@ -137,7 +137,7 @@ public class Inmueble {
 
     @Override
     public String toString() {
-        return  " " + direccion + " " + tipo + " " + zona + " ";
+        return  "Id: "+ idInmueble + ", "  + direccion + ", " + tipo + ", " + zona + " ";
     }
     
     

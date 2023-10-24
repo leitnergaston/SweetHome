@@ -2,6 +2,7 @@ package vista.propietario;
 
 import accesoADatos.PropietarioData;
 import entidades.Propietario;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import vista.menuPrincipal.MenuPrincipal;
 
@@ -283,52 +284,63 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
 
     //====== BOTON GUARDAR ======//
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        try {
-            int dni = Integer.parseInt(campoDni.getText());
-            String nombre = campoNombre.getText();
-            String apellido = campoApellido.getText();
-            String domicilio = campoDomicilio.getText();
-            String telefono = campoTelefono.getText();
-            String mail = campoMail.getText();
-            boolean estado = checkEstado.isSelected();
-            int limitador = 0;
 
-            if (CargaDePropietario.Validar(nombre)) {
-                nombre = campoNombre.getText();
-            } else {
-                JOptionPane.showMessageDialog(this, "Solo letras en el campo nombre");
-                limitador++;
+        if (campoNombre.getText().isEmpty() && campoApellido.getText().isEmpty()
+                && campoDni.getText().isEmpty() && campoDomicilio.getText().isEmpty()
+                && campoTelefono.getText().isEmpty() && campoMail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "ingrese los datos del propietario a guardar");
+        } else {
+            try {
+                int dni = Integer.parseInt(campoDni.getText());
+                String nombre = campoNombre.getText();
+                String apellido = campoApellido.getText();
+                String domicilio = campoDomicilio.getText();
+                String telefono = campoTelefono.getText();
+                String mail = campoMail.getText();
+                boolean estado = checkEstado.isSelected();
+                int limitador = 0;
+
+                if (!validarDni(dni)) {
+                    JOptionPane.showMessageDialog(this, "Ya existe un propietario con ese dni");
+                } else {
+                    if (CargaDePropietario.Validar(nombre)) {
+                        nombre = campoNombre.getText();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Solo letras en el campo nombre");
+                        limitador++;
+                    }
+                    if (CargaDePropietario.Validar(apellido)) {
+                        apellido = campoApellido.getText(); //
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Solo letras en el campo apellido");
+                        limitador++;
+                    }
+                    if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
+                            || campoDni.getText().isEmpty() || campoDomicilio.getText().isEmpty()
+                            || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()) {
+                        limitador++;
+                    }
+
+                    Propietario prop = new Propietario(dni, apellido, nombre, domicilio, telefono, mail, estado);
+                    PropietarioData propData = new PropietarioData();
+
+                    if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
+                        propData.crearPropietario(prop);
+                        limpiarCampos();
+                    } else {
+                        JOptionPane.showMessageDialog(this, " No deje espacios vacios" + " "
+                                + "verifique los campos o datos ingresados");
+                    }
+                }
+            } catch (NumberFormatException e) {
+
+                JOptionPane.showMessageDialog(this, "El campo Cuit y/O DNI debe contener solo numeros");
             }
-            if (CargaDePropietario.Validar(apellido)) {
-                apellido = campoApellido.getText(); //
-            } else {
-                JOptionPane.showMessageDialog(this, "Solo letras en el campo apellido");
-                limitador++;
-            }
-            if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
-               || campoDni.getText().isEmpty() || campoDomicilio.getText().isEmpty()
-               || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()) {
-                limitador++;
-            }
-
-            Propietario prop = new Propietario(dni, apellido, nombre, domicilio, telefono, mail, estado);
-            PropietarioData propData = new PropietarioData();
-
-            if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
-                propData.crearPropietario(prop);
-                limpiarCampos();
-            } else {
-                JOptionPane.showMessageDialog(this, " No deje espacios vacios"
-                        + "verifique los campos o datos ingresados");
-            }
-        } catch (NumberFormatException e) {
-
-            JOptionPane.showMessageDialog(this, "El campo Cuit y/O DNI debe contener solo numeros");
-
         }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void campoDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDniKeyTyped
+        
         int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57;
         if (!numero) {
@@ -343,6 +355,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
 
     //====== BOTON ELIMINAR ======//
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
+        
         try {
             int dni = Integer.parseInt(campoDni.getText());
             PropietarioData propData = new PropietarioData();
@@ -356,9 +369,9 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
 
     //====== BOTON BUSCAR ======//
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        
         Propietario prop = new Propietario();
         PropietarioData propData = new PropietarioData();
-
         if (campoDni.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Se requiere dni para buscar");
         } else {
@@ -381,35 +394,39 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         } else {
             botonModificar.setEnabled(true);
         }
-
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     //====== BOTON MODIFICAR ======//
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
-                || campoDni.getText().isEmpty() || campoDomicilio.getText().isEmpty()
-                || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()
-                || campoDni.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No se permite modificar con espacios vacios");
+        
+        int dni = Integer.parseInt(campoDni.getText());
+        if (!validarDni(dni)) {
+            JOptionPane.showMessageDialog(this, "Ya existe un propietario con ese dni");
         } else {
-            PropietarioData propData = new PropietarioData();
-            int dni = Integer.parseInt(campoDni.getText());
-            int id = Integer.parseInt(campoId.getText());
-            String nombre = campoNombre.getText();
-            String apellido = campoApellido.getText();
-            String domicilio = campoDomicilio.getText();
-            String telefono = campoTelefono.getText();
-            String mail = campoMail.getText();
-            boolean estado = checkEstado.isSelected();
+            if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
+                    || campoDni.getText().isEmpty() || campoDomicilio.getText().isEmpty()
+                    || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()
+                    || campoDni.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No se permite modificar con espacios vacios");
+            } else {
+                PropietarioData propData = new PropietarioData();
+                dni = Integer.parseInt(campoDni.getText());
+                int id = Integer.parseInt(campoId.getText());
+                String nombre = campoNombre.getText();
+                String apellido = campoApellido.getText();
+                String domicilio = campoDomicilio.getText();
+                String telefono = campoTelefono.getText();
+                String mail = campoMail.getText();
+                boolean estado = checkEstado.isSelected();
 
-            Propietario prop = new Propietario(id, dni, apellido, nombre, domicilio, telefono, mail, estado);
-            propData.modificarPropietario(prop);
+                Propietario prop = new Propietario(id, dni, apellido, nombre, domicilio, telefono, mail, estado);
+                propData.modificarPropietario(prop);
+            }
         }
-
-
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void campoTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTelefonoKeyTyped
+        
         int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57 || key == 8;
         if (!numero) {
@@ -423,6 +440,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_campoTelefonoKeyTyped
 
     private void campoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNombreKeyTyped
+        
         int key = evt.getKeyChar();
         boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
         if (!numero) {
@@ -436,6 +454,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_campoNombreKeyTyped
 
     private void campoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoApellidoKeyTyped
+        
         int key = evt.getKeyChar();
         boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
         if (!numero) {
@@ -489,4 +508,17 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
     
     
 
+    private boolean validarDni(int dni) {
+        PropietarioData propietarioData = new PropietarioData();
+        ArrayList<Propietario> propietarios = propietarioData.listarPropietarios();
+        boolean bandera = true;
+
+        for (Propietario propietario : propietarios) {
+            if (dni == propietario.getDni()) {
+                bandera = false;
+                break;
+            }
+        }
+        return bandera;
+    }
 }

@@ -41,8 +41,11 @@ public class ContratoData {
             if (rs.next()) {
                 contrato.setIdContrato(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Contrato creado exitosamente");
-            }
-
+                if(contrato.isVigente()){
+                    inmuebleData = new InmuebleData();
+                    inmuebleData.agregarOEliminarInquilino(contrato.getInquilino().getIdInquilino(), contrato.getInmueble().getIdInmueble());                  
+                }
+            }        
             ps.close();
 
         } catch (SQLException ex) {
@@ -73,6 +76,12 @@ public class ContratoData {
 
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Contrato modificado exitosamente");
+                inmuebleData = new InmuebleData();
+                if(contrato.isVigente()){
+                    inmuebleData.agregarOEliminarInquilino(contrato.getInquilino().getIdInquilino(), contrato.getInmueble().getIdInmueble());                  
+                }else{
+                    inmuebleData.agregarOEliminarInquilino(0, contrato.getInmueble().getIdInmueble());
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "El contrato que intenta modificar no se encuentra en la base de datos");
             }
@@ -97,6 +106,8 @@ public class ContratoData {
 
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Contrato eliminado exitosamente");
+                inmuebleData = new InmuebleData();
+                inmuebleData.agregarOEliminarInquilino(0, buscarContratoPorId(id).getInmueble().getIdInmueble());
             } else {
                 JOptionPane.showMessageDialog(null, "El contrato que intenta eliminar no está vigente "
                         + "o no se encuentra en la base de datos");
@@ -260,7 +271,7 @@ public class ContratoData {
             while (rs.next()) {
                 contrato = new Contrato();
                 contrato.setIdContrato(rs.getInt("idContrato"));
-                //contrato.setInmueble(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
+                contrato.setInmueble(inmuebleData.buscarInmueble(rs.getInt("idInmueble")));
                 contrato.setInquilino(inquilinoData.buscarInquilinoPorId(rs.getInt("idInquilino")));
                 contrato.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
                 contrato.setFechaFinal(rs.getDate("fechaFinalizacion").toLocalDate());

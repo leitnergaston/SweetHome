@@ -201,12 +201,13 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
                             .addComponent(botonBuscarPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(botonBuscarDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel2)))
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(96, 96, 96))
         );
@@ -498,12 +499,21 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
     }
 
     private void cargarFila(Inmueble inmueble){
-        modelo.addRow(new Object[]{
+        if(inmueble.getPropietario()==null){
+            modelo.addRow(new Object[]{
             inmueble.getIdInmueble(),
             inmueble.getDireccion(),
-            inmueble.getPropietario().getApellido()+" "+inmueble.getPropietario().getNombre(),
+            "Sin propietario",
             inmueble.getZona(),
             inmueble.getTipo()});
+        }else{     
+            modelo.addRow(new Object[]{
+                inmueble.getIdInmueble(),
+                inmueble.getDireccion(),
+                inmueble.getPropietario().getApellido()+" "+inmueble.getPropietario().getNombre(),
+                inmueble.getZona(),
+                inmueble.getTipo()});
+        }    
     }
     
     private void eliminarFilas() {
