@@ -7,6 +7,7 @@ package vista.inquilino;
 
 import accesoADatos.*;
 import entidades.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import vista.menuPrincipal.MenuPrincipal;
 
@@ -295,54 +296,58 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
 
             int limitador = 0;
 
-            if (CargaDeInquilino.Validar(nombre)) {
-                nombre = campoNombre.getText();
-            } else { // caso contrario
-                JOptionPane.showMessageDialog(this, "Solo letras en el campo nombre");
-                campoNombre.setText("");
-                limitador++;
-            }
-            if (CargaDeInquilino.Validar(apellido)) {
-                apellido = campoApellido.getText(); //
-            } else {
-                JOptionPane.showMessageDialog(this, "Solo letras en el campo apellido");
-                campoApellido.setText("");
-                limitador++;
-            }
-            if (CargaDeInquilino.Validar(lugartrabajo)) {
-                lugartrabajo = campoLugarDeTrabajo.getText();
-            } else {
-                JOptionPane.showMessageDialog(this, "Solo letras en el campo Lugar De Trabajo");
-                campoLugarDeTrabajo.setText("");
-                limitador++;
-            }
-            if (CargaDeInquilino.Validar(nombregarante)) {
-                lugartrabajo = campoLugarDeTrabajo.getText();
-            } else {
-                JOptionPane.showMessageDialog(this, "Solo letras en el campo Nombre de Garate");
-                campoNombreGarante.setText("");
-                limitador++;
-            }
-            boolean estado;
-            if (checkEstado.isSelected()) {//is selected detecta si el check esta marcado o no
-                estado = true;
-            } else {
-                estado = false;
-            }
-            if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
-                    || campoCuit.getText().isEmpty() || campoNombreGarante.getText().isEmpty()
-                    || campoLugarDeTrabajo.getText().isEmpty() || campoDniGarante.getText().isEmpty()) {
-                limitador++;
-            }
+            if(!validarCuil(cuit)){
+                JOptionPane.showMessageDialog(this, "Ya existe un propietario con ese dni");
+            }else{
+                if (CargaDeInquilino.Validar(nombre)) {
+                    nombre = campoNombre.getText();
+                } else { // caso contrario
+                    JOptionPane.showMessageDialog(this, "Solo letras en el campo nombre");
+                    campoNombre.setText("");
+                    limitador++;
+                }
+                if (CargaDeInquilino.Validar(apellido)) {
+                    apellido = campoApellido.getText(); //
+                } else {
+                    JOptionPane.showMessageDialog(this, "Solo letras en el campo apellido");
+                    campoApellido.setText("");
+                    limitador++;
+                }
+                if (CargaDeInquilino.Validar(lugartrabajo)) {
+                    lugartrabajo = campoLugarDeTrabajo.getText();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Solo letras en el campo Lugar De Trabajo");
+                    campoLugarDeTrabajo.setText("");
+                    limitador++;
+                }
+                if (CargaDeInquilino.Validar(nombregarante)) {
+                    lugartrabajo = campoLugarDeTrabajo.getText();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Solo letras en el campo Nombre de Garate");
+                    campoNombreGarante.setText("");
+                    limitador++;
+                }
+                boolean estado;
+                if (checkEstado.isSelected()) {//is selected detecta si el check esta marcado o no
+                    estado = true;
+                } else {
+                    estado = false;
+                }
+                if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
+                        || campoCuit.getText().isEmpty() || campoNombreGarante.getText().isEmpty()
+                        || campoLugarDeTrabajo.getText().isEmpty() || campoDniGarante.getText().isEmpty()) {
+                    limitador++;
+                }
 
-            Inquilino inq = new Inquilino(nombre, apellido, cuit, lugartrabajo, dnigarante, nombregarante, estado);
-            InquilinoData inqData = new InquilinoData();
-            if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
-                inqData.agregarInquilino(inq);
-            } else {
-                JOptionPane.showMessageDialog(this, " No deje espacios vacios"
-                        + "verifique los campos o datos ingresados");
-            }
+                Inquilino inq = new Inquilino(nombre, apellido, cuit, lugartrabajo, dnigarante, nombregarante, estado);
+                InquilinoData inqData = new InquilinoData();
+                if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
+                    inqData.agregarInquilino(inq);
+                } else {
+                    JOptionPane.showMessageDialog(this, " No deje espacios vacios"
+                            + "verifique los campos o datos ingresados");
+                }
+            }    
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El campo Cuit y/O DNI debe contener solo numeros");
         }
@@ -529,4 +534,18 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validarCuil(long cuil){
+        InquilinoData inquilinoData = new InquilinoData();
+        ArrayList<Inquilino> inquilinos = inquilinoData.listarinquilinosT();
+        boolean bandera = true;
+        
+        for(Inquilino inquilino : inquilinos){
+            if(cuil == inquilino.getCuit()){
+                bandera = false;
+                break;
+            }
+        } 
+        return bandera;
+    }
 }

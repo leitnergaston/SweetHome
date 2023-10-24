@@ -2,6 +2,7 @@ package vista.propietario;
 
 import accesoADatos.PropietarioData;
 import entidades.Propietario;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import vista.menuPrincipal.MenuPrincipal;
 
@@ -276,35 +277,39 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
             String mail = campoMail.getText();
             boolean estado = checkEstado.isSelected();
             int limitador = 0;
+            
+            if(!validarDni(dni)){
+                JOptionPane.showMessageDialog(this, "Ya existe un propietario con ese dni");
+            }else{
+                if (CargaDePropietario.Validar(nombre)) {
+                    nombre = campoNombre.getText();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Solo letras en el campo nombre");
+                    limitador++;
+                }
+                if (CargaDePropietario.Validar(apellido)) {
+                    apellido = campoApellido.getText(); //
+                } else {
+                    JOptionPane.showMessageDialog(this, "Solo letras en el campo apellido");
+                    limitador++;
+                }
+                if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
+                   || campoDni.getText().isEmpty() || campoDomicilio.getText().isEmpty()
+                   || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()) {
+                    limitador++;
+                }
 
-            if (CargaDePropietario.Validar(nombre)) {
-                nombre = campoNombre.getText();
-            } else {
-                JOptionPane.showMessageDialog(this, "Solo letras en el campo nombre");
-                limitador++;
-            }
-            if (CargaDePropietario.Validar(apellido)) {
-                apellido = campoApellido.getText(); //
-            } else {
-                JOptionPane.showMessageDialog(this, "Solo letras en el campo apellido");
-                limitador++;
-            }
-            if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
-               || campoDni.getText().isEmpty() || campoDomicilio.getText().isEmpty()
-               || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()) {
-                limitador++;
-            }
+                Propietario prop = new Propietario(dni, apellido, nombre, domicilio, telefono, mail, estado);
+                PropietarioData propData = new PropietarioData();
 
-            Propietario prop = new Propietario(dni, apellido, nombre, domicilio, telefono, mail, estado);
-            PropietarioData propData = new PropietarioData();
-
-            if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
-                propData.crearPropietario(prop);
-                limpiarCampos();
-            } else {
-                JOptionPane.showMessageDialog(this, " No deje espacios vacios"
-                        + "verifique los campos o datos ingresados");
-            }
+                if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
+                    propData.crearPropietario(prop);
+                    limpiarCampos();
+                } else {
+                    JOptionPane.showMessageDialog(this, " No deje espacios vacios"
+                            + "verifique los campos o datos ingresados");
+                }
+            }    
         } catch (NumberFormatException e) {
 
             JOptionPane.showMessageDialog(this, "El campo Cuit y/O DNI debe contener solo numeros");
@@ -470,4 +475,17 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         checkEstado.setSelected(false);
     }
 
+    private boolean validarDni(int dni){
+        PropietarioData propietarioData = new PropietarioData();
+        ArrayList<Propietario> propietarios = propietarioData.listarPropietarios();
+        boolean bandera = true;
+        
+        for(Propietario propietario: propietarios){
+            if(dni == propietario.getDni()){
+                bandera = false;
+                break;
+            }
+        } 
+        return bandera;
+    }
 }
