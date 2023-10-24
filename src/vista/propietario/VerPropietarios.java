@@ -58,7 +58,7 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         botonBuscarEstado = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ver Propietarios");
 
@@ -75,8 +75,10 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tablaPropietarios);
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Filtrar por . . .");
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel3.setText("Apellido");
 
         campoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -85,6 +87,7 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Nombre");
 
         campoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -93,8 +96,11 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel5.setText("Dni");
 
+        botonVerDetalles.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
+        botonVerDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconVerDetalles.png"))); // NOI18N
         botonVerDetalles.setText("Ver detalles");
         botonVerDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +108,7 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
             }
         });
 
-        botonSalir.setText("Salir");
+        botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconSalir.png"))); // NOI18N
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
@@ -115,6 +121,7 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
             }
         });
 
+        botonBuscarApellido.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
         botonBuscarApellido.setText("Buscar por apellido");
         botonBuscarApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +129,7 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
             }
         });
 
+        botonBuscarNombre.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
         botonBuscarNombre.setText("Buscar por nombre");
         botonBuscarNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +137,7 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
             }
         });
 
+        botonBuscarDni.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
         botonBuscarDni.setText("Buscar por dni");
         botonBuscarDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,15 +146,19 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         });
 
         buttonGroupEstado.add(radioBTodos);
+        radioBTodos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBTodos.setSelected(true);
         radioBTodos.setText("Todos");
 
         buttonGroupEstado.add(radioBActivos);
+        radioBActivos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBActivos.setText("Activos");
 
         buttonGroupEstado.add(radioBInactivos);
+        radioBInactivos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBInactivos.setText("Inactivos");
 
+        botonBuscarEstado.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
         botonBuscarEstado.setText("Buscar por estado");
         botonBuscarEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,9 +177,9 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(botonVerDetalles)
-                                .addGap(97, 97, 97)
+                                .addGap(45, 45, 45)
                                 .addComponent(botonSalir)
-                                .addGap(61, 61, 61))
+                                .addGap(113, 113, 113))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -195,7 +208,7 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,7 +217,7 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
