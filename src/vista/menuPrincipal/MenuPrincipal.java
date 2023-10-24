@@ -1,16 +1,12 @@
 package vista.menuPrincipal;
 
-import java.awt.Component;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.PopupMenu;
 import vista.propietario.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import vista.contrato.*;
 import vista.inmueble.*;
@@ -18,14 +14,14 @@ import vista.inquilino.*;
 
 public final class MenuPrincipal extends javax.swing.JFrame {
 
-    private final List<JButton> buttons = new ArrayList();
-    private final List<JLabel> labels = new ArrayList();
     private final List<JPanel> panels = new ArrayList();
 
     public MenuPrincipal() {
         initComponents();
         cargarPaneles();
-        setLocationRelativeTo(null); // Coloca la ventana en el centro
+        setLocationRelativeTo(null); // Coloca la ventana de ejecucion en el centro
+        setExtendedState(6); // abrir en pantalla completa
+
     }
 
     @SuppressWarnings("unchecked")
@@ -65,7 +61,6 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         botonCargarContrato = new javax.swing.JButton();
         botonVerContratos = new javax.swing.JButton();
-        botonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +81,8 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         botonCargarPropietario.setForeground(new java.awt.Color(0, 0, 0));
         botonCargarPropietario.setText("Datos");
         botonCargarPropietario.setToolTipText("");
+        botonCargarPropietario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonCargarPropietario.setBorderPainted(false);
         botonCargarPropietario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonCargarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,20 +349,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        botonSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        botonSalir.setForeground(new java.awt.Color(0, 0, 0));
-        botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buttonExit.png"))); // NOI18N
-        botonSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSalirActionPerformed(evt);
-            }
-        });
-
         Escritorio.setLayer(panel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(panel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(panel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(panel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        Escritorio.setLayer(botonSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
@@ -381,17 +368,11 @@ public final class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(45, Short.MAX_VALUE))
-            .addGroup(EscritorioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86)
+                .addGap(130, 130, 130)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -421,7 +402,6 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         cargaPropietario.setVisible(true);
         Escritorio.add(cargaPropietario);
         Escritorio.moveToFront(cargaPropietario);
-
     }//GEN-LAST:event_botonCargarPropietarioActionPerformed
 
     private void botonVerPorFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerPorFiltrosActionPerformed
@@ -459,7 +439,7 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         Escritorio.add(CargaDeContrato);
         Escritorio.moveToFront(CargaDeContrato);
     }//GEN-LAST:event_botonCargarContratoActionPerformed
-    
+
     private void botonVerInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerInmueblesActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
@@ -495,11 +475,6 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         Escritorio.add(verPropietarios);
         Escritorio.moveToFront(verPropietarios);
     }//GEN-LAST:event_botonVerPropietariosActionPerformed
-
-    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_botonSalirActionPerformed
-
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -539,7 +514,6 @@ public final class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botonCargarInmueble;
     private javax.swing.JButton botonCargarInquilino;
     private javax.swing.JButton botonCargarPropietario;
-    private javax.swing.JButton botonSalir;
     private javax.swing.JButton botonVerContratos;
     private javax.swing.JButton botonVerInmuebles;
     private javax.swing.JButton botonVerInquilinos;
@@ -563,26 +537,28 @@ public final class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panel4;
     // End of variables declaration//GEN-END:variables
 
-    
-    
+    // Metodo para mostrar los paneles al cerrar internalFrames
     public void mostrarItemsEscritorio() {
         Escritorio.repaint();
-        Escritorio.add(botonSalir);
-        
+
         for (JPanel panel : panels) {
             Escritorio.add(panel);
         }
     }
-    
-    public void cargarPaneles(){
+
+    // Metodo de cargar los paneles
+    private void cargarPaneles() {
         panels.add(panel1);
         panels.add(panel2);
         panels.add(panel3);
         panels.add(panel4);
+
+        // diseños de paneles
+        panel1.setBackground(new Color(0, 71, 90, 210));
+        panel2.setBackground(new Color(0, 71, 90, 210));
+        panel3.setBackground(new Color(0, 71, 90, 210));
+        panel4.setBackground(new Color(0, 71, 90, 210));
+
     }
-
-   
-    
-
 
 }
