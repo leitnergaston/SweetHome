@@ -63,21 +63,22 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
 
         setTitle("Ver inmuebles por filtros");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setText("Ver Inmuebles por filtros");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel5.setText("Precio Mínimo");
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel6.setText("Precio Máximo");
 
-        botonBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        botonBuscar.setFont(new java.awt.Font("Swis721 Hv BT", 0, 14)); // NOI18N
+        botonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconBuscar.png"))); // NOI18N
         botonBuscar.setText("Buscar");
         botonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,21 +98,23 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel3.setText("Zona");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel2.setText("Tipo");
 
         jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Superficie Mínima");
 
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel7.setText("$");
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel8.setText("$");
 
         campoSuperficie.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -122,7 +125,8 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
 
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
 
-        botonLimpiarFiltros.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        botonLimpiarFiltros.setFont(new java.awt.Font("Swis721 Hv BT", 0, 14)); // NOI18N
+        botonLimpiarFiltros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconNuevo.png"))); // NOI18N
         botonLimpiarFiltros.setText("Limpiar Filtros");
         botonLimpiarFiltros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,22 +139,33 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator3)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSeparator6)
+            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel3))
-                            .addComponent(comboZona, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(66, 66, 66))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(73, 73, 73))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(campoSuperficie, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(comboZona, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(campoSuperficie, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(botonBuscar)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -162,34 +177,25 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel7)))
                         .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(campoPrecioMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoPrecioMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoPrecioMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoPrecioMaximo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(118, 118, 118))
+                        .addComponent(jLabel4)
+                        .addGap(81, 81, 81))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64))))
-            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator6)
-            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(botonBuscar)
-                .addGap(18, 18, 18)
-                .addComponent(botonLimpiarFiltros)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(botonLimpiarFiltros)
+                        .addGap(45, 45, 45))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonBuscar)
-                    .addComponent(botonLimpiarFiltros))
-                .addGap(33, 33, 33)
+                .addGap(12, 12, 12)
+                .addComponent(botonBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonLimpiarFiltros)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
@@ -235,6 +241,8 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tablaInmuebles);
 
+        botonVerDetalle.setFont(new java.awt.Font("Swis721 Hv BT", 0, 14)); // NOI18N
+        botonVerDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconVerDetalles.png"))); // NOI18N
         botonVerDetalle.setText("Ver detalle");
         botonVerDetalle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +250,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
             }
         });
 
-        botonSalir.setText("Salir");
+        botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconSalir.png"))); // NOI18N
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
@@ -254,25 +262,25 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(103, 103, 103)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonVerDetalle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(60, 60, 60)
                 .addComponent(botonSalir)
-                .addGap(97, 97, 97))
+                .addGap(152, 152, 152))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonVerDetalle)
-                    .addComponent(botonSalir)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonSalir)
+                    .addComponent(botonVerDetalle)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -282,24 +290,25 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(265, 265, 265)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(39, 39, 39)))
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(169, 169, 169)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
-                .addGap(56, 56, 56)
+                .addGap(29, 29, 29)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -307,6 +316,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //====== BOTON SALIR ======//
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         dispose();
         menuPrincipal.mostrarItemsEscritorio();
@@ -320,18 +330,19 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         if (!campoSuperficie.getText().isEmpty() && !campoPrecioMinimo.getText().isEmpty()&& !campoPrecioMaximo.getText().isEmpty()&& !comboTipo.getSelectedItem().equals("") && !comboZona.getSelectedItem().equals("")) {
             alMenosUnFiltro = true;
         } else {
-            JOptionPane.showMessageDialog(this, "Faltan filtros por llenar");
+            JOptionPane.showMessageDialog(this, "Debe llenar todos los campos");
         }
 
         if (alMenosUnFiltro) {
+            InmuebleData inmData = new InmuebleData();
+            Inmueble inm = new Inmueble();
+            
             String tipo = (String) comboTipo.getSelectedItem();
             double superficieMinima = Double.parseDouble(campoSuperficie.getText());
             double precioMin = Double.parseDouble(campoPrecioMinimo.getText());
             double precioMax = Double.parseDouble(campoPrecioMaximo.getText());
             String zona = (String) comboZona.getSelectedItem();
 
-            InmuebleData inmData = new InmuebleData();
-            Inmueble inm = new Inmueble();
             ArrayList<Inmueble> inmuebles = inmData.listarInmueblesPorParametros(tipo, superficieMinima, precioMin, precioMax, zona);
 
             eliminarFilas();
@@ -339,14 +350,17 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
             for (Inmueble inmueble : inmuebles) {
                 cargarFilas(inmueble);
             }
+            
+            if (inmData.listarInmueblesPorParametros(tipo, superficieMinima, precioMin, precioMax, zona).isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No existen inmuebles con esos parametros");
+            }
+            
         }
-
-
+        
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     //====== BOTON LIMPIAR FILTROS ======//
     private void botonLimpiarFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarFiltrosActionPerformed
-
         comboZona.setSelectedIndex(0);
         comboTipo.setSelectedIndex(0);
         campoSuperficie.setText("");
@@ -354,6 +368,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         campoPrecioMaximo.setText("");
     }//GEN-LAST:event_botonLimpiarFiltrosActionPerformed
 
+    // Validacion campo Superficie
     private void campoSuperficieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSuperficieKeyTyped
         int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57 || key==8;
@@ -365,9 +380,9 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
                 aviso = 0;
             }
         }
-
     }//GEN-LAST:event_campoSuperficieKeyTyped
 
+    // Validacion campo Precio minimo
     private void campoPrecioMinimoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioMinimoKeyTyped
         int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57 || key==8;
@@ -381,6 +396,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_campoPrecioMinimoKeyTyped
 
+    // Validacion campo Precio maximo
     private void campoPrecioMaximoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioMaximoKeyTyped
         int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57 || key==8;
@@ -394,6 +410,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_campoPrecioMaximoKeyTyped
 
+    //====== BOTON VER DETALLE ======//
     private void botonVerDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDetalleActionPerformed
         try {
             String nombrePropietario, apellidoPropietario = "", nombreInquilino, apellidoInquilino = "", disponible;
@@ -474,6 +491,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
     private javax.swing.JTable tablaInmuebles;
     // End of variables declaration//GEN-END:variables
 
+    // Metodo cargar columnas de la tabla
     private void cargarColumnas() {
         modelo.addColumn("ID Inmuble");
         modelo.addColumn("Tipo");
@@ -483,6 +501,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         tablaInmuebles.setModel(modelo);
     }
 
+    // Metodo eliminar filas de la tabla
     private void eliminarFilas() {
         int filas = tablaInmuebles.getRowCount() - 1;
         if (filas > -1) {
@@ -492,12 +511,13 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         }
     }
 
+    // Metodo cargar filas de la tabla
     private void cargarFilas(Inmueble inmueble) {
         modelo.addRow(new Object[]{inmueble.getIdInmueble(), inmueble.getTipo(), inmueble.getSuperficie(), inmueble.getPrecio(), inmueble.getZona()});
     }
 
+    // Metodo cargar comboBox de Tipo
     private void cargarComboTipo() {
-
         ArrayList<String> tipos = new ArrayList<>();
         tipos.add("");
         tipos.add("Local");
@@ -511,11 +531,10 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         }
 
         comboTipo.setModel(modelTipo);
-
     }
 
+    // Metodo cargar comboBox de Zona
     private void cargarComboZona() {
-
         ArrayList<String> zonas = new ArrayList<>();
         zonas.add("");
         zonas.add("Norte");
@@ -531,14 +550,6 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         comboZona.setModel(modelZona);
     }
 
-    private void mostrarDetalles(Inmueble inmueble) {
-        String detalles = "ID: " + inmueble.getIdInmueble() + "\n"
-                + "Tipo: " + inmueble.getTipo() + "\n"
-                + "Zona: " + inmueble.getZona() + "\n"
-                + "Superficie: " + inmueble.getSuperficie() + "\n"
-                + "Precio: " + inmueble.getPrecio();
-
-        JOptionPane.showMessageDialog(this, detalles, "Detalles del inmueble", JOptionPane.INFORMATION_MESSAGE);
-    }
+    
 
 }
