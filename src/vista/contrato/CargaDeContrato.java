@@ -330,6 +330,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                 Contrato contrato = new Contrato(id,inmueble,inquilino,fecha1,fecha2,precio,vigente,renovacion);
                 
                 contratoData.modificarContrato(contrato);
+                actualizarDisponible();
             }
             
         }catch(NumberFormatException ex){
