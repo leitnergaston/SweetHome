@@ -374,7 +374,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                 }
                 
                 Contrato contrato = new Contrato(id,inmueble,inquilino,fecha1,fecha2,precio,vigente,renovacion);
-                if(inmueble.isDisponible()){
+                if(inmueble.isDisponible() || inmueble.getIdInmueble() == contratoData.buscarContratoPorId(id).getInmueble().getIdInmueble()){
                     contratoData.modificarContrato(contrato);
                     actualizarDisponible();
                 }else{
