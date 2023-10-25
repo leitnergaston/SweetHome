@@ -11,6 +11,7 @@ import accesoADatos.InquilinoData;
 import entidades.Contrato;
 import entidades.Inmueble;
 import entidades.Inquilino;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
@@ -384,7 +385,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
 
     private void botonBuscarInquilinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarInquilinoActionPerformed
         
-        try{
+        
         if(comboInquilino.getSelectedIndex()<1){
             JOptionPane.showMessageDialog(this, "Ingrese un inquilino para buscar sus contratos");
             vaciarTodo();
@@ -400,15 +401,13 @@ public class VerContratos extends javax.swing.JInternalFrame {
                 eliminarFilas();
                for(Contrato contrato: contratos){
                     cargarfilas(contrato);
-                    botonTodos.setSelected(true);
+                    botonTodos.setSelected(false);
                     campoID.setText("");
                     
                 }
             }
         }
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Ingrese el id del contrato a buscar");
-        }
+       
     }//GEN-LAST:event_botonBuscarInquilinoActionPerformed
 
     private void botonBuscarInmueble1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarInmueble1ActionPerformed
@@ -427,7 +426,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
                 eliminarFilas();
                 for(Contrato contrato: contratos){
                     cargarfilas(contrato);
-                    botonTodos.setSelected(true);
+                    botonTodos.setSelected(false);
                     campoID.setText("");
                     
                 }
@@ -460,7 +459,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
 
              String detalles = "ID: " + contrato.getIdContrato() + "\n"
                      + "Inmueble: " + contrato.getInmueble()+ " " + "\n"
-                     + "Inquilino: " + contrato.getInquilino() + " m²\n"
+                     + "Inquilino: " + contrato.getInquilino() + " " + "\n"
                      + "Fecha de Inicio: " + contrato.getFechaInicio() + "\n"
                      + "Fecha de Finalización: " + contrato.getFechaFinal() + "\n"
                      + "Precio de Alquiler: $" + contrato.getPrecioAlquiler() + "\n"
@@ -530,7 +529,13 @@ public class VerContratos extends javax.swing.JInternalFrame {
     }
 
     private void cargarfilas(Contrato contrato) {
-        modelo.addRow(new Object[]{contrato.getIdContrato(),contrato.getInquilino(),contrato.getInmueble(),contrato.isVigente()});
+        String disponible;
+        if (contrato.isVigente()) {
+                 disponible = "Si";
+             } else {
+                 disponible = "No";
+             }
+        modelo.addRow(new Object[]{contrato.getIdContrato(),contrato.getInquilino(),contrato.getInmueble(),disponible});
     }
 
     private void eliminarFilas() {
