@@ -198,58 +198,66 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104)
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(142, 142, 142)
+                                .addComponent(campoCheckVigente)
+                                .addGap(35, 35, 35)
+                                .addComponent(campoCheckRenovado))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(campoBotonNuevo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoBotonGuardar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoBotonModificar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoBotonEliminar)
+                                .addGap(18, 18, 18)
+                                .addComponent(campoBotonSalir))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLIdContrato)
-                                    .addComponent(jLInmueble)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addGap(157, 157, 157)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(campoIdContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(ComboInmueble, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(ComboInquilino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(campoDateFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
-                                        .addComponent(campoDateFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(campoPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLFechaFin)
+                                            .addComponent(jLPrecio))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(11, 11, 11)
+                                                .addComponent(campoPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(campoDateFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLInmueble)
+                                            .addComponent(jLIdContrato))
+                                        .addGap(84, 84, 84)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ComboInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(campoIdContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLFechaIni)
+                                            .addComponent(jLInquilino))
+                                        .addGap(56, 56, 56)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(ComboInquilino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(campoDateFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(labelDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addContainerGap(12, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                                         .addComponent(campoBotonBuscar)
-                                        .addGap(79, 79, 79))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(campoBotonNuevo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(campoBotonGuardar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(campoBotonModificar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(campoBotonEliminar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(campoBotonSalir))
-                                    .addComponent(jLFechaIni)
-                                    .addComponent(jLPrecio)
-                                    .addComponent(jLFechaFin)
-                                    .addComponent(jLInquilino)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(142, 142, 142)
-                                        .addComponent(campoCheckVigente)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(campoCheckRenovado)))
-                                .addContainerGap(18, Short.MAX_VALUE))))))
+                                        .addGap(34, 34, 34))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104)
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,28 +274,31 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                     .addComponent(campoIdContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLIdContrato)
                     .addComponent(campoBotonBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLInmueble)
+                        .addComponent(ComboInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ComboInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLInmueble))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ComboInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLInquilino))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(campoDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLFechaIni))
-                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLInquilino)
+                    .addComponent(ComboInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(campoDateFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLPrecio)))
-                    .addComponent(jLFechaFin))
+                        .addGap(16, 16, 16)
+                        .addComponent(jLFechaIni))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLFechaFin)
+                    .addComponent(campoDateFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLPrecio))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoCheckVigente)
@@ -315,187 +326,22 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public static boolean Validar(String datos) {
-        return datos.matches("[a-zA-Z ]*");
-    }
-    
-    private void campoBotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonEliminarActionPerformed
-        if(campoIdContrato.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Para eliminar debe seleccionar un Id correspondiente");
-        }else{
-            int id = Integer.parseInt(campoIdContrato.getText());
-            contratoData.eliminarContrato(id);
-            contratoData.buscarContratoPorId(id).getInmueble().setDisponible(true);
-            campoCheckVigente.setSelected(false);
-            ComboInquilino.setSelectedIndex(0);
-            actualizarDisponible();
-        }
-    }//GEN-LAST:event_campoBotonEliminarActionPerformed
 
-    private void campoBotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonSalirActionPerformed
-        dispose();
-        menuPrincipal.mostrarItemsEscritorio();
-    }//GEN-LAST:event_campoBotonSalirActionPerformed
+    private void campoCheckRenovadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCheckRenovadoActionPerformed
 
-    private void campoCheckVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCheckVigenteActionPerformed
-       
-    }//GEN-LAST:event_campoCheckVigenteActionPerformed
-
-    private void campoBotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonModificarActionPerformed
-        try{
-              
-            if(ComboInmueble.getSelectedIndex()<1 || ComboInquilino.getSelectedIndex()<1 ){
-                JOptionPane.showMessageDialog(this, "No deje los campos vacíos");
-            }else if(campoDateFechaInicio.getDate() == null || campoDateFechaFin.getDate()== null  || campoPrecioAlquiler.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this, "No dejar los campos Fecha Inicio, Fecha fin y precio vacíos.");
-            }else{
-                
-                int id = Integer.parseInt(campoIdContrato.getText()); 
-                Inmueble inmueble = (Inmueble) ComboInmueble.getSelectedItem();
-                Inquilino inquilino = (Inquilino) ComboInquilino.getSelectedItem();
-                LocalDate fecha1 = campoDateFechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                LocalDate fecha2 = campoDateFechaFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                double precio = Double.parseDouble(campoPrecioAlquiler.getText());
-                boolean vigente = false;
-                boolean renovacion = false;
-                
-                if(campoCheckVigente.isSelected()){
-                    vigente = true;
-                }
-                if(campoCheckRenovado.isSelected()){
-                    renovacion = true;
-                }
-                
-                Contrato contrato = new Contrato(id,inmueble,inquilino,fecha1,fecha2,precio,vigente,renovacion);
-                if(inmueble.isDisponible() || inmueble.getIdInmueble() == contratoData.buscarContratoPorId(id).getInmueble().getIdInmueble()){
-                    contratoData.modificarContrato(contrato);
-                    actualizarDisponible();
-                }else{
-                    JOptionPane.showMessageDialog(this, "El inmueble seleccionado no se encuentra disponible");
-                }    
-            }
-            
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Para modificar el contrato debe completar todos los campos excepto Id");
-        }
-    }//GEN-LAST:event_campoBotonModificarActionPerformed
-
-    private void campoBotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonBuscarActionPerformed
-      try{   
-        Contrato contrato = new Contrato();
-        
-        
-        if (campoIdContrato.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese ID para buscar");
-        } else {
-            int id = Integer.parseInt(campoIdContrato.getText());
-            contrato = contratoData.buscarContratoPorId(id);
-            if (contrato == null) {
-                vaciarCampos();
-            } else {
-                int idInqui = contrato.getInquilino().getIdInquilino();
-                int cantidadItem = ComboInquilino.getItemCount();
-                
-                    for (int i = 1; i < cantidadItem; i++) {
-                        Inquilino inqui = ComboInquilino.getItemAt(i);
-                      if(inqui.getIdInquilino()== idInqui){
-                          ComboInquilino.setSelectedIndex(i);
-                      }  
-                }
-                 int idInmu = contrato.getInmueble().getIdInmueble();
-                 int cantItem = ComboInmueble.getItemCount();
-                 
-                       for (int i = 1; i < cantItem; i++) {
-                        Inmueble inmu = ComboInmueble.getItemAt(i);
-                      if(inmu.getIdInmueble()== idInmu){
-                          ComboInmueble.setSelectedIndex(i);
-                      }  
-                }
-                campoDateFechaInicio.setDate(Date.valueOf(contrato.getFechaInicio()));
-                campoDateFechaFin.setDate(Date.valueOf(contrato.getFechaFinal()));
-                campoPrecioAlquiler.setText(contrato.getPrecioAlquiler()+"");
-                campoCheckVigente.setSelected(contrato.isVigente());
-                campoCheckRenovado.setSelected(contrato.isRenovacion());
-            }
-        }
-        if (campoIdContrato.getText().isEmpty()) {
-            campoBotonModificar.setEnabled(false);
-        } else {
-            campoBotonModificar.setEnabled(true);
-        }
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Para guardar un contrato debe completar todos los campos excepto Id");
-        }
-      
-    }//GEN-LAST:event_campoBotonBuscarActionPerformed
-
-    private void campoBotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonGuardarActionPerformed
-         try{
-              
-            if(ComboInmueble.getSelectedIndex()<1 || ComboInquilino.getSelectedIndex()<1 ){
-                JOptionPane.showMessageDialog(this, "No deje los campos vacíos");
-            }else if(campoDateFechaInicio.getDate() == null || campoDateFechaFin.getDate()== null  || campoPrecioAlquiler.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this, "No dejar los campos Fecha Inicio, Fecha fin y precio vacíos.");
-            }else{
-                
-                //int id = Integer.parseInt(campoIdContrato.getText()); 
-                Inmueble inmueble = (Inmueble) ComboInmueble.getSelectedItem();
-                Inquilino inquilino = (Inquilino) ComboInquilino.getSelectedItem();
-                LocalDate fecha1 = campoDateFechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                LocalDate fecha2 = campoDateFechaFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                double precio = Double.parseDouble(campoPrecioAlquiler.getText());
-                boolean vigente = false;
-                boolean renovacion = false;
-                
-                if(campoCheckVigente.isSelected()){
-                    vigente = true;
-                }
-                if(campoCheckRenovado.isSelected()){
-                    renovacion = true;
-                }
-                
-                if(inmueble.isDisponible()){
-                
-                    Contrato contrato = new Contrato(inmueble,inquilino,fecha1,fecha2,precio,vigente,renovacion);
-                    contratoData.crearContrato(contrato);              
-                    cargarComboInmueble();            
-                    campoIdContrato.setText(contrato.getIdContrato()+"");              
-                    actualizarDisponible();
-                }else{
-                    JOptionPane.showMessageDialog(this, "Este inmueble no se encuentra disponible");
-                }
-            }
-            
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Para guardar un contrato debe completar todos los campos excepto Id");
-        }            
-    }//GEN-LAST:event_campoBotonGuardarActionPerformed
-
-    private void campoIdContratoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIdContratoKeyTyped
-         int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57 || key == 8;
-        if (!numero) {
-            evt.consume();
-            aviso++;
-            if (aviso == 5) {
-                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
-                aviso = 0;
-            }
-        }
-    }//GEN-LAST:event_campoIdContratoKeyTyped
+    }//GEN-LAST:event_campoCheckRenovadoActionPerformed
 
     private void campoPrecioAlquilerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioAlquilerKeyTyped
-       int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
         boolean numero;
         if(campoPrecioAlquiler.getText().contains(".")){
-            numero = key >= 48 && key <= 57 || key == 8; 
+            numero = key >= 48 && key <= 57 || key == 8;
         }
         else{
             numero = key >= 48 && key <= 57 || key == 46 || key == 8;
@@ -514,14 +360,176 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         vaciarCampos();
     }//GEN-LAST:event_campoBotonNuevoActionPerformed
 
-    private void campoCheckRenovadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCheckRenovadoActionPerformed
-        
-    }//GEN-LAST:event_campoCheckRenovadoActionPerformed
+    private void campoBotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonBuscarActionPerformed
+        try{
+            Contrato contrato = new Contrato();
+
+            if (campoIdContrato.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Ingrese ID para buscar");
+            } else {
+                int id = Integer.parseInt(campoIdContrato.getText());
+                contrato = contratoData.buscarContratoPorId(id);
+                if (contrato == null) {
+                    vaciarCampos();
+                } else {
+                    int idInqui = contrato.getInquilino().getIdInquilino();
+                    int cantidadItem = ComboInquilino.getItemCount();
+
+                    for (int i = 1; i < cantidadItem; i++) {
+                        Inquilino inqui = ComboInquilino.getItemAt(i);
+                        if(inqui.getIdInquilino()== idInqui){
+                            ComboInquilino.setSelectedIndex(i);
+                        }
+                    }
+                    int idInmu = contrato.getInmueble().getIdInmueble();
+                    int cantItem = ComboInmueble.getItemCount();
+
+                    for (int i = 1; i < cantItem; i++) {
+                        Inmueble inmu = ComboInmueble.getItemAt(i);
+                        if(inmu.getIdInmueble()== idInmu){
+                            ComboInmueble.setSelectedIndex(i);
+                        }
+                    }
+                    campoDateFechaInicio.setDate(Date.valueOf(contrato.getFechaInicio()));
+                    campoDateFechaFin.setDate(Date.valueOf(contrato.getFechaFinal()));
+                    campoPrecioAlquiler.setText(contrato.getPrecioAlquiler()+"");
+                    campoCheckVigente.setSelected(contrato.isVigente());
+                    campoCheckRenovado.setSelected(contrato.isRenovacion());
+                }
+            }
+            if (campoIdContrato.getText().isEmpty()) {
+                campoBotonModificar.setEnabled(false);
+            } else {
+                campoBotonModificar.setEnabled(true);
+            }
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Para guardar un contrato debe completar todos los campos excepto Id");
+        }
+    }//GEN-LAST:event_campoBotonBuscarActionPerformed
+
+    private void campoIdContratoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIdContratoKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57 || key == 8;
+        if (!numero) {
+            evt.consume();
+            aviso++;
+            if (aviso == 5) {
+                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                aviso = 0;
+            }
+        }
+    }//GEN-LAST:event_campoIdContratoKeyTyped
+
+    private void campoBotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonEliminarActionPerformed
+        if(campoIdContrato.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Para eliminar debe seleccionar un Id correspondiente");
+        }else{
+            int id = Integer.parseInt(campoIdContrato.getText());
+            contratoData.eliminarContrato(id);
+            contratoData.buscarContratoPorId(id).getInmueble().setDisponible(true);
+            campoCheckVigente.setSelected(false);
+            ComboInquilino.setSelectedIndex(0);
+            actualizarDisponible();
+        }
+    }//GEN-LAST:event_campoBotonEliminarActionPerformed
+
+    private void campoBotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonModificarActionPerformed
+        try{
+
+            if(ComboInmueble.getSelectedIndex()<1 || ComboInquilino.getSelectedIndex()<1 ){
+                JOptionPane.showMessageDialog(this, "No deje los campos vacíos");
+            }else if(campoDateFechaInicio.getDate() == null || campoDateFechaFin.getDate()== null  || campoPrecioAlquiler.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "No dejar los campos Fecha Inicio, Fecha fin y precio vacíos.");
+            }else{
+
+                int id = Integer.parseInt(campoIdContrato.getText());
+                Inmueble inmueble = (Inmueble) ComboInmueble.getSelectedItem();
+                Inquilino inquilino = (Inquilino) ComboInquilino.getSelectedItem();
+                LocalDate fecha1 = campoDateFechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                LocalDate fecha2 = campoDateFechaFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                double precio = Double.parseDouble(campoPrecioAlquiler.getText());
+                boolean vigente = false;
+                boolean renovacion = false;
+
+                if(campoCheckVigente.isSelected()){
+                    vigente = true;
+                }
+                if(campoCheckRenovado.isSelected()){
+                    renovacion = true;
+                }
+
+                Contrato contrato = new Contrato(id,inmueble,inquilino,fecha1,fecha2,precio,vigente,renovacion);
+                if(inmueble.isDisponible()){
+                    contratoData.modificarContrato(contrato);
+                    actualizarDisponible();
+                }else{
+                    JOptionPane.showMessageDialog(this, "El inmueble seleccionado no se encuentra disponible");
+                }
+            }
+
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Para modificar el contrato debe completar todos los campos excepto Id");
+        }
+    }//GEN-LAST:event_campoBotonModificarActionPerformed
 
     private void ComboInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboInmuebleActionPerformed
         actualizarDisponible();
     }//GEN-LAST:event_ComboInmuebleActionPerformed
-   
+
+    private void campoBotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonGuardarActionPerformed
+        try{
+
+            if(ComboInmueble.getSelectedIndex()<1 || ComboInquilino.getSelectedIndex()<1 ){
+                JOptionPane.showMessageDialog(this, "No deje los campos vacíos");
+            }else if(campoDateFechaInicio.getDate() == null || campoDateFechaFin.getDate()== null  || campoPrecioAlquiler.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "No dejar los campos Fecha Inicio, Fecha fin y precio vacíos.");
+            }else{
+
+                //int id = Integer.parseInt(campoIdContrato.getText());
+                Inmueble inmueble = (Inmueble) ComboInmueble.getSelectedItem();
+                Inquilino inquilino = (Inquilino) ComboInquilino.getSelectedItem();
+                LocalDate fecha1 = campoDateFechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                LocalDate fecha2 = campoDateFechaFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                double precio = Double.parseDouble(campoPrecioAlquiler.getText());
+                boolean vigente = false;
+                boolean renovacion = false;
+
+                if(campoCheckVigente.isSelected()){
+                    vigente = true;
+                }
+                if(campoCheckRenovado.isSelected()){
+                    renovacion = true;
+                }
+
+                if(inmueble.isDisponible()){
+
+                    Contrato contrato = new Contrato(inmueble,inquilino,fecha1,fecha2,precio,vigente,renovacion);
+                    contratoData.crearContrato(contrato);
+                    cargarComboInmueble();
+                    campoIdContrato.setText(contrato.getIdContrato()+"");
+                    actualizarDisponible();
+                }else{
+                    JOptionPane.showMessageDialog(this, "Este inmueble no se encuentra disponible");
+                }
+            }
+
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Para guardar un contrato debe completar todos los campos excepto Id");
+        }
+    }//GEN-LAST:event_campoBotonGuardarActionPerformed
+
+    private void campoCheckVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCheckVigenteActionPerformed
+
+    }//GEN-LAST:event_campoCheckVigenteActionPerformed
+
+    private void campoBotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBotonSalirActionPerformed
+        dispose();
+        menuPrincipal.mostrarItemsEscritorio();
+    }//GEN-LAST:event_campoBotonSalirActionPerformed
+    public static boolean Validar(String datos) {
+        return datos.matches("[a-zA-Z ]*");
+    }
+       
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Inmueble> ComboInmueble;
@@ -587,7 +595,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         if(ComboInmueble.getSelectedIndex()>0){
             Inmueble inmueble = (Inmueble)ComboInmueble.getSelectedItem();
             if(inmueble.isDisponible()){
-                labelDisponible.setText("   Disponible");
+                labelDisponible.setText("Disponible");
             }else{
                 labelDisponible.setText("No disponible");
             }

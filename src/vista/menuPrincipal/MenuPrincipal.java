@@ -365,9 +365,9 @@ public final class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -554,10 +554,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         panels.add(panel4);
 
         // diseños de paneles
-        panel1.setBackground(new Color(0, 71, 90, 210));
-        panel2.setBackground(new Color(0, 71, 90, 210));
-        panel3.setBackground(new Color(0, 71, 90, 210));
-        panel4.setBackground(new Color(0, 71, 90, 210));
+        panel1.setBackground(new Color(0, 71, 90, 100));
+        panel2.setBackground(new Color(0, 71, 90, 100));
+        panel3.setBackground(new Color(0, 71, 90, 100));
+        panel4.setBackground(new Color(0, 71, 90, 100));
 
     }
 
