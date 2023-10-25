@@ -261,7 +261,8 @@ public class ContratoData {
         ArrayList<Contrato> contratos = new ArrayList<>();
         Contrato contrato;
         inquilinoData = new InquilinoData();
-        inquilinoData = new InquilinoData();
+        inmuebleData = new InmuebleData();
+        
         try {
             String sql = "SELECT * FROM contratodealquiler WHERE idInquilino = ?";
             PreparedStatement ps = con.prepareStatement(sql);
