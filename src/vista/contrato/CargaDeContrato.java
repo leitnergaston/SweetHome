@@ -459,7 +459,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                 }
 
                 Contrato contrato = new Contrato(id,inmueble,inquilino,fecha1,fecha2,precio,vigente,renovacion);
-                if(inmueble.isDisponible()){
+                if(inmueble.isDisponible() || inmueble.getIdInmueble() == contratoData.buscarContratoPorId(id).getInmueble().getIdInmueble()){
                     contratoData.modificarContrato(contrato);
                     actualizarDisponible();
                 }else{
@@ -594,7 +594,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
     private void actualizarDisponible(){
         if(ComboInmueble.getSelectedIndex()>0){
             Inmueble inmueble = (Inmueble)ComboInmueble.getSelectedItem();
-            if(inmueble.isDisponible()){
+            if(inmuebleData.buscarInmueble(inmueble.getIdInmueble()).isDisponible()){
                 labelDisponible.setText("Disponible");
             }else{
                 labelDisponible.setText("No disponible");
