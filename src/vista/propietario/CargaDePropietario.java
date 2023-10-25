@@ -347,7 +347,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void campoDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDniKeyTyped
-        
+
         int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57;
         if (!numero) {
@@ -362,7 +362,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
 
     //====== BOTON ELIMINAR ======//
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        
+
         try {
             int dni = Integer.parseInt(campoDni.getText());
             PropietarioData propData = new PropietarioData();
@@ -376,7 +376,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
 
     //====== BOTON BUSCAR ======//
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
-        
+
         Propietario prop = new Propietario();
         PropietarioData propData = new PropietarioData();
         if (campoDni.getText().isEmpty()) {
@@ -405,27 +405,27 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
 
     //====== BOTON MODIFICAR ======//
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        
+
+        PropietarioData propData = new PropietarioData();
         int dni = Integer.parseInt(campoDni.getText());
-        if (!validarDni(dni)) {
-            JOptionPane.showMessageDialog(this, "Ya existe un propietario con ese dni");
+        dni = Integer.parseInt(campoDni.getText());
+        int id = Integer.parseInt(campoId.getText());
+        if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
+                || campoDni.getText().isEmpty() || campoDomicilio.getText().isEmpty()
+                || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()
+                || campoDni.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se permite modificar con espacios vacios");
         } else {
-            if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
-                    || campoDni.getText().isEmpty() || campoDomicilio.getText().isEmpty()
-                    || campoTelefono.getText().isEmpty() || campoMail.getText().isEmpty()
-                    || campoDni.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No se permite modificar con espacios vacios");
+            if (!validarDni(dni) && dni!=propData.buscarPropietarioPorId(id).getDni()) {
+                JOptionPane.showMessageDialog(this, "Ya existe un propietario con ese dni");
             } else {
-                PropietarioData propData = new PropietarioData();
-                dni = Integer.parseInt(campoDni.getText());
-                int id = Integer.parseInt(campoId.getText());
                 String nombre = campoNombre.getText();
                 String apellido = campoApellido.getText();
                 String domicilio = campoDomicilio.getText();
                 String telefono = campoTelefono.getText();
                 String mail = campoMail.getText();
                 boolean estado = checkEstado.isSelected();
-
+                
                 Propietario prop = new Propietario(id, dni, apellido, nombre, domicilio, telefono, mail, estado);
                 propData.modificarPropietario(prop);
             }
@@ -433,7 +433,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void campoTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTelefonoKeyTyped
-        
+
         int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57 || key == 8;
         if (!numero) {
@@ -447,7 +447,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_campoTelefonoKeyTyped
 
     private void campoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNombreKeyTyped
-        
+
         int key = evt.getKeyChar();
         boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
         if (!numero) {
@@ -461,7 +461,7 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_campoNombreKeyTyped
 
     private void campoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoApellidoKeyTyped
-        
+
         int key = evt.getKeyChar();
         boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
         if (!numero) {
@@ -512,8 +512,6 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         campoMail.setText("");
         checkEstado.setSelected(false);
     }
-    
-    
 
     private boolean validarDni(int dni) {
         PropietarioData propietarioData = new PropietarioData();
