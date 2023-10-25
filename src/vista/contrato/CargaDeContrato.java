@@ -293,12 +293,13 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                     .addComponent(campoCheckVigente)
                     .addComponent(campoCheckRenovado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoBotonEliminar)
-                    .addComponent(campoBotonModificar)
-                    .addComponent(campoBotonGuardar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campoBotonSalir)
-                    .addComponent(campoBotonNuevo))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campoBotonEliminar)
+                        .addComponent(campoBotonModificar)
+                        .addComponent(campoBotonGuardar)
+                        .addComponent(campoBotonNuevo)))
                 .addGap(36, 36, 36))
         );
 
@@ -331,8 +332,10 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         }else{
             int id = Integer.parseInt(campoIdContrato.getText());
             contratoData.eliminarContrato(id);
+            contratoData.buscarContratoPorId(id).getInmueble().setDisponible(true);
             campoCheckVigente.setSelected(false);
-            
+            ComboInquilino.setSelectedIndex(0);
+            actualizarDisponible();
         }
     }//GEN-LAST:event_campoBotonEliminarActionPerformed
 
@@ -371,9 +374,12 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
                 }
                 
                 Contrato contrato = new Contrato(id,inmueble,inquilino,fecha1,fecha2,precio,vigente,renovacion);
-                
-                contratoData.modificarContrato(contrato);
-                actualizarDisponible();
+                if(inmueble.isDisponible()){
+                    contratoData.modificarContrato(contrato);
+                    actualizarDisponible();
+                }else{
+                    JOptionPane.showMessageDialog(this, "El inmueble seleccionado no se encuentra disponible");
+                }    
             }
             
         }catch(NumberFormatException ex){

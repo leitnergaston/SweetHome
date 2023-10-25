@@ -173,12 +173,14 @@
                       <Component id="campoCheckRenovado" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="72" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="campoBotonEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoBotonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoBotonGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="campoBotonSalir" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoBotonNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="campoBotonEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoBotonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoBotonGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoBotonNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
