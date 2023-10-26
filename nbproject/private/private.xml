@@ -7,6 +7,11 @@
             <file>file:/C:/Users/Gaston/Documents/proyectosNetbeans/ArgentinaPrograma-projects/Tercera%20Etapa/Inmobiliaria32/src/vista/MenuPrincipal.java</file>
         </group>
         <group/>
-        <group/>
+        <group>
+            <file>file:/C:/escritorio/tp%20final/Inmobiliaria32/src/vista/menuPrincipal/MenuPrincipal.java</file>
+            <file>file:/C:/escritorio/tp%20final/Inmobiliaria32/src/vista/propietario/CargaDePropietario.java</file>
+            <file>file:/C:/escritorio/tp%20final/Inmobiliaria32/src/vista/inquilino/CargaDeInquilino.java</file>
+            <file>file:/C:/escritorio/tp%20final/Inmobiliaria32/src/vista/contrato/CargaDeContrato.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -554,10 +554,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         panels.add(panel4);
 
         // diseños de paneles
-        panel1.setBackground(new Color(0, 71, 90, 100));
-        panel2.setBackground(new Color(0, 71, 90, 100));
-        panel3.setBackground(new Color(0, 71, 90, 100));
-        panel4.setBackground(new Color(0, 71, 90, 100));
+        panel1.setBackground(new Color(0, 71, 90, 160));
+        panel2.setBackground(new Color(0, 71, 90, 160));
+        panel3.setBackground(new Color(0, 71, 90, 160));
+        panel4.setBackground(new Color(0, 71, 90, 160));
 
     }
 
