@@ -77,13 +77,15 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
         botonCargarPropietario.setBackground(new java.awt.Color(255, 255, 255));
-        botonCargarPropietario.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonCargarPropietario.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonCargarPropietario.setForeground(new java.awt.Color(0, 0, 0));
         botonCargarPropietario.setText("Datos");
         botonCargarPropietario.setToolTipText("");
         botonCargarPropietario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonCargarPropietario.setBorderPainted(false);
         botonCargarPropietario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonCargarPropietario.setFocusPainted(false);
+        botonCargarPropietario.setFocusable(false);
         botonCargarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarPropietarioActionPerformed(evt);
@@ -91,9 +93,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonVerPropietarios.setBackground(new java.awt.Color(255, 255, 255));
-        botonVerPropietarios.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonVerPropietarios.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonVerPropietarios.setForeground(new java.awt.Color(0, 0, 0));
         botonVerPropietarios.setText("Ver propietarios");
+        botonVerPropietarios.setFocusable(false);
         botonVerPropietarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerPropietariosActionPerformed(evt);
@@ -150,9 +153,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
 
         botonCargarInmueble.setBackground(new java.awt.Color(255, 255, 255));
-        botonCargarInmueble.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonCargarInmueble.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonCargarInmueble.setForeground(new java.awt.Color(0, 0, 0));
         botonCargarInmueble.setText("Datos");
+        botonCargarInmueble.setFocusPainted(false);
         botonCargarInmueble.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarInmuebleActionPerformed(evt);
@@ -160,9 +164,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonVerInmuebles.setBackground(new java.awt.Color(255, 255, 255));
-        botonVerInmuebles.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonVerInmuebles.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonVerInmuebles.setForeground(new java.awt.Color(0, 0, 0));
         botonVerInmuebles.setText("Ver Inmuebles");
+        botonVerInmuebles.setFocusPainted(false);
         botonVerInmuebles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerInmueblesActionPerformed(evt);
@@ -170,9 +175,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonVerPorFiltros.setBackground(new java.awt.Color(255, 255, 255));
-        botonVerPorFiltros.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonVerPorFiltros.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonVerPorFiltros.setForeground(new java.awt.Color(0, 0, 0));
         botonVerPorFiltros.setText("Ver por filtros");
+        botonVerPorFiltros.setFocusPainted(false);
         botonVerPorFiltros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerPorFiltrosActionPerformed(evt);
@@ -231,9 +237,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
 
         botonCargarInquilino.setBackground(new java.awt.Color(255, 255, 255));
-        botonCargarInquilino.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonCargarInquilino.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonCargarInquilino.setForeground(new java.awt.Color(0, 0, 0));
         botonCargarInquilino.setText("Datos");
+        botonCargarInquilino.setFocusPainted(false);
         botonCargarInquilino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarInquilinoActionPerformed(evt);
@@ -241,9 +248,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonVerInquilinos.setBackground(new java.awt.Color(255, 255, 255));
-        botonVerInquilinos.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonVerInquilinos.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonVerInquilinos.setForeground(new java.awt.Color(0, 0, 0));
         botonVerInquilinos.setText("Ver inquilinos");
+        botonVerInquilinos.setFocusPainted(false);
         botonVerInquilinos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerInquilinosActionPerformed(evt);
@@ -298,9 +306,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
 
         botonCargarContrato.setBackground(new java.awt.Color(255, 255, 255));
-        botonCargarContrato.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonCargarContrato.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonCargarContrato.setForeground(new java.awt.Color(0, 0, 0));
         botonCargarContrato.setText("Datos");
+        botonCargarContrato.setFocusPainted(false);
         botonCargarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarContratoActionPerformed(evt);
@@ -308,9 +317,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonVerContratos.setBackground(new java.awt.Color(255, 255, 255));
-        botonVerContratos.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonVerContratos.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonVerContratos.setForeground(new java.awt.Color(0, 0, 0));
         botonVerContratos.setText("Ver contratos");
+        botonVerContratos.setFocusPainted(false);
         botonVerContratos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerContratosActionPerformed(evt);
