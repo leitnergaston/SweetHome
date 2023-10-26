@@ -7,8 +7,12 @@ package vista.inmueble;
 
 import accesoADatos.*;
 import entidades.*;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import vista.menuPrincipal.MenuPrincipal;
 
 /**
@@ -20,8 +24,11 @@ private MenuPrincipal menuPrincipal;
 private InmuebleData inmuebleData = new InmuebleData();
 private PropietarioData propietarioData = new PropietarioData();
 private int aviso = 0;
+private final FondoPanel fondo = new FondoPanel();
+//private FondoPanel fondo = new FondoPanel();
     
     public CargaDeInmueble(MenuPrincipal menuPrincipal) {
+        this.setContentPane(fondo);
         initComponents();
         this.menuPrincipal = menuPrincipal;
         cargarComboPropietario();
@@ -248,11 +255,11 @@ private int aviso = 0;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(campoSuperficie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -262,13 +269,14 @@ private int aviso = 0;
                     .addComponent(comboZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(checkDisponible)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonModificar)
-                    .addComponent(botonGuardar)
-                    .addComponent(botonEliminar)
-                    .addComponent(jButton1)
-                    .addComponent(botonSalir))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonSalir)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botonModificar)
+                        .addComponent(botonGuardar)
+                        .addComponent(botonEliminar)
+                        .addComponent(jButton1)))
                 .addGap(19, 19, 19))
         );
 
@@ -528,4 +536,19 @@ private int aviso = 0;
         comboZona.setSelectedIndex(0);
         checkDisponible.setSelected(false);
     }
+    
+    public class FondoPanel extends JPanel{
+    
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/images/Living.jpg")).getImage();
+            g.drawImage(imagen,0,0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        
+        }
+    
+    }  
 }
