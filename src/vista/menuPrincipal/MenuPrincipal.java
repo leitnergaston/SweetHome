@@ -20,7 +20,7 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         initComponents();
         cargarPaneles();
         setLocationRelativeTo(null); // Coloca la ventana de ejecucion en el centro
-        setExtendedState(6); // abrir en pantalla completa
+        setExtendedState(MAXIMIZED_BOTH); // abrir en pantalla completa
 
     }
 
@@ -70,20 +70,22 @@ public final class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuario.png"))); // NOI18N
 
-        label1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        label1.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         label1.setForeground(new java.awt.Color(255, 255, 255));
         label1.setText("Propietario");
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
         botonCargarPropietario.setBackground(new java.awt.Color(255, 255, 255));
-        botonCargarPropietario.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonCargarPropietario.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonCargarPropietario.setForeground(new java.awt.Color(0, 0, 0));
         botonCargarPropietario.setText("Datos");
         botonCargarPropietario.setToolTipText("");
         botonCargarPropietario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonCargarPropietario.setBorderPainted(false);
         botonCargarPropietario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonCargarPropietario.setFocusPainted(false);
+        botonCargarPropietario.setFocusable(false);
         botonCargarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarPropietarioActionPerformed(evt);
@@ -91,9 +93,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonVerPropietarios.setBackground(new java.awt.Color(255, 255, 255));
-        botonVerPropietarios.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonVerPropietarios.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonVerPropietarios.setForeground(new java.awt.Color(0, 0, 0));
         botonVerPropietarios.setText("Ver propietarios");
+        botonVerPropietarios.setFocusable(false);
         botonVerPropietarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerPropietariosActionPerformed(evt);
@@ -105,35 +108,36 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(label1)
+                .addGap(75, 75, 75))
             .addGroup(panel1Layout.createSequentialGroup()
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel2))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(botonVerPropietarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonCargarPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(label1)))
-                .addContainerGap(40, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(84, 84, 84))
+                            .addComponent(botonCargarPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label1)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(botonCargarPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonCargarPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonVerPropietarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addComponent(botonVerPropietarios, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel2.setBackground(new java.awt.Color(0, 72, 90));
@@ -142,16 +146,17 @@ public final class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inmueble.png"))); // NOI18N
 
-        label2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        label2.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         label2.setForeground(new java.awt.Color(255, 255, 255));
         label2.setText("Inmueble");
 
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
 
         botonCargarInmueble.setBackground(new java.awt.Color(255, 255, 255));
-        botonCargarInmueble.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonCargarInmueble.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonCargarInmueble.setForeground(new java.awt.Color(0, 0, 0));
         botonCargarInmueble.setText("Datos");
+        botonCargarInmueble.setFocusPainted(false);
         botonCargarInmueble.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarInmuebleActionPerformed(evt);
@@ -159,9 +164,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonVerInmuebles.setBackground(new java.awt.Color(255, 255, 255));
-        botonVerInmuebles.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonVerInmuebles.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonVerInmuebles.setForeground(new java.awt.Color(0, 0, 0));
         botonVerInmuebles.setText("Ver Inmuebles");
+        botonVerInmuebles.setFocusPainted(false);
         botonVerInmuebles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerInmueblesActionPerformed(evt);
@@ -169,9 +175,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonVerPorFiltros.setBackground(new java.awt.Color(255, 255, 255));
-        botonVerPorFiltros.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonVerPorFiltros.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonVerPorFiltros.setForeground(new java.awt.Color(0, 0, 0));
         botonVerPorFiltros.setText("Ver por filtros");
+        botonVerPorFiltros.setFocusPainted(false);
         botonVerPorFiltros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerPorFiltrosActionPerformed(evt);
@@ -184,35 +191,37 @@ public final class MenuPrincipal extends javax.swing.JFrame {
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator3)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(69, Short.MAX_VALUE)
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-                        .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonVerInmuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonCargarInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonVerPorFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39))
+                        .addComponent(label2)
+                        .addGap(74, 74, 74))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(83, 83, 83))
+                        .addGap(106, 106, 106))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))))
+                        .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(botonCargarInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(botonVerInmuebles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonVerPorFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(51, 51, 51))))
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel2Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(label2)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(botonCargarInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonCargarInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonVerInmuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonVerInmuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonVerPorFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonVerPorFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -221,16 +230,17 @@ public final class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuario.png"))); // NOI18N
 
-        label3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        label3.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         label3.setForeground(new java.awt.Color(255, 255, 255));
         label3.setText("Inquilino");
 
         jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
 
         botonCargarInquilino.setBackground(new java.awt.Color(255, 255, 255));
-        botonCargarInquilino.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonCargarInquilino.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonCargarInquilino.setForeground(new java.awt.Color(0, 0, 0));
         botonCargarInquilino.setText("Datos");
+        botonCargarInquilino.setFocusPainted(false);
         botonCargarInquilino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarInquilinoActionPerformed(evt);
@@ -238,9 +248,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonVerInquilinos.setBackground(new java.awt.Color(255, 255, 255));
-        botonVerInquilinos.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonVerInquilinos.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonVerInquilinos.setForeground(new java.awt.Color(0, 0, 0));
         botonVerInquilinos.setText("Ver inquilinos");
+        botonVerInquilinos.setFocusPainted(false);
         botonVerInquilinos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerInquilinosActionPerformed(evt);
@@ -252,33 +263,34 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         panel3Layout.setHorizontalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator5)
-            .addGroup(panel3Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonCargarInquilino, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                    .addComponent(botonVerInquilinos, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(86, 86, 86))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(label3)
-                .addGap(64, 64, 64))
+                .addContainerGap(65, Short.MAX_VALUE)
+                .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
+                        .addComponent(label3)
+                        .addGap(86, 86, 86))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(111, 111, 111))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
+                        .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonCargarInquilino, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonVerInquilinos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55))))
         );
         panel3Layout.setVerticalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel3Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label3)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(botonCargarInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonCargarInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonVerInquilinos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonVerInquilinos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -287,16 +299,17 @@ public final class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/contrato.png"))); // NOI18N
 
-        label4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        label4.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         label4.setForeground(new java.awt.Color(255, 255, 255));
         label4.setText("Contrato");
 
         jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
 
         botonCargarContrato.setBackground(new java.awt.Color(255, 255, 255));
-        botonCargarContrato.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonCargarContrato.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonCargarContrato.setForeground(new java.awt.Color(0, 0, 0));
         botonCargarContrato.setText("Datos");
+        botonCargarContrato.setFocusPainted(false);
         botonCargarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCargarContratoActionPerformed(evt);
@@ -304,9 +317,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonVerContratos.setBackground(new java.awt.Color(255, 255, 255));
-        botonVerContratos.setFont(new java.awt.Font("GeoSlab703 Md BT", 0, 18)); // NOI18N
+        botonVerContratos.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         botonVerContratos.setForeground(new java.awt.Color(0, 0, 0));
         botonVerContratos.setText("Ver contratos");
+        botonVerContratos.setFocusPainted(false);
         botonVerContratos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerContratosActionPerformed(evt);
@@ -318,35 +332,35 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         panel4Layout.setHorizontalGroup(
             panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator6)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(label4)
-                .addGap(68, 68, 68))
             .addGroup(panel4Layout.createSequentialGroup()
+                .addGap(95, 95, 95)
                 .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel4Layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jLabel8))
-                    .addGroup(panel4Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonVerContratos, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonCargarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(label4)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel4Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(21, 21, 21)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel4Layout.createSequentialGroup()
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addGroup(panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonCargarContrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonVerContratos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54))
         );
         panel4Layout.setVerticalGroup(
             panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel4Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(label4)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(botonCargarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonCargarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonVerContratos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(botonVerContratos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         Escritorio.setLayer(panel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -359,26 +373,26 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(EscritorioLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
+            .addGroup(EscritorioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                    .addComponent(panel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(155, Short.MAX_VALUE))
+                    .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                    .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -554,10 +568,11 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         panels.add(panel4);
 
         // diseños de paneles
-        panel1.setBackground(new Color(0, 71, 90, 160));
-        panel2.setBackground(new Color(0, 71, 90, 160));
-        panel3.setBackground(new Color(0, 71, 90, 160));
-        panel4.setBackground(new Color(0, 71, 90, 160));
+        panel1.setBackground(new Color(0, 71, 90, 180));
+        panel2.setBackground(new Color(0, 71, 90, 180));
+        panel3.setBackground(new Color(0, 71, 90, 180));
+        panel4.setBackground(new Color(0, 71, 90, 180));
+        
 
     }
 
