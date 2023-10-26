@@ -360,11 +360,11 @@ public class InmuebleData {
             int exito = ps.executeUpdate();
             
             if(exito == 1 && idInquilino != 0){
-                JOptionPane.showMessageDialog(null, "Inquilino agregado exitosamente");
+                //JOptionPane.showMessageDialog(null, "Inquilino agregado exitosamente");
             }else if(exito==1 && idInquilino == 0){
-                JOptionPane.showMessageDialog(null, "Inquilino eliminado exitosamente");
+                //JOptionPane.showMessageDialog(null, "Inquilino eliminado exitosamente");
             }else{
-                JOptionPane.showMessageDialog(null, "No se pudo agregar el inquilino");
+                //JOptionPane.showMessageDialog(null, "No se pudo agregar el inquilino");
             }
             
         } catch (SQLException ex) {
