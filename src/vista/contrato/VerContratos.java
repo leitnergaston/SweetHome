@@ -11,10 +11,14 @@ import accesoADatos.InquilinoData;
 import entidades.Contrato;
 import entidades.Inmueble;
 import entidades.Inquilino;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import javax.swing.ButtonModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import vista.menuPrincipal.MenuPrincipal;
 
@@ -24,7 +28,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
     private ContratoData contratoData = new ContratoData();
     private InmuebleData inmuebleData = new InmuebleData();
     private InquilinoData inquilinoData = new InquilinoData();
-    
+    private FondoPanel fondo = new FondoPanel();
     
    
     DefaultTableModel modelo = new DefaultTableModel(){
@@ -34,11 +38,12 @@ public class VerContratos extends javax.swing.JInternalFrame {
     };
     
     public VerContratos(MenuPrincipal menuPrincipal) {
+        this.setContentPane(fondo);
         initComponents();
-         this.menuPrincipal = menuPrincipal;
-         cargarTabla();
-         cargarComboInmueble();
-         cargarComboInquilino();
+        this.menuPrincipal = menuPrincipal;
+        cargarTabla();
+        cargarComboInmueble();
+        cargarComboInquilino();
     }
     
     int aviso = 0;
@@ -83,6 +88,8 @@ public class VerContratos extends javax.swing.JInternalFrame {
 
         setPreferredSize(new java.awt.Dimension(555, 470));
 
+        jPanel1.setOpaque(false);
+
         botonVerDetalles.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
         botonVerDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconVerDetalles.png"))); // NOI18N
         botonVerDetalles.setText("Ver Detalle");
@@ -120,18 +127,14 @@ public class VerContratos extends javax.swing.JInternalFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Ver Contratos");
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel6.setText("Inquilino");
 
         grupoBotonesFiltros.add(botonTodos);
-        botonTodos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         botonTodos.setText("Todos");
 
         grupoBotonesFiltros.add(botonVigentes);
-        botonVigentes.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         botonVigentes.setText("Vigentes");
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel7.setText("ID");
 
         botonBuscar.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
@@ -159,10 +162,8 @@ public class VerContratos extends javax.swing.JInternalFrame {
         });
 
         grupoBotonesFiltros.add(botonNoVigentes);
-        botonNoVigentes.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         botonNoVigentes.setText("No Vigentes");
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel8.setText("Inmueble");
 
         campoID.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -271,7 +272,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboInquilino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonBuscarInquilino))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -595,5 +596,20 @@ public class VerContratos extends javax.swing.JInternalFrame {
         comboInmueble.setSelectedIndex(0);
         eliminarFilas();
     }
+    
+    private class FondoPanel extends JPanel{
+    
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/images/fondo4.jpg")).getImage();
+            g.drawImage(imagen,0,0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        
+        }
+    
+    }  
 }
 

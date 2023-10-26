@@ -11,11 +11,15 @@ import accesoADatos.InquilinoData;
 import entidades.Contrato;
 import entidades.Inmueble;
 import entidades.Inquilino;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import vista.menuPrincipal.MenuPrincipal;
 
 /**
@@ -27,11 +31,13 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
     private ContratoData contratoData = new ContratoData();
     private InmuebleData inmuebleData = new InmuebleData();
     private InquilinoData inquilinoData = new InquilinoData();
+    private FondoPanel fondo = new FondoPanel();
     private int aviso = 0;
     /**
      * Creates new form CargaDeContrato
      */
     public CargaDeContrato(MenuPrincipal menuPrincipal) {
+        this.setContentPane(fondo);
         initComponents();
         this.menuPrincipal = menuPrincipal;
         cargarComboInquilino();
@@ -75,6 +81,8 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         jLFechaFin = new javax.swing.JLabel();
 
         setTitle("Datos de Contrato");
+
+        jPanel1.setOpaque(false);
 
         jLContrato.setBackground(new java.awt.Color(255, 204, 204));
         jLContrato.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -608,4 +616,18 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
         }
     }    
     
+    private class FondoPanel extends JPanel{
+    
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/images/fondo4.jpg")).getImage();
+            g.drawImage(imagen,0,0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        
+        }
+    
+    }  
 }

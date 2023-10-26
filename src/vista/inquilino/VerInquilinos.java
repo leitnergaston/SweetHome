@@ -2,14 +2,19 @@ package vista.inquilino;
 
 import accesoADatos.InquilinoData;
 import entidades.Inquilino;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import vista.menuPrincipal.MenuPrincipal;
 
 public class VerInquilinos extends javax.swing.JInternalFrame {
 
-    DefaultTableModel modelo = new DefaultTableModel() {
+    private FondoPanel fondo = new FondoPanel();    
+    private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
             return false;
         }
@@ -18,6 +23,7 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
     int aviso = 0;
 
     public VerInquilinos(MenuPrincipal menuPrincipal) {
+        this.setContentPane(fondo);
         initComponents();
         this.menuPrincipal = menuPrincipal;
         cargarColumnas();
@@ -495,4 +501,18 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
         }
     }
 
+    private class FondoPanel extends JPanel{
+    
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/images/fondo4.jpg")).getImage();
+            g.drawImage(imagen,0,0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        
+        }
+    
+    }      
 }

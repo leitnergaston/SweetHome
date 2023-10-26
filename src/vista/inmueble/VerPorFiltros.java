@@ -2,15 +2,20 @@ package vista.inmueble;
 
 import accesoADatos.InmuebleData;
 import entidades.Inmueble;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import vista.menuPrincipal.MenuPrincipal;
 
 public class VerPorFiltros extends javax.swing.JInternalFrame {
 
     private final MenuPrincipal menuPrincipal;
+    private FondoPanel fondo = new FondoPanel();
     int aviso = 0;
     DefaultTableModel modelo = new DefaultTableModel() {
         @Override
@@ -23,6 +28,7 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
     DefaultComboBoxModel<String> modelZona = new DefaultComboBoxModel<>();
 
     public VerPorFiltros(MenuPrincipal menuPrincipal) {
+        this.setContentPane(fondo);
         initComponents();
         this.menuPrincipal = menuPrincipal;
         cargarColumnas();
@@ -68,13 +74,12 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         jLabel1.setText("Ver Inmuebles por filtros");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setOpaque(false);
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel5.setText("Precio Mínimo");
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel6.setText("Precio Máximo");
 
         botonBuscar.setFont(new java.awt.Font("Swis721 Hv BT", 0, 14)); // NOI18N
@@ -98,23 +103,18 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel3.setText("Zona");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel2.setText("Tipo");
 
         jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Superficie Mínima");
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel7.setText("$");
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel8.setText("$");
 
         campoSuperficie.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -227,6 +227,8 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
+
+        jPanel2.setOpaque(false);
 
         tablaInmuebles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -550,6 +552,19 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
         comboZona.setModel(modelZona);
     }
 
+    private class FondoPanel extends JPanel{
     
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/images/fondo4.jpg")).getImage();
+            g.drawImage(imagen,0,0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        
+        }
+    
+    }  
 
 }

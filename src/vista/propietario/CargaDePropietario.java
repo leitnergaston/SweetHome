@@ -2,16 +2,22 @@ package vista.propietario;
 
 import accesoADatos.PropietarioData;
 import entidades.Propietario;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import vista.menuPrincipal.MenuPrincipal;
 
 public class CargaDePropietario extends javax.swing.JInternalFrame {
 
     private MenuPrincipal menuPrincipal;
-    int aviso = 0;
+    private int aviso = 0;
+    private FondoPanel fondo = new FondoPanel();
 
     public CargaDePropietario(MenuPrincipal menuPrincipal) {
+        this.setContentPane(fondo);
         initComponents();
         this.menuPrincipal = menuPrincipal;
     }
@@ -46,6 +52,8 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         botonSalir = new javax.swing.JButton();
 
         setTitle("Datos Propietario");
+
+        jPanel1.setOpaque(false);
 
         BotonEliminar.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
         BotonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconEliminar.png"))); // NOI18N
@@ -526,4 +534,19 @@ public class CargaDePropietario extends javax.swing.JInternalFrame {
         }
         return bandera;
     }
+    
+    private class FondoPanel extends JPanel{
+    
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/images/fondo4.jpg")).getImage();
+            g.drawImage(imagen,0,0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        
+        }
+    
+    }  
 }

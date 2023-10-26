@@ -537,13 +537,13 @@ private final FondoPanel fondo = new FondoPanel();
         checkDisponible.setSelected(false);
     }
     
-    public class FondoPanel extends JPanel{
+    private class FondoPanel extends JPanel{
     
         private Image imagen;
         
         @Override
         public void paint(Graphics g){
-            imagen = new ImageIcon(getClass().getResource("/images/Living.jpg")).getImage();
+            imagen = new ImageIcon(getClass().getResource("/images/fondo4.jpg")).getImage();
             g.drawImage(imagen,0,0, getWidth(), getHeight(), this);
             setOpaque(false);
             super.paint(g);

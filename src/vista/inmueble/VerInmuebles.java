@@ -7,8 +7,12 @@ package vista.inmueble;
 
 import accesoADatos.*;
 import entidades.*;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import vista.menuPrincipal.MenuPrincipal;
 
@@ -21,6 +25,7 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
     private InmuebleData inmuebleData= new InmuebleData();
     private PropietarioData propietarioData = new PropietarioData();
     private int aviso = 0;
+    private FondoPanel fondo = new FondoPanel();
     private DefaultTableModel modelo = new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int f, int c){
@@ -29,6 +34,7 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
     };
     
     public VerInmuebles(MenuPrincipal menuPrincipal) {
+        this.setContentPane(fondo);
         initComponents();
         this.menuPrincipal = menuPrincipal;
         cargarTablaInicial();
@@ -66,7 +72,8 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         comboPropietario = new javax.swing.JComboBox<>();
         botonBuscar = new javax.swing.JButton();
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jPanel1.setOpaque(false);
+
         jLabel3.setText("Id");
 
         botonBuscarDireccion.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
@@ -91,18 +98,14 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Dirección");
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel5.setText("Propietario");
 
         grupoFiltro.add(radioBNoDisponibles);
-        radioBNoDisponibles.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBNoDisponibles.setText("No disponibles");
 
         grupoFiltro.add(radioBTodos);
-        radioBTodos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBTodos.setSelected(true);
         radioBTodos.setText("Todos");
         radioBTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +135,9 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
             }
         });
 
+        tablaInmuebles.setBackground(new java.awt.Color(255, 236, 218));
+        tablaInmuebles.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        tablaInmuebles.setForeground(java.awt.SystemColor.activeCaptionText);
         tablaInmuebles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -143,13 +149,14 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaInmuebles.setSelectionBackground(new java.awt.Color(183, 142, 80));
+        tablaInmuebles.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tablaInmuebles);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Filtrar por . . .");
 
         grupoFiltro.add(radioBDisponibles);
-        radioBDisponibles.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBDisponibles.setText("Disponibles");
 
         botonBuscarId.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
@@ -257,10 +264,10 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonVerDetalles)
                     .addComponent(botonSalir))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -271,91 +278,27 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void radioBTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBTodosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioBTodosActionPerformed
-
-    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-        dispose();
-        menuPrincipal.mostrarItemsEscritorio();
-    }//GEN-LAST:event_botonSalirActionPerformed
-
-    private void botonBuscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarIdActionPerformed
-        
-        try{
-           int id = Integer.parseInt(campoId.getText());
-           Inmueble inmueble = inmuebleData.buscarInmueble(id);
-           
-           if(inmueble == null){
-               JOptionPane.showMessageDialog(this, "No existe ningún inmueble con esa Id");
-               eliminarFilas();
-               radioBTodos.setSelected(true);
-               campoDireccion.setText("");
-               comboPropietario.setSelectedIndex(0);
-           }else{
-               eliminarFilas();
-               cargarFila(inmueble);
-               radioBTodos.setSelected(true);
-               campoDireccion.setText("");
-               comboPropietario.setSelectedIndex(0);
-           }
-           
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Ingrese el id del inmueble que desea buscar");
-        }
-    }//GEN-LAST:event_botonBuscarIdActionPerformed
-
-    private void botonBuscarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPropietarioActionPerformed
-        
-        if(comboPropietario.getSelectedIndex()<1){
-            JOptionPane.showMessageDialog(this, "Ingrese un propietario para buscar sus inmuebles");
-            vaciarTodo();
-        }else{
-            Propietario propietario = (Propietario)comboPropietario.getSelectedItem();
-            ArrayList<Inmueble> inmuebles = inmuebleData.listarInmueblesPorPropietario(propietario.getIdPropietario());
-            
-            if(inmuebles.isEmpty()){
-                JOptionPane.showMessageDialog(this, "Ese propietario no ha registrado ningún inmueble");  
-                eliminarFilas();
-                radioBTodos.setSelected(true);
-                campoId.setText("");
-                campoDireccion.setText("");
-            }else{
-                eliminarFilas();
-                for(Inmueble inmueble: inmuebles){
-                    cargarFila(inmueble);
-                    radioBTodos.setSelected(true);
-                    campoId.setText("");
-                    campoDireccion.setText("");
-                }
-            }
-        }
-        
-    }//GEN-LAST:event_botonBuscarPropietarioActionPerformed
-
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
-        
+
         ArrayList<Inmueble> inmuebles;
-                
+
         if(radioBTodos.isSelected()){
             inmuebles = inmuebleData.listarInmuebles();
             if(inmuebles.isEmpty()){
                 JOptionPane.showMessageDialog(this, "No se ha cargado ningún inmueble todavía");
                 vaciarTodo();
-            }else{    
+            }else{
                 eliminarFilas();
                 for(Inmueble inmueble : inmuebles){
                     cargarFila(inmueble);
                 }
-            }    
+            }
         }else{
             boolean disponible = radioBDisponibles.isSelected();
             inmuebles = inmuebleData.listarInmueblesDisponiblesONo(disponible);
@@ -380,8 +323,120 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
                 campoDireccion.setText("");
                 comboPropietario.setSelectedIndex(0);
             }
-        }    
+        }
     }//GEN-LAST:event_botonBuscarActionPerformed
+
+    private void botonBuscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarIdActionPerformed
+
+        try{
+            int id = Integer.parseInt(campoId.getText());
+            Inmueble inmueble = inmuebleData.buscarInmueble(id);
+
+            if(inmueble == null){
+                JOptionPane.showMessageDialog(this, "No existe ningún inmueble con esa Id");
+                eliminarFilas();
+                radioBTodos.setSelected(true);
+                campoDireccion.setText("");
+                comboPropietario.setSelectedIndex(0);
+            }else{
+                eliminarFilas();
+                cargarFila(inmueble);
+                radioBTodos.setSelected(true);
+                campoDireccion.setText("");
+                comboPropietario.setSelectedIndex(0);
+            }
+
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Ingrese el id del inmueble que desea buscar");
+        }
+    }//GEN-LAST:event_botonBuscarIdActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        dispose();
+        menuPrincipal.mostrarItemsEscritorio();
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void botonVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDetallesActionPerformed
+
+        try {
+            String nombrePropietario, apellidoPropietario = "", nombreInquilino, apellidoInquilino = "", disponible;
+
+            int filaSeleccionada = tablaInmuebles.getSelectedRow();
+
+            int idInmueble = (int) tablaInmuebles.getValueAt(filaSeleccionada, 0);
+            InmuebleData inmData = new InmuebleData();
+            Inmueble inmueble = inmData.buscarInmueble(idInmueble);
+
+            if (inmueble.getPropietario() != null) {
+                nombrePropietario = inmueble.getPropietario().getNombre();
+                apellidoPropietario = inmueble.getPropietario().getApellido();
+
+            } else {
+                nombrePropietario = "Sin propietario";
+            }
+
+            if(inmueble.getInquilino() != null) {
+                nombreInquilino = inmueble.getInquilino().getNombre();
+                apellidoInquilino = inmueble.getInquilino().getApellido();
+            } else {
+                nombreInquilino = "Sin Inquilino";
+            }
+
+            if (inmueble.isDisponible()) {
+                disponible = "Si";
+            } else {
+                disponible = "No";
+            }
+
+            String detalles = "ID: " + Integer.toString(inmueble.getIdInmueble())+ "\n"
+            + "Tipo: " + inmueble.getTipo() + "\n"
+            + "Superficie: " + inmueble.getSuperficie() + " m²\n"
+            + "Precio: $" + inmueble.getPrecio() + "\n"
+            + "Zona: " + inmueble.getZona() + "\n"
+            + "Direccion: " + inmueble.getDireccion() + "\n"
+            + "Propietario: " + nombrePropietario + " " + apellidoPropietario + "\n"
+            + "Inquilino: " + nombreInquilino + " " + apellidoInquilino + "\n"
+            + "Disponible: " + disponible;
+            JOptionPane.showMessageDialog(null, detalles, "Detalles del inmueble", JOptionPane.INFORMATION_MESSAGE);
+
+            //} catch (NullPointerException ex) {
+
+        }catch (ArrayIndexOutOfBoundsException ex){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un inmueble para poder ver sus detalles");
+        }
+    }//GEN-LAST:event_botonVerDetallesActionPerformed
+
+    private void radioBTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBTodosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioBTodosActionPerformed
+
+    private void botonBuscarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPropietarioActionPerformed
+
+        if(comboPropietario.getSelectedIndex()<1){
+            JOptionPane.showMessageDialog(this, "Ingrese un propietario para buscar sus inmuebles");
+            vaciarTodo();
+        }else{
+            Propietario propietario = (Propietario)comboPropietario.getSelectedItem();
+            ArrayList<Inmueble> inmuebles = inmuebleData.listarInmueblesPorPropietario(propietario.getIdPropietario());
+
+            if(inmuebles.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Ese propietario no ha registrado ningún inmueble");
+                eliminarFilas();
+                radioBTodos.setSelected(true);
+                campoId.setText("");
+                campoDireccion.setText("");
+            }else{
+                eliminarFilas();
+                for(Inmueble inmueble: inmuebles){
+                    cargarFila(inmueble);
+                    radioBTodos.setSelected(true);
+                    campoId.setText("");
+                    campoDireccion.setText("");
+                }
+            }
+        }
+
+    }//GEN-LAST:event_botonBuscarPropietarioActionPerformed
 
     private void campoIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIdKeyTyped
         int key = evt.getKeyChar();
@@ -397,14 +452,14 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_campoIdKeyTyped
 
     private void botonBuscarDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarDireccionActionPerformed
-        
+
         if(campoDireccion.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Ingrese una dirección para buscar inmuebles");
             vaciarTodo();
         }else{
             String direccion = campoDireccion.getText()+"%";
             ArrayList<Inmueble> inmuebles = inmuebleData.buscarInmueblePorDireccion(direccion);
-            
+
             if(inmuebles.isEmpty()){
                 JOptionPane.showMessageDialog(this, "No existe ningún inmueble con esa dirección");
                 eliminarFilas();
@@ -419,60 +474,9 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
                 radioBTodos.setSelected(true);
                 campoId.setText("");
                 comboPropietario.setSelectedIndex(0);
-            }    
+            }
         }
     }//GEN-LAST:event_botonBuscarDireccionActionPerformed
-
-    private void botonVerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDetallesActionPerformed
-
-        try {
-            String nombrePropietario, apellidoPropietario = "", nombreInquilino, apellidoInquilino = "", disponible;
-            
-            int filaSeleccionada = tablaInmuebles.getSelectedRow();
-
-            int idInmueble = (int) tablaInmuebles.getValueAt(filaSeleccionada, 0);
-            InmuebleData inmData = new InmuebleData();
-            Inmueble inmueble = inmData.buscarInmueble(idInmueble);
-
-            if (inmueble.getPropietario() != null) {
-                nombrePropietario = inmueble.getPropietario().getNombre();
-                apellidoPropietario = inmueble.getPropietario().getApellido();
-                
-            } else {
-                nombrePropietario = "Sin propietario";
-            }
-            
-            if(inmueble.getInquilino() != null) {
-                nombreInquilino = inmueble.getInquilino().getNombre();
-                apellidoInquilino = inmueble.getInquilino().getApellido();
-            } else {
-                nombreInquilino = "Sin Inquilino";
-            }
-            
-            if (inmueble.isDisponible()) {
-                disponible = "Si";
-            } else {
-                disponible = "No";
-            }
-            
-            String detalles = "ID: " + Integer.toString(inmueble.getIdInmueble())+ "\n"
-                    + "Tipo: " + inmueble.getTipo() + "\n"
-                    + "Superficie: " + inmueble.getSuperficie() + " m²\n"
-                    + "Precio: $" + inmueble.getPrecio() + "\n"
-                    + "Zona: " + inmueble.getZona() + "\n"
-                    + "Direccion: " + inmueble.getDireccion() + "\n"
-                    + "Propietario: " + nombrePropietario + " " + apellidoPropietario + "\n"
-                    + "Inquilino: " + nombreInquilino + " " + apellidoInquilino + "\n"
-                    + "Disponible: " + disponible;
-            JOptionPane.showMessageDialog(null, detalles, "Detalles del inmueble", JOptionPane.INFORMATION_MESSAGE);
-
-        //} catch (NullPointerException ex) {
-
-        }catch (ArrayIndexOutOfBoundsException ex){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un inmueble para poder ver sus detalles");
-        }
-
-    }//GEN-LAST:event_botonVerDetallesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -560,4 +564,19 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         comboPropietario.setSelectedIndex(0);
         eliminarFilas();
     }
+    
+    private class FondoPanel extends JPanel{
+    
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/images/fondo4.jpg")).getImage();
+            g.drawImage(imagen,0,0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        
+        }
+    
+    } 
 }

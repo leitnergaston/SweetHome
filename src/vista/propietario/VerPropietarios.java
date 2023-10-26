@@ -3,8 +3,12 @@ package vista.propietario;
 
 import accesoADatos.*;
 import entidades.*;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import vista.menuPrincipal.MenuPrincipal;
 
@@ -13,6 +17,7 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
     private final MenuPrincipal menuPrincipal;
     private int aviso = 0;
     private PropietarioData propietarioData = new PropietarioData();
+    private FondoPanel fondo = new FondoPanel();
     private DefaultTableModel modelo = new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int f, int c){
@@ -22,6 +27,7 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
     
     
     public VerPropietarios(MenuPrincipal menuPrincipal) {
+        this.setContentPane(fondo);
         initComponents();
         this.menuPrincipal = menuPrincipal;
         cargarTablaInicial();
@@ -508,4 +514,19 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         campoDni.setText("");
         eliminarFilas();
     }
+    
+    private class FondoPanel extends JPanel{
+    
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/images/fondo4.jpg")).getImage();
+            g.drawImage(imagen,0,0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        
+        }
+    
+    }  
 }
