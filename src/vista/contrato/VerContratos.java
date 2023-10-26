@@ -315,8 +315,11 @@ public class VerContratos extends javax.swing.JInternalFrame {
                 // eliminarFilas();
                 if(contrato.isEmpty()){
                     JOptionPane.showMessageDialog(this, "No se ha cargado contrato todavía");
-                    vaciarTodo();
-                   // eliminarFilas();
+                    comboInquilino.setSelectedIndex(0);
+                    comboInmueble.setSelectedIndex(0);
+                    campoID.setText("");
+                    eliminarFilas();
+                   
             }else{  
                     vaciarTodo();
                 //eliminarFilas();
@@ -330,7 +333,10 @@ public class VerContratos extends javax.swing.JInternalFrame {
                 //eliminarFilas();
                 if(contrato.isEmpty()){
                     JOptionPane.showMessageDialog(this, "No se ha cargado contrato todavía");
-                    vaciarTodo();
+                    comboInquilino.setSelectedIndex(0);
+                    comboInmueble.setSelectedIndex(0);
+                    campoID.setText("");
+                    eliminarFilas();
                    // eliminarFilas();
             }else{  
                     vaciarTodo();
@@ -345,7 +351,10 @@ public class VerContratos extends javax.swing.JInternalFrame {
                 //eliminarFilas();
                 if(contrato.isEmpty()){
                     JOptionPane.showMessageDialog(this, "No se ha cargado contrato todavía");
-                    vaciarTodo();
+                    comboInquilino.setSelectedIndex(0);
+                    comboInmueble.setSelectedIndex(0);
+                    campoID.setText("");
+                    eliminarFilas();
                   //  eliminarFilas();
             }else{    
                     vaciarTodo();
@@ -366,7 +375,10 @@ public class VerContratos extends javax.swing.JInternalFrame {
            Contrato contrato = contratoData.buscarContratoPorId(id);
            
            if(contrato == null){
-               vaciarTodo();
+               comboInquilino.setSelectedIndex(0);
+               comboInmueble.setSelectedIndex(0);
+               botonTodos.setSelected(true);
+               eliminarFilas();
               
            }else{
                
@@ -396,7 +408,10 @@ public class VerContratos extends javax.swing.JInternalFrame {
             
             if(contratos.isEmpty()){
                   
-                vaciarTodo();
+                botonTodos.setSelected(true);
+                comboInmueble.setSelectedIndex(0);
+                campoID.setText("");
+                eliminarFilas();
             }else{
                 eliminarFilas();
                for(Contrato contrato: contratos){
@@ -421,13 +436,17 @@ public class VerContratos extends javax.swing.JInternalFrame {
             ArrayList<Contrato> contratos = contratoData.listarContratosPorInmueble(inmueble.getIdInmueble());
             
             if(contratos.isEmpty()){
-                  vaciarTodo();
+                comboInquilino.setSelectedIndex(0);
+                botonTodos.setSelected(true);
+                campoID.setText("");
+                eliminarFilas();
             }else{
                 eliminarFilas();
                 for(Contrato contrato: contratos){
                     cargarfilas(contrato);
-                    botonTodos.setSelected(false);
+                    botonTodos.setSelected(true);
                     campoID.setText("");
+                    comboInquilino.setSelectedIndex(0);
                     
                 }
             }
@@ -571,6 +590,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
     
     private void vaciarTodo(){
         //botonTodos.setSelected(true);
+        campoID.setText("");
         comboInquilino.setSelectedIndex(0);
         comboInmueble.setSelectedIndex(0);
         eliminarFilas();
