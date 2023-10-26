@@ -78,7 +78,6 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Filtrar por . . .");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel3.setText("Apellido");
 
         campoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -87,7 +86,6 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Nombre");
 
         campoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -96,7 +94,6 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel5.setText("Dni");
 
         botonVerDetalles.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
@@ -146,16 +143,13 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         });
 
         buttonGroupEstado.add(radioBTodos);
-        radioBTodos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBTodos.setSelected(true);
         radioBTodos.setText("Todos");
 
         buttonGroupEstado.add(radioBActivos);
-        radioBActivos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBActivos.setText("Activos");
 
         buttonGroupEstado.add(radioBInactivos);
-        radioBInactivos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBInactivos.setText("Inactivos");
 
         botonBuscarEstado.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
@@ -245,9 +239,9 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonVerDetalles)
-                    .addComponent(botonSalir))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonSalir)
+                    .addComponent(botonVerDetalles))
                 .addGap(48, 48, 48))
         );
 
@@ -427,12 +421,12 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
 
     private void campoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoApellidoKeyTyped
         int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57 || key==8;
+        boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
         if (!numero) {
             evt.consume();
             aviso++;
             if (aviso == 10) {
-                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras en este campo");
                 aviso = 0;
             }
         }
@@ -440,12 +434,12 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
 
     private void campoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNombreKeyTyped
         int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57 || key==8;
+        boolean numero = key >= 65 && key <= 90 || key >= 97 && key <= 122 || key == 8 || key == 32;
         if (!numero) {
             evt.consume();
             aviso++;
             if (aviso == 10) {
-                JOptionPane.showMessageDialog(this, "Solo se permiten numeros en este campo");
+                JOptionPane.showMessageDialog(this, "Solo se permiten letras en este campo");
                 aviso = 0;
             }
         }
