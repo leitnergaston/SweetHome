@@ -64,7 +64,7 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(10, 110, 182));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ver Inquilinos");
 
@@ -75,6 +75,8 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
             }
         });
 
+        tablaInquilinos.setBackground(new java.awt.Color(255, 236, 218));
+        tablaInquilinos.setForeground(new java.awt.Color(0, 0, 0));
         tablaInquilinos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -86,6 +88,8 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaInquilinos.setSelectionBackground(new java.awt.Color(183, 142, 80));
+        tablaInquilinos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaInquilinos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaInquilinosMouseClicked(evt);
@@ -110,7 +114,6 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel3.setText("Apellido");
 
         botonBuscarNombre.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
@@ -135,7 +138,6 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Nombre");
 
         campoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -144,19 +146,15 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel5.setText("CUIT/CUIL");
 
         buttonGroup1.add(radioBInactivos);
-        radioBInactivos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBInactivos.setText("Inactivos");
 
         buttonGroup1.add(radioBTodos);
-        radioBTodos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBTodos.setText("Todos");
 
         buttonGroup1.add(radioBActivos);
-        radioBActivos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         radioBActivos.setText("Activos");
 
         jButton1.setFont(new java.awt.Font("Swis721 Hv BT", 0, 12)); // NOI18N
@@ -174,8 +172,13 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(173, 173, 173)
+                        .addComponent(botonVerDetalles)
+                        .addGap(99, 99, 99)
+                        .addComponent(botonSalir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -183,9 +186,9 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(campoApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                    .addComponent(campoApellido)
                                     .addComponent(campoNombre)
-                                    .addComponent(campoCuit))
+                                    .addComponent(campoCuit, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(60, 60, 60)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(botonBuscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,22 +206,20 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
                                         .addComponent(radioBActivos)
                                         .addGap(18, 18, 18)
                                         .addComponent(radioBInactivos)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                                        .addComponent(jButton1))))
-                            .addComponent(botonBuscarApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(botonVerDetalles)
-                        .addGap(68, 68, 68)
-                        .addComponent(botonSalir)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(botonBuscarApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -242,13 +243,13 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
                     .addComponent(botonBuscarCuit)
                     .addComponent(jLabel5)
                     .addComponent(campoCuit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonVerDetalles)
-                    .addComponent(botonSalir))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonSalir)
+                    .addComponent(botonVerDetalles))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();

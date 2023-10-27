@@ -264,9 +264,9 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(campoDniGarante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(checkEstado)
                 .addGap(18, 18, 18)
+                .addComponent(checkEstado)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -350,8 +350,7 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
                 if (limitador == 0) { // si es 0 es porq los campos nombre y apellido son validos
                     inqData.agregarInquilino(inq);
                 } else {
-                    JOptionPane.showMessageDialog(this, " No deje espacios vacios"
-                            + "verifique los campos o datos ingresados");
+                    JOptionPane.showMessageDialog(this, " No deje espacios vacios");
                 }
             }
         } catch (NumberFormatException e) {
@@ -362,30 +361,35 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
 
         InquilinoData inqData = new InquilinoData();
-        long cuit = Long.parseLong(campoCuit.getText());
-        int id = Integer.parseInt(campoId.getText());
-        if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()
-                || campoCuit.getText().isEmpty() || campoNombreGarante.getText().isEmpty()
-                || campoLugarDeTrabajo.getText().isEmpty() || campoDniGarante.getText().isEmpty()) {
+        long cuit = 0;
+        int id;
+        
+        if (campoNombre.getText().isEmpty() || campoApellido.getText().isEmpty()||  campoNombreGarante.getText().isEmpty()
+            || campoLugarDeTrabajo.getText().isEmpty() || campoDniGarante.getText().isEmpty() || campoCuit.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No se permite modificar con espacios vacios");
-        } else if (!validarCuil(cuit) && cuit!=inqData.buscarInquilinoPorId(id).getCuit()) {
+        } else if (!campoCuit.getText().isEmpty()){
+            cuit = Long.parseLong(campoCuit.getText());
+            id = Integer.parseInt(campoId.getText());
+            if (!validarCuil(cuit) && cuit!=inqData.buscarInquilinoPorId(id).getCuit()) {
                 JOptionPane.showMessageDialog(this, "Ya existe un propietario con ese cuil");
                 campoCuit.setText("");
-        } else {
-            String apellido = campoApellido.getText();
-            String nombre = campoNombre.getText();
-            String lugartrabajo = campoLugarDeTrabajo.getText();
-            String nombregarante = campoNombreGarante.getText();
-            int dnigarante = Integer.parseInt(campoDniGarante.getText());
-            boolean estado;
-            if (checkEstado.isSelected()) {//is selected detecta si el check esta marcado o no
-                estado = true;
             } else {
-                estado = false;
-            }
-            Inquilino inq = new Inquilino(id, nombre, apellido, cuit, lugartrabajo, dnigarante, nombregarante, estado);
+                String apellido = campoApellido.getText();
+                String nombre = campoNombre.getText();
+                String lugartrabajo = campoLugarDeTrabajo.getText();
+                String nombregarante = campoNombreGarante.getText();
+                int dnigarante = Integer.parseInt(campoDniGarante.getText());
+                id = Integer.parseInt(campoId.getText());
+                boolean estado;
+                if (checkEstado.isSelected()) {//is selected detecta si el check esta marcado o no
+                    estado = true;
+                } else {
+                    estado = false;
+                }
+                Inquilino inq = new Inquilino(id, nombre, apellido, cuit, lugartrabajo, dnigarante, nombregarante, estado);
 
-            inqData.modificarinquilino(inq);
+                inqData.modificarinquilino(inq);
+            }    
         }
     }//GEN-LAST:event_botonModificarActionPerformed
 
@@ -395,7 +399,7 @@ public class CargaDeInquilino extends javax.swing.JInternalFrame {
         if (campoCuit.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Se requiere el Cuit para buscar");
         } else {
-            long cuit = Integer.parseInt(campoCuit.getText());
+            long cuit = Long.parseLong(campoCuit.getText());
             inq = inqData.buscarinquilinoCUIT(cuit);
             if (inq == null) {
                 JOptionPane.showMessageDialog(this, "El inquilino no existe");

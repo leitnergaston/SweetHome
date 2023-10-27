@@ -106,7 +106,6 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         radioBNoDisponibles.setText("No disponibles");
 
         grupoFiltro.add(radioBTodos);
-        radioBTodos.setSelected(true);
         radioBTodos.setText("Todos");
         radioBTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +135,7 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         });
 
         tablaInmuebles.setBackground(new java.awt.Color(255, 236, 218));
+        tablaInmuebles.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tablaInmuebles.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tablaInmuebles.setForeground(java.awt.SystemColor.activeCaptionText);
         tablaInmuebles.setModel(new javax.swing.table.DefaultTableModel(
@@ -513,11 +513,11 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         
         tablaInmuebles.setModel(modelo);
         
-        ArrayList<Inmueble> inmuebles = inmuebleData.listarInmuebles();
+        /*ArrayList<Inmueble> inmuebles = inmuebleData.listarInmuebles();
         
         for(Inmueble inmueble : inmuebles){
             cargarFila(inmueble);
-        }
+        }*/
     }
 
     private void cargarFila(Inmueble inmueble){

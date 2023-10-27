@@ -141,7 +141,7 @@ public class InquilinoData {
         PreparedStatement ps = null; // declarar un ps para preparar la consulta sql
         try {
             ps = con.prepareStatement(sql); // objeto ps a partir de la consulta sql 
-            ps.setInt(1, (int) cuit); // establecer el primer parametro ? de la consulta con el valor cuit
+            ps.setLong(1,cuit); // establecer el primer parametro ? de la consulta con el valor cuit
             ResultSet rs = ps.executeQuery(); // ejecutamos la consulta y se almacenan los resultados en el objeto rs
 
             // si hay al menos una fila de resultado en el rs

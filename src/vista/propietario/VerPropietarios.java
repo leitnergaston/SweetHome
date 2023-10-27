@@ -68,6 +68,8 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ver Propietarios");
 
+        tablaPropietarios.setBackground(new java.awt.Color(255, 236, 218));
+        tablaPropietarios.setForeground(new java.awt.Color(0, 0, 0));
         tablaPropietarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -79,6 +81,8 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaPropietarios.setSelectionBackground(new java.awt.Color(183, 142, 80));
+        tablaPropietarios.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tablaPropietarios);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -149,7 +153,6 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         });
 
         buttonGroupEstado.add(radioBTodos);
-        radioBTodos.setSelected(true);
         radioBTodos.setText("Todos");
 
         buttonGroupEstado.add(radioBActivos);
@@ -482,11 +485,12 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         modelo.addColumn("Nombre");
         
         tablaPropietarios.setModel(modelo);
-        
+        /* 
         ArrayList<Propietario> propietarios = propietarioData.listarPropietarios();
         for(Propietario propietario : propietarios){
             cargarFila(propietario);
         }
+        */
     }
     
     private void cargarFila(Propietario propietario){

@@ -230,6 +230,8 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
 
         jPanel2.setOpaque(false);
 
+        tablaInmuebles.setBackground(new java.awt.Color(255, 236, 218));
+        tablaInmuebles.setForeground(new java.awt.Color(0, 0, 0));
         tablaInmuebles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -241,6 +243,8 @@ public class VerPorFiltros extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaInmuebles.setSelectionBackground(new java.awt.Color(183, 142, 80));
+        tablaInmuebles.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tablaInmuebles);
 
         botonVerDetalle.setFont(new java.awt.Font("Swis721 Hv BT", 0, 14)); // NOI18N
