@@ -64,7 +64,7 @@ public class VerPropietarios extends javax.swing.JInternalFrame {
         botonBuscarEstado = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(10, 110, 182));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ver Propietarios");
 

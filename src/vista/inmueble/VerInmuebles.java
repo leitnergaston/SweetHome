@@ -124,7 +124,7 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(10, 110, 182));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ver Inmuebles");
 
@@ -216,8 +216,8 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
                                         .addGap(40, 40, 40)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(campoDireccion)
-                                            .addComponent(comboPropietario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(campoId, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(comboPropietario, 0, 200, Short.MAX_VALUE)
+                                            .addComponent(campoId)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(85, 85, 85)
                                         .addComponent(radioBDisponibles)
@@ -228,9 +228,7 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
                                     .addComponent(botonBuscarId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(botonBuscarPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(botonBuscarDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(botonBuscar)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(botonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(28, 28, 28))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -298,6 +296,9 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
                 for(Inmueble inmueble : inmuebles){
                     cargarFila(inmueble);
                 }
+                campoId.setText("");
+                comboPropietario.setSelectedIndex(0);
+                campoDireccion.setText("");
             }
         }else{
             boolean disponible = radioBDisponibles.isSelected();
