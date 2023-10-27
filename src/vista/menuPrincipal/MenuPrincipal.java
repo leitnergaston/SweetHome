@@ -7,6 +7,7 @@ import vista.propietario.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import vista.contrato.*;
 import vista.inmueble.*;
@@ -413,81 +414,63 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         Escritorio.removeAll();
         Escritorio.repaint();
         CargaDePropietario cargaPropietario = new CargaDePropietario(this);
-        cargaPropietario.setVisible(true);
-        Escritorio.add(cargaPropietario);
-        Escritorio.moveToFront(cargaPropietario);
+        CentrarVentanInterna(cargaPropietario);
     }//GEN-LAST:event_botonCargarPropietarioActionPerformed
 
     private void botonVerPorFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerPorFiltrosActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
         VerPorFiltros verPorFiltros = new VerPorFiltros(this);
-        verPorFiltros.setVisible(true);
-        Escritorio.add(verPorFiltros);
-        Escritorio.moveToFront(verPorFiltros);
+        CentrarVentanInterna(verPorFiltros);
     }//GEN-LAST:event_botonVerPorFiltrosActionPerformed
 
     private void botonCargarInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarInmuebleActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
         CargaDeInmueble CargaDeInmueble = new CargaDeInmueble(this);
-        CargaDeInmueble.setVisible(true);
-        Escritorio.add(CargaDeInmueble);
-        Escritorio.moveToFront(CargaDeInmueble);
+        CentrarVentanInterna(CargaDeInmueble);
     }//GEN-LAST:event_botonCargarInmuebleActionPerformed
 
     private void botonCargarInquilinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarInquilinoActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
         CargaDeInquilino CargaDeInquilino = new CargaDeInquilino(this);
-        CargaDeInquilino.setVisible(true);
-        Escritorio.add(CargaDeInquilino);
-        Escritorio.moveToFront(CargaDeInquilino);
+        CentrarVentanInterna(CargaDeInquilino);
     }//GEN-LAST:event_botonCargarInquilinoActionPerformed
 
     private void botonCargarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarContratoActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
         CargaDeContrato CargaDeContrato = new CargaDeContrato(this);
-        CargaDeContrato.setVisible(true);
-        Escritorio.add(CargaDeContrato);
-        Escritorio.moveToFront(CargaDeContrato);
+        CentrarVentanInterna(CargaDeContrato);
     }//GEN-LAST:event_botonCargarContratoActionPerformed
 
     private void botonVerInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerInmueblesActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
         VerInmuebles verInmuebles = new VerInmuebles(this);
-        verInmuebles.setVisible(true);
-        Escritorio.add(verInmuebles);
-        Escritorio.moveToFront(verInmuebles);
+        CentrarVentanInterna(verInmuebles);
     }//GEN-LAST:event_botonVerInmueblesActionPerformed
 
     private void botonVerInquilinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerInquilinosActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
         VerInquilinos VerInquilinos = new VerInquilinos(this);
-        VerInquilinos.setVisible(true);
-        Escritorio.add(VerInquilinos);
-        Escritorio.moveToFront(VerInquilinos);
+        CentrarVentanInterna(VerInquilinos);
     }//GEN-LAST:event_botonVerInquilinosActionPerformed
 
     private void botonVerContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerContratosActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
         VerContratos contrato = new VerContratos(this);
-        contrato.setVisible(true);
-        Escritorio.add(contrato);
-        Escritorio.moveToFront(contrato);
+        CentrarVentanInterna(contrato);
     }//GEN-LAST:event_botonVerContratosActionPerformed
 
     private void botonVerPropietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerPropietariosActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
         VerPropietarios verPropietarios = new VerPropietarios(this);
-        verPropietarios.setVisible(true);
-        Escritorio.add(verPropietarios);
-        Escritorio.moveToFront(verPropietarios);
+        CentrarVentanInterna(verPropietarios);
     }//GEN-LAST:event_botonVerPropietariosActionPerformed
 
     public static void main(String args[]) {
@@ -574,6 +557,18 @@ public final class MenuPrincipal extends javax.swing.JFrame {
         panel4.setBackground(new Color(0, 71, 90, 180));
         
 
+    }
+    
+    public void CentrarVentanInterna(JInternalFrame internalFrame){
+        int x = (Escritorio.getWidth() / 2) - internalFrame.getWidth() / 2;
+        int y = (Escritorio.getHeight()/ 2 ) - internalFrame.getHeight() / 2;
+        if(internalFrame.isShowing()){
+            internalFrame.setLocation(x, y);
+        }else{
+            Escritorio.add(internalFrame);
+            internalFrame.setLocation(x, y);
+            internalFrame.show();
+        }
     }
 
 }
