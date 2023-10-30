@@ -374,7 +374,7 @@ public class VerInquilinos extends javax.swing.JInternalFrame {
             inquili = inqdata.listarinquilinosI();
             eliminarFilas();
             if (inquili.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No hya inquilinos inacivos");
+                JOptionPane.showMessageDialog(this, "No hay inquilinos inactivos");
                 eliminarFilas();
             } else {
                 for (Inquilino inqi : inquili) {
