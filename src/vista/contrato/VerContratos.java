@@ -567,7 +567,7 @@ public class VerContratos extends javax.swing.JInternalFrame {
     
      private void cargarComboInmueble(){
         
-        ArrayList<Inmueble> inmueble = inmuebleData.listarInmueblesDisponiblesONo(true);
+        ArrayList<Inmueble> inmueble = inmuebleData.listarInmuebles();
         
         comboInmueble.addItem(null);
         for(Inmueble inmuebles: inmueble){

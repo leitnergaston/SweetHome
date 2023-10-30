@@ -136,7 +136,6 @@ public class VerInmuebles extends javax.swing.JInternalFrame {
 
         tablaInmuebles.setBackground(new java.awt.Color(255, 236, 218));
         tablaInmuebles.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        tablaInmuebles.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tablaInmuebles.setForeground(java.awt.SystemColor.activeCaptionText);
         tablaInmuebles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

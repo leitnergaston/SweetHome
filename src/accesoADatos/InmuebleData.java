@@ -351,7 +351,7 @@ public class InmuebleData {
                 ps = con.prepareStatement(sql);
                 ps.setInt(1, idInmueble);
             }else{
-                sql = "UPDATE inmueble set idInquilino = ?, disponible = 0 WHERE idInmueble = ? AND disponible = 1";
+                sql = "UPDATE inmueble set idInquilino = ?, disponible = 0 WHERE idInmueble = ?";
                 ps = con.prepareStatement(sql);
                 ps.setInt(1, idInquilino);
                 ps.setInt(2, idInmueble);
