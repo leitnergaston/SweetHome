@@ -563,7 +563,7 @@ public class CargaDeContrato extends javax.swing.JInternalFrame {
 
     private void cargarComboInquilino(){
         
-        ArrayList<Inquilino> inquilinos = inquilinoData.listarinquilinosT();
+        ArrayList<Inquilino> inquilinos = inquilinoData.listarinquilinos();
         
         ComboInquilino.addItem(null);
         

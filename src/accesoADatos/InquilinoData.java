@@ -180,7 +180,7 @@ public class InquilinoData {
                 // en cada iteracion se crea un objeto Alumno y asignamos sus propiedades obtenidos del rs usando metodos get
                 Inquilino inquilino = new Inquilino();
                 inquilino.setIdInquilino(rs.getInt("idInquilino"));
-                inquilino.setCuit(rs.getInt("cuit"));
+                inquilino.setCuit(rs.getLong("cuit"));
                 inquilino.setApellido(rs.getString("apellido"));
                 inquilino.setNombre(rs.getString("nombre"));
                 inquilino.setLugarDeTrabajo(rs.getString("lugarDeTrabajo"));
