@@ -37,10 +37,10 @@ public class PropietarioData {
     //***** Método que crea el propietario****//
     public void crearPropietario(Propietario propietario){
         
+        try {
         String sql = "INSERT INTO propietario(idPropietario, dni, apellido, nombre, domicilio, telefono, eMail, estado)"
                 + "VALUES (null,?,?,?,?,?,?,?)";
 
-        try {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
